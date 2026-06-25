@@ -6,6 +6,10 @@
   <title>Pietra Costantin · arquivo desktop</title>
   <meta name="description" content="Portfolio interativo de Pietra Costantin em formato desktop, com projetos, arquivo, contato e case viewer.">
   <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
 <style>
     @font-face { font-family:"Inter Tight"; src:url("_ds/pixie-club-design-system-019df67a-27c9-7445-9f51-de5144ee30d8/fonts/InterTight-VariableFont_wght.ttf") format("truetype-variations"); font-weight:100 900; font-style:normal; font-display:swap; }
     @font-face { font-family:"Inter Tight"; src:url("_ds/pixie-club-design-system-019df67a-27c9-7445-9f51-de5144ee30d8/fonts/InterTight-Italic-VariableFont_wght.ttf") format("truetype-variations"); font-weight:100 900; font-style:italic; font-display:swap; }
@@ -22,6 +26,8 @@
     .pc-folder-peek { overflow: hidden; aspect-ratio: 4 / 3; position: relative; }
     .pc-folder-img { display: block; width: 100%; height: calc(100% + 26px); object-fit: cover; object-position: center top; transform: translateY(0); transition: transform 300ms cubic-bezier(.25,1,.5,1); }
     .pc-folder:hover .pc-folder-img { transform: translateY(-18px); }
+    .pc-folder[data-project="sweat"] .pc-folder-img { transform: scale(1.4); transform-origin: center; }
+    .pc-folder[data-project="sweat"]:hover .pc-folder-img { transform: scale(1.4) translateY(-10px); }
     .pc-folder-body { transition: none; }
     /* ── Traffic lights ── */
     .pc-tl-g:hover .tl-r { background: #FC5F57 !important; }
@@ -87,7 +93,43 @@
     /* ── Media slots ── */
     .pc-media-slot { overflow:hidden; border-radius:6px; border:1px solid rgba(38,1,11,.12); background:#16121A; flex-shrink:0; }
     .pc-media-slot img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+    .pc-media-slot video { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+    .pc-pixie-preview-area { background:#F0EEF2; padding:4px; }
+    .pc-pixie-main-preview { width:100%; height:auto; border-radius:8px; overflow:hidden; background:transparent; display:block; padding:0; }
+    .pc-pixie-main-preview img { display:block; width:100%; height:auto; object-fit:unset; object-position:center; }
+    .pc-case-media-viewer { min-height:100%; background:#FEFBFE; padding:10px; display:flex; flex-direction:column; gap:7px; box-sizing:border-box; }
+    .pc-case-media-item { width:100%; display:flex; flex-direction:column; gap:4px; }
+    .pc-case-media-frame { width:100%; border-radius:9px; overflow:hidden; background:#F0EEF2; cursor:zoom-in; transition:transform .18s cubic-bezier(.2,.7,.2,1), box-shadow .18s ease, filter .18s ease; }
+    .pc-case-media-frame:hover { transform:translateY(-1px); box-shadow:0 8px 18px rgba(38,1,11,.07); }
+    .pc-case-media-frame:active,
+    .pc-case-media-frame.is-opening { transform:scale(.992); filter:saturate(1.02) brightness(.985); }
+    .pc-case-media-frame img,
+    .pc-case-media-frame video { display:block; width:100%; height:auto; object-fit:unset; object-position:center; }
+    .pc-case-media-caption { font-size:10px; color:rgba(38,1,11,.36); letter-spacing:.02em; }
+    .pc-case-media-viewer.is-grimes { padding:0; gap:0; }
+    .pc-case-media-viewer.is-grimes .pc-case-media-item { gap:0; }
+    .pc-case-media-viewer.is-grimes .pc-case-media-frame { border-radius:0; background:transparent; }
+    .pc-case-media-viewer.is-grimes .pc-case-media-frame:hover { transform:none; box-shadow:none; }
     .pc-media-slot.fit-contain img { object-fit:contain; }
+    .pc-media-slot.fit-contain video { width:100%; height:100%; object-fit:contain; object-position:center; display:block; }
+    .pc-quicklook { position:fixed; inset:0; background:rgba(20,16,20,.32); display:flex; align-items:center; justify-content:center; z-index:9999; opacity:0; visibility:hidden; pointer-events:none; transition:opacity 180ms cubic-bezier(.2,.7,.2,1), visibility 0s linear 180ms; }
+    .pc-quicklook.is-visible { opacity:1; visibility:visible; pointer-events:auto; transition:opacity 180ms cubic-bezier(.2,.7,.2,1), visibility 0s linear 0s; }
+    #pc-viewer-backdrop { position:fixed; inset:0; background:rgba(24,18,24,.14); backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px); opacity:0; pointer-events:none; transition:opacity 180ms cubic-bezier(.2,.7,.2,1); z-index:1; }
+    #pc-viewer-backdrop.is-visible { opacity:1; }
+    .pc-quicklook-panel { position:relative; width:auto; height:auto; max-width:88vw; max-height:82vh; background:#f5f2f5; border-radius:14px; box-shadow:0 18px 40px rgba(0,0,0,.18); display:flex; align-items:center; justify-content:center; padding:12px; box-sizing:border-box; transform:translateY(10px) scale(.965); opacity:.86; transition:transform 220ms cubic-bezier(.18,.9,.22,1), opacity 160ms cubic-bezier(.2,.7,.2,1); }
+    .pc-quicklook.is-visible .pc-quicklook-panel { transform:translateY(0) scale(1); opacity:1; }
+    .pc-quicklook-panel img,
+    .pc-quicklook-panel video { width:auto; height:auto; max-width:82vw; max-height:76vh; object-fit:contain; display:block; border-radius:8px; }
+    .pc-quicklook-stage { width:auto; height:auto; display:flex; align-items:center; justify-content:center; }
+    .pc-quicklook-close,
+    .pc-quicklook-nav { position:absolute; border:0; background:rgba(255,255,255,.72); color:rgba(38,1,11,.68); box-shadow:0 2px 8px rgba(38,1,11,.12); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .15s ease, transform .15s ease; }
+    .pc-quicklook-close:hover,
+    .pc-quicklook-nav:hover { background:rgba(255,255,255,.92); transform:translateY(-1px); }
+    .pc-quicklook-close { top:12px; right:12px; width:28px; height:28px; border-radius:50%; font-size:18px; line-height:1; }
+    .pc-quicklook-nav { top:50%; width:34px; height:42px; border-radius:12px; transform:translateY(-50%); font-size:24px; line-height:1; }
+    .pc-quicklook-nav:hover { transform:translateY(-50%) translateY(-1px); }
+    .pc-quicklook-prev { left:12px; }
+    .pc-quicklook-next { right:12px; }
     .is-wide    { aspect-ratio:16/9; }
     .is-square  { aspect-ratio:1/1; }
     .is-portrait { aspect-ratio:3/4; }
@@ -287,7 +329,6 @@
       <div class="pc-sbar" style="width:140px;background:rgba(248,243,239,.95);border-right:1px solid rgba(38,1,11,.07);padding:8px 0;overflow-y:auto;flex-shrink:0;">
         <div style="font-size:9px;color:rgba(38,1,11,.28);padding:6px 10px 4px;font-weight:500;">favorites</div>
         <div class="pc-sb-item" data-tab="projects" style="display:flex;align-items:center;gap:7px;padding:5px 10px;border-radius:5px;font-size:11px;color:rgba(38,1,11,.72);background:rgba(38,1,11,.08);font-weight:500;margin:0 6px 1px;"><span>⊟</span> projects</div>
-        <div class="pc-sb-item" data-tab="about" style="display:flex;align-items:center;gap:7px;padding:5px 10px;border-radius:5px;font-size:11px;color:rgba(38,1,11,.55);margin:0 6px 1px;"><span style="font-size:13px;">○</span> about</div>
         <div class="pc-sb-item" data-tab="contact" style="display:flex;align-items:center;gap:7px;padding:5px 10px;border-radius:5px;font-size:11px;color:rgba(38,1,11,.55);margin:0 6px 1px;"><span>@</span> contact</div>
       </div>
       <!-- Content area -->
@@ -297,7 +338,7 @@
         <div id="finder-projects" style="display:grid;grid-template-columns:repeat(3,1fr);gap:11px;padding:14px;">
 
           <div class="pc-folder" data-project="pixie">
-            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-img" src="uploads/px2.jpg"></div>
+            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><video class="pc-folder-img" autoplay muted loop playsinline preload="metadata"><source src="uploads/pixie-projectvideo1.mp4" type="video/mp4"></video></div>
             <div class="pc-folder-body" style="background:#F2C4DA;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
               <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#F2C4DA;border-radius:4px 4px 0 0;"></div>
               <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">pixie club</div>
@@ -305,7 +346,7 @@
           </div>
 
           <div class="pc-folder" data-project="mari">
-            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-img" src="uploads/maricvr.jpg"></div>
+            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-img" src="uploads/mari-thumb.png"></div>
             <div class="pc-folder-body" style="background:#FFF7D1;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
               <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#FFF7D1;border-radius:4px 4px 0 0;"></div>
               <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">mari froes</div>
@@ -313,7 +354,7 @@
           </div>
 
           <div class="pc-folder" data-project="dorian">
-            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-img" src="uploads/doriancvr.jpg"></div>
+            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-img" src="uploads/dorian-thumb.png"></div>
             <div class="pc-folder-body" style="background:#DDEEF4;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
               <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#DDEEF4;border-radius:4px 4px 0 0;"></div>
               <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">dorian electra</div>
@@ -321,18 +362,18 @@
           </div>
 
           <div class="pc-folder" data-project="sweat">
-            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-img" src="uploads/sweatcvr.jpg"></div>
+            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-img" src="uploads/sweat-thumb.png"></div>
             <div class="pc-folder-body" style="background:#F2D8E4;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
               <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#F2D8E4;border-radius:4px 4px 0 0;"></div>
               <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">sweat</div>
             </div>
           </div>
 
-          <div class="pc-folder" data-project="web">
-            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-img" src="uploads/pasted-1781688372523-0.png"></div>
-            <div class="pc-folder-body" style="background:#D7DDCF;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
-              <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#D7DDCF;border-radius:4px 4px 0 0;"></div>
-              <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">websites</div>
+          <div class="pc-folder" data-project="grimes">
+            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-img" src="uploads/grimes-01.jpg"></div>
+            <div class="pc-folder-body" style="background:#DDEEF4;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
+              <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#DDEEF4;border-radius:4px 4px 0 0;"></div>
+              <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">grimes</div>
             </div>
           </div>
 
@@ -447,7 +488,7 @@
       </div>
       <span id="detail-title-bar" style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;">—</span>
     </div>
-    <div id="detail-bg" style="height:210px;background:#F2C4DA url('uploads/px2.jpg') center/cover no-repeat;"></div>
+    <div id="detail-bg" style="height:210px;background:#F2C4DA url('uploads/pixie-preview-01.jpg') center/cover no-repeat;"></div>
     <div style="background:#FEFBFE;padding:14px 16px 18px;position:relative;">
       <div id="detail-clr" style="position:absolute;left:0;top:0;bottom:0;width:4px;background:#F2C4DA;"></div>
       <span id="detail-year" style="display:none;"></span>
@@ -514,6 +555,7 @@
 
 
   <!-- ══ WINDOW: case viewer ══ -->
+  <div id="pc-viewer-backdrop"></div>
   <div id="pc-win-case-viewer" style="position:absolute;width:760px;height:560px;border-radius:10px;box-shadow:0 1px 3px rgba(38,1,11,.06),0 12px 32px rgba(38,1,11,.10);overflow:hidden;">
     <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(38,1,11,.07);display:flex;align-items:center;padding:0 12px;position:relative;flex-shrink:0;">
       <div style="display:flex;gap:7px;">
@@ -527,9 +569,9 @@
       <!-- Hero -->
       <div id="case-hero-bg" style="height:200px;background:#F2C4DA;background-size:cover;background-position:center;flex-shrink:0;"></div>
       <!-- Body -->
-      <div style="padding:18px 20px 36px;">
+      <div id="case-body" style="padding:18px 20px 36px;">
         <!-- Header: title + ficha -->
-        <div style="display:flex;align-items:flex-start;gap:16px;margin-bottom:14px;">
+        <div id="case-header-row" style="display:flex;align-items:flex-start;gap:16px;margin-bottom:14px;">
           <div style="flex:1;min-width:0;">
             <h2 id="case-title" style="font-size:20px;font-weight:600;letter-spacing:-.02em;color:#26010B;margin:0 0 7px;line-height:1.1;"></h2>
             <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
@@ -537,7 +579,7 @@
               <span id="case-year-chip" style="font-size:9px;color:rgba(38,1,11,.38);font-family:ui-monospace,monospace;"></span>
             </div>
           </div>
-          <div style="flex-shrink:0;width:136px;background:rgba(38,1,11,.03);border:1px solid rgba(38,1,11,.06);border-radius:4px;padding:10px 12px;">
+          <div id="case-info-card" style="flex-shrink:0;width:136px;background:rgba(38,1,11,.03);border:1px solid rgba(38,1,11,.06);border-radius:4px;padding:10px 12px;">
             <div style="font-size:13px;font-weight:400;color:rgba(38,1,11,.48);letter-spacing:0;margin-bottom:9px;">info</div>
             <div style="margin-bottom:7px;"><div style="font-size:9px;color:rgba(38,1,11,.36);margin-bottom:1px;">role</div><div id="case-meta-role" style="font-size:10px;font-weight:500;color:rgba(38,1,11,.7);line-height:1.3;"></div></div>
             <div style="margin-bottom:7px;"><div style="font-size:9px;color:rgba(38,1,11,.36);margin-bottom:1px;">year</div><div id="case-meta-year" style="font-size:10px;font-weight:500;color:rgba(38,1,11,.7);"></div></div>
@@ -547,7 +589,8 @@
         </div>
         <!-- Desc -->
         <p id="case-desc" style="font-size:12px;line-height:1.76;color:rgba(38,1,11,.65);margin:0 0 22px;max-width:460px;text-wrap:pretty;"></p>
-        <div style="height:1px;background:rgba(38,1,11,.07);margin-bottom:22px;"></div>
+        <div id="case-section-rule" style="height:1px;background:rgba(38,1,11,.07);margin-bottom:22px;"></div>
+        <div id="case-pixie-gallery-wrap" style="display:none;margin-bottom:22px;"></div>
         <!-- Overview -->
         <div style="margin-bottom:22px;">
           <div style="font-size:13px;font-weight:400;color:rgba(38,1,11,.48);letter-spacing:0;margin-bottom:10px;">overview</div>
@@ -678,7 +721,7 @@
       <!-- header -->
       <div style="margin-bottom:10px;">
         <div style="font-size:12px;font-weight:600;color:#26010B;letter-spacing:-.01em;">find anything</div>
-        <div style="font-size:10px;font-style:italic;color:rgba(38,1,11,.4);margin-top:2px;">search projects, studies and other files.</div>
+        <div style="font-size:10px;font-style:italic;color:rgba(38,1,11,.4);margin-top:2px;">search projects, studies and loose files.</div>
       </div>
       <!-- search input -->
       <div style="display:flex;align-items:center;gap:7px;background:#F8F3EF;border:1px solid rgba(38,1,11,.10);border-radius:10px;padding:0 10px;height:32px;margin-bottom:10px;">
@@ -695,7 +738,7 @@
         <button class="pc-chip" data-chip="music" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">music</button>
         <button class="pc-chip" data-chip="editorial" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">editorial</button>
         <button class="pc-chip" data-chip="visual studies" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">visual studies</button>
-        <button class="pc-chip" data-chip="other files" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">other files</button>
+        <button class="pc-chip" data-chip="loose files" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">loose files</button>
       </div>
     </div>
     <!-- results -->
@@ -809,18 +852,9 @@
       <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;letter-spacing:.01em;">pixie club</span>
     </div>
     <!-- Preview placeholders -->
-    <div style="background:#F0EEF2;padding:10px;display:flex;flex-direction:column;gap:5px;">
-      <!-- slot wide principal → trocar por <img src=""> -->
-      <div class="pc-media-slot is-wide" style="width:100%;height:86px;"></div>
-      <!-- slot square + portrait → trocar por <img src=""> em cada -->
-      <div style="display:flex;gap:5px;">
-        <div class="pc-media-slot is-square" style="flex:1;height:74px;"></div>
-        <div class="pc-media-slot is-portrait" style="flex:1;height:74px;"></div>
-      </div>
-      <!-- dois wides menores → trocar por <img src=""> em cada -->
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
-        <div class="pc-media-slot is-wide" style="height:44px;"></div>
-        <div class="pc-media-slot is-wide" style="height:44px;"></div>
+    <div class="pc-pixie-preview-area">
+      <div class="pc-pixie-main-preview">
+        <img src="uploads/pixie-preview-01.jpg" alt="">
       </div>
     </div>
     <!-- Info -->
@@ -898,6 +932,14 @@
   </div>
 
 </div>
+<div id="pc-pixie-quicklook" class="pc-quicklook" aria-hidden="true">
+  <div class="pc-quicklook-panel">
+    <button class="pc-quicklook-close" type="button" aria-label="close">×</button>
+    <button class="pc-quicklook-nav pc-quicklook-prev" type="button" aria-label="previous">‹</button>
+    <div id="pc-pixie-quicklook-stage" class="pc-quicklook-stage"></div>
+    <button class="pc-quicklook-nav pc-quicklook-next" type="button" aria-label="next">›</button>
+  </div>
+</div>
 <script>
 class PietraDesktop {
   setState(next) {
@@ -909,11 +951,11 @@ class PietraDesktop {
   }
 
   _projects = [
-    { id: 'pixie',  name: 'pixie club',     year: '2026',    cat: 'identidade visual', img: 'uploads/px2.jpg',                    clr: '#F2C4DA', desc: 'Identidade visual, direção criativa e TCC. Estúdio autoral em São Paulo, 2024–2026.',    role: 'direção criativa · design', status: 'publicado' },
-    { id: 'mari',   name: 'mari froes',     year: '2026',    cat: 'identidade visual', img: 'uploads/maricvr.jpg',                clr: '#FFF7D1', desc: 'Identidade para artista musical. Universo editorial, construído como carta.',            role: 'identidade · direção de arte', status: 'publicado' },
-    { id: 'dorian', name: 'dorian electra', year: '2026',    cat: 'estudo visual',     img: 'uploads/doriancvr.jpg',              clr: '#DDEEF4', desc: 'Arquivo e construção de mundo a partir da imageria do artista.',                         role: 'curadoria · estudo visual', status: 'publicado' },
-    { id: 'sweat',  name: 'sweat',          year: '2025',    cat: 'direção de arte',   img: 'uploads/sweatcvr.jpg',               clr: '#F2D8E4', desc: 'Direção de arte e pesquisa visual. Cultura pop e estética corporal.',                    role: 'direção de arte', status: 'publicado' },
-    { id: 'web',    name: 'websites',       year: '2026',    cat: 'web · interfaces',  img: 'uploads/pasted-1781688372523-0.png', clr: '#D7DDCF', desc: 'Protótipos, interfaces e experimentos web. Sites que parecem quartos.',                  role: 'design · desenvolvimento', status: 'em andamento' },
+    { id: 'pixie',  name: 'pixie club',     year: '2026',    cat: 'identidade visual', img: 'uploads/pixie-preview-01.jpg',        clr: '#F2C4DA', desc: 'Identidade visual, direção criativa e TCC. Estúdio autoral em São Paulo, 2024–2026.',    role: 'direção criativa · design', status: 'publicado' },
+    { id: 'mari',   name: 'mari froes',     year: '2026',    cat: 'identidade visual', img: 'uploads/mari-thumb.png',             clr: '#FFF7D1', desc: 'Identidade para artista musical. Universo editorial, construído como carta.',            role: 'identidade · direção de arte', status: 'publicado' },
+    { id: 'dorian', name: 'dorian electra', year: '2026',    cat: 'estudo visual',     img: 'uploads/dorian-thumb.png',           clr: '#DDEEF4', desc: 'Arquivo e construção de mundo a partir da imageria do artista.',                         role: 'curadoria · estudo visual', status: 'publicado' },
+    { id: 'sweat',  name: 'sweat',          year: '2025',    cat: 'direção de arte',   img: 'uploads/sweat-thumb.png',            clr: '#F2D8E4', desc: 'Direção de arte e pesquisa visual. Cultura pop e estética corporal.',                    role: 'direção de arte', status: 'publicado' },
+    { id: 'grimes', name: 'grimes',         year: '2026',    cat: 'editorial design',   img: 'uploads/grimes-01.jpg',             clr: '#DDEEF4', desc: 'Editorial design e direção visual para Interview Magazine.',                            role: 'design editorial · direção de arte', status: 'publicado' },
     { id: 'ed',     name: 'editorial',      year: '2025–26', cat: 'editorial · print', img: 'uploads/poster-direcao.png',         clr: '#FFF7D1', desc: 'Impressão, pesquisa visual e direção editorial. Posters e projetos gráficos.',           role: 'design editorial · print', status: 'publicado' },
   ];
   _currentProject = null;
@@ -936,31 +978,228 @@ class PietraDesktop {
     this.setState({ clock: `${p(d.getHours())}:${p(d.getMinutes())}` });
   }
 
-  _customizePixieCaseViewer() {
+  _pixieMedia() {
+    return [
+      { type: 'image', src: 'uploads/pixie-preview-01.jpg' },
+      { type: 'video', src: 'uploads/pixie-projectvideo1.mp4' },
+      { type: 'image', src: 'uploads/pixie-project03.png' },
+      { type: 'image', src: 'uploads/pixie-project04.png' },
+      { type: 'image', src: 'uploads/pixie-project12.jpg' },
+      { type: 'image', src: 'uploads/pixie-project7.jpg' },
+      { type: 'image', src: 'uploads/pixie-project10.jpg' },
+      { type: 'image', src: 'uploads/pixie-project8.jpg' },
+      { type: 'image', src: 'uploads/pixie-project11.jpg' },
+      { type: 'image', src: 'uploads/pixie-project5.jpg' },
+      { type: 'image', src: 'uploads/pixie-project6.jpg' },
+      { type: 'image', src: 'uploads/pixie-project9.jpg' },
+      { type: 'video', src: 'uploads/pixie-projectvideo2.mp4' },
+    ];
+  }
+
+  _dorianMedia() {
+    return [
+      { type: 'image', src: 'uploads/dorianslide1.jpg' },
+      { type: 'image', src: 'uploads/dorianslide4.jpg' },
+      { type: 'image', src: 'uploads/dorianslide6.jpg' },
+      { type: 'image', src: 'uploads/dorianslide7.jpg' },
+      { type: 'image', src: 'uploads/dorianslide8.jpg' },
+      { type: 'image', src: 'uploads/dorianslide9.jpg' },
+      { type: 'image', src: 'uploads/dorianslide10.jpg' },
+    ];
+  }
+
+  _sweatMedia() {
+    return [
+      { type: 'image', src: 'uploads/sweatslide1.jpg' },
+      { type: 'image', src: 'uploads/sweatslide2.jpg' },
+      { type: 'image', src: 'uploads/sweatslide3.jpg' },
+      { type: 'image', src: 'uploads/sweatslide4.jpg' },
+      { type: 'image', src: 'uploads/sweatslide10.jpg' },
+      { type: 'image', src: 'uploads/sweatslide6.jpg' },
+      { type: 'image', src: 'uploads/sweatslide7.jpg' },
+      { type: 'image', src: 'uploads/sweatslide8.jpg' },
+      { type: 'image', src: 'uploads/sweatslide9.jpg' },
+      { type: 'image', src: 'uploads/sweatslide10.jpg' },
+      { type: 'image', src: 'uploads/sweatslide11.jpg' },
+      { type: 'image', src: 'uploads/sweatslide12.jpg' },
+    ];
+  }
+
+  _mariMedia() {
+    return [
+      { type: 'image', src: 'uploads/marislide18.jpg' },
+      { type: 'image', src: 'uploads/marislide14.jpg' },
+      { type: 'video', src: 'uploads/mari-vinyl-01.mp4' },
+      { type: 'image', src: 'uploads/marislide15.jpg' },
+      { type: 'video', src: 'uploads/mari-vinyl-02.mp4' },
+      { type: 'image', src: 'uploads/marislide5.jpg' },
+      { type: 'image', src: 'uploads/marislide2.jpg' },
+      { type: 'image', src: 'uploads/marislide16.jpg' },
+      { type: 'video', src: 'uploads/mari-selo.mp4' },
+      { type: 'image', src: 'uploads/marislide6.jpg' },
+      { type: 'image', src: 'uploads/marislide4.jpg' },
+      { type: 'image', src: 'uploads/marislide7.jpg' },
+      { type: 'image', src: 'uploads/marislide17.jpg' },
+      { type: 'image', src: 'uploads/marislide10.jpg' },
+      { type: 'image', src: 'uploads/marislide9.jpg' },
+      { type: 'image', src: 'uploads/marislide1.jpg' },
+    ];
+  }
+
+  _grimesMedia() {
+    return [
+      { type: 'image', src: 'uploads/grimes-case-01.png' },
+      { type: 'image', src: 'uploads/grimes-case-02.png' },
+    ];
+  }
+
+  _mediaForProject(project) {
+    if (!project) return [];
+    if (project.id === 'pixie') return this._pixieMedia();
+    if (project.id === 'mari') return this._mariMedia();
+    if (project.id === 'dorian') return this._dorianMedia();
+    if (project.id === 'sweat') return this._sweatMedia();
+    if (project.id === 'grimes') return this._grimesMedia();
+    return project.img ? [{ type: 'image', src: project.img }] : [];
+  }
+
+  _renderMediaViewer(media, variant = '') {
+    const variantClass = variant ? ` is-${variant}` : '';
+    return `<div class="pc-case-media-viewer${variantClass}">
+      ${media.map((item, index) => `
+        <div class="pc-case-media-item">
+          <div class="pc-case-media-frame" data-media-index="${index}">
+            ${item.type === 'video'
+              ? `<video autoplay muted loop playsinline preload="metadata"><source src="${item.src}" type="video/mp4"></video>`
+              : `<img src="${item.src}" alt="">`}
+          </div>
+          ${item.caption ? `<div class="pc-case-media-caption">${item.caption}</div>` : ''}
+        </div>`).join('')}
+    </div>`;
+  }
+
+  _openPixieQuickLook(index) {
+    const media = this._quicklookMedia || this._pixieMedia();
+    const item = media[(index + media.length) % media.length];
+    const ql = document.getElementById('pc-pixie-quicklook');
+    const stage = document.getElementById('pc-pixie-quicklook-stage');
+    if (!ql || !stage || !item) return;
+    stage.innerHTML = item.type === 'video'
+      ? `<video autoplay muted loop playsinline preload="metadata"><source src="${item.src}" type="video/mp4"></video>`
+      : `<img src="${item.src}" alt="">`;
+    ql.dataset.index = String((index + media.length) % media.length);
+    ql.classList.add('is-visible');
+    ql.setAttribute('aria-hidden', 'false');
+  }
+
+  _stepPixieQuickLook(delta) {
+    const ql = document.getElementById('pc-pixie-quicklook');
+    if (!ql || !ql.classList.contains('is-visible')) return;
+    this._openPixieQuickLook(Number(ql.dataset.index || 0) + delta);
+  }
+
+  _closePixieQuickLook() {
+    const ql = document.getElementById('pc-pixie-quicklook');
+    const stage = document.getElementById('pc-pixie-quicklook-stage');
+    if (!ql) return;
+    ql.classList.remove('is-visible');
+    ql.setAttribute('aria-hidden', 'true');
+    setTimeout(() => {
+      if (stage && !ql.classList.contains('is-visible')) stage.innerHTML = '';
+    }, 190);
+  }
+
+  _showMediaCaseViewer(media, variant = '') {
     const h = document.getElementById('case-hero-bg');
-    if (h) { h.className = 'pc-media-slot is-wide'; Object.assign(h.style, { height: '200px', backgroundImage: '', backgroundSize: '', backgroundPosition: '', flexShrink: '0' }); }
-    const ov = document.getElementById('case-overview-body');
-    if (ov) ov.innerHTML = `<p style="font-size:12px;line-height:1.72;color:rgba(38,1,11,.62);margin:0;">identidade visual para estúdio criativo. sistema construído a partir do monograma, da paleta pastel e da tipografia Inter Tight.</p>`;
-    const vb = document.getElementById('case-visuals-body');
-    if (vb) vb.innerHTML = `
-      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;">
-        <div class="pc-media-slot is-square" style="height:80px;"></div>
-        <div class="pc-media-slot is-portrait" style="height:80px;"></div>
-        <div class="pc-media-slot is-wide" style="height:80px;"></div>
-      </div>`;
-    const ab = document.getElementById('case-apps-body');
-    if (ab) { ab.style.gridTemplateColumns = '1fr 1fr'; ab.innerHTML = `
-      <div class="pc-media-slot is-square" style="height:82px;"></div>
-      <div class="pc-media-slot is-portrait" style="height:82px;"></div>
-      <div class="pc-media-slot is-portrait" style="height:82px;"></div>
-      <div class="pc-media-slot is-square" style="height:82px;"></div>`; }
-    const nb = document.getElementById('case-notes-body');
-    if (nb) { nb.style.flexDirection = ''; nb.innerHTML = `<p style="font-size:11px;line-height:1.7;color:rgba(38,1,11,.52);font-style:italic;margin:0;">TCC defendido em 2026. case completo em desenvolvimento.</p>`; }
+    if (h) {
+      h.className = '';
+      h.innerHTML = '';
+      h.style.display = 'none';
+      h.style.backgroundImage = '';
+    }
+    const gallery = document.getElementById('case-pixie-gallery-wrap');
+    this._quicklookMedia = media;
+    if (gallery) {
+      gallery.style.display = 'block';
+      gallery.style.marginBottom = '0';
+      gallery.innerHTML = this._renderMediaViewer(media, variant);
+    }
+    const rule = document.getElementById('case-section-rule');
+    if (rule) Object.assign(rule.style, { display: 'none', marginBottom: '0' });
+    const body = document.getElementById('case-body');
+    if (body) Object.assign(body.style, { position: 'relative', padding: '0' });
+    const header = document.getElementById('case-header-row');
+    if (header) Object.assign(header.style, { display: 'none', marginBottom: '0' });
+    const desc = document.getElementById('case-desc');
+    if (desc) Object.assign(desc.style, { display: 'none', marginTop: '0', paddingRight: '0', marginBottom: '0' });
+    ['case-overview-body','case-visuals-body','case-apps-body','case-notes-body'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.parentElement) el.parentElement.style.display = 'none';
+    });
+  }
+
+  _customizeProjectCaseViewer(project) {
+    const win = document.getElementById('pc-win-case-viewer');
+    if (win) {
+      const width = project && project.id === 'grimes'
+        ? Math.min(940, Math.max(760, window.innerWidth - 48))
+        : 760;
+      win.style.width = width + 'px';
+      win.style.left = Math.max(12, Math.round(window.innerWidth / 2 - width / 2)) + 'px';
+    }
+    const scroller = document.querySelector('#pc-win-case-viewer .pc-scroll');
+    if (scroller) scroller.style.overflowX = 'hidden';
+    const media = this._mediaForProject(project);
+    this._showMediaCaseViewer(media, project && project.id === 'grimes' ? 'grimes' : '');
+  }
+
+  _customizePixieCaseViewer() {
+    this._customizeProjectCaseViewer(this._projects.find(x => x.id === 'pixie'));
+  }
+
+  _customizeDorianCaseViewer() {
+    this._customizeProjectCaseViewer(this._projects.find(x => x.id === 'dorian'));
+  }
+
+  _customizeSweatCaseViewer() {
+    this._customizeProjectCaseViewer(this._projects.find(x => x.id === 'sweat'));
+  }
+
+  _customizeMariCaseViewer() {
+    this._customizeProjectCaseViewer(this._projects.find(x => x.id === 'mari'));
+  }
+
+  _customizeGrimesCaseViewer() {
+    this._customizeProjectCaseViewer(this._projects.find(x => x.id === 'grimes'));
   }
 
   _resetCaseViewer() {
+    const win = document.getElementById('pc-win-case-viewer');
+    if (win) {
+      win.style.width = '760px';
+      win.style.left = window.innerWidth < 820 ? '12px' : Math.round(window.innerWidth / 2 - 380) + 'px';
+    }
+    const scroller = document.querySelector('#pc-win-case-viewer .pc-scroll');
+    if (scroller) scroller.style.overflowX = '';
     const h = document.getElementById('case-hero-bg');
-    if (h) { h.className = ''; Object.assign(h.style, { height: '200px', flexShrink: '0' }); }
+    if (h) { h.className = ''; h.innerHTML = ''; Object.assign(h.style, { display: '', height: '200px', flexShrink: '0', background: '#F2C4DA', backgroundImage: '', backgroundSize: 'cover', backgroundPosition: 'center' }); }
+    const gallery = document.getElementById('case-pixie-gallery-wrap');
+    if (gallery) { gallery.style.display = 'none'; gallery.style.marginBottom = '22px'; gallery.innerHTML = ''; }
+    this._quicklookMedia = null;
+    const rule = document.getElementById('case-section-rule');
+    if (rule) Object.assign(rule.style, { display: '', marginBottom: '22px' });
+    const body = document.getElementById('case-body');
+    if (body) Object.assign(body.style, { position: '', padding: '18px 20px 36px' });
+    const header = document.getElementById('case-header-row');
+    if (header) Object.assign(header.style, { display: 'flex', marginBottom: '14px' });
+    const info = document.getElementById('case-info-card');
+    if (info) Object.assign(info.style, { position: '', right: '', top: '' });
+    const desc = document.getElementById('case-desc');
+    if (desc) Object.assign(desc.style, { display: '', marginTop: '', paddingRight: '', marginBottom: '22px' });
+    ['case-overview-body','case-visuals-body','case-apps-body','case-notes-body'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el && el.parentElement) el.parentElement.style.display = '';
+    });
     const ov = document.getElementById('case-overview-body');
     if (ov) { ov.style.flexDirection = 'column'; ov.innerHTML = `<div style="height:9px;border-radius:2px;background:rgba(38,1,11,.07);width:94%;"></div><div style="height:9px;border-radius:2px;background:rgba(38,1,11,.06);width:80%;"></div><div style="height:9px;border-radius:2px;background:rgba(38,1,11,.07);width:88%;"></div><div style="height:9px;border-radius:2px;background:rgba(38,1,11,.05);width:62%;"></div>`; }
     const vb = document.getElementById('case-visuals-body');
@@ -992,7 +1231,7 @@ class PietraDesktop {
       { id: 'mari',      title: 'mari froes',     type: 'project',    tags: ['music','identity'],                  projectId: 'mari'   },
       { id: 'dorian',    title: 'dorian electra', type: 'study',      tags: ['visual studies','music'],            projectId: 'dorian' },
       { id: 'sweat',     title: 'sweat',          type: 'project',    tags: ['art direction'],                     projectId: 'sweat'  },
-      { id: 'web',       title: 'websites',       type: 'project',    tags: ['web','interface'],                   projectId: 'web'    },
+      { id: 'grimes',    title: 'grimes',         type: 'project',    tags: ['editorial','magazine','music'],       projectId: 'grimes' },
       { id: 'ed',        title: 'editorial',      type: 'project',    tags: ['print','editorial'],                 projectId: 'ed'     },
       { id: 'posters',   title: 'posters',        type: 'loose file', tags: ['posters','print'],                   projectId: null     },
       { id: 'web-tests', title: 'web tests',      type: 'loose file', tags: ['web','interface'],                   projectId: null     },
@@ -1014,7 +1253,7 @@ class PietraDesktop {
     const chipFilter = (item, chip) => {
       if (chip === 'all') return true;
       if (chip === 'projects') return item.type === 'project' || item.type === 'study';
-      if (chip === 'other files') return item.type === 'loose file';
+      if (chip === 'loose files') return item.type === 'loose file';
       return item.tags.some(t => t.toLowerCase().includes(chip.toLowerCase()));
     };
 
@@ -1251,6 +1490,16 @@ class PietraDesktop {
         : '0 1px 2px rgba(38,1,11,.04),0 8px 20px rgba(38,1,11,.08)';
     });
     el.style.boxShadow = '0 2px 8px rgba(38,1,11,.08),0 18px 44px rgba(38,1,11,.14)';
+    if (id === 'pc-win-case-viewer') this._syncViewerBackdropZ();
+  }
+
+  _syncViewerBackdropZ() {
+    const viewer = document.getElementById('pc-win-case-viewer');
+    const backdrop = document.getElementById('pc-viewer-backdrop');
+    if (viewer && backdrop) {
+      const viewerZ = Number(viewer.style.zIndex || 100);
+      backdrop.style.zIndex = String(viewerZ - 1);
+    }
   }
 
   _showWindow(id) {
@@ -1281,6 +1530,10 @@ class PietraDesktop {
     if (!el) return;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     this._openWindows.delete(id);
+    if (id === 'pc-win-case-viewer') {
+      const backdrop = document.getElementById('pc-viewer-backdrop');
+      if (backdrop) backdrop.classList.remove('is-visible');
+    }
     this._updateDockDots();
     el.style.transition = reduced
       ? 'opacity 120ms linear'
@@ -1295,7 +1548,13 @@ class PietraDesktop {
     if (!el) return;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     this._openWindows.add('pc-win-case-viewer');
+    this._zTop = Math.max(this._zTop, 70);
     this._focusWindow('pc-win-case-viewer');
+    const backdrop = document.getElementById('pc-viewer-backdrop');
+    if (backdrop) {
+      this._syncViewerBackdropZ();
+      backdrop.classList.add('is-visible');
+    }
     this._updateDockDots();
     el.style.transition = 'none';
     el.style.opacity = '0';
@@ -1325,7 +1584,7 @@ class PietraDesktop {
       i.style.background = active ? 'rgba(38,1,11,.08)' : '';
       i.style.fontWeight  = active ? '500' : '400';
     });
-    ['projects','about','contact'].forEach(t => {
+    ['projects','contact'].forEach(t => {
       const s = document.getElementById('finder-' + t);
       if (s) s.style.display = 'none';
     });
@@ -1535,7 +1794,7 @@ class PietraDesktop {
         $('case-app-2').style.background = p.clr;
         $('case-app-3').style.background = p.clr;
         $('case-app-3').style.opacity = '0.45';
-        if (p.id === 'pixie') this._customizePixieCaseViewer();
+        this._customizeProjectCaseViewer(p);
         this._showCaseViewer();
       });
     }
@@ -1702,10 +1961,48 @@ class PietraDesktop {
         $('case-app-3').style.background = p.clr;
         $('case-app-3').style.opacity = '0.45';
         this._currentProject = p;
-        if (p.id === 'pixie') this._customizePixieCaseViewer(); else this._resetCaseViewer();
+        this._customizeProjectCaseViewer(p);
         this._showCaseViewer();
       });
     }
+
+    const pixieGallery = document.getElementById('case-pixie-gallery-wrap');
+    if (pixieGallery) {
+      pixieGallery.addEventListener('click', (event) => {
+        const item = event.target.closest('.pc-case-media-frame');
+        if (!item || !pixieGallery.contains(item)) return;
+        item.classList.add('is-opening');
+        setTimeout(() => item.classList.remove('is-opening'), 180);
+        setTimeout(() => this._openPixieQuickLook(Number(item.dataset.mediaIndex || item.dataset.pixieIndex || 0)), 70);
+      });
+    }
+
+    const pixieQuicklook = document.getElementById('pc-pixie-quicklook');
+    if (pixieQuicklook) {
+      const close = pixieQuicklook.querySelector('.pc-quicklook-close');
+      const prev = pixieQuicklook.querySelector('.pc-quicklook-prev');
+      const next = pixieQuicklook.querySelector('.pc-quicklook-next');
+      if (close) close.addEventListener('click', () => this._closePixieQuickLook());
+      if (prev) prev.addEventListener('click', (event) => { event.stopPropagation(); this._stepPixieQuickLook(-1); });
+      if (next) next.addEventListener('click', (event) => { event.stopPropagation(); this._stepPixieQuickLook(1); });
+      pixieQuicklook.addEventListener('click', (event) => {
+        if (event.target === pixieQuicklook) this._closePixieQuickLook();
+      });
+    }
+
+    document.addEventListener('keydown', (event) => {
+      const ql = document.getElementById('pc-pixie-quicklook');
+      const quicklookOpen = ql && ql.classList.contains('is-visible');
+      if (quicklookOpen) {
+        if (event.key === 'Escape') this._closePixieQuickLook();
+        if (event.key === 'ArrowLeft') this._stepPixieQuickLook(-1);
+        if (event.key === 'ArrowRight') this._stepPixieQuickLook(1);
+        return;
+      }
+      if (event.key === 'Escape' && this._openWindows.has('pc-win-case-viewer')) {
+        this._hideWindow('pc-win-case-viewer');
+      }
+    });
 
     // profile widget — animate when about is already open
     const profileWidget = document.querySelector('.pc-profile-widget[data-open="about"]');
