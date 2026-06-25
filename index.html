@@ -678,7 +678,7 @@
       <!-- header -->
       <div style="margin-bottom:10px;">
         <div style="font-size:12px;font-weight:600;color:#26010B;letter-spacing:-.01em;">find anything</div>
-        <div style="font-size:10px;font-style:italic;color:rgba(38,1,11,.4);margin-top:2px;">search projects, studies and loose files.</div>
+        <div style="font-size:10px;font-style:italic;color:rgba(38,1,11,.4);margin-top:2px;">search projects, studies and other files.</div>
       </div>
       <!-- search input -->
       <div style="display:flex;align-items:center;gap:7px;background:#F8F3EF;border:1px solid rgba(38,1,11,.10);border-radius:10px;padding:0 10px;height:32px;margin-bottom:10px;">
@@ -695,7 +695,7 @@
         <button class="pc-chip" data-chip="music" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">music</button>
         <button class="pc-chip" data-chip="editorial" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">editorial</button>
         <button class="pc-chip" data-chip="visual studies" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">visual studies</button>
-        <button class="pc-chip" data-chip="loose files" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">loose files</button>
+        <button class="pc-chip" data-chip="other files" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">other files</button>
       </div>
     </div>
     <!-- results -->
@@ -1014,7 +1014,7 @@ class PietraDesktop {
     const chipFilter = (item, chip) => {
       if (chip === 'all') return true;
       if (chip === 'projects') return item.type === 'project' || item.type === 'study';
-      if (chip === 'loose files') return item.type === 'loose file';
+      if (chip === 'other files') return item.type === 'loose file';
       return item.tags.some(t => t.toLowerCase().includes(chip.toLowerCase()));
     };
 
