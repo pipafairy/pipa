@@ -1,10 +1,19 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pietra Costantin · archive desktop</title>
-  <meta name="description" content="Portfolio interativo de Pietra Costantin em formato desktop, com projetos, archive, contato e case viewer.">
+  <title>Pietra Costantin · Portfolio Desktop</title>
+  <meta name="description" content="Interactive portfolio desktop by Pietra Costantin, featuring visual identity, art direction, digital archives, music projects and graphic systems.">
+  <meta property="og:title" content="Pietra Costantin · Portfolio Desktop">
+  <meta property="og:description" content="Interactive portfolio desktop by Pietra Costantin, featuring visual identity, art direction, digital archives, music projects and graphic systems.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pc.pixieclub.com.br/">
+  <meta property="og:image" content="https://pc.pixieclub.com.br/uploads/pc-menu-icon.png">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Pietra Costantin · Portfolio Desktop">
+  <meta name="twitter:description" content="Interactive portfolio desktop by Pietra Costantin, featuring visual identity, art direction, digital archives, music projects and graphic systems.">
+  <meta name="twitter:image" content="https://pc.pixieclub.com.br/uploads/pc-menu-icon.png">
   <link rel="icon" type="image/png" href="uploads/pc-menu-icon.png">
   <link rel="apple-touch-icon" href="uploads/pc-menu-icon.png">
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -88,7 +97,8 @@
     .pc-btn { display:inline-flex; align-items:center; justify-content:center; gap:4px; height:28px; padding:0 10px; border-radius:7px; font-size:12px; font-weight:500; line-height:1; font-family:inherit; cursor:pointer; border:1px solid rgba(38,1,11,.11); transition:background 110ms cubic-bezier(.2,.7,.2,1), transform 80ms; text-decoration:none; box-sizing:border-box; white-space:nowrap; flex-shrink:0; background:#F3F1EE; color:rgba(38,1,11,.72); }
     .pc-btn:hover { background:#ECEAE6; }
     .pc-btn:active { transform:translateY(1px) !important; }
-    .pc-btn-primary { }
+    .pc-btn-primary { background:#26010B; color:#FEFBFE; border-color:rgba(38,1,11,.18); }
+    .pc-btn-primary:hover { background:#3A0A18; }
     .pc-btn-secondary { }
     .pc-btn-ghost { color:rgba(38,1,11,.52); }
     .pc-close-txt { transition: color 130ms; cursor: pointer; border: none; background: none; font-family: inherit; }
@@ -495,9 +505,8 @@
       <div id="detail-cat" style="font-size:13px;font-weight:400;color:rgba(38,1,11,.48);letter-spacing:0;margin-bottom:10px;"></div>
       <p id="detail-desc" style="font-size:11px;line-height:1.74;color:rgba(38,1,11,.65);margin:0 0 14px;"></p>
       <div id="detail-spotify-wrap" class="pc-spotify-wrap" style="display:none;"></div>
-      <div style="display:flex;align-items:center;gap:10px;">
+      <div style="display:flex;align-items:center;gap:0;justify-content:flex-start;">
         <button id="detail-open-case" class="pc-btn pc-btn-primary">open case →</button>
-        <button data-close="pc-win-detail" class="pc-btn pc-btn-ghost">close</button>
       </div>
     </div>
   </div>
@@ -564,72 +573,7 @@
       <span id="case-title-bar" style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;letter-spacing:.01em;">—</span>
     </div>
     <div class="pc-scroll" style="height:530px;overflow-y:auto;background:#FEFBFE;">
-      <!-- Hero -->
-      <div id="case-hero-bg" style="height:200px;background:#F2C4DA;background-size:cover;background-position:center;flex-shrink:0;"></div>
-      <!-- Body -->
-      <div id="case-body" style="padding:18px 20px 36px;">
-        <!-- Header: title + ficha -->
-        <div id="case-header-row" style="display:flex;align-items:flex-start;gap:16px;margin-bottom:14px;">
-          <div style="flex:1;min-width:0;">
-            <h2 id="case-title" style="font-size:20px;font-weight:600;letter-spacing:-.02em;color:#26010B;margin:0 0 7px;line-height:1.1;"></h2>
-            <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap;">
-              <span id="case-cat-chip" style="font-size:9px;padding:2px 9px;border-radius:10px;color:#26010B;background:#F2C4DA;font-weight:500;"></span>
-              <span id="case-year-chip" style="font-size:9px;color:rgba(38,1,11,.38);font-family:ui-monospace,monospace;"></span>
-            </div>
-          </div>
-          <div id="case-info-card" style="flex-shrink:0;width:136px;background:rgba(38,1,11,.03);border:1px solid rgba(38,1,11,.06);border-radius:4px;padding:10px 12px;">
-            <div style="font-size:13px;font-weight:400;color:rgba(38,1,11,.48);letter-spacing:0;margin-bottom:9px;">info</div>
-            <div style="margin-bottom:7px;"><div style="font-size:9px;color:rgba(38,1,11,.36);margin-bottom:1px;">role</div><div id="case-meta-role" style="font-size:10px;font-weight:500;color:rgba(38,1,11,.7);line-height:1.3;"></div></div>
-            <div style="margin-bottom:7px;"><div style="font-size:9px;color:rgba(38,1,11,.36);margin-bottom:1px;">year</div><div id="case-meta-year" style="font-size:10px;font-weight:500;color:rgba(38,1,11,.7);"></div></div>
-            <div style="margin-bottom:7px;"><div style="font-size:9px;color:rgba(38,1,11,.36);margin-bottom:1px;">category</div><div id="case-meta-cat" style="font-size:10px;font-weight:500;color:rgba(38,1,11,.7);line-height:1.3;"></div></div>
-            <div><div style="font-size:9px;color:rgba(38,1,11,.36);margin-bottom:1px;">status</div><div id="case-meta-status" style="font-size:10px;font-weight:500;color:rgba(38,1,11,.7);"></div></div>
-          </div>
-        </div>
-        <!-- Desc -->
-        <p id="case-desc" style="font-size:12px;line-height:1.76;color:rgba(38,1,11,.65);margin:0 0 22px;max-width:460px;text-wrap:pretty;"></p>
-        <div id="case-section-rule" style="height:1px;background:rgba(38,1,11,.07);margin-bottom:22px;"></div>
-        <div id="case-pixie-gallery-wrap" style="display:none;margin-bottom:22px;"></div>
-        <!-- Overview -->
-        <div style="margin-bottom:22px;">
-          <div style="font-size:13px;font-weight:400;color:rgba(38,1,11,.48);letter-spacing:0;margin-bottom:10px;">overview</div>
-          <div id="case-overview-body" style="display:flex;flex-direction:column;gap:5px;">
-            <div style="height:9px;border-radius:2px;background:rgba(38,1,11,.07);width:94%;"></div>
-            <div style="height:9px;border-radius:2px;background:rgba(38,1,11,.06);width:80%;"></div>
-            <div style="height:9px;border-radius:2px;background:rgba(38,1,11,.07);width:88%;"></div>
-            <div style="height:9px;border-radius:2px;background:rgba(38,1,11,.05);width:62%;"></div>
-          </div>
-        </div>
-        <!-- Visual system -->
-        <div style="margin-bottom:22px;">
-          <div style="font-size:13px;font-weight:400;color:rgba(38,1,11,.48);letter-spacing:0;margin-bottom:10px;">sistema visual</div>
-          <div id="case-visuals-body">
-            <div style="display:flex;gap:6px;margin-bottom:10px;align-items:center;">
-              <div id="case-clr-1" style="width:30px;height:30px;border-radius:4px;flex-shrink:0;background:#F2C4DA;"></div>
-              <div id="case-clr-2" style="width:30px;height:30px;border-radius:4px;flex-shrink:0;background:#26010B;"></div>
-              <div style="width:30px;height:30px;border-radius:4px;flex-shrink:0;background:#F2F2F2;border:1px solid rgba(38,1,11,.08);"></div>
-              <div style="flex:1;height:30px;border-radius:4px;background:rgba(38,1,11,.04);"></div>
-            </div>
-            <div style="height:88px;border-radius:3px;background:rgba(38,1,11,.04);"></div>
-          </div>
-        </div>
-        <!-- Applications -->
-        <div style="margin-bottom:22px;">
-          <div style="font-size:13px;font-weight:400;color:rgba(38,1,11,.48);letter-spacing:0;margin-bottom:10px;">aplicações</div>
-          <div id="case-apps-body" style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;">
-            <div id="case-app-1" style="height:88px;border-radius:3px;background:rgba(38,1,11,.05);background-size:cover;background-position:center;"></div>
-            <div id="case-app-2" style="height:88px;border-radius:3px;background:rgba(38,1,11,.08);"></div>
-            <div id="case-app-3" style="height:88px;border-radius:3px;background:rgba(38,1,11,.04);"></div>
-          </div>
-        </div>
-        <!-- Notes -->
-        <div>
-          <div style="font-size:13px;font-weight:400;color:rgba(38,1,11,.48);letter-spacing:0;margin-bottom:10px;">notas</div>
-          <div id="case-notes-body" style="display:flex;flex-direction:column;gap:4px;">
-            <div style="height:8px;border-radius:2px;background:rgba(38,1,11,.06);width:86%;"></div>
-            <div style="height:8px;border-radius:2px;background:rgba(38,1,11,.05);width:68%;"></div>
-          </div>
-        </div>
-      </div>
+      <div id="case-pixie-gallery-wrap"></div>
     </div>
   </div>
 
@@ -709,12 +653,13 @@
       <div id="pc-search-chips" style="display:flex;flex-wrap:wrap;gap:5px;padding-bottom:10px;border-bottom:1px solid rgba(38,1,11,.07);">
         <button class="pc-chip pc-chip-active" data-chip="all" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.10);background:rgba(38,1,11,.07);color:#26010B;cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">all</button>
         <button class="pc-chip" data-chip="projects" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">projects</button>
-        <button class="pc-chip" data-chip="web" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">web</button>
-        <button class="pc-chip" data-chip="posters" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">posters</button>
+        <button class="pc-chip" data-chip="identity" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">identity</button>
+        <button class="pc-chip" data-chip="art direction" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">art direction</button>
         <button class="pc-chip" data-chip="music" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">music</button>
-        <button class="pc-chip" data-chip="editorial" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">editorial</button>
-        <button class="pc-chip" data-chip="visual studies" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">visual studies</button>
+        <button class="pc-chip" data-chip="web" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">web</button>
         <button class="pc-chip" data-chip="archive" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">archive</button>
+        <button class="pc-chip" data-chip="printed matter" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">printed matter</button>
+        <button class="pc-chip" data-chip="visual studies" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">visual studies</button>
       </div>
     </div>
     <!-- results -->
@@ -745,10 +690,10 @@
         </div>
         <div style="flex:1;min-width:0;">
           <div style="font-size:13px;font-weight:600;color:#26010B;letter-spacing:-.02em;line-height:1.15;">pixie club</div>
-          <div style="font-size:11px;color:rgba(38,1,11,.38);font-weight:400;margin-top:1px;">estúdio · são paulo · 2026</div>
+          <div style="font-size:11px;color:rgba(38,1,11,.38);font-weight:400;margin-top:1px;">creative studio · São Paulo · 2026</div>
         </div>
       </div>
-      <p style="font-size:12px;line-height:1.6;color:rgba(38,1,11,.58);margin:0 0 10px;text-wrap:pretty;">estúdio de direção criativa e design gráfico para projetos visuais, música e cultura.</p>
+      <p style="font-size:12px;line-height:1.6;color:rgba(38,1,11,.58);margin:0 0 10px;text-wrap:pretty;">Creative direction and graphic design studio for visual systems, music and cultural projects.</p>
       <div style="display:flex;gap:6px;">
         <a href="https://pixieclub.com.br/" target="_blank" rel="noopener" class="pc-btn">open website ↗</a>
         <button id="pixie-view-case" class="pc-btn">view case →</button>
@@ -815,11 +760,11 @@ class PietraDesktop {
   }
 
   _projects = [
-    { id: 'pixie',  name: 'pixie club',     year: '2026',    cat: 'graduation project · identity · art direction · web', img: 'uploads/pixie-preview-01.jpg',        clr: '#F2C4DA', desc: 'Pixie Club started as my final Graphic Design project at Belas Artes de São Paulo, based on research into visual eras in international pop music from 2020 to 2025. The project investigated how releases, image systems and artist narratives can be structured through graphic design and creative direction. From that research, I developed a fictional studio specialized in visual systems for music and cultural projects. My work included concept, naming, visual identity, website, printed materials, stickers, presentation system and exhibition setup.',    role: 'graduation project · identity · art direction · web', status: 'publicado' },
-    { id: 'mari',   name: 'mari froes',     year: '2026',    cat: 'conceptual identity · music · academic project', img: 'uploads/img-abertura-mari.jpg',      clr: '#FFF7D1', desc: 'A conceptual music identity study for Mari Froes, developed within my graduation research on pop eras, graphic design and release systems. The project uses correspondence, memory and editorial materiality as a visual language for a music release. I worked on the concept, art direction, identity system, editorial applications, rollout structure and mockups. Artist images were used as source material for design presentation and are not my photography.',            role: 'conceptual identity · music · academic project', status: 'publicado', spotifyLabel: '', spotifySrc: 'https://open.spotify.com/embed/track/2BORRiSmyXBAMAZTsppmBw?utm_source=generator' },
-    { id: 'dorian', name: 'dorian electra', year: '2026',    cat: 'conceptual visual study · unofficial music project',     img: 'uploads/img-abertura-dorian.jpg',    clr: '#DDEEF4', desc: 'A conceptual visual study for an unofficial Dorian Electra music project. The case explores archive, memory, cover culture and reconstructed pop imagery through a graphic system. I worked on visual research, art direction, cover directions, typography, mockups and media presentation. Source images were used as visual material and are not my photography. This project is not affiliated with Dorian Electra or their team.',                         role: 'conceptual visual study · unofficial music project', status: 'publicado', spotifyLabel: 'album reference', spotifySrc: 'https://open.spotify.com/embed/album/07MFwmTo5CPShbTK60jPUl?utm_source=generator' },
-    { id: 'sweat',  name: 'sweat',          year: '2025',    cat: 'art direction · music visual study',   img: 'uploads/img-abertura-sweat.jpg',     clr: '#F2D8E4', desc: 'A music visual study focused on materiality, color, body, club culture and physical media. The project explores how a pop release can become a tactile visual system through covers, mockups, objects and image treatment. I worked on visual research, art direction, graphic applications and case presentation. Source imagery and artist-related references were used as visual material and are not my photography. This is an independent study, not an official campaign.',                    role: 'art direction · music visual study', status: 'publicado', spotifyLabel: 'sweat tour setlist', spotifySrc: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX5x2iaJA7ZpI?utm_source=generator' },
-    { id: 'grimes', name: 'grimes',         year: '2026',    cat: 'editorial layout study · Interview Magazine',   img: 'uploads/img-abertura-grimes.jpg',   clr: '#DDEEF4', desc: 'An editorial layout study using text and photography from Interview Magazine. The project explores page rhythm, image sequencing, typography and visual atmosphere through a digital magazine-style presentation. I worked on layout design, art direction, image treatment, typographic hierarchy and web presentation. Text and photography are not my original content and are used here only as source material for a design study.',                            role: 'editorial layout study · Interview Magazine', status: 'publicado', spotifyLabel: '', spotifySrc: 'https://open.spotify.com/embed/track/0cAFtuZPD4sKl0X1R3dFin?utm_source=generator' },
+    { id: 'pixie',  name: 'pixie club',     year: '2026',    cat: 'graduation project · identity · art direction · web', img: 'uploads/pixie-preview-01.jpg',        clr: '#F2C4DA', desc: 'Pixie Club started as my final Graphic Design project at Belas Artes de São Paulo, based on research into visual eras in international pop music from 2020 to 2025. The project investigated how releases, image systems and artist narratives can be structured through graphic design and creative direction. From that research, I developed a fictional studio specialized in visual systems for music and cultural projects. My work included concept, naming, visual identity, website, printed materials, stickers, presentation system and exhibition setup.',    role: 'graduation project · identity · art direction · web' },
+    { id: 'mari',   name: 'mari froes',     year: '2026',    cat: 'conceptual identity · music · academic project', img: 'uploads/img-abertura-mari.jpg',      clr: '#FFF7D1', desc: 'A conceptual music identity study for Mari Froes, developed within my graduation research on pop eras, graphic design and release systems. The project uses correspondence, memory and editorial materiality as a visual language for a music release. I worked on the concept, art direction, identity system, editorial applications, rollout structure and mockups. Artist images were used as source material for design presentation and are not my photography.',            role: 'conceptual identity · music · academic project', spotifyLabel: '', spotifySrc: 'https://open.spotify.com/embed/track/2BORRiSmyXBAMAZTsppmBw?utm_source=generator' },
+    { id: 'dorian', name: 'dorian electra', year: '2026',    cat: 'conceptual visual study · unofficial music project',     img: 'uploads/img-abertura-dorian.jpg',    clr: '#DDEEF4', desc: 'A conceptual visual study for an unofficial Dorian Electra music project. The case explores archive, memory, cover culture and reconstructed pop imagery through a graphic system. I worked on visual research, art direction, cover directions, typography, mockups and media presentation. Source images were used as visual material and are not my photography. This project is not affiliated with Dorian Electra or their team.',                         role: 'conceptual visual study · unofficial music project', spotifyLabel: 'album reference', spotifySrc: 'https://open.spotify.com/embed/album/07MFwmTo5CPShbTK60jPUl?utm_source=generator' },
+    { id: 'sweat',  name: 'sweat',          year: '2025',    cat: 'art direction · music visual study',   img: 'uploads/img-abertura-sweat.jpg',     clr: '#F2D8E4', desc: 'A music visual study focused on materiality, color, body, club culture and physical media. The project explores how a pop release can become a tactile visual system through covers, mockups, objects and image treatment. I worked on visual research, art direction, graphic applications and case presentation. Source imagery and artist-related references were used as visual material and are not my photography. This is an independent study, not an official campaign.',                    role: 'art direction · music visual study', spotifyLabel: 'sweat tour setlist', spotifySrc: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX5x2iaJA7ZpI?utm_source=generator' },
+    { id: 'grimes', name: 'grimes',         year: '2026',    cat: 'editorial layout study · Interview Magazine',   img: 'uploads/img-abertura-grimes.jpg',   clr: '#DDEEF4', desc: 'An editorial layout study using text and photography from Interview Magazine. The project explores page rhythm, image sequencing, typography and visual atmosphere through a digital magazine-style presentation. I worked on layout design, art direction, image treatment, typographic hierarchy and web presentation. Text and photography are not my original content and are used here only as source material for a design study.',                            role: 'editorial layout study · Interview Magazine', spotifyLabel: '', spotifySrc: 'https://open.spotify.com/embed/track/0cAFtuZPD4sKl0X1R3dFin?utm_source=generator' },
   ];
   _currentProject = null;
   _zTop = 30;
@@ -992,33 +937,13 @@ class PietraDesktop {
   }
 
   _showMediaCaseViewer(media, variant = '') {
-    const h = document.getElementById('case-hero-bg');
-    if (h) {
-      h.className = '';
-      h.innerHTML = '';
-      h.style.display = 'none';
-      h.style.backgroundImage = '';
-    }
     const gallery = document.getElementById('case-pixie-gallery-wrap');
     this._quicklookMedia = media;
     if (gallery) {
       gallery.style.display = 'block';
-      gallery.style.marginBottom = '0';
       gallery.innerHTML = this._renderMediaViewer(media, variant);
       this._autoplayVideos(gallery);
     }
-    const rule = document.getElementById('case-section-rule');
-    if (rule) Object.assign(rule.style, { display: 'none', marginBottom: '0' });
-    const body = document.getElementById('case-body');
-    if (body) Object.assign(body.style, { position: 'relative', padding: '0' });
-    const header = document.getElementById('case-header-row');
-    if (header) Object.assign(header.style, { display: 'none', marginBottom: '0' });
-    const desc = document.getElementById('case-desc');
-    if (desc) Object.assign(desc.style, { display: 'none', marginTop: '0', paddingRight: '0', marginBottom: '0' });
-    ['case-overview-body','case-visuals-body','case-apps-body','case-notes-body'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el && el.parentElement) el.parentElement.style.display = 'none';
-    });
   }
 
   _customizeProjectCaseViewer(project) {
@@ -1063,34 +988,10 @@ class PietraDesktop {
       win.style.left = window.innerWidth < 820 ? '12px' : Math.round(window.innerWidth / 2 - 380) + 'px';
     }
     const scroller = document.querySelector('#pc-win-case-viewer .pc-scroll');
-    if (scroller) scroller.style.overflowX = '';
-    const h = document.getElementById('case-hero-bg');
-    if (h) { h.className = ''; h.innerHTML = ''; Object.assign(h.style, { display: '', height: '200px', flexShrink: '0', background: '#F2C4DA', backgroundImage: '', backgroundSize: 'cover', backgroundPosition: 'center' }); }
+    if (scroller) Object.assign(scroller.style, { overflowX: '', overflowY: 'auto' });
     const gallery = document.getElementById('case-pixie-gallery-wrap');
-    if (gallery) { gallery.style.display = 'none'; gallery.style.marginBottom = '22px'; gallery.innerHTML = ''; }
+    if (gallery) gallery.innerHTML = '';
     this._quicklookMedia = null;
-    const rule = document.getElementById('case-section-rule');
-    if (rule) Object.assign(rule.style, { display: '', marginBottom: '22px' });
-    const body = document.getElementById('case-body');
-    if (body) Object.assign(body.style, { position: '', padding: '18px 20px 36px' });
-    const header = document.getElementById('case-header-row');
-    if (header) Object.assign(header.style, { display: 'flex', marginBottom: '14px' });
-    const info = document.getElementById('case-info-card');
-    if (info) Object.assign(info.style, { position: '', right: '', top: '' });
-    const desc = document.getElementById('case-desc');
-    if (desc) Object.assign(desc.style, { display: '', marginTop: '', paddingRight: '', marginBottom: '22px' });
-    ['case-overview-body','case-visuals-body','case-apps-body','case-notes-body'].forEach(id => {
-      const el = document.getElementById(id);
-      if (el && el.parentElement) el.parentElement.style.display = '';
-    });
-    const ov = document.getElementById('case-overview-body');
-    if (ov) { ov.style.flexDirection = 'column'; ov.innerHTML = `<div style="height:9px;border-radius:2px;background:rgba(38,1,11,.07);width:94%;"></div><div style="height:9px;border-radius:2px;background:rgba(38,1,11,.06);width:80%;"></div><div style="height:9px;border-radius:2px;background:rgba(38,1,11,.07);width:88%;"></div><div style="height:9px;border-radius:2px;background:rgba(38,1,11,.05);width:62%;"></div>`; }
-    const vb = document.getElementById('case-visuals-body');
-    if (vb) vb.innerHTML = `<div style="display:flex;gap:6px;margin-bottom:10px;align-items:center;"><div id="case-clr-1" style="width:30px;height:30px;border-radius:4px;flex-shrink:0;background:#F2C4DA;"></div><div id="case-clr-2" style="width:30px;height:30px;border-radius:4px;flex-shrink:0;background:#26010B;"></div><div style="width:30px;height:30px;border-radius:4px;flex-shrink:0;background:#F2F2F2;border:1px solid rgba(38,1,11,.08);"></div><div style="flex:1;height:30px;border-radius:4px;background:rgba(38,1,11,.04);"></div></div><div style="height:88px;border-radius:3px;background:rgba(38,1,11,.04);"></div>`;
-    const ab = document.getElementById('case-apps-body');
-    if (ab) { ab.style.gridTemplateColumns = 'repeat(3,1fr)'; ab.innerHTML = `<div id="case-app-1" style="height:88px;border-radius:3px;background:rgba(38,1,11,.05);background-size:cover;background-position:center;"></div><div id="case-app-2" style="height:88px;border-radius:3px;background:rgba(38,1,11,.08);"></div><div id="case-app-3" style="height:88px;border-radius:3px;background:rgba(38,1,11,.04);"></div>`; }
-    const nb = document.getElementById('case-notes-body');
-    if (nb) { nb.style.flexDirection = 'column'; nb.innerHTML = `<div style="height:8px;border-radius:2px;background:rgba(38,1,11,.06);width:86%;"></div><div style="height:8px;border-radius:2px;background:rgba(38,1,11,.05);width:68%;"></div>`; }
   }
 
   _openProject(projectId) {
@@ -1125,17 +1026,17 @@ class PietraDesktop {
 
   _initSearch() {
     const items = [
-      { id: 'pixie',     title: 'pixie club',     type: 'project',    tags: ['branding','studio','web'],           projectId: 'pixie'  },
-      { id: 'mari',      title: 'mari froes',     type: 'project',    tags: ['music','identity'],                  projectId: 'mari'   },
-      { id: 'dorian',    title: 'dorian electra', type: 'study',      tags: ['visual studies','music'],            projectId: 'dorian' },
-      { id: 'sweat',     title: 'sweat',          type: 'project',    tags: ['art direction'],                     projectId: 'sweat'  },
-      { id: 'grimes',    title: 'grimes',         type: 'project',    tags: ['editorial','magazine','music'],       projectId: 'grimes' },
-      { id: 'archive',   title: 'archive',        type: 'archive',    tags: ['design','music','fashion','web'],    desc: 'A permanent work-in-progress archive of projects, visual studies, references, playlists and experiments across design, music, fashion and web.', projectId: null },
+      { id: 'pixie',     title: 'pixie club',     type: 'project',        tags: ['identity', 'art direction', 'web', 'studio'], projectId: 'pixie' },
+      { id: 'mari',      title: 'mari froes',     type: 'project',        tags: ['music', 'identity', 'art direction'], projectId: 'mari' },
+      { id: 'dorian',    title: 'dorian electra', type: 'visual study',   tags: ['visual studies', 'music', 'archive'], projectId: 'dorian' },
+      { id: 'sweat',     title: 'sweat',          type: 'visual study',   tags: ['art direction', 'music', 'visual studies'], projectId: 'sweat' },
+      { id: 'grimes',    title: 'grimes',         type: 'printed matter', tags: ['printed matter', 'layout', 'music'], projectId: 'grimes' },
+      { id: 'archive',   title: 'archive',        type: 'archive',        tags: ['archive', 'design', 'music', 'fashion', 'web'], desc: 'A permanent work-in-progress archive of projects, visual studies, references, playlists and experiments across design, music, fashion and web.', projectId: null },
     ];
 
     const typeIcon = (type) => {
       if (type === 'project') return `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>`;
-      if (type === 'study')   return `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>`;
+      if (type === 'visual study') return `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>`;
       return `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>`;
     };
 
@@ -1148,7 +1049,7 @@ class PietraDesktop {
 
     const chipFilter = (item, chip) => {
       if (chip === 'all') return true;
-      if (chip === 'projects') return item.type === 'project' || item.type === 'study';
+      if (chip === 'projects') return item.projectId;
       if (chip === 'archive') return item.type === 'archive';
       return item.tags.some(t => t.toLowerCase().includes(chip.toLowerCase()));
     };
@@ -1661,25 +1562,9 @@ class PietraDesktop {
       openCaseBtn.addEventListener('click', () => {
         const p = this._currentProject;
         if (!p) return;
-        const $ = id => document.getElementById(id);
         this._resetCaseViewer();
-        $('case-hero-bg').style.cssText += `;background-image:url('${p.img}');background-size:cover;background-position:center;`;
-        $('case-clr-1').style.background = p.clr;
-        $('case-clr-2').style.background = '#26010B';
-        $('case-title').textContent = p.name;
-        $('case-title-bar').textContent = p.name;
-        const chip = $('case-cat-chip');
-        if (chip) { chip.textContent = p.cat; chip.style.background = p.clr; }
-        $('case-year-chip').textContent = p.year;
-        $('case-desc').textContent = p.desc;
-        $('case-meta-role').textContent   = p.role   || 'design';
-        $('case-meta-year').textContent   = p.year;
-        $('case-meta-cat').textContent    = p.cat;
-        $('case-meta-status').textContent = p.status || 'publicado';
-        $('case-app-1').style.cssText += `;background-image:url('${p.img}');background-size:cover;background-position:center;`;
-        $('case-app-2').style.background = p.clr;
-        $('case-app-3').style.background = p.clr;
-        $('case-app-3').style.opacity = '0.45';
+        document.getElementById('case-title-bar').textContent = p.name;
+        this._currentProject = p;
         this._customizeProjectCaseViewer(p);
         this._showCaseViewer();
       });
@@ -1821,25 +1706,8 @@ class PietraDesktop {
       pixieViewCase.addEventListener('click', () => {
         const p = this._projects.find(x => x.id === 'pixie');
         if (!p) return;
-        const $ = id => document.getElementById(id);
         this._resetCaseViewer();
-        $('case-hero-bg').style.cssText += `;background-image:url('${p.img}');background-size:cover;background-position:center;`;
-        $('case-clr-1').style.background = p.clr;
-        $('case-clr-2').style.background = '#26010B';
-        $('case-title').textContent = p.name;
-        $('case-title-bar').textContent = p.name;
-        const chip = $('case-cat-chip');
-        if (chip) { chip.textContent = p.cat; chip.style.background = p.clr; }
-        $('case-year-chip').textContent = p.year;
-        $('case-desc').textContent = p.desc;
-        $('case-meta-role').textContent   = p.role   || 'design';
-        $('case-meta-year').textContent   = p.year;
-        $('case-meta-cat').textContent    = p.cat;
-        $('case-meta-status').textContent = p.status || 'publicado';
-        $('case-app-1').style.cssText += `;background-image:url('${p.img}');background-size:cover;background-position:center;`;
-        $('case-app-2').style.background = p.clr;
-        $('case-app-3').style.background = p.clr;
-        $('case-app-3').style.opacity = '0.45';
+        document.getElementById('case-title-bar').textContent = p.name;
         this._currentProject = p;
         this._customizeProjectCaseViewer(p);
         this._showCaseViewer();
