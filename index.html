@@ -41,6 +41,17 @@
     .pc-folder[data-project="sweat"]:hover .pc-folder-img { transform: none; }
     .pc-folder-body { transition: none; background:#F8F3EF !important; border-radius:0 0 8px 8px !important; padding:7px 10px 8px !important; }
     .pc-folder-body > div[style*="position:absolute"] { display:none !important; }
+    #finder-projects { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:14px !important; padding:16px 18px 20px !important; align-items:start; }
+    #finder-projects .pc-folder { border:1px solid rgba(38,1,11,.075); border-radius:8px; background:#F8F3EF; box-shadow:0 1px 2px rgba(38,1,11,.025); transition:transform 180ms cubic-bezier(.2,.7,.2,1), box-shadow 180ms cubic-bezier(.2,.7,.2,1); }
+    #finder-projects .pc-folder:hover { transform:translateY(-2px); box-shadow:0 5px 14px rgba(38,1,11,.08); }
+    #finder-projects .pc-folder:active { transform:translateY(0) scale(.99) !important; }
+    #finder-projects .pc-folder[data-project="pixie"] { grid-column:1 / -1; }
+    #finder-projects .pc-folder-peek { aspect-ratio:4 / 3; border-radius:8px 8px 0 0 !important; background:#F0EEF2; }
+    #finder-projects .pc-folder[data-project="pixie"] .pc-folder-peek { aspect-ratio:16 / 4.2; }
+    #finder-projects .pc-folder-img { object-fit:cover; object-position:center; transform:scale(1); transition:transform 240ms cubic-bezier(.2,.7,.2,1); }
+    #finder-projects .pc-folder:hover .pc-folder-img { transform:scale(1.02) !important; }
+    #finder-projects .pc-folder-body { min-height:36px; display:flex; align-items:center; background:#F8F3EF !important; border-top:1px solid rgba(38,1,11,.055); padding:9px 12px 10px !important; }
+    #finder-projects .pc-folder-body > div:not([style*="position:absolute"]) { margin:0 !important; font-size:11px !important; line-height:1.2 !important; }
     .pc-menu-logo { width:24px; height:24px; display:block; object-fit:contain; object-position:center; image-rendering:auto; transform:scale(1.16); }
     .pc-menu-logo-wrap { width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
     /* ── Traffic lights ── */
@@ -343,7 +354,6 @@
       <div class="pc-sbar" style="width:140px;background:rgba(248,243,239,.95);border-right:1px solid rgba(38,1,11,.07);padding:8px 0;overflow-y:auto;flex-shrink:0;">
         <div style="font-size:9px;color:rgba(38,1,11,.28);padding:6px 10px 4px;font-weight:500;">favorites</div>
         <div class="pc-sb-item" data-tab="projects" style="display:flex;align-items:center;gap:7px;padding:5px 10px;border-radius:5px;font-size:11px;color:rgba(38,1,11,.72);background:rgba(38,1,11,.08);font-weight:500;margin:0 6px 1px;"><span>⊟</span> projects</div>
-        <div class="pc-sb-item" data-tab="contact" style="display:flex;align-items:center;gap:7px;padding:5px 10px;border-radius:5px;font-size:11px;color:rgba(38,1,11,.55);margin:0 6px 1px;"><span>@</span> contact</div>
       </div>
       <!-- Content area -->
       <div class="pc-scroll" style="flex:1;overflow-y:auto;background:#FEFBFE;min-width:0;">
@@ -392,61 +402,6 @@
           </div>
 
           </div>
-        <!-- about (inside finder) -->
-        <div id="finder-about" style="display:none;padding:16px;">
-          <div style="font-size:14px;font-weight:600;letter-spacing:-.01em;color:#26010B;margin-bottom:4px;">pietra costantin</div>
-          <div style="font-size:10px;font-style:italic;color:rgba(38,1,11,.48);margin-bottom:12px;">visual systems + art direction</div>
-          <div style="height:1px;background:rgba(38,1,11,.07);margin-bottom:12px;"></div>
-          <p style="font-size:11px;line-height:1.72;color:rgba(38,1,11,.65);margin:0 0 14px;text-wrap:pretty;">graphic designer based in são paulo, interested in visual systems, digital archives and projects between music, fashion, pop culture and web.</p>
-          <div style="display:flex;flex-wrap:wrap;gap:5px;">
-            <span style="font-size:9px;padding:2px 9px;background:#F2C4DA;color:#26010B;border-radius:12px;">identity</span>
-            <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">art direction</span>
-            <span style="font-size:9px;padding:2px 9px;background:#DDEEF4;color:#26010B;border-radius:12px;">visual systems</span>
-            <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">music</span>
-            <span style="font-size:9px;padding:2px 9px;background:#DDEEF4;color:#26010B;border-radius:12px;">fashion</span>
-            <span style="font-size:9px;padding:2px 9px;background:#F2C4DA;color:#26010B;border-radius:12px;">web</span>
-            <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">archive</span>
-          </div>
-        </div>
-
-        <!-- contact (inside finder) -->
-        <div id="finder-contact" style="display:none;padding:14px;">
-          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
-            <div style="font-size:11px;font-weight:600;color:#26010B;letter-spacing:-.01em;">contact</div>
-            <div style="display:flex;align-items:center;gap:4px;background:rgba(38,1,11,.04);border:1px solid rgba(38,1,11,.07);border-radius:20px;padding:2px 7px;">
-              <div style="width:6px;height:6px;border-radius:50%;background:#A7D7AF;box-shadow:0 0 0 1px rgba(255,255,255,.72),0 1px 5px rgba(84,140,92,.24);flex-shrink:0;"></div>
-              <span style="font-size:9px;color:rgba(38,1,11,.48);">available</span>
-            </div>
-          </div>
-          <p style="font-size:11px;line-height:1.6;color:rgba(38,1,11,.46);margin:0 0 10px;text-wrap:pretty;">For projects, collaborations and portfolio inquiries.</p>
-          <div style="background:#F8F3EF;border:1px solid rgba(38,1,11,.08);border-radius:10px;overflow:hidden;margin-bottom:10px;">
-            <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid rgba(38,1,11,.06);">
-              <span style="font-size:9px;color:rgba(38,1,11,.34);font-weight:500;min-width:52px;">email</span>
-              <span style="font-size:10px;color:#26010B;font-weight:500;">pietra@pixieclub.com.br</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid rgba(38,1,11,.06);">
-              <span style="font-size:9px;color:rgba(38,1,11,.34);font-weight:500;min-width:52px;">location</span>
-              <span style="font-size:10px;color:rgba(38,1,11,.58);">são paulo</span>
-            </div>
-            <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;">
-              <span style="font-size:9px;color:rgba(38,1,11,.34);font-weight:500;min-width:52px;">instagram</span>
-              <span style="font-size:10px;color:rgba(38,1,11,.58);">@pipafairy</span>
-            </div>
-          </div>
-          <div style="display:flex;gap:6px;margin-bottom:12px;">
-            <button data-open="mail" class="pc-btn">open mail</button>
-            <button id="contact-copy-btn" class="pc-btn">copy email</button>
-          </div>
-          <div style="height:1px;background:rgba(38,1,11,.07);margin-bottom:8px;"></div>
-          <div style="font-size:9px;font-weight:600;color:rgba(38,1,11,.30);letter-spacing:.07em;margin-bottom:7px;">elsewhere</div>
-          <div style="display:flex;flex-wrap:wrap;gap:5px 12px;">
-            <a href="https://www.behance.net/pietrabc" target="_blank" rel="noopener" class="pc-clink" style="font-size:11px;color:rgba(38,1,11,.48);">Behance ↗</a>
-            <a href="https://www.linkedin.com/in/pietracostantin/" target="_blank" rel="noopener" class="pc-clink" style="font-size:11px;color:rgba(38,1,11,.48);">LinkedIn ↗</a>
-            <a href="https://www.instagram.com/pipafairy/" target="_blank" rel="noopener" class="pc-clink" style="font-size:11px;color:rgba(38,1,11,.48);">Instagram ↗</a>
-            <a href="https://pixieclub.com.br/" target="_blank" rel="noopener" class="pc-clink" style="font-size:11px;font-weight:600;color:#5F1E3E;">Pixie Club ↗</a>
-          </div>
-        </div>
-
       </div>
     </div>
   </div>
@@ -519,42 +474,38 @@
         <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
         <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:#96CC9E;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
       </div>
-      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;">mail</span>
+      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;">contact</span>
     </div>
-    <div style="background:#FEFBFE;padding:14px 14px 16px;display:flex;flex-direction:column;gap:10px;">
-      <!-- header -->
-      <div style="font-size:9px;font-weight:600;color:rgba(38,1,11,.42);letter-spacing:.07em;">new message</div>
-      <!-- fields -->
-      <div style="display:flex;flex-direction:column;gap:5px;">
-        <div style="display:flex;align-items:center;gap:8px;height:30px;background:#F8F3EF;border:1px solid rgba(38,1,11,.10);border-radius:7px;padding:0 10px;">
-          <span style="font-size:10px;color:rgba(38,1,11,.38);font-weight:500;min-width:46px;">to</span>
-          <span style="font-size:11px;color:#26010B;font-weight:500;">pietra@pixieclub.com.br</span>
+    <div style="background:#FEFBFE;padding:14px;display:flex;flex-direction:column;gap:10px;">
+      <div style="background:#F8F3EF;border:1px solid rgba(38,1,11,.09);border-radius:10px;padding:12px;display:flex;gap:11px;align-items:center;">
+        <div style="width:46px;height:46px;border-radius:50%;background:#F2C4DA;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 2px rgba(255,255,255,.8);">
+          <img src="uploads/pietra-profile.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
         </div>
-        <div style="display:flex;align-items:center;gap:8px;height:30px;background:#F8F3EF;border:1px solid rgba(38,1,11,.10);border-radius:7px;padding:0 10px;">
-          <span style="font-size:10px;color:rgba(38,1,11,.38);font-weight:500;min-width:46px;">subject</span>
-          <span style="font-size:11px;color:#26010B;font-style:italic;">project / collaboration</span>
-        </div>
-        <div style="display:flex;align-items:center;gap:8px;height:30px;background:#F8F3EF;border:1px solid rgba(38,1,11,.10);border-radius:7px;padding:0 10px;">
-          <span style="font-size:10px;color:rgba(38,1,11,.38);font-weight:500;min-width:46px;">from</span>
-          <span style="font-size:11px;color:rgba(38,1,11,.34);font-style:italic;">your email</span>
+        <div style="min-width:0;">
+          <div style="font-size:15px;font-weight:600;letter-spacing:-.02em;color:#26010B;line-height:1.15;">Pietra Costantin</div>
+          <div style="font-size:10px;color:rgba(38,1,11,.48);margin-top:3px;">Graphic designer · São Paulo</div>
+          <div style="display:inline-flex;align-items:center;gap:5px;margin-top:7px;font-size:9px;color:rgba(38,1,11,.54);background:#FEFBFE;border:1px solid rgba(38,1,11,.08);border-radius:999px;padding:3px 8px;">
+            <span style="width:6px;height:6px;border-radius:50%;background:#8ED29A;box-shadow:0 0 0 2px rgba(142,210,154,.18);"></span>
+            available for projects
+          </div>
         </div>
       </div>
-      <!-- body -->
-      <div style="background:#F8F3EF;border:1px solid rgba(38,1,11,.10);border-radius:8px;padding:10px;height:86px;">
-        <span style="font-size:11px;line-height:1.65;color:rgba(38,1,11,.44);font-style:italic;">For projects, collaborations and portfolio inquiries.</span>
+      <div style="background:#F8F3EF;border:1px solid rgba(38,1,11,.09);border-radius:10px;padding:11px 12px;">
+        <div style="font-size:9px;font-weight:600;color:rgba(38,1,11,.36);letter-spacing:.07em;margin-bottom:7px;">contact</div>
+        <div style="font-size:12px;font-weight:500;color:#26010B;word-break:break-word;margin-bottom:10px;">pietra@pixieclub.com.br</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          <button id="mail-copy-btn" class="pc-btn">copy email</button>
+          <a href="mailto:pietra@pixieclub.com.br" class="pc-btn" style="text-decoration:none;">open mail</a>
+        </div>
       </div>
-      <!-- actions -->
-      <div style="display:flex;gap:6px;">
-        <button id="mail-copy-btn" class="pc-btn">copy email</button>
-        <a href="mailto:pietra@pixieclub.com.br" class="pc-btn" style="text-decoration:none;">open mail</a>
-      </div>
-      <!-- footer -->
-      <div style="height:1px;background:rgba(38,1,11,.07);"></div>
-      <div style="display:flex;flex-wrap:wrap;gap:6px 14px;">
-        <a href="https://www.behance.net/pietrabc" target="_blank" rel="noopener" class="pc-clink" style="font-size:11px;color:rgba(38,1,11,.55);">Behance ↗</a>
-        <a href="https://www.linkedin.com/in/pietracostantin/" target="_blank" rel="noopener" class="pc-clink" style="font-size:11px;color:rgba(38,1,11,.55);">LinkedIn ↗</a>
-        <a href="https://www.instagram.com/pipafairy/" target="_blank" rel="noopener" class="pc-clink" style="font-size:11px;color:rgba(38,1,11,.55);">Instagram ↗</a>
-        <a href="https://pixieclub.com.br/" target="_blank" rel="noopener" class="pc-clink" style="font-size:11px;font-weight:600;color:#5F1E3E;">Pixie Club ↗</a>
+      <div style="background:#F8F3EF;border:1px solid rgba(38,1,11,.09);border-radius:10px;padding:11px 12px;">
+        <div style="font-size:9px;font-weight:600;color:rgba(38,1,11,.36);letter-spacing:.07em;margin-bottom:8px;">elsewhere</div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px 12px;">
+          <a href="https://www.instagram.com/pipafairy/" target="_blank" rel="noopener" class="pc-clink" style="font-size:11px;color:rgba(38,1,11,.62);text-decoration:none;">Instagram ↗</a>
+          <a href="https://www.behance.net/pietrabc" target="_blank" rel="noopener" class="pc-clink" style="font-size:11px;color:rgba(38,1,11,.62);text-decoration:none;">Behance ↗</a>
+          <a href="https://www.linkedin.com/in/pietracostantin/" target="_blank" rel="noopener" class="pc-clink" style="font-size:11px;color:rgba(38,1,11,.62);text-decoration:none;">LinkedIn ↗</a>
+          <a href="https://pixieclub.com.br/" target="_blank" rel="noopener" class="pc-clink" style="font-size:11px;font-weight:600;color:#5F1E3E;text-decoration:none;">Pixie Club ↗</a>
+        </div>
       </div>
     </div>
   </div>
@@ -641,7 +592,7 @@
       <!-- header -->
       <div style="margin-bottom:10px;">
         <div style="font-size:12px;font-weight:600;color:#26010B;letter-spacing:-.01em;">find anything</div>
-        <div style="font-size:10px;font-style:italic;color:rgba(38,1,11,.4);margin-top:2px;">search projects, studies and archive.</div>
+        <div style="font-size:10px;font-style:italic;color:rgba(38,1,11,.4);margin-top:2px;">search projects and studies.</div>
       </div>
       <!-- search input -->
       <div style="display:flex;align-items:center;gap:7px;background:#F8F3EF;border:1px solid rgba(38,1,11,.10);border-radius:10px;padding:0 10px;height:32px;margin-bottom:10px;">
@@ -657,9 +608,8 @@
         <button class="pc-chip" data-chip="art direction" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">art direction</button>
         <button class="pc-chip" data-chip="music" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">music</button>
         <button class="pc-chip" data-chip="web" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">web</button>
-        <button class="pc-chip" data-chip="archive" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">archive</button>
-        <button class="pc-chip" data-chip="printed matter" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">printed matter</button>
         <button class="pc-chip" data-chip="visual studies" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">visual studies</button>
+        <button class="pc-chip" data-chip="layout" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">layout</button>
       </div>
     </div>
     <!-- results -->
@@ -1030,8 +980,7 @@ class PietraDesktop {
       { id: 'mari',      title: 'mari froes',     type: 'project',        tags: ['music', 'identity', 'art direction'], projectId: 'mari' },
       { id: 'dorian',    title: 'dorian electra', type: 'visual study',   tags: ['visual studies', 'music', 'archive'], projectId: 'dorian' },
       { id: 'sweat',     title: 'sweat',          type: 'visual study',   tags: ['art direction', 'music', 'visual studies'], projectId: 'sweat' },
-      { id: 'grimes',    title: 'grimes',         type: 'printed matter', tags: ['printed matter', 'layout', 'music'], projectId: 'grimes' },
-      { id: 'archive',   title: 'archive',        type: 'archive',        tags: ['archive', 'design', 'music', 'fashion', 'web'], desc: 'A permanent work-in-progress archive of projects, visual studies, references, playlists and experiments across design, music, fashion and web.', projectId: null },
+      { id: 'grimes',    title: 'grimes',         type: 'layout study',   tags: ['layout', 'magazine', 'music'], projectId: 'grimes' },
     ];
 
     const typeIcon = (type) => {
@@ -1050,7 +999,6 @@ class PietraDesktop {
     const chipFilter = (item, chip) => {
       if (chip === 'all') return true;
       if (chip === 'projects') return item.projectId;
-      if (chip === 'archive') return item.type === 'archive';
       return item.tags.some(t => t.toLowerCase().includes(chip.toLowerCase()));
     };
 
@@ -1085,21 +1033,7 @@ class PietraDesktop {
         row.addEventListener('click', () => {
           const item = items.find(x => x.id === row.dataset.itemId);
           if (!item) return;
-          if (item.type === 'archive' || !item.projectId) {
-            if (document.getElementById('pc-win-loose')) {
-              this._openWindows.has('pc-win-loose') ? this._focusWindow('pc-win-loose') : this._showWindow('pc-win-loose');
-            } else {
-              const rect = row.getBoundingClientRect();
-              const t = document.createElement('div');
-              Object.assign(t.style, { position:'fixed', left:(rect.left+rect.width/2)+'px', top:Math.max(38,rect.top-52)+'px', transform:'translateX(-50%)', width:'50px', height:'50px', zIndex:'9999', pointerEvents:'none', opacity:'1', transition:'opacity 280ms' });
-              t.innerHTML = '<img src="uploads/coming-soon-placa.png" alt="coming soon" style="display:block;width:100%;height:100%;object-fit:contain;object-position:center;">';
-              document.body.appendChild(t);
-              setTimeout(() => { t.style.opacity = '0'; }, 1400);
-              setTimeout(() => { if (t.parentNode) t.remove(); }, 1700);
-            }
-          } else {
-            this._openProject(item.projectId);
-          }
+          if (item.projectId) this._openProject(item.projectId);
         });
       });
     };
@@ -1386,17 +1320,13 @@ class PietraDesktop {
   }
 
   _switchFinderTab(tab) {
+    tab = 'projects';
     document.querySelectorAll('.pc-sb-item').forEach(i => {
-      const active = i.dataset.tab === tab;
-      i.style.background = active ? 'rgba(38,1,11,.08)' : '';
-      i.style.fontWeight  = active ? '500' : '400';
+      i.style.background = 'rgba(38,1,11,.08)';
+      i.style.fontWeight = '500';
     });
-    ['projects','contact'].forEach(t => {
-      const s = document.getElementById('finder-' + t);
-      if (s) s.style.display = 'none';
-    });
-    const show = document.getElementById('finder-' + tab);
-    if (show) show.style.display = tab === 'projects' ? 'grid' : 'block';
+    const show = document.getElementById('finder-projects');
+    if (show) show.style.display = 'grid';
   }
 
   _setupDropdown() {
@@ -1648,41 +1578,6 @@ class PietraDesktop {
           transform: 'translateX(-50%)',
           background: 'rgba(38,1,11,.88)',
           color: '#F2F2F2',
-          fontSize: '10px',
-          fontFamily: '"Inter Tight",system-ui,sans-serif',
-          fontWeight: '500',
-          letterSpacing: '.04em',
-          padding: '5px 11px',
-          borderRadius: '6px',
-          zIndex: '9999',
-          pointerEvents: 'none',
-          opacity: '1',
-          transition: 'opacity 280ms',
-        });
-        document.body.appendChild(toast);
-        setTimeout(() => { toast.style.opacity = '0'; }, 1400);
-        setTimeout(() => { if (toast.parentNode) toast.remove(); }, 1700);
-      });
-    }
-
-    // contact tab: copy email
-    const contactCopyBtn = document.getElementById('contact-copy-btn');
-    if (contactCopyBtn) {
-      contactCopyBtn.addEventListener('click', () => {
-        navigator.clipboard.writeText('pietra@pixieclub.com.br').catch(() => {});
-        const existing = document.getElementById('pc-contact-copy-toast');
-        if (existing) existing.remove();
-        const rect = contactCopyBtn.getBoundingClientRect();
-        const toast = document.createElement('div');
-        toast.id = 'pc-contact-copy-toast';
-        toast.textContent = 'email copied';
-        Object.assign(toast.style, {
-          position: 'fixed',
-          left: (rect.left + rect.width / 2) + 'px',
-          top: Math.max(38, rect.top - 34) + 'px',
-          transform: 'translateX(-50%)',
-          background: 'rgba(38,1,11,.88)',
-          color: '#F8F3EF',
           fontSize: '10px',
           fontFamily: '"Inter Tight",system-ui,sans-serif',
           fontWeight: '500',
