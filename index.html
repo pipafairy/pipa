@@ -205,9 +205,21 @@
       85%  { transform: scale(.99); }
       100% { transform: scale(1); }
     }
+    #pc-boot { position:fixed; inset:0; z-index:20000; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 52% 42%,rgba(255,255,255,.72),rgba(255,255,255,0) 24%),linear-gradient(135deg,#F8F3EF 0%,#F2D8E4 45%,#DDEEF4 100%); transition:opacity 260ms cubic-bezier(.2,.7,.2,1),visibility 0s linear 260ms; }
+    #pc-boot.is-hidden { opacity:0; visibility:hidden; pointer-events:none; }
+    .pc-boot-inner { display:flex; flex-direction:column; align-items:center; gap:12px; animation:pc-boot-arrive 480ms cubic-bezier(.25,1,.5,1) both; }
+    .pc-boot-icon { width:58px; height:58px; border-radius:16px; background:#FEFBFE; border:1px solid rgba(38,1,11,.08); box-shadow:0 8px 24px rgba(38,1,11,.10),0 1px 3px rgba(38,1,11,.05); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .pc-boot-icon img { width:48px; height:48px; object-fit:contain; display:block; }
+    .pc-boot-text { font-size:13px; font-weight:600; letter-spacing:0; color:rgba(38,1,11,.76); }
+    .pc-boot-bar { width:132px; height:5px; border-radius:999px; background:rgba(255,255,255,.64); border:1px solid rgba(38,1,11,.06); overflow:hidden; }
+    .pc-boot-bar::before { content:""; display:block; height:100%; width:100%; border-radius:inherit; background:linear-gradient(90deg,#F2C4DA,var(--pc-green),#DDEEF4); transform-origin:left center; animation:pc-boot-load 860ms cubic-bezier(.2,.7,.2,1) both; }
+    @keyframes pc-boot-arrive { 0% { opacity:0; transform:translateY(12px) scale(.98); } 100% { opacity:1; transform:translateY(0) scale(1); } }
+    @keyframes pc-boot-load { 0% { transform:scaleX(.08); } 100% { transform:scaleX(1); } }
     /* ── Profile avatar hover ── */
     #pc-profile-avatar { transition: box-shadow 220ms cubic-bezier(.2,.7,.2,1), transform 220ms cubic-bezier(.2,.7,.2,1); }
     .pc-profile-widget:hover #pc-profile-avatar { box-shadow: 0 0 0 2.5px rgba(95,30,62,.22), 0 0 0 1.5px rgba(255,255,255,.75); transform: scale(1.06); }
+    .pc-about-contact { border:1px solid rgba(95,30,62,.12) !important; background:#F8F3EF !important; border-radius:999px !important; padding:7px 12px !important; margin-top:14px !important; font-size:12px !important; line-height:1 !important; color:#5F1E3E !important; display:inline-flex !important; align-items:center !important; justify-content:center !important; box-shadow:0 1px 3px rgba(38,1,11,.04) !important; }
+    .pc-about-contact:hover { background:#F3ECEF !important; }
     /* ── Asfalto polaroid ── */
     #pc-widget-asfalto { transform: none; transition: transform 160ms cubic-bezier(.2,.7,.2,1), box-shadow 160ms cubic-bezier(.2,.7,.2,1); }
     #pc-widget-asfalto:hover { transform: translateY(-3px) !important; box-shadow: 0 3px 8px rgba(38,1,11,.08) !important; }
@@ -285,6 +297,13 @@
 </head>
 <body>
 <div style="position:fixed;inset:0;overflow:hidden;font-family:'Inter Tight',system-ui,-apple-system,sans-serif;color:#26010B;-webkit-font-smoothing:antialiased;">
+  <div id="pc-boot" aria-label="pietra's pc loading">
+    <div class="pc-boot-inner">
+      <div class="pc-boot-icon"><img src="uploads/pc-menu-icon.png" alt=""></div>
+      <div class="pc-boot-text">pietra's pc loading...</div>
+      <div class="pc-boot-bar"></div>
+    </div>
+  </div>
 
   <!-- Wallpaper -->
   <div id="pc-wallpaper" style="position:absolute;inset:0;background:radial-gradient(circle at var(--wp-mx,50%) var(--wp-my,50%),rgba(255,255,255,.34) 0%,transparent 22%),radial-gradient(ellipse at 18% 30%,#F0E0E8 0%,#F8F3EF 40%,#E4EFF5 68%,#F8F3EF 100%);z-index:0;transition:background 700ms ease;"></div>
@@ -305,7 +324,7 @@
       <span style="font-size:10px;color:rgba(38,1,11,.34);">são paulo</span>
       <span style="font-size:11px;color:rgba(38,1,11,.52);font-variant-numeric:tabular-nums;letter-spacing:.01em;"><span id="pc-clock">--:--</span></span>
       <div style="display:flex;gap:4px;align-items:center;">
-        <div style="width:6px;height:6px;border-radius:50%;background:#A7D7AF;box-shadow:0 0 0 1px rgba(255,255,255,.72),0 1px 5px rgba(84,140,92,.24);"></div>
+        <div style="width:6px;height:6px;border-radius:50%;background:var(--pc-green);box-shadow:0 0 0 1px rgba(255,255,255,.72),0 1px 5px rgba(84,140,92,.24);"></div>
         <span style="font-size:10px;color:rgba(38,1,11,.36);">online</span>
       </div>
     </div>
@@ -432,8 +451,7 @@
         <span style="font-size:9px;padding:2px 9px;background:#F2C4DA;color:#26010B;border-radius:12px;">web</span>
         <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">archive</span>
       </div>
-      <button data-open="mail" style="border:none;background:none;padding:0;margin:12px 0 0;font-family:inherit;font-size:10px;font-weight:600;color:#5F1E3E;cursor:pointer;transition:opacity 140ms;">contact me →</button>
-      <div style="margin-top:8px;font-size:10px;color:rgba(38,1,11,.38);">instagram · <a href="https://www.instagram.com/pipafairy/" target="_blank" rel="noopener" style="color:rgba(38,1,11,.56);font-weight:500;text-decoration:none;">@pipafairy</a></div>
+      <button data-open="mail" class="pc-about-contact" style="border:none;background:none;padding:0;margin:12px 0 0;font-family:inherit;font-size:10px;font-weight:600;color:#5F1E3E;cursor:pointer;transition:opacity 140ms;">contact me →</button>
       <div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between;">
         <span style="font-size:9px;color:rgba(38,1,11,.26);font-family:ui-monospace,'SF Mono',monospace;">belas artes sp · 2026</span>
         <span style="font-size:11px;color:rgba(95,30,62,.45);">✦</span>
@@ -489,7 +507,6 @@
         <div style="display:flex;gap:6px;"><button id="mail-copy-btn" class="pc-btn">copy email</button><a href="mailto:pietra@pixieclub.com.br" class="pc-btn" style="text-decoration:none;">open mail</a></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <a href="https://www.instagram.com/pipafairy/" target="_blank" rel="noopener" class="pc-contact-card"><span style="font-size:15px;line-height:1;">◎</span><div><div class="pc-contact-card-title">instagram</div><div class="pc-contact-card-sub">@pipafairy</div></div><span class="pc-contact-card-arrow">↗</span></a>
         <a href="https://www.behance.net/pietrabc" target="_blank" rel="noopener" class="pc-contact-card"><span style="font-size:14px;font-weight:700;color:#1769FF;line-height:1;">Bē</span><div><div class="pc-contact-card-title">behance</div><div class="pc-contact-card-sub">portfolio archive</div></div><span class="pc-contact-card-arrow">↗</span></a>
         <a href="https://www.linkedin.com/in/pietracostantin/" target="_blank" rel="noopener" class="pc-contact-card"><span style="font-size:14px;font-weight:700;color:#0A66C2;line-height:1;">in</span><div><div class="pc-contact-card-title">linkedin</div><div class="pc-contact-card-sub">professional profile</div></div><span class="pc-contact-card-arrow">↗</span></a>
         <a href="https://pixieclub.com.br/" target="_blank" rel="noopener" class="pc-contact-card" style="background:#F2C4DA;border-color:rgba(95,30,62,.12);"><div style="width:18px;height:18px;border-radius:4px;overflow:hidden;flex-shrink:0;"><img src="uploads/icone-pixieclub.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt=""></div><div><div class="pc-contact-card-title">pixie club</div><div class="pc-contact-card-sub" style="color:rgba(95,30,62,.58);">creative studio</div></div><span class="pc-contact-card-arrow" style="color:rgba(95,30,62,.35);">↗</span></a>
@@ -1281,14 +1298,14 @@ class PietraDesktop {
       if (!w || !this._openWindows.has(wid)) return;
       const isActive = wid === id;
       if (parseFloat(w.style.opacity || '1') > 0.5) {
-        w.style.transition = 'opacity 200ms ease,filter 200ms ease,box-shadow 200ms ease';
+        w.style.transition = 'filter 200ms ease,box-shadow 200ms ease';
         setTimeout(() => { w.style.transition = ''; }, 230);
       }
       w.style.boxShadow = isActive
         ? '0 2px 8px rgba(38,1,11,.08),0 18px 44px rgba(38,1,11,.14)'
         : '0 1px 2px rgba(38,1,11,.04),0 8px 20px rgba(38,1,11,.08)';
-      w.style.opacity = isActive ? '1' : '0.90';
-      w.style.filter = isActive ? '' : 'brightness(.975)';
+      w.style.opacity = '1';
+      w.style.filter = isActive ? '' : 'brightness(.985) blur(.25px)';
     });
     el.style.boxShadow = '0 2px 8px rgba(38,1,11,.08),0 18px 44px rgba(38,1,11,.14)';
     el.style.opacity = '1';
@@ -1738,6 +1755,14 @@ class PietraDesktop {
         wallpaper.style.setProperty('--wp-mx', x);
         wallpaper.style.setProperty('--wp-my', y);
       });
+    }
+
+    const boot = document.getElementById('pc-boot');
+    if (boot) {
+      window.setTimeout(() => {
+        boot.classList.add('is-hidden');
+        window.setTimeout(() => boot.remove(), 320);
+      }, 980);
     }
 
     this._setupDropdown();
