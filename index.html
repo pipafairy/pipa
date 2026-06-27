@@ -14,13 +14,11 @@
   <meta name="twitter:title" content="Pietra Costantin · Portfolio Desktop">
   <meta name="twitter:description" content="Interactive portfolio desktop by Pietra Costantin, featuring visual identity, art direction, digital archives, music projects and graphic systems.">
   <meta name="twitter:image" content="https://pc.pixieclub.com.br/uploads/pc-menu-icon.png">
-  <link rel="icon" type="image/png" href="uploads/pc-menu-icon.png">
-  <link rel="apple-touch-icon" href="uploads/pc-menu-icon.png">
-  <link rel="icon" href="favicon.ico" sizes="any">
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" href="/favicon.ico?v=20260627" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png?v=20260627">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20260627">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20260627">
+  <link rel="manifest" href="/site.webmanifest?v=20260627">
 <style>
     @font-face { font-family:"Inter Tight"; src:url("_ds/pixie-club-design-system-019df67a-27c9-7445-9f51-de5144ee30d8/fonts/InterTight-VariableFont_wght.ttf") format("truetype-variations"); font-weight:100 900; font-style:normal; font-display:swap; }
     @font-face { font-family:"Inter Tight"; src:url("_ds/pixie-club-design-system-019df67a-27c9-7445-9f51-de5144ee30d8/fonts/InterTight-Italic-VariableFont_wght.ttf") format("truetype-variations"); font-weight:100 900; font-style:italic; font-display:swap; }
@@ -41,13 +39,13 @@
     .pc-folder[data-project="sweat"]:hover .pc-folder-img { transform: none; }
     .pc-folder-body { transition: none; background:#F8F3EF !important; border-radius:0 0 8px 8px !important; padding:7px 10px 8px !important; }
     .pc-folder-body > div[style*="position:absolute"] { display:none !important; }
-    #finder-projects { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:14px !important; padding:16px 18px 20px !important; align-items:start; }
+    #finder-projects { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:11px !important; padding:12px 14px 16px !important; align-items:start; }
     #finder-projects .pc-folder { border:1px solid rgba(38,1,11,.075); border-radius:8px; background:#F8F3EF; box-shadow:0 1px 2px rgba(38,1,11,.025); transition:transform 180ms cubic-bezier(.2,.7,.2,1), box-shadow 180ms cubic-bezier(.2,.7,.2,1); }
     #finder-projects .pc-folder:hover { transform:translateY(-2px); box-shadow:0 5px 14px rgba(38,1,11,.08); }
     #finder-projects .pc-folder:active { transform:translateY(0) scale(.99) !important; }
     #finder-projects .pc-folder[data-project="pixie"] { grid-column:1 / -1; }
     #finder-projects .pc-folder-peek { aspect-ratio:4 / 3; border-radius:8px 8px 0 0 !important; background:#F0EEF2; }
-    #finder-projects .pc-folder[data-project="pixie"] .pc-folder-peek { aspect-ratio:16 / 4.2; }
+    #finder-projects .pc-folder[data-project="pixie"] .pc-folder-peek { aspect-ratio:16 / 3.4; max-height:160px; }
     #finder-projects .pc-folder-img { object-fit:cover; object-position:center; transform:scale(1); transition:transform 240ms cubic-bezier(.2,.7,.2,1); }
     #finder-projects .pc-folder:hover .pc-folder-img { transform:scale(1.02) !important; }
     #finder-projects .pc-folder-body { min-height:36px; display:flex; align-items:center; background:#F8F3EF !important; border-top:1px solid rgba(38,1,11,.055); padding:9px 12px 10px !important; }
@@ -95,6 +93,7 @@
     .pc-scroll::-webkit-scrollbar { width: 4px; }
     .pc-scroll::-webkit-scrollbar-track { background: transparent; }
     .pc-scroll::-webkit-scrollbar-thumb { background: rgba(38,1,11,.1); border-radius: 4px; }
+    #pc-win-projects .pc-scroll::-webkit-scrollbar-thumb { background: rgba(38,1,11,.16); }
     .pc-sbar::-webkit-scrollbar { width: 3px; }
     .pc-sbar::-webkit-scrollbar-track { background: transparent; }
     .pc-sbar::-webkit-scrollbar-thumb { background: rgba(38,1,11,.08); border-radius: 2px; }
@@ -314,16 +313,9 @@
   </div>
 
   <!-- ══ Desktop icons (direita, abaixo do perfil) ══ -->
-  <div class="pc-deskicon" data-open="mail" style="position:absolute;right:96px;top:368px;">
-    <div style="width:60px;height:60px;border-radius:14px;border:.5px solid rgba(38,1,11,.08);display:flex;align-items:center;justify-content:center;margin-bottom:5px;box-shadow:0 1px 3px rgba(38,1,11,.05),0 4px 12px rgba(38,1,11,.05);overflow:hidden;">
-      <img src="uploads/ICON-MAIL.png" alt="" style="display:block;width:100%;height:100%;object-fit:contain;object-position:center;">
-    </div>
-    <span style="font-size:10px;color:rgba(38,1,11,.65);font-weight:500;text-align:center;text-shadow:0 1px 3px rgba(255,255,255,.8);">mail</span>
-  </div>
-
   <div class="pc-deskicon" data-open="play" style="position:absolute;right:16px;top:368px;">
     <div style="width:60px;height:60px;border-radius:14px;border:.5px solid rgba(38,1,11,.08);display:flex;align-items:center;justify-content:center;margin-bottom:5px;box-shadow:0 1px 3px rgba(38,1,11,.05),0 4px 12px rgba(38,1,11,.05);overflow:hidden;">
-      <img src="uploads/coming-soon-app.png" alt="" style="display:block;width:100%;height:100%;object-fit:contain;object-position:center;">
+      <img src="uploads/coming-soon-app.png" alt="" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;object-fit:contain;object-position:center;">
     </div>
     <span style="font-size:10px;color:rgba(38,1,11,.65);font-weight:500;text-align:center;text-shadow:0 1px 3px rgba(255,255,255,.8);">play</span>
   </div>
@@ -331,7 +323,7 @@
 
 
   <!-- ══ WINDOW: projects (Finder) ══ -->
-  <div id="pc-win-projects" style="position:absolute;width:720px;height:480px;border-radius:10px;box-shadow:0 1px 3px rgba(38,1,11,.06),0 12px 32px rgba(38,1,11,.10);overflow:hidden;">
+  <div id="pc-win-projects" style="position:absolute;width:720px;height:552px;border-radius:10px;box-shadow:0 1px 3px rgba(38,1,11,.06),0 12px 32px rgba(38,1,11,.10);overflow:hidden;">
     <!-- Titlebar -->
     <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(38,1,11,.07);display:flex;align-items:center;padding:0 12px;position:relative;flex-shrink:0;">
       <div style="display:flex;gap:7px;">
@@ -341,15 +333,8 @@
       </div>
       <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;letter-spacing:.01em;">projects</span>
     </div>
-    <!-- Toolbar -->
-    <div style="height:28px;background:#F3ECEF;border-bottom:1px solid rgba(38,1,11,.06);display:flex;align-items:center;padding:0 12px;gap:8px;flex-shrink:0;">
-      <span style="font-size:14px;color:rgba(38,1,11,.22);">←</span>
-      <span style="font-size:14px;color:rgba(38,1,11,.22);">→</span>
-      <div style="width:1px;height:12px;background:rgba(38,1,11,.1);margin:0 2px;"></div>
-      <span style="font-size:10px;color:rgba(38,1,11,.4);">projects</span>
-    </div>
     <!-- Sidebar + content -->
-    <div style="display:flex;height:calc(100% - 58px);">
+    <div style="display:flex;height:calc(100% - 30px);">
       <!-- Sidebar -->
       <div class="pc-sbar" style="width:140px;background:rgba(248,243,239,.95);border-right:1px solid rgba(38,1,11,.07);padding:8px 0;overflow-y:auto;flex-shrink:0;">
         <div style="font-size:9px;color:rgba(38,1,11,.28);padding:6px 10px 4px;font-weight:500;">favorites</div>
@@ -362,7 +347,7 @@
         <div id="finder-projects" style="display:grid;grid-template-columns:repeat(3,1fr);gap:11px;padding:14px;">
 
           <div class="pc-folder" data-project="pixie">
-            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><video class="pc-folder-img" autoplay muted loop playsinline preload="metadata"><source src="uploads/video-capa-pixie.mp4" type="video/mp4"></video></div>
+            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><video class="pc-folder-img" muted loop playsinline preload="metadata"><source src="uploads/video-capa-pixie.mp4" type="video/mp4"></video></div>
             <div class="pc-folder-body" style="background:#F2C4DA;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
               <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#F2C4DA;border-radius:4px 4px 0 0;"></div>
               <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">pixie club</div>
@@ -370,7 +355,7 @@
           </div>
 
           <div class="pc-folder" data-project="mari">
-            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><video class="pc-folder-img" autoplay muted loop playsinline preload="metadata"><source src="uploads/video-capa-mari.mp4" type="video/mp4"></video></div>
+            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><video class="pc-folder-img" muted loop playsinline preload="metadata"><source src="uploads/video-capa-mari.mp4" type="video/mp4"></video></div>
             <div class="pc-folder-body" style="background:#FFF7D1;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
               <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#FFF7D1;border-radius:4px 4px 0 0;"></div>
               <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">mari froes</div>
@@ -378,7 +363,7 @@
           </div>
 
           <div class="pc-folder" data-project="dorian">
-            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><video class="pc-folder-img" autoplay muted loop playsinline preload="metadata"><source src="uploads/video-capa-dorian.mp4" type="video/mp4"></video></div>
+            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><video class="pc-folder-img" muted loop playsinline preload="metadata"><source src="uploads/video-capa-dorian.mp4" type="video/mp4"></video></div>
             <div class="pc-folder-body" style="background:#DDEEF4;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
               <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#DDEEF4;border-radius:4px 4px 0 0;"></div>
               <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">dorian electra</div>
@@ -386,7 +371,7 @@
           </div>
 
           <div class="pc-folder" data-project="sweat">
-            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><video class="pc-folder-img" autoplay muted loop playsinline preload="metadata"><source src="uploads/video-capa-sweat.mp4" type="video/mp4"></video></div>
+            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><video class="pc-folder-img" muted loop playsinline preload="metadata"><source src="uploads/video-capa-sweat.mp4" type="video/mp4"></video></div>
             <div class="pc-folder-body" style="background:#F2D8E4;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
               <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#F2D8E4;border-radius:4px 4px 0 0;"></div>
               <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">sweat</div>
@@ -394,7 +379,7 @@
           </div>
 
           <div class="pc-folder" data-project="grimes">
-            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><video class="pc-folder-img" autoplay muted loop playsinline preload="metadata"><source src="uploads/video-capa-grimes.mp4" type="video/mp4"></video></div>
+            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><video class="pc-folder-img" muted loop playsinline preload="metadata"><source src="uploads/video-capa-grimes.mp4" type="video/mp4"></video></div>
             <div class="pc-folder-body" style="background:#DDEEF4;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
               <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#DDEEF4;border-radius:4px 4px 0 0;"></div>
               <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">grimes</div>
@@ -417,7 +402,7 @@
       <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;">about me</span>
     </div>
     <div style="background:#FEFBFE;padding:16px 16px 20px;">
-      <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#F2C4DA 0%,#F2D8E4 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:700;color:rgba(38,1,11,.6);letter-spacing:-.01em;margin-bottom:12px;box-shadow:0 0 0 2px rgba(255,255,255,.8);overflow:hidden;position:relative;">pc<img src="uploads/pietra-profile.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';"></div>
+      <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#F2C4DA 0%,#F2D8E4 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:700;color:rgba(38,1,11,.6);letter-spacing:-.01em;margin-bottom:12px;box-shadow:0 0 0 2px rgba(255,255,255,.8);overflow:hidden;position:relative;">pc<img src="uploads/pietra-profile.jpg" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';"></div>
       <div style="font-size:16px;font-weight:600;letter-spacing:-.02em;color:#26010B;line-height:1.1;margin-bottom:4px;">pietra costantin</div>
       <div style="font-size:10px;font-style:italic;color:rgba(38,1,11,.46);margin-bottom:12px;">visual systems + art direction</div>
       <div style="height:1px;background:rgba(38,1,11,.07);margin-bottom:12px;"></div>
@@ -480,7 +465,7 @@
     <div style="background:#FEFBFE;padding:14px;display:flex;flex-direction:column;gap:10px;">
       <div style="background:#F8F3EF;border:1px solid rgba(38,1,11,.09);border-radius:10px;padding:12px;display:flex;gap:11px;align-items:center;">
         <div style="width:46px;height:46px;border-radius:50%;background:#F2C4DA;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 2px rgba(255,255,255,.8);">
-          <img src="uploads/pietra-profile.jpg" alt="" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
+          <img src="uploads/pietra-profile.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
         </div>
         <div style="min-width:0;">
           <div style="font-size:15px;font-weight:600;letter-spacing:-.02em;color:#26010B;line-height:1.15;">Pietra Costantin</div>
@@ -545,7 +530,7 @@
   <!-- ══ Widget: asfalto (polaroid) ══ -->
   <div id="pc-widget-asfalto" class="pc-widget-click" style="position:absolute;left:660px;top:148px;z-index:8;width:112px;height:138px;background:#F8F3EF;border:1px solid rgba(38,1,11,.12);border-radius:8px;box-shadow:0 1px 3px rgba(38,1,11,.05),0 4px 12px rgba(38,1,11,.05);padding:7px 7px 10px;box-sizing:border-box;">
     <div style="width:98px;height:92px;border-radius:4px;background:#2A2530;overflow:hidden;margin-bottom:6px;display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(255,255,255,.28);font-weight:500;position:relative;">
-      <img src="uploads/asfalto.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';">
+      <img src="uploads/asfalto.jpg" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';">
       <span>asfalto</span>
     </div>
     <div style="text-align:center;padding:0 2px;">
@@ -567,7 +552,7 @@
     <div style="background:#FEFBFE;height:210px;padding:18px 20px 20px;display:flex;flex-direction:column;justify-content:space-between;">
       <div>
         <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-          <div style="width:44px;height:44px;border-radius:50%;background:#2A2530;overflow:hidden;flex-shrink:0;border:.5px solid rgba(38,1,11,.1);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:rgba(255,255,255,.35);position:relative;"><img src="uploads/asfalto.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';"><span>as</span></div>
+          <div style="width:44px;height:44px;border-radius:50%;background:#2A2530;overflow:hidden;flex-shrink:0;border:.5px solid rgba(38,1,11,.1);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:rgba(255,255,255,.35);position:relative;"><img src="uploads/asfalto.jpg" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';"><span>as</span></div>
           <div>
             <div style="font-size:14px;font-weight:600;color:#26010B;letter-spacing:-.02em;line-height:1.1;">asfalto</div>
             <div style="font-size:10px;color:rgba(38,1,11,.42);font-style:italic;">desktop assistant · night shift</div>
@@ -630,14 +615,14 @@
     <!-- Preview placeholders -->
     <div class="pc-pixie-preview-area">
       <div class="pc-pixie-main-preview">
-        <img src="uploads/pixie-preview-01.jpg" alt="">
+        <img src="uploads/pixie-preview-01.jpg" alt="" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Info -->
     <div style="background:#FEFBFE;padding:12px 14px 14px;">
       <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;">
         <div style="width:32px;height:32px;border-radius:7px;overflow:hidden;flex-shrink:0;border:.5px solid rgba(38,1,11,.08);">
-          <img src="uploads/icone-pixieclub.png" style="width:100%;height:100%;object-fit:cover;display:block;" />
+          <img src="uploads/icone-pixieclub.png" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" />
         </div>
         <div style="flex:1;min-width:0;">
           <div style="font-size:13px;font-weight:600;color:#26010B;letter-spacing:-.02em;line-height:1.15;">pixie club</div>
@@ -719,22 +704,24 @@ class PietraDesktop {
   }
 
   _projects = [
-    { id: 'pixie',  name: 'pixie club',     year: '2026',    cat: 'graduation project · identity · art direction · web', img: 'uploads/pixie-preview-01.jpg',        clr: '#F2C4DA', desc: 'Pixie Club started as my final Graphic Design project at Belas Artes de São Paulo, based on research into visual eras in international pop music from 2020 to 2025. The project investigated how releases, image systems and artist narratives can be structured through graphic design and creative direction. From that research, I developed a fictional studio specialized in visual systems for music and cultural projects. My work included concept, naming, visual identity, website, printed materials, stickers, presentation system and exhibition setup.',    role: 'graduation project · identity · art direction · web' },
-    { id: 'mari',   name: 'mari froes',     year: '2026',    cat: 'conceptual identity · music · academic project', img: 'uploads/img-abertura-mari.jpg',      clr: '#FFF7D1', desc: 'A conceptual music identity study for Mari Froes, developed within my graduation research on pop eras, graphic design and release systems. The project uses correspondence, memory and editorial materiality as a visual language for a music release. I worked on the concept, art direction, identity system, editorial applications, rollout structure and mockups. Artist images were used as source material for design presentation and are not my photography.',            role: 'conceptual identity · music · academic project', spotifyLabel: '', spotifySrc: 'https://open.spotify.com/embed/track/2BORRiSmyXBAMAZTsppmBw?utm_source=generator' },
-    { id: 'dorian', name: 'dorian electra', year: '2026',    cat: 'conceptual visual study · unofficial music project',     img: 'uploads/img-abertura-dorian.jpg',    clr: '#DDEEF4', desc: 'A conceptual visual study for an unofficial Dorian Electra music project. The case explores archive, memory, cover culture and reconstructed pop imagery through a graphic system. I worked on visual research, art direction, cover directions, typography, mockups and media presentation. Source images were used as visual material and are not my photography. This project is not affiliated with Dorian Electra or their team.',                         role: 'conceptual visual study · unofficial music project', spotifyLabel: 'album reference', spotifySrc: 'https://open.spotify.com/embed/album/07MFwmTo5CPShbTK60jPUl?utm_source=generator' },
-    { id: 'sweat',  name: 'sweat',          year: '2025',    cat: 'art direction · music visual study',   img: 'uploads/img-abertura-sweat.jpg',     clr: '#F2D8E4', desc: 'A music visual study focused on materiality, color, body, club culture and physical media. The project explores how a pop release can become a tactile visual system through covers, mockups, objects and image treatment. I worked on visual research, art direction, graphic applications and case presentation. Source imagery and artist-related references were used as visual material and are not my photography. This is an independent study, not an official campaign.',                    role: 'art direction · music visual study', spotifyLabel: 'sweat tour setlist', spotifySrc: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX5x2iaJA7ZpI?utm_source=generator' },
-    { id: 'grimes', name: 'grimes',         year: '2026',    cat: 'editorial layout study · Interview Magazine',   img: 'uploads/img-abertura-grimes.jpg',   clr: '#DDEEF4', desc: 'An editorial layout study using text and photography from Interview Magazine. The project explores page rhythm, image sequencing, typography and visual atmosphere through a digital magazine-style presentation. I worked on layout design, art direction, image treatment, typographic hierarchy and web presentation. Text and photography are not my original content and are used here only as source material for a design study.',                            role: 'editorial layout study · Interview Magazine', spotifyLabel: '', spotifySrc: 'https://open.spotify.com/embed/track/0cAFtuZPD4sKl0X1R3dFin?utm_source=generator' },
+    { id: 'pixie',  name: 'pixie club',     year: '2026',    cat: 'identity system · art direction · web', img: 'uploads/pixie-preview-01.jpg',        clr: '#F2C4DA', desc: 'Pixie Club started as my final Graphic Design project at Belas Artes de São Paulo, based on research into visual eras in international pop music from 2020 to 2025. The project investigated how releases, image systems and artist narratives can be structured through graphic design and creative direction. From that research, I developed a fictional studio specialized in visual systems for music and cultural projects. My work included concept, naming, visual identity, website, printed materials, stickers, presentation system and exhibition setup.',    role: 'identity system · art direction · web' },
+    { id: 'mari',   name: 'mari froes',     year: '2026',    cat: 'music identity · editorial system · concept study', img: 'uploads/img-abertura-mari.jpg',      clr: '#FFF7D1', desc: 'A conceptual music identity study for Mari Froes, developed within my graduation research on pop eras, graphic design and release systems. The project uses correspondence, memory and editorial materiality as a visual language for a music release. I worked on the concept, art direction, identity system, editorial applications, rollout structure and mockups. Artist images were used as source material for design presentation and are not my photography.',            role: 'music identity · editorial system · concept study', spotifyLabel: '', spotifySrc: 'https://open.spotify.com/embed/track/2BORRiSmyXBAMAZTsppmBw?utm_source=generator' },
+    { id: 'dorian', name: 'dorian electra', year: '2026',    cat: 'visual study · music archive · unofficial concept',     img: 'uploads/img-abertura-dorian.jpg',    clr: '#DDEEF4', desc: 'A conceptual visual study for an unofficial Dorian Electra music project. The case explores archive, memory, cover culture and reconstructed pop imagery through a graphic system. I worked on visual research, art direction, cover directions, typography, mockups and media presentation. Source images were used as visual material and are not my photography. This project is not affiliated with Dorian Electra or their team.',                         role: 'visual study · music archive · unofficial concept', spotifyLabel: 'album reference', spotifySrc: 'https://open.spotify.com/embed/album/07MFwmTo5CPShbTK60jPUl?utm_source=generator' },
+    { id: 'sweat',  name: 'sweat',          year: '2025',    cat: 'art direction · music visual system',   img: 'uploads/img-abertura-sweat.jpg',     clr: '#F2D8E4', desc: 'A music visual study focused on materiality, color, body, club culture and physical media. The project explores how a pop release can become a tactile visual system through covers, mockups, objects and image treatment. I worked on visual research, art direction, graphic applications and case presentation. Source imagery and artist-related references were used as visual material and are not my photography. This is an independent study, not an official campaign.',                    role: 'art direction · music visual system', spotifyLabel: 'sweat tour setlist', spotifySrc: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX5x2iaJA7ZpI?utm_source=generator' },
+    { id: 'grimes', name: 'grimes',         year: '2026',    cat: 'editorial layout · magazine study',   img: 'uploads/img-abertura-grimes.jpg',   clr: '#DDEEF4', desc: 'An editorial layout study using text and photography from Interview Magazine. The project explores page rhythm, image sequencing, typography and visual atmosphere through a digital magazine-style presentation. I worked on layout design, art direction, image treatment, typographic hierarchy and web presentation. Text and photography are not my original content and are used here only as source material for a design study.',                            role: 'editorial layout · magazine study', spotifyLabel: '', spotifySrc: 'https://open.spotify.com/embed/track/0cAFtuZPD4sKl0X1R3dFin?utm_source=generator' },
   ];
   _currentProject = null;
   _zTop = 30;
   _openWindows = new Set();
+  _videoObserver = null;
+  _observedVideos = new WeakSet();
+  _visibleVideos = new WeakMap();
   state = { clock: '' };
 
   componentDidMount() {
     this._tick();
     this._timer = setInterval(() => this._tick(), 60000);
     this._setup();
-    this._autoplayVideos(document);
   }
 
   componentWillUnmount() {
@@ -755,7 +742,6 @@ class PietraDesktop {
       { type: 'image', src: 'uploads/pixie-project12.jpg' },
       { type: 'image', src: 'uploads/pixie-project7.jpg' },
       { type: 'image', src: 'uploads/pixie-project10.jpg' },
-      { type: 'video', src: 'uploads/pixie-club-poste.mp4' },
       { type: 'image', src: 'uploads/pixie-project5.jpg' },
       { type: 'image', src: 'uploads/pixie-project6.jpg' },
       { type: 'image', src: 'uploads/pixie-project9.jpg' },
@@ -840,8 +826,8 @@ class PietraDesktop {
         <div class="pc-case-media-item">
           <div class="pc-case-media-frame" data-media-index="${index}">
             ${item.type === 'video'
-              ? `<video autoplay muted loop playsinline preload="metadata"><source src="${item.src}" type="video/mp4"></video>`
-              : `<img src="${item.src}" alt="">`}
+              ? `<video muted loop playsinline preload="metadata"><source src="${item.src}" type="video/mp4"></video>`
+              : `<img src="${item.src}" alt="" loading="lazy" decoding="async">`}
           </div>
           ${item.caption ? `<div class="pc-case-media-caption">${item.caption}</div>` : ''}
         </div>`).join('')}
@@ -849,18 +835,70 @@ class PietraDesktop {
   }
 
   _autoplayVideos(root = document) {
-    root.querySelectorAll('video').forEach(video => {
+    const videos = root.querySelectorAll ? root.querySelectorAll('video') : [];
+    videos.forEach(video => {
       video.muted = true;
       video.loop = true;
-      video.autoplay = true;
       video.playsInline = true;
+      video.preload = 'metadata';
       video.setAttribute('muted', '');
       video.setAttribute('loop', '');
-      video.setAttribute('autoplay', '');
       video.setAttribute('playsinline', '');
+      video.setAttribute('preload', 'metadata');
+      this._observeVideo(video);
+    });
+  }
+
+  _observeVideo(video) {
+    if (!video || this._observedVideos.has(video)) {
+      this._updateVideoPlayback(video);
+      return;
+    }
+    this._observedVideos.add(video);
+    if ('IntersectionObserver' in window) {
+      if (!this._videoObserver) {
+        this._videoObserver = new IntersectionObserver(entries => {
+          entries.forEach(entry => {
+            this._visibleVideos.set(entry.target, entry.isIntersecting && entry.intersectionRatio > 0.08);
+            this._updateVideoPlayback(entry.target);
+          });
+        }, { threshold: [0, .08, .32] });
+      }
+      this._videoObserver.observe(video);
+    } else {
+      this._visibleVideos.set(video, true);
+    }
+    this._updateVideoPlayback(video);
+  }
+
+  _isVideoInActiveArea(video) {
+    if (!video || !video.isConnected) return false;
+    const win = video.closest('[id^="pc-win-"]');
+    if (win && !this._openWindows.has(win.id)) return false;
+    if (win && (win.style.opacity === '0' || win.style.pointerEvents === 'none')) return false;
+    const quicklook = video.closest('#pc-pixie-quicklook');
+    if (quicklook && !quicklook.classList.contains('is-visible')) return false;
+    return this._visibleVideos.get(video) === true;
+  }
+
+  _updateVideoPlayback(video) {
+    if (!video) return;
+    if (this._isVideoInActiveArea(video)) {
       const play = video.play();
       if (play && typeof play.catch === 'function') play.catch(() => {});
-    });
+    } else {
+      video.pause();
+    }
+  }
+
+  _pauseVideos(root = document) {
+    if (!root || !root.querySelectorAll) return;
+    root.querySelectorAll('video').forEach(video => video.pause());
+  }
+
+  _refreshVideos(root = document) {
+    if (!root || !root.querySelectorAll) return;
+    root.querySelectorAll('video').forEach(video => this._updateVideoPlayback(video));
   }
 
   _openPixieQuickLook(index) {
@@ -870,12 +908,13 @@ class PietraDesktop {
     const stage = document.getElementById('pc-pixie-quicklook-stage');
     if (!ql || !stage || !item) return;
     stage.innerHTML = item.type === 'video'
-      ? `<video autoplay muted loop playsinline preload="metadata"><source src="${item.src}" type="video/mp4"></video>`
-      : `<img src="${item.src}" alt="">`;
+      ? `<video muted loop playsinline preload="metadata"><source src="${item.src}" type="video/mp4"></video>`
+      : `<img src="${item.src}" alt="" loading="lazy" decoding="async">`;
     this._autoplayVideos(stage);
     ql.dataset.index = String((index + media.length) % media.length);
     ql.classList.add('is-visible');
     ql.setAttribute('aria-hidden', 'false');
+    this._refreshVideos(stage);
   }
 
   _stepPixieQuickLook(delta) {
@@ -890,6 +929,7 @@ class PietraDesktop {
     if (!ql) return;
     ql.classList.remove('is-visible');
     ql.setAttribute('aria-hidden', 'true');
+    if (stage) this._pauseVideos(stage);
     setTimeout(() => {
       if (stage && !ql.classList.contains('is-visible')) stage.innerHTML = '';
     }, 190);
@@ -949,7 +989,10 @@ class PietraDesktop {
     const scroller = document.querySelector('#pc-win-case-viewer .pc-scroll');
     if (scroller) Object.assign(scroller.style, { overflowX: '', overflowY: 'auto' });
     const gallery = document.getElementById('case-pixie-gallery-wrap');
-    if (gallery) gallery.innerHTML = '';
+    if (gallery) {
+      this._pauseVideos(gallery);
+      gallery.innerHTML = '';
+    }
     this._quicklookMedia = null;
   }
 
@@ -980,7 +1023,7 @@ class PietraDesktop {
     }
     const label = project.spotifyLabel ? `<div class="pc-spotify-label">${project.spotifyLabel}</div>` : '';
     wrap.style.display = 'block';
-    wrap.innerHTML = `${label}<iframe class="pc-spotify-frame" src="${project.spotifySrc}" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
+    wrap.innerHTML = `${label}<iframe class="pc-spotify-frame" title="Spotify embed" src="${project.spotifySrc}" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
   }
 
   _initSearch() {
@@ -1271,6 +1314,8 @@ class PietraDesktop {
         el.style.opacity = '1';
         el.style.transform = 'scale(1) translateY(0)';
         el.style.pointerEvents = 'auto';
+        this._autoplayVideos(el);
+        this._refreshVideos(el);
       });
     });
   }
@@ -1280,6 +1325,7 @@ class PietraDesktop {
     if (!el) return;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     this._openWindows.delete(id);
+    this._pauseVideos(el);
     if (id === 'pc-win-case-viewer') {
       const backdrop = document.getElementById('pc-viewer-backdrop');
       if (backdrop) backdrop.classList.remove('is-visible');
@@ -1318,6 +1364,8 @@ class PietraDesktop {
         el.style.opacity = '1';
         el.style.transform = 'scale(1) translateY(0)';
         el.style.pointerEvents = 'auto';
+        this._autoplayVideos(el);
+        this._refreshVideos(el);
       });
     });
   }
@@ -1459,7 +1507,6 @@ class PietraDesktop {
 
     _deskDrag(document.querySelector('.pc-profile-widget'));
     _deskDrag(document.getElementById('pc-widget-now'));
-    _deskDrag(document.querySelector('.pc-deskicon[data-open="mail"]'));
     _deskDrag(document.querySelector('.pc-deskicon[data-open="play"]'));
     _deskDrag(document.getElementById('pc-desktop-loose'));
 
@@ -1487,7 +1534,7 @@ class PietraDesktop {
           this._showPlayNotif(el);
         } else {
           const winId = 'pc-win-' + t;
-          this._openWindows.has(winId) ? this._focusWindow(winId) : this._showWindow(winId);
+          this._openWindows.has(winId) ? this._hideWindow(winId) : this._showWindow(winId);
         }
       });
     });
