@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Pietra Costantin · arquivo desktop</title>
-  <meta name="description" content="Portfolio interativo de Pietra Costantin em formato desktop, com projetos, arquivo, contato e case viewer.">
+  <title>Pietra Costantin · archive desktop</title>
+  <meta name="description" content="Portfolio interativo de Pietra Costantin em formato desktop, com projetos, archive, contato e case viewer.">
   <link rel="icon" type="image/png" href="uploads/pc-menu-icon.png">
   <link rel="apple-touch-icon" href="uploads/pc-menu-icon.png">
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -94,6 +94,9 @@
     .pc-close-txt { transition: color 130ms; cursor: pointer; border: none; background: none; font-family: inherit; }
     .pc-close-txt:hover { color: rgba(38,1,11,.7) !important; }
     .tl-r[data-close] { cursor: pointer; }
+    .pc-spotify-wrap { margin: 14px 0 14px; }
+    .pc-spotify-label { font-size: 10px; color: rgba(38,1,11,.38); margin-bottom: 6px; letter-spacing: .02em; }
+    .pc-spotify-frame { width: 100%; height: 80px; border: 0; border-radius: 12px; display: block; background: rgba(38,1,11,.04); }
     /* ── Mini profile widget ── */
     .pc-profile-widget { cursor: pointer; transition: transform 200ms cubic-bezier(.2,.7,.2,1), box-shadow 200ms cubic-bezier(.2,.7,.2,1); user-select: none; }
     .pc-profile-widget:hover { transform: translateY(-2px); box-shadow: 0 3px 10px rgba(38,1,11,.07); }
@@ -256,7 +259,7 @@
   <div style="position:absolute;top:0;left:0;right:0;height:30px;background:rgba(248,243,239,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(38,1,11,.07);z-index:100;display:flex;align-items:center;padding:0 14px;justify-content:space-between;user-select:none;">
     <div style="display:flex;gap:16px;align-items:center;">
       <span class="pc-menu-logo-wrap" aria-label="p/c"><img class="pc-menu-logo" src="uploads/pc-menu-icon.png" alt="p/c"></span>
-      <span class="pc-mb-item" data-open="search" style="font-size:11px;color:rgba(38,1,11,.5);cursor:pointer;">finder</span>
+      <span class="pc-mb-item" data-open="search" style="font-size:11px;color:rgba(38,1,11,.5);cursor:pointer;">search</span>
       <span class="pc-mb-item" data-open="projects" style="font-size:11px;color:rgba(38,1,11,.5);cursor:pointer;">projects</span>
       <span class="pc-mb-item" data-open="about" style="font-size:11px;color:rgba(38,1,11,.5);cursor:pointer;">about</span>
       <span class="pc-mb-item" data-open="mail" style="font-size:11px;color:rgba(38,1,11,.5);cursor:pointer;">mail</span>
@@ -267,7 +270,7 @@
       <span style="font-size:10px;color:rgba(38,1,11,.34);">são paulo</span>
       <span style="font-size:11px;color:rgba(38,1,11,.52);font-variant-numeric:tabular-nums;letter-spacing:.01em;"><span id="pc-clock">--:--</span></span>
       <div style="display:flex;gap:4px;align-items:center;">
-        <div style="width:5px;height:5px;border-radius:50%;background:#D7DDCF;"></div>
+        <div style="width:6px;height:6px;border-radius:50%;background:#A7D7AF;box-shadow:0 0 0 1px rgba(255,255,255,.72),0 1px 5px rgba(84,140,92,.24);"></div>
         <span style="font-size:10px;color:rgba(38,1,11,.36);">online</span>
       </div>
     </div>
@@ -281,18 +284,11 @@
   </div>
 
   <!-- ══ Mini profile widget ══ -->
-  <div class="pc-profile-widget" data-open="about" style="position:absolute;top:44px;right:16px;z-index:10;background:rgba(248,243,239,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(38,1,11,.08);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:10px;box-shadow:0 1px 3px rgba(38,1,11,.05),0 4px 12px rgba(38,1,11,.05);">
+  <div class="pc-profile-widget" data-open="about" style="position:absolute;top:44px;right:16px;z-index:10;background:rgba(248,243,239,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(38,1,11,.08);border-radius:14px;padding:10px 12px 10px 10px;display:flex;align-items:center;gap:8px;box-shadow:0 1px 3px rgba(38,1,11,.05),0 4px 12px rgba(38,1,11,.05);min-width:156px;">
     <div id="pc-profile-avatar" style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#F2C4DA 0%,#F2D8E4 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;font-weight:700;color:rgba(38,1,11,.6);letter-spacing:-.01em;box-shadow:0 0 0 1.5px rgba(255,255,255,.65);overflow:hidden;position:relative;">pc<img src="uploads/pietra-profile.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';"></div>
     <div>
       <div style="font-size:11px;font-weight:600;color:#26010B;letter-spacing:-.01em;line-height:1.2;white-space:nowrap;">pietra costantin</div>
       <div style="font-size:9px;color:rgba(38,1,11,.44);margin-top:1px;white-space:nowrap;">meet the designer</div>
-    </div>
-    <div style="display:flex;flex-direction:column;align-items:center;gap:4px;margin-left:2px;">
-      <div style="display:flex;align-items:center;gap:3px;">
-        <div style="width:4px;height:4px;border-radius:50%;background:#D7DDCF;"></div>
-        <span style="font-size:8px;color:rgba(38,1,11,.34);">available</span>
-      </div>
-      <span style="font-size:9px;color:rgba(95,30,62,.35);line-height:1;">✦</span>
     </div>
   </div>
 
@@ -389,15 +385,17 @@
         <!-- about (inside finder) -->
         <div id="finder-about" style="display:none;padding:16px;">
           <div style="font-size:14px;font-weight:600;letter-spacing:-.01em;color:#26010B;margin-bottom:4px;">pietra costantin</div>
-          <div style="font-size:10px;font-style:italic;color:rgba(38,1,11,.48);margin-bottom:12px;">graphic designer · são paulo</div>
+          <div style="font-size:10px;font-style:italic;color:rgba(38,1,11,.48);margin-bottom:12px;">visual systems + art direction</div>
           <div style="height:1px;background:rgba(38,1,11,.07);margin-bottom:12px;"></div>
-          <p style="font-size:11px;line-height:1.72;color:rgba(38,1,11,.65);margin:0 0 14px;text-wrap:pretty;">designer gráfica formada pela belas artes de são paulo, interessada em identidade visual, direção de arte, cultura pop, música, arquivos digitais e sistemas visuais.</p>
+          <p style="font-size:11px;line-height:1.72;color:rgba(38,1,11,.65);margin:0 0 14px;text-wrap:pretty;">graphic designer based in são paulo, interested in visual systems, digital archives and projects between music, fashion, pop culture and web.</p>
           <div style="display:flex;flex-wrap:wrap;gap:5px;">
-            <span style="font-size:9px;padding:2px 9px;background:#F2C4DA;color:#26010B;border-radius:12px;">branding</span>
-            <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">editorial</span>
-            <span style="font-size:9px;padding:2px 9px;background:#DDEEF4;color:#26010B;border-radius:12px;">web</span>
+            <span style="font-size:9px;padding:2px 9px;background:#F2C4DA;color:#26010B;border-radius:12px;">identity</span>
+            <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">art direction</span>
             <span style="font-size:9px;padding:2px 9px;background:#DDEEF4;color:#26010B;border-radius:12px;">visual systems</span>
             <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">music</span>
+            <span style="font-size:9px;padding:2px 9px;background:#DDEEF4;color:#26010B;border-radius:12px;">fashion</span>
+            <span style="font-size:9px;padding:2px 9px;background:#F2C4DA;color:#26010B;border-radius:12px;">web</span>
+            <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">archive</span>
           </div>
         </div>
 
@@ -406,11 +404,11 @@
           <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
             <div style="font-size:11px;font-weight:600;color:#26010B;letter-spacing:-.01em;">contact</div>
             <div style="display:flex;align-items:center;gap:4px;background:rgba(38,1,11,.04);border:1px solid rgba(38,1,11,.07);border-radius:20px;padding:2px 7px;">
-              <div style="width:5px;height:5px;border-radius:50%;background:#D7DDCF;flex-shrink:0;"></div>
+              <div style="width:6px;height:6px;border-radius:50%;background:#A7D7AF;box-shadow:0 0 0 1px rgba(255,255,255,.72),0 1px 5px rgba(84,140,92,.24);flex-shrink:0;"></div>
               <span style="font-size:9px;color:rgba(38,1,11,.48);">available</span>
             </div>
           </div>
-          <p style="font-size:11px;line-height:1.6;color:rgba(38,1,11,.46);margin:0 0 10px;text-wrap:pretty;">available for projects, collaborations and portfolio inquiries.</p>
+          <p style="font-size:11px;line-height:1.6;color:rgba(38,1,11,.46);margin:0 0 10px;text-wrap:pretty;">For projects, collaborations and portfolio inquiries.</p>
           <div style="background:#F8F3EF;border:1px solid rgba(38,1,11,.08);border-radius:10px;overflow:hidden;margin-bottom:10px;">
             <div style="display:flex;align-items:center;gap:8px;padding:8px 12px;border-bottom:1px solid rgba(38,1,11,.06);">
               <span style="font-size:9px;color:rgba(38,1,11,.34);font-weight:500;min-width:52px;">email</span>
@@ -456,17 +454,18 @@
     <div style="background:#FEFBFE;padding:16px 16px 20px;">
       <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#F2C4DA 0%,#F2D8E4 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:700;color:rgba(38,1,11,.6);letter-spacing:-.01em;margin-bottom:12px;box-shadow:0 0 0 2px rgba(255,255,255,.8);overflow:hidden;position:relative;">pc<img src="uploads/pietra-profile.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';"></div>
       <div style="font-size:16px;font-weight:600;letter-spacing:-.02em;color:#26010B;line-height:1.1;margin-bottom:4px;">pietra costantin</div>
-      <div style="font-size:10px;font-style:italic;color:rgba(38,1,11,.46);margin-bottom:12px;">graphic designer · são paulo</div>
+      <div style="font-size:10px;font-style:italic;color:rgba(38,1,11,.46);margin-bottom:12px;">visual systems + art direction</div>
       <div style="height:1px;background:rgba(38,1,11,.07);margin-bottom:12px;"></div>
-      <p style="font-size:11px;line-height:1.74;color:rgba(38,1,11,.68);margin:0 0 14px;text-wrap:pretty;">designer gráfica formada pela belas artes de são paulo, interessada em identidade visual, direção de arte, cultura pop, música, arquivos digitais e sistemas visuais.</p>
+      <p style="font-size:11px;line-height:1.74;color:rgba(38,1,11,.68);margin:0 0 14px;text-wrap:pretty;">graphic designer based in são paulo, interested in visual systems, digital archives and projects between music, fashion, pop culture and web.</p>
       <div style="height:1px;background:rgba(38,1,11,.07);margin-bottom:12px;"></div>
       <div style="display:flex;flex-wrap:wrap;gap:5px;">
-        <span style="font-size:9px;padding:2px 9px;background:#F2C4DA;color:#26010B;border-radius:12px;">branding</span>
-        <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">editorial</span>
-        <span style="font-size:9px;padding:2px 9px;background:#DDEEF4;color:#26010B;border-radius:12px;">web</span>
+        <span style="font-size:9px;padding:2px 9px;background:#F2C4DA;color:#26010B;border-radius:12px;">identity</span>
+        <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">art direction</span>
         <span style="font-size:9px;padding:2px 9px;background:#DDEEF4;color:#26010B;border-radius:12px;">visual systems</span>
         <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">music</span>
         <span style="font-size:9px;padding:2px 9px;background:#DDEEF4;color:#26010B;border-radius:12px;">fashion</span>
+        <span style="font-size:9px;padding:2px 9px;background:#F2C4DA;color:#26010B;border-radius:12px;">web</span>
+        <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">archive</span>
       </div>
       <div style="margin-top:10px;font-size:10px;color:rgba(38,1,11,.38);">instagram · <span style="color:rgba(38,1,11,.56);font-weight:500;">@pipafairy</span></div>
       <div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between;">
@@ -495,6 +494,7 @@
       </div>
       <div id="detail-cat" style="font-size:13px;font-weight:400;color:rgba(38,1,11,.48);letter-spacing:0;margin-bottom:10px;"></div>
       <p id="detail-desc" style="font-size:11px;line-height:1.74;color:rgba(38,1,11,.65);margin:0 0 14px;"></p>
+      <div id="detail-spotify-wrap" class="pc-spotify-wrap" style="display:none;"></div>
       <div style="display:flex;align-items:center;gap:10px;">
         <button id="detail-open-case" class="pc-btn pc-btn-primary">open case →</button>
         <button data-close="pc-win-detail" class="pc-btn pc-btn-ghost">close</button>
@@ -519,7 +519,7 @@
       <div style="display:flex;flex-direction:column;gap:5px;">
         <div style="display:flex;align-items:center;gap:8px;height:30px;background:#F8F3EF;border:1px solid rgba(38,1,11,.10);border-radius:7px;padding:0 10px;">
           <span style="font-size:10px;color:rgba(38,1,11,.38);font-weight:500;min-width:46px;">to</span>
-          <span style="font-size:11px;color:#26010B;font-weight:500;">pietra</span>
+          <span style="font-size:11px;color:#26010B;font-weight:500;">pietra@pixieclub.com.br</span>
         </div>
         <div style="display:flex;align-items:center;gap:8px;height:30px;background:#F8F3EF;border:1px solid rgba(38,1,11,.10);border-radius:7px;padding:0 10px;">
           <span style="font-size:10px;color:rgba(38,1,11,.38);font-weight:500;min-width:46px;">subject</span>
@@ -532,7 +532,7 @@
       </div>
       <!-- body -->
       <div style="background:#F8F3EF;border:1px solid rgba(38,1,11,.10);border-radius:8px;padding:10px;height:86px;">
-        <span style="font-size:11px;line-height:1.65;color:rgba(38,1,11,.44);font-style:italic;">for projects, collaborations or portfolio inquiries, send a message here.</span>
+        <span style="font-size:11px;line-height:1.65;color:rgba(38,1,11,.44);font-style:italic;">For projects, collaborations and portfolio inquiries.</span>
       </div>
       <!-- actions -->
       <div style="display:flex;gap:6px;">
@@ -691,7 +691,7 @@
         <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
         <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:#96CC9E;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
       </div>
-      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;">finder</span>
+      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;">search</span>
     </div>
     <div style="background:#FEFBFE;padding:12px 14px 0;flex-shrink:0;">
       <!-- header -->
@@ -714,7 +714,7 @@
         <button class="pc-chip" data-chip="music" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">music</button>
         <button class="pc-chip" data-chip="editorial" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">editorial</button>
         <button class="pc-chip" data-chip="visual studies" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">visual studies</button>
-        <button class="pc-chip" data-chip="loose files" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">archive</button>
+        <button class="pc-chip" data-chip="archive" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">archive</button>
       </div>
     </div>
     <!-- results -->
@@ -764,7 +764,7 @@
         <img src="uploads/icon-finder-imac.png" alt="" style="display:block;width:42px;height:42px;object-fit:contain;object-position:center;">
       </div>
       <div class="pc-dock-dot" data-dot-win="pc-win-search"></div>
-      <span style="font-size:9px;color:rgba(38,1,11,.42);">finder</span>
+      <span style="font-size:9px;color:rgba(38,1,11,.42);">search</span>
     </button>
 
     <button class="pc-dock-btn" data-open="projects">
@@ -816,10 +816,10 @@ class PietraDesktop {
 
   _projects = [
     { id: 'pixie',  name: 'pixie club',     year: '2026',    cat: 'graduation project · identity · art direction · web', img: 'uploads/pixie-preview-01.jpg',        clr: '#F2C4DA', desc: 'Pixie Club started as my final Graphic Design project at Belas Artes de São Paulo, based on research into visual eras in international pop music from 2020 to 2025. The project investigated how releases, image systems and artist narratives can be structured through graphic design and creative direction. From that research, I developed a fictional studio specialized in visual systems for music and cultural projects. My work included concept, naming, visual identity, website, printed materials, stickers, presentation system and exhibition setup.',    role: 'graduation project · identity · art direction · web', status: 'publicado' },
-    { id: 'mari',   name: 'mari froes',     year: '2026',    cat: 'conceptual identity · music · academic project', img: 'uploads/img-abertura-mari.jpg',      clr: '#FFF7D1', desc: 'A conceptual music identity study for Mari Froes, developed within my graduation research on pop eras, graphic design and release systems. The project uses correspondence, memory and editorial materiality as a visual language for a music release. I worked on the concept, art direction, identity system, editorial applications, rollout structure and mockups. Artist images were used as source material for design presentation and are not my photography.',            role: 'conceptual identity · music · academic project', status: 'publicado' },
-    { id: 'dorian', name: 'dorian electra', year: '2026',    cat: 'conceptual visual study · unofficial music project',     img: 'uploads/img-abertura-dorian.jpg',    clr: '#DDEEF4', desc: 'A conceptual visual study for an unofficial Dorian Electra music project. The case explores archive, memory, cover culture and reconstructed pop imagery through a graphic system. I worked on visual research, art direction, cover directions, typography, mockups and media presentation. Source images were used as visual material and are not my photography. This project is not affiliated with Dorian Electra or their team.',                         role: 'conceptual visual study · unofficial music project', status: 'publicado' },
-    { id: 'sweat',  name: 'sweat',          year: '2025',    cat: 'art direction · music visual study',   img: 'uploads/img-abertura-sweat.jpg',     clr: '#F2D8E4', desc: 'A music visual study focused on materiality, color, body, club culture and physical media. The project explores how a pop release can become a tactile visual system through covers, mockups, objects and image treatment. I worked on visual research, art direction, graphic applications and case presentation. Source imagery and artist-related references were used as visual material and are not my photography. This is an independent study, not an official campaign.',                    role: 'art direction · music visual study', status: 'publicado' },
-    { id: 'grimes', name: 'grimes',         year: '2026',    cat: 'editorial layout study · Interview Magazine',   img: 'uploads/img-abertura-grimes.jpg',   clr: '#DDEEF4', desc: 'An editorial layout study using text and photography from Interview Magazine. The project explores page rhythm, image sequencing, typography and visual atmosphere through a digital magazine-style presentation. I worked on layout design, art direction, image treatment, typographic hierarchy and web presentation. Text and photography are not my original content and are used here only as source material for a design study.',                            role: 'editorial layout study · Interview Magazine', status: 'publicado' },
+    { id: 'mari',   name: 'mari froes',     year: '2026',    cat: 'conceptual identity · music · academic project', img: 'uploads/img-abertura-mari.jpg',      clr: '#FFF7D1', desc: 'A conceptual music identity study for Mari Froes, developed within my graduation research on pop eras, graphic design and release systems. The project uses correspondence, memory and editorial materiality as a visual language for a music release. I worked on the concept, art direction, identity system, editorial applications, rollout structure and mockups. Artist images were used as source material for design presentation and are not my photography.',            role: 'conceptual identity · music · academic project', status: 'publicado', spotifyLabel: '', spotifySrc: 'https://open.spotify.com/embed/track/2BORRiSmyXBAMAZTsppmBw?utm_source=generator' },
+    { id: 'dorian', name: 'dorian electra', year: '2026',    cat: 'conceptual visual study · unofficial music project',     img: 'uploads/img-abertura-dorian.jpg',    clr: '#DDEEF4', desc: 'A conceptual visual study for an unofficial Dorian Electra music project. The case explores archive, memory, cover culture and reconstructed pop imagery through a graphic system. I worked on visual research, art direction, cover directions, typography, mockups and media presentation. Source images were used as visual material and are not my photography. This project is not affiliated with Dorian Electra or their team.',                         role: 'conceptual visual study · unofficial music project', status: 'publicado', spotifyLabel: 'album reference', spotifySrc: 'https://open.spotify.com/embed/album/07MFwmTo5CPShbTK60jPUl?utm_source=generator' },
+    { id: 'sweat',  name: 'sweat',          year: '2025',    cat: 'art direction · music visual study',   img: 'uploads/img-abertura-sweat.jpg',     clr: '#F2D8E4', desc: 'A music visual study focused on materiality, color, body, club culture and physical media. The project explores how a pop release can become a tactile visual system through covers, mockups, objects and image treatment. I worked on visual research, art direction, graphic applications and case presentation. Source imagery and artist-related references were used as visual material and are not my photography. This is an independent study, not an official campaign.',                    role: 'art direction · music visual study', status: 'publicado', spotifyLabel: 'sweat tour setlist', spotifySrc: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX5x2iaJA7ZpI?utm_source=generator' },
+    { id: 'grimes', name: 'grimes',         year: '2026',    cat: 'editorial layout study · Interview Magazine',   img: 'uploads/img-abertura-grimes.jpg',   clr: '#DDEEF4', desc: 'An editorial layout study using text and photography from Interview Magazine. The project explores page rhythm, image sequencing, typography and visual atmosphere through a digital magazine-style presentation. I worked on layout design, art direction, image treatment, typographic hierarchy and web presentation. Text and photography are not my original content and are used here only as source material for a design study.',                            role: 'editorial layout study · Interview Magazine', status: 'publicado', spotifyLabel: '', spotifySrc: 'https://open.spotify.com/embed/track/0cAFtuZPD4sKl0X1R3dFin?utm_source=generator' },
   ];
   _currentProject = null;
   _zTop = 30;
@@ -851,7 +851,7 @@ class PietraDesktop {
       { type: 'image', src: 'uploads/pixie-project12.jpg' },
       { type: 'image', src: 'uploads/pixie-project7.jpg' },
       { type: 'image', src: 'uploads/pixie-project10.jpg' },
-      { type: 'image', src: 'uploads/pixie-project11.jpg' },
+      { type: 'video', src: 'uploads/pixie-club-poste.mp4' },
       { type: 'image', src: 'uploads/pixie-project5.jpg' },
       { type: 'image', src: 'uploads/pixie-project6.jpg' },
       { type: 'image', src: 'uploads/pixie-project9.jpg' },
@@ -879,10 +879,9 @@ class PietraDesktop {
       { type: 'image', src: 'uploads/sweatslide3.jpg' },
       { type: 'image', src: 'uploads/sweatslide4.jpg' },
       { type: 'image', src: 'uploads/sweatslide10.jpg' },
-      { type: 'image', src: 'uploads/sweatslide6.jpg' },
       { type: 'image', src: 'uploads/sweatslide7.jpg' },
       { type: 'image', src: 'uploads/sweatslide8.jpg' },
-      { type: 'image', src: 'uploads/sweatslide9.jpg' },
+      { type: 'video', src: 'uploads/video-capa-sweat.mp4' },
       { type: 'image', src: 'uploads/sweatslide10.jpg' },
       { type: 'image', src: 'uploads/sweatslide11.jpg' },
       { type: 'image', src: 'uploads/sweatslide12.jpg' },
@@ -1105,8 +1104,23 @@ class PietraDesktop {
     $('detail-cat').textContent = p.cat;
     $('detail-year').textContent = p.year;
     $('detail-desc').textContent = p.desc;
+    this._renderDetailSpotify(p);
     this._currentProject = p;
+    this._positionDetailWindow();
     this._openWindows.has('pc-win-detail') ? this._focusWindow('pc-win-detail') : this._showWindow('pc-win-detail');
+  }
+
+  _renderDetailSpotify(project) {
+    const wrap = document.getElementById('detail-spotify-wrap');
+    if (!wrap) return;
+    if (!project || !project.spotifySrc) {
+      wrap.style.display = 'none';
+      wrap.innerHTML = '';
+      return;
+    }
+    const label = project.spotifyLabel ? `<div class="pc-spotify-label">${project.spotifyLabel}</div>` : '';
+    wrap.style.display = 'block';
+    wrap.innerHTML = `${label}<iframe class="pc-spotify-frame" src="${project.spotifySrc}" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>`;
   }
 
   _initSearch() {
@@ -1116,8 +1130,7 @@ class PietraDesktop {
       { id: 'dorian',    title: 'dorian electra', type: 'study',      tags: ['visual studies','music'],            projectId: 'dorian' },
       { id: 'sweat',     title: 'sweat',          type: 'project',    tags: ['art direction'],                     projectId: 'sweat'  },
       { id: 'grimes',    title: 'grimes',         type: 'project',    tags: ['editorial','magazine','music'],       projectId: 'grimes' },
-      { id: 'posters',   title: 'posters',        type: 'loose file', tags: ['posters','print'],                   projectId: null     },
-      { id: 'web-tests', title: 'web tests',      type: 'loose file', tags: ['web','interface'],                   projectId: null     },
+      { id: 'archive',   title: 'archive',        type: 'archive',    tags: ['design','music','fashion','web'],    desc: 'A permanent work-in-progress archive of projects, visual studies, references, playlists and experiments across design, music, fashion and web.', projectId: null },
     ];
 
     const typeIcon = (type) => {
@@ -1136,7 +1149,7 @@ class PietraDesktop {
     const chipFilter = (item, chip) => {
       if (chip === 'all') return true;
       if (chip === 'projects') return item.type === 'project' || item.type === 'study';
-      if (chip === 'loose files') return item.type === 'loose file';
+      if (chip === 'archive') return item.type === 'archive';
       return item.tags.some(t => t.toLowerCase().includes(chip.toLowerCase()));
     };
 
@@ -1159,7 +1172,7 @@ class PietraDesktop {
             <div style="display:flex;align-items:center;gap:6px;margin-top:2px;flex-wrap:wrap;">
               <span style="font-size:9px;color:rgba(38,1,11,.38);font-style:italic;">${item.type}</span>
               <span style="font-size:9px;color:rgba(38,1,11,.25);">·</span>
-              <span style="font-size:9px;color:rgba(38,1,11,.32);">${item.tags.join(', ')}</span>
+              <span style="font-size:9px;color:rgba(38,1,11,.32);">${item.desc || item.tags.join(', ')}</span>
             </div>
           </div>
         </div>
@@ -1171,7 +1184,7 @@ class PietraDesktop {
         row.addEventListener('click', () => {
           const item = items.find(x => x.id === row.dataset.itemId);
           if (!item) return;
-          if (item.type === 'loose file' || !item.projectId) {
+          if (item.type === 'archive' || !item.projectId) {
             if (document.getElementById('pc-win-loose')) {
               this._openWindows.has('pc-win-loose') ? this._focusWindow('pc-win-loose') : this._showWindow('pc-win-loose');
             } else {
@@ -1350,6 +1363,26 @@ class PietraDesktop {
     if (el) Object.assign(el.style, { position: 'absolute', left: l + 'px', top: t + 'px', zIndex: String(z) });
   }
 
+  _positionDetailWindow() {
+    const win = document.getElementById('pc-win-detail');
+    if (!win || window.innerWidth < 820) return;
+
+    const margin = 18;
+    const menuBarHeight = 30;
+    const dockReserve = 110;
+    const width = win.offsetWidth || 520;
+    const height = win.offsetHeight || 420;
+    const availableTop = menuBarHeight + margin;
+    const availableBottom = window.innerHeight - dockReserve;
+    const availableHeight = availableBottom - availableTop;
+    const left = Math.round((window.innerWidth - width) / 2);
+    const top = Math.round(availableTop + (availableHeight - height) / 2);
+    const maxTop = Math.max(availableTop, availableBottom - height);
+
+    win.style.left = Math.max(margin, left) + 'px';
+    win.style.top = Math.max(availableTop, Math.min(top, maxTop)) + 'px';
+  }
+
   _focusWindow(id) {
     const allWins = ['pc-win-projects','pc-win-about','pc-win-detail','pc-win-mail','pc-win-case-viewer','pc-win-pixie','pc-win-asfalto','pc-win-loose','pc-win-search'];
     const el = document.getElementById(id);
@@ -1501,16 +1534,7 @@ class PietraDesktop {
         } else if (action === 'open-latest') {
           const p = this._projects[0];
           if (!p) return;
-          const $ = id => document.getElementById(id);
-          $('detail-bg').style.backgroundImage = `url('${p.img}')`;
-          $('detail-clr').style.background = p.clr;
-          $('detail-title').textContent = p.name;
-          $('detail-title-bar').textContent = p.name;
-          $('detail-cat').textContent = p.cat;
-          $('detail-year').textContent = p.year;
-          $('detail-desc').textContent = p.desc;
-          this._currentProject = p;
-          this._showWindow('pc-win-detail');
+          this._openProject(p.id);
         }
       });
     });
@@ -1612,18 +1636,7 @@ class PietraDesktop {
 
     document.querySelectorAll('.pc-folder[data-project]').forEach(folder => {
       folder.addEventListener('click', () => {
-        const p = this._projects.find(x => x.id === folder.dataset.project);
-        if (!p) return;
-        const $ = id => document.getElementById(id);
-        $('detail-bg').style.backgroundImage = `url('${p.img}')`;
-        $('detail-clr').style.background = p.clr;
-        $('detail-title').textContent     = p.name;
-        $('detail-title-bar').textContent = p.name;
-        $('detail-cat').textContent       = p.cat;
-        $('detail-year').textContent      = p.year;
-        $('detail-desc').textContent      = p.desc;
-        this._currentProject = p;
-        this._openWindows.has('pc-win-detail') ? this._focusWindow('pc-win-detail') : this._showWindow('pc-win-detail');
+        this._openProject(folder.dataset.project);
       });
     });
 
