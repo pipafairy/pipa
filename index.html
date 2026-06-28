@@ -225,6 +225,11 @@
     #pc-widget-asfalto { transform: none; transition: transform 160ms cubic-bezier(.2,.7,.2,1), box-shadow 160ms cubic-bezier(.2,.7,.2,1); }
     #pc-widget-asfalto:hover { transform: translateY(-3px) !important; box-shadow: 0 3px 8px rgba(38,1,11,.08) !important; }
     #pc-widget-asfalto:active { transform: translateY(0) !important; transition-duration: 60ms !important; }
+    .pc-tbar span { letter-spacing:.025em; }
+    .pc-dock-btn > span { letter-spacing:.035em !important; }
+    .pc-mb-item { letter-spacing:.012em !important; }
+    .pc-boot-text { letter-spacing:-.01em !important; font-weight:500 !important; }
+    [id^="pc-win-"] { box-shadow:0 1px 2px rgba(38,1,11,.05),0 8px 22px rgba(38,1,11,.085),0 22px 42px rgba(38,1,11,.08) !important; }
     /* ── Reduced motion ── */
     @media (prefers-reduced-motion: reduce) {
       .pc-folder, .pc-folder-peek, .pc-folder-img, .pc-folder-body,
@@ -307,8 +312,10 @@
   </div>
 
   <!-- Wallpaper -->
-  <div id="pc-wallpaper" style="position:absolute;inset:0;background:radial-gradient(circle at var(--wp-mx,50%) var(--wp-my,50%),rgba(255,255,255,.34) 0%,transparent 22%),radial-gradient(ellipse at 18% 30%,#F0E0E8 0%,#F8F3EF 40%,#E4EFF5 68%,#F8F3EF 100%);z-index:0;transition:background 700ms ease;"></div>
-  <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(38,1,11,.04) 1px,transparent 1px);background-size:22px 22px;z-index:0;pointer-events:none;"></div>
+  <div id="pc-wallpaper" style="position:absolute;inset:0;background:radial-gradient(circle at var(--wp-mx,50%) var(--wp-my,50%),rgba(255,255,255,.44) 0%,transparent 19%),radial-gradient(ellipse at 82% 82%,rgba(221,238,244,.76) 0%,transparent 42%),radial-gradient(ellipse at 12% 86%,rgba(242,216,228,.44) 0%,transparent 34%),radial-gradient(ellipse at 18% 18%,rgba(242,196,218,.52) 0%,transparent 28%),radial-gradient(ellipse at 74% 18%,rgba(255,247,209,.48) 0%,transparent 26%),linear-gradient(152deg,#F8F3EF 0%,#FBF7F3 31%,#EEF6F8 66%,#F7F1F4 100%);z-index:0;transition:background 700ms ease;"></div>
+  <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(38,1,11,.052) 1px,transparent 1px);background-size:20px 20px;z-index:0;pointer-events:none;"></div>
+  <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.026;" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><filter id="pcgrain"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#pcgrain)"/></svg>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 52%,rgba(38,1,11,.048) 100%);z-index:0;pointer-events:none;"></div>
 
   <!-- ══ Menu bar ══ -->
   <div style="position:absolute;top:0;left:0;right:0;height:30px;background:rgba(248,243,239,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(38,1,11,.07);z-index:100;display:flex;align-items:center;padding:0 14px;justify-content:space-between;user-select:none;">
@@ -441,7 +448,7 @@
       <div style="font-size:16px;font-weight:600;letter-spacing:-.02em;color:#26010B;line-height:1.1;margin-bottom:4px;">pietra costantin</div>
       <div style="font-size:10px;font-style:italic;color:rgba(38,1,11,.46);margin-bottom:12px;">visual systems + art direction</div>
       <div style="height:1px;background:rgba(38,1,11,.07);margin-bottom:12px;"></div>
-      <p style="font-size:11px;line-height:1.74;color:rgba(38,1,11,.68);margin:0 0 14px;text-wrap:pretty;">graphic designer based in são paulo, interested in visual systems, digital archives and projects between music, fashion, pop culture and web.</p>
+      <p style="font-size:11px;line-height:1.74;color:rgba(38,1,11,.68);margin:0 0 14px;text-wrap:pretty;">graphic designer working across visual identity, art direction, editorial systems and web experiences for music, fashion and culture.</p>
       <div style="height:1px;background:rgba(38,1,11,.07);margin-bottom:12px;"></div>
       <div class="pc-about-tags" style="display:flex;flex-wrap:wrap;gap:5px;">
         <span style="font-size:9px;padding:2px 9px;background:#F2C4DA;color:#26010B;border-radius:12px;">identity</span>
@@ -1336,8 +1343,8 @@ class PietraDesktop {
         el.style.transition = reduced
           ? 'opacity 150ms linear'
           : isAsfalto
-            ? 'opacity 520ms cubic-bezier(.34,1.38,.64,1),transform 520ms cubic-bezier(.34,1.38,.64,1),filter 400ms ease'
-            : 'opacity 220ms cubic-bezier(.25,1,.5,1),transform 220ms cubic-bezier(.25,1,.5,1),filter 200ms cubic-bezier(.25,1,.5,1)';
+            ? 'opacity 520ms cubic-bezier(.34,1.42,.64,1),transform 540ms cubic-bezier(.34,1.42,.64,1),filter 380ms ease'
+            : 'opacity 260ms cubic-bezier(.25,1,.5,1),transform 400ms cubic-bezier(.34,1.28,.64,1),filter 220ms cubic-bezier(.25,1,.5,1)';
         el.style.opacity = '1';
         el.style.transform = 'scale(1) translateY(0)';
         el.style.filter = 'blur(0px)';
