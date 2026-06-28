@@ -218,7 +218,8 @@
     /* ── Profile avatar hover ── */
     #pc-profile-avatar { transition: box-shadow 220ms cubic-bezier(.2,.7,.2,1), transform 220ms cubic-bezier(.2,.7,.2,1); }
     .pc-profile-widget:hover #pc-profile-avatar { box-shadow: 0 0 0 2.5px rgba(95,30,62,.22), 0 0 0 1.5px rgba(255,255,255,.75); transform: scale(1.06); }
-    .pc-about-contact { border:1px solid rgba(95,30,62,.12) !important; background:#F8F3EF !important; border-radius:999px !important; padding:7px 12px !important; margin-top:14px !important; font-size:12px !important; line-height:1 !important; color:#5F1E3E !important; display:inline-flex !important; align-items:center !important; justify-content:center !important; box-shadow:0 1px 3px rgba(38,1,11,.04) !important; }
+    .pc-about-tags { display:flex; flex-wrap:wrap; gap:5px 6px; justify-content:center; margin:0 auto; max-width:220px; }
+    .pc-about-contact { border:1px solid rgba(95,30,62,.12) !important; background:#F8F3EF !important; border-radius:999px !important; padding:5px 10px !important; margin:12px auto 0 !important; font-size:10.5px !important; line-height:1 !important; color:#5F1E3E !important; display:flex !important; width:max-content !important; align-items:center !important; justify-content:center !important; box-shadow:0 1px 3px rgba(38,1,11,.04) !important; }
     .pc-about-contact:hover { background:#F3ECEF !important; }
     /* ── Asfalto polaroid ── */
     #pc-widget-asfalto { transform: none; transition: transform 160ms cubic-bezier(.2,.7,.2,1), box-shadow 160ms cubic-bezier(.2,.7,.2,1); }
@@ -442,7 +443,7 @@
       <div style="height:1px;background:rgba(38,1,11,.07);margin-bottom:12px;"></div>
       <p style="font-size:11px;line-height:1.74;color:rgba(38,1,11,.68);margin:0 0 14px;text-wrap:pretty;">graphic designer based in são paulo, interested in visual systems, digital archives and projects between music, fashion, pop culture and web.</p>
       <div style="height:1px;background:rgba(38,1,11,.07);margin-bottom:12px;"></div>
-      <div style="display:flex;flex-wrap:wrap;gap:5px;">
+      <div class="pc-about-tags" style="display:flex;flex-wrap:wrap;gap:5px;">
         <span style="font-size:9px;padding:2px 9px;background:#F2C4DA;color:#26010B;border-radius:12px;">identity</span>
         <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">art direction</span>
         <span style="font-size:9px;padding:2px 9px;background:#DDEEF4;color:#26010B;border-radius:12px;">visual systems</span>
@@ -452,10 +453,6 @@
         <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">archive</span>
       </div>
       <button data-open="mail" class="pc-about-contact" style="border:none;background:none;padding:0;margin:12px 0 0;font-family:inherit;font-size:10px;font-weight:600;color:#5F1E3E;cursor:pointer;transition:opacity 140ms;">contact me →</button>
-      <div style="margin-top:12px;display:flex;align-items:center;justify-content:space-between;">
-        <span style="font-size:9px;color:rgba(38,1,11,.26);font-family:ui-monospace,'SF Mono',monospace;">belas artes sp · 2026</span>
-        <span style="font-size:11px;color:rgba(95,30,62,.45);">✦</span>
-      </div>
     </div>
   </div>
 
@@ -499,7 +496,7 @@
       <div style="display:flex;align-items:center;gap:9px;padding:10px 12px;background:#F8F3EF;border:1px solid rgba(38,1,11,.09);border-radius:11px;">
         <div style="width:34px;height:34px;border-radius:50%;background:#F2C4DA;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 2px rgba(255,255,255,.8);"><img src="uploads/pietra-profile.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div>
         <div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:600;letter-spacing:-.02em;color:#26010B;line-height:1.2;">Pietra Costantin</div><div style="font-size:10px;color:rgba(38,1,11,.44);margin-top:1px;">graphic designer · São Paulo</div></div>
-        <div style="display:flex;align-items:center;gap:3px;background:rgba(150,204,158,.14);border:1px solid rgba(150,204,158,.28);border-radius:100px;padding:3px 8px;flex-shrink:0;"><span style="width:5px;height:5px;border-radius:50%;background:var(--pc-green);display:block;"></span><span style="font-size:9px;color:rgba(38,1,11,.5);font-weight:500;">open</span></div>
+        <div style="display:flex;align-items:center;gap:3px;background:rgba(150,204,158,.14);border:1px solid rgba(150,204,158,.28);border-radius:100px;padding:3px 8px;flex-shrink:0;"><span style="width:5px;height:5px;border-radius:50%;background:var(--pc-green);display:block;"></span><span style="font-size:9px;color:rgba(38,1,11,.5);font-weight:500;">available</span></div>
       </div>
       <div style="background:#F8F3EF;border:1px solid rgba(38,1,11,.09);border-radius:11px;padding:11px 12px;">
         <div style="font-size:9px;font-weight:600;color:rgba(38,1,11,.34);letter-spacing:.07em;margin-bottom:5px;">email</div>
@@ -507,9 +504,8 @@
         <div style="display:flex;gap:6px;"><button id="mail-copy-btn" class="pc-btn">copy email</button><a href="mailto:pietra@pixieclub.com.br" class="pc-btn" style="text-decoration:none;">open mail</a></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <a href="https://www.behance.net/pietrabc" target="_blank" rel="noopener" class="pc-contact-card"><span style="font-size:14px;font-weight:700;color:#1769FF;line-height:1;">Bē</span><div><div class="pc-contact-card-title">behance</div><div class="pc-contact-card-sub">portfolio archive</div></div><span class="pc-contact-card-arrow">↗</span></a>
-        <a href="https://www.linkedin.com/in/pietracostantin/" target="_blank" rel="noopener" class="pc-contact-card"><span style="font-size:14px;font-weight:700;color:#0A66C2;line-height:1;">in</span><div><div class="pc-contact-card-title">linkedin</div><div class="pc-contact-card-sub">professional profile</div></div><span class="pc-contact-card-arrow">↗</span></a>
-        <a href="https://pixieclub.com.br/" target="_blank" rel="noopener" class="pc-contact-card" style="background:#F2C4DA;border-color:rgba(95,30,62,.12);"><div style="width:18px;height:18px;border-radius:4px;overflow:hidden;flex-shrink:0;"><img src="uploads/icone-pixieclub.png" style="width:100%;height:100%;object-fit:cover;display:block;" alt=""></div><div><div class="pc-contact-card-title">pixie club</div><div class="pc-contact-card-sub" style="color:rgba(95,30,62,.58);">creative studio</div></div><span class="pc-contact-card-arrow" style="color:rgba(95,30,62,.35);">↗</span></a>
+        <a href="https://www.behance.net/pietrabc" target="_blank" rel="noopener" class="pc-contact-card"><span style="font-size:14px;font-weight:700;color:#5F1E3E;line-height:1;">Bē</span><div><div class="pc-contact-card-title">behance</div><div class="pc-contact-card-sub">portfolio archive</div></div><span class="pc-contact-card-arrow">↗</span></a>
+        <a href="https://www.linkedin.com/in/pietracostantin/" target="_blank" rel="noopener" class="pc-contact-card"><span style="font-size:14px;font-weight:700;color:#8E5B73;line-height:1;">in</span><div><div class="pc-contact-card-title">linkedin</div><div class="pc-contact-card-sub">professional profile</div></div><span class="pc-contact-card-arrow">↗</span></a>
       </div>
     </div>
   </div>
