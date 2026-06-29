@@ -19,6 +19,11 @@
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png?v=20260627">
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png?v=20260627">
   <link rel="manifest" href="/site.webmanifest?v=20260627">
+  <link rel="preload" as="image" href="uploads/optimized/pc-menu-icon-ui.png" fetchpriority="high">
+  <link rel="preload" as="image" href="uploads/optimized/pietra-profile-ui.jpg" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
     @font-face { font-family:"Inter Tight"; src:url("_ds/pixie-club-design-system-019df67a-27c9-7445-9f51-de5144ee30d8/fonts/InterTight-VariableFont_wght.ttf") format("truetype-variations"); font-weight:100 900; font-style:normal; font-display:swap; }
     @font-face { font-family:"Inter Tight"; src:url("_ds/pixie-club-design-system-019df67a-27c9-7445-9f51-de5144ee30d8/fonts/InterTight-Italic-VariableFont_wght.ttf") format("truetype-variations"); font-weight:100 900; font-style:italic; font-display:swap; }
@@ -26,7 +31,7 @@
     body { margin: 0; overflow: hidden; }
     :root { --pc-green:#96CC9E; }
     /* ── Initial window state ── */
-    #pc-win-projects, #pc-win-about, #pc-win-detail, #pc-win-mail, #pc-win-case-viewer, #pc-win-pixie, #pc-win-asfalto, #pc-win-search, #pc-win-loose {
+    #pc-win-projects, #pc-win-about, #pc-win-detail, #pc-win-mail, #pc-win-case-viewer, #pc-win-pixie, #pc-win-search, #pc-win-loose, #pc-win-themes {
       opacity: 0; transform: scale(.92) translateY(10px); pointer-events: none;
     }
     /* ── Folder hover ── */
@@ -47,8 +52,15 @@
     #finder-projects .pc-folder[data-project="pixie"] { grid-column:1 / -1; }
     #finder-projects .pc-folder-peek { aspect-ratio:4 / 3; border-radius:8px 8px 0 0 !important; background:#F0EEF2; }
     #finder-projects .pc-folder[data-project="pixie"] .pc-folder-peek { aspect-ratio:16 / 3.4; max-height:160px; }
-    #finder-projects .pc-folder-img { object-fit:cover; object-position:center; transform:scale(1); transition:transform 240ms cubic-bezier(.2,.7,.2,1); }
-    #finder-projects .pc-folder:hover .pc-folder-img { transform:scale(1.02) !important; }
+    #finder-projects .pc-folder-img,
+    #finder-projects .pc-folder-poster { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; transform:scale(1.005); transition:transform 520ms cubic-bezier(.18,.72,.2,1), opacity 620ms cubic-bezier(.2,.7,.2,1), filter 620ms ease; will-change:transform,opacity; }
+    #finder-projects .pc-folder-img { opacity:0; filter:saturate(.96) brightness(.98); }
+    #finder-projects .pc-folder-poster { opacity:1; z-index:1; }
+    #finder-projects .pc-folder:hover .pc-folder-img,
+    #finder-projects .pc-folder:hover .pc-folder-poster { transform:scale(1.018) !important; }
+    #finder-projects .pc-folder.is-video-ready .pc-folder-img { opacity:1; filter:saturate(1) brightness(1); }
+    #finder-projects .pc-folder.is-video-ready .pc-folder-poster { opacity:0; }
+    #finder-projects .pc-folder:not(.is-video-ready) .pc-folder-img { opacity:0 !important; }
     #finder-projects .pc-folder-body { min-height:36px; display:flex; align-items:center; background:#F8F3EF !important; border-top:1px solid rgba(38,1,11,.055); padding:9px 12px 10px !important; }
     #finder-projects .pc-folder-body > div:not([style*="position:absolute"]) { margin:0 !important; font-size:11px !important; line-height:1.2 !important; }
     .pc-menu-logo { width:24px; height:24px; display:block; object-fit:contain; object-position:center; image-rendering:auto; transform:scale(1.16); }
@@ -151,17 +163,19 @@
     .pc-case-media-viewer.is-grimes .pc-case-media-frame:hover { transform:none; box-shadow:none; }
     .pc-media-slot.fit-contain img { object-fit:contain; }
     .pc-media-slot.fit-contain video { width:100%; height:100%; object-fit:contain; object-position:center; display:block; }
-    .pc-quicklook { position:fixed; inset:0; background:rgba(20,16,20,.32); display:flex; align-items:center; justify-content:center; z-index:9999; opacity:0; visibility:hidden; pointer-events:none; transition:opacity 180ms cubic-bezier(.2,.7,.2,1), visibility 0s linear 180ms; }
+    .pc-quicklook { position:fixed; inset:0; background:rgba(20,16,20,.52); display:flex; align-items:center; justify-content:center; z-index:9999; opacity:0; visibility:hidden; pointer-events:none; transition:opacity 180ms cubic-bezier(.2,.7,.2,1), visibility 0s linear 180ms; }
     .pc-quicklook.is-visible { opacity:1; visibility:visible; pointer-events:auto; transition:opacity 180ms cubic-bezier(.2,.7,.2,1), visibility 0s linear 0s; }
     #pc-viewer-backdrop { position:fixed; inset:0; background:rgba(24,18,24,.14); backdrop-filter:blur(2px); -webkit-backdrop-filter:blur(2px); opacity:0; pointer-events:none; transition:opacity 180ms cubic-bezier(.2,.7,.2,1); z-index:1; }
     #pc-viewer-backdrop.is-visible { opacity:1; }
-    .pc-quicklook-panel { position:relative; width:auto; height:auto; max-width:88vw; max-height:82vh; background:#f5f2f5; border-radius:14px; box-shadow:0 18px 40px rgba(0,0,0,.18); display:flex; align-items:center; justify-content:center; padding:12px; box-sizing:border-box; transform:translateY(10px) scale(.965); opacity:.86; transition:transform 220ms cubic-bezier(.18,.9,.22,1), opacity 160ms cubic-bezier(.2,.7,.2,1); }
+    .pc-quicklook-panel { position:relative; width:auto; height:auto; max-width:88vw; max-height:82vh; background:#f5f2f5; border-radius:14px; box-shadow:0 32px 72px rgba(0,0,0,.32); display:flex; align-items:center; justify-content:center; padding:12px; box-sizing:border-box; transform:translateY(18px) scale(.94); opacity:0; transition:transform 320ms cubic-bezier(.22,1,.36,1), opacity 240ms cubic-bezier(.25,1,.5,1); }
     .pc-quicklook.is-visible .pc-quicklook-panel { transform:translateY(0) scale(1); opacity:1; }
     .pc-quicklook-panel img,
     .pc-quicklook-panel video { width:auto; height:auto; max-width:82vw; max-height:76vh; object-fit:contain; display:block; border-radius:8px; }
     .pc-quicklook-stage { width:auto; height:auto; display:flex; align-items:center; justify-content:center; }
     .pc-quicklook-close,
     .pc-quicklook-nav { position:absolute; border:0; background:rgba(255,255,255,.72); color:rgba(38,1,11,.68); box-shadow:0 2px 8px rgba(38,1,11,.12); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .15s ease, transform .15s ease; }
+    .pc-quicklook-close, .pc-quicklook-nav { opacity:0; transition:opacity 180ms cubic-bezier(.2,.7,.2,1) 160ms, background .15s ease, transform .15s ease !important; }
+    .pc-quicklook.is-visible .pc-quicklook-close, .pc-quicklook.is-visible .pc-quicklook-nav { opacity:1; }
     .pc-quicklook-close:hover,
     .pc-quicklook-nav:hover { background:rgba(255,255,255,.92); transform:translateY(-1px); }
     .pc-quicklook-close { top:12px; right:12px; width:28px; height:28px; border-radius:50%; font-size:18px; line-height:1; }
@@ -212,7 +226,7 @@
     .pc-boot-icon img { width:48px; height:48px; object-fit:contain; display:block; }
     .pc-boot-text { font-size:13px; font-weight:600; letter-spacing:0; color:rgba(38,1,11,.76); }
     .pc-boot-bar { width:132px; height:5px; border-radius:999px; background:rgba(255,255,255,.64); border:1px solid rgba(38,1,11,.06); overflow:hidden; }
-    .pc-boot-bar::before { content:""; display:block; height:100%; width:100%; border-radius:inherit; background:linear-gradient(90deg,#F2C4DA,var(--pc-green),#DDEEF4); transform-origin:left center; animation:pc-boot-load 860ms cubic-bezier(.2,.7,.2,1) both; }
+    .pc-boot-bar::before { content:""; display:block; height:100%; width:100%; border-radius:inherit; background:linear-gradient(90deg,#F2C4DA,var(--pc-green),#DDEEF4); transform-origin:left center; animation:pc-boot-load 440ms cubic-bezier(.2,.7,.2,1) both; }
     @keyframes pc-boot-arrive { 0% { opacity:0; transform:translateY(12px) scale(.98); } 100% { opacity:1; transform:translateY(0) scale(1); } }
     @keyframes pc-boot-load { 0% { transform:scaleX(.08); } 100% { transform:scaleX(1); } }
     /* ── Profile avatar hover ── */
@@ -222,14 +236,183 @@
     .pc-about-contact { border:1px solid rgba(95,30,62,.12) !important; background:#F8F3EF !important; border-radius:999px !important; padding:5px 10px !important; margin:12px auto 0 !important; font-size:10.5px !important; line-height:1 !important; color:#5F1E3E !important; display:flex !important; width:max-content !important; align-items:center !important; justify-content:center !important; box-shadow:0 1px 3px rgba(38,1,11,.04) !important; }
     .pc-about-contact:hover { background:#F3ECEF !important; }
     /* ── Asfalto polaroid ── */
-    #pc-widget-asfalto { transform: none; transition: transform 160ms cubic-bezier(.2,.7,.2,1), box-shadow 160ms cubic-bezier(.2,.7,.2,1); }
-    #pc-widget-asfalto:hover { transform: translateY(-3px) !important; box-shadow: 0 3px 8px rgba(38,1,11,.08) !important; }
+    #pc-widget-asfalto { transform: none; transition: transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s ease; }
+    #pc-widget-asfalto:hover { transform: translateY(-1px) !important; box-shadow:0 1px 3px rgba(38,1,11,.05),0 8px 18px rgba(38,1,11,.075) !important; }
     #pc-widget-asfalto:active { transform: translateY(0) !important; transition-duration: 60ms !important; }
+    .pc-asfalto-photo { width:66px; height:66px; border-radius:6px; overflow:hidden; background:#2A2530; margin:0 auto 5px; position:relative; }
+    .pc-asfalto-photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
+    .pc-asfalto-name { font-size:10px; font-weight:700; line-height:1.05; color:#26010B; letter-spacing:-.01em; text-align:center; }
+    .pc-asfalto-shift { font-size:8px; line-height:1.2; color:rgba(38,1,11,.48); text-align:center; margin-top:2px; }
+    #pc-asfalto-bubble { position:absolute; right:116px; top:276px; z-index:12; width:198px; padding:12px 34px 13px 16px; border-radius:14px; background:rgba(254,251,254,.94); border:1px solid rgba(38,1,11,.09); box-shadow:0 1px 3px rgba(38,1,11,.05),0 8px 18px rgba(38,1,11,.075); box-sizing:border-box; opacity:1; transform:translateY(0) scale(1); pointer-events:auto; transition:opacity 240ms cubic-bezier(.2,.7,.2,1), transform 280ms cubic-bezier(.18,.9,.22,1), visibility 0s linear 0s; }
+    #pc-asfalto-bubble.is-hidden { opacity:0; visibility:hidden; transform:translateY(-8px) scale(.975); pointer-events:none; transition:opacity 180ms cubic-bezier(.4,0,1,1), transform 180ms cubic-bezier(.4,0,1,1), visibility 0s linear 180ms; }
+    #pc-asfalto-bubble::before { content:""; position:absolute; right:140px; top:-8px; width:15px; height:15px; background:rgba(254,251,254,.94); border-left:1px solid rgba(38,1,11,.09); border-top:1px solid rgba(38,1,11,.09); transform:rotate(45deg); border-radius:2px; }
+    .pc-asfalto-bubble-kicker { font-size:8.5px; font-weight:700; line-height:1.2; color:rgba(38,1,11,.34); margin-bottom:6px; }
+    .pc-asfalto-bubble-title { font-size:12px; font-weight:800; line-height:1.05; letter-spacing:-.01em; color:#26010B; margin-bottom:7px; }
+    .pc-asfalto-bubble-text { font-size:9.5px; line-height:1.45; color:rgba(38,1,11,.60); margin:0; text-wrap:pretty; }
+    .pc-asfalto-bubble-close { position:absolute; top:50%; right:10px; transform:translateY(-50%); border:0; background:rgba(38,1,11,.06); color:rgba(38,1,11,.38); width:18px; height:18px; border-radius:50%; line-height:1; padding:0; cursor:pointer; font-family:inherit; font-size:13px; }
+    .pc-asfalto-bubble-close:hover { background:rgba(38,1,11,.10); color:rgba(38,1,11,.58); }
     .pc-tbar span { letter-spacing:.025em; }
     .pc-dock-btn > span { letter-spacing:.035em !important; }
     .pc-mb-item { letter-spacing:.012em !important; }
     .pc-boot-text { letter-spacing:-.01em !important; font-weight:500 !important; }
     [id^="pc-win-"] { box-shadow:0 1px 2px rgba(38,1,11,.05),0 8px 22px rgba(38,1,11,.085),0 22px 42px rgba(38,1,11,.08) !important; }
+    /* ── Mini calendar widget ── */
+    #pc-widget-cal { transition: transform 160ms cubic-bezier(.2,.7,.2,1), box-shadow 160ms cubic-bezier(.2,.7,.2,1); }
+    #pc-widget-cal:hover { transform: translateY(-2px); box-shadow: 0 3px 10px rgba(38,1,11,.08) !important; }
+    #pc-widget-cal:active { transform: translateY(0) !important; transition-duration: 60ms !important; }
+    /* ── Theme switcher ── */
+    .pc-theme-card { transition:background 120ms,border-color 120ms; cursor:pointer; }
+    .pc-theme-card:not(.is-active):hover { background:rgba(38,1,11,.03) !important; }
+    .pc-theme-card.is-active { border-color:rgba(38,1,11,.28) !important; background:rgba(38,1,11,.04) !important; }
+    .pc-theme-check { transition:background 140ms,border-color 140ms; }
+    .pc-theme-card.is-active .pc-theme-check { background:#26010B !important; border-color:#26010B !important; }
+    body[data-theme="y2k"]>div{font-family:'Nunito','Trebuchet MS',Verdana,sans-serif!important}
+    body[data-theme="y2k"] #pc-wallpaper{background:radial-gradient(circle at var(--wp-mx,50%) var(--wp-my,50%),rgba(255,255,255,.64) 0%,transparent 18%),radial-gradient(ellipse at 15% 84%,rgba(255,140,220,.86) 0%,transparent 36%),radial-gradient(ellipse at 87% 16%,rgba(188,136,255,.8) 0%,transparent 34%),radial-gradient(ellipse at 50% 48%,rgba(255,190,244,.6) 0%,transparent 32%),radial-gradient(ellipse at 28% 22%,rgba(172,214,255,.56) 0%,transparent 30%),linear-gradient(142deg,#FFF0FC 0%,#EDD8FF 42%,#D8EEFF 100%)!important}
+    body[data-theme="y2k"] #pc-dotgrid{background-image:radial-gradient(circle,rgba(216,124,255,.2) 1.5px,transparent 1.5px),radial-gradient(circle,rgba(255,144,220,.14) 1px,transparent 1px)!important;background-size:44px 44px,26px 26px!important;background-position:0 0,13px 22px!important}
+    body[data-theme="y2k"] #pc-menubar{background:rgba(255,190,238,.9)!important;border-bottom:1px solid rgba(196,56,196,.17)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.38)!important}
+    body[data-theme="y2k"] #pc-menubar .pc-mb-item{color:rgba(90,0,112,.66)!important;font-weight:600!important}
+    body[data-theme="y2k"] #pc-menubar .pc-mb-item:hover{background:rgba(200,50,200,.11)!important;border-radius:5px!important}
+    body[data-theme="y2k"] #pc-mb-title{color:rgba(90,0,112,.52)!important}
+    body[data-theme="y2k"] #pc-mb-themes{color:rgba(90,0,112,.8)!important;background:rgba(200,80,240,.12)!important;border-color:rgba(180,60,220,.22)!important}
+    body[data-theme="y2k"] .pc-tbar{background:linear-gradient(180deg,rgba(255,255,255,.34) 0%,transparent 50%,rgba(0,0,0,.04) 100%),linear-gradient(90deg,#EE9AD2 0%,#CC9EEE 100%)!important;border-bottom:1px solid rgba(156,38,184,.18)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.46)!important}
+    body[data-theme="y2k"] .pc-tbar span{color:rgba(88,0,110,.48)!important;font-weight:600!important}
+    body[data-theme="y2k"] [id^="pc-win-"]{border:1.5px solid rgba(206,104,238,.26)!important;box-shadow:0 1px 2px rgba(120,0,160,.08),0 6px 20px rgba(120,0,160,.11),0 24px 52px rgba(120,0,160,.1)!important}
+    body[data-theme="y2k"] .pc-scroll{background:#FDF5FF!important}
+    body[data-theme="y2k"] .pc-sbar{background:rgba(252,222,255,.96)!important;border-right:1px solid rgba(184,56,208,.1)!important}
+    body[data-theme="y2k"] #pc-win-about>div:last-child,body[data-theme="y2k"] #pc-win-mail>div:last-child,body[data-theme="y2k"] #pc-win-detail>div:last-child,body[data-theme="y2k"] #pc-win-pixie>div:last-child,body[data-theme="y2k"] #pc-win-loose>div:last-child{background:#FDF5FF!important}
+    body[data-theme="y2k"] #pc-win-search{background:#FDF5FF!important}
+    body[data-theme="y2k"] #pc-dock{background:rgba(255,190,240,.88)!important;border:1px solid rgba(216,104,244,.4)!important;box-shadow:0 4px 18px rgba(156,0,200,.1),inset 0 1px 0 rgba(255,255,255,.44)!important}
+    body[data-theme="y2k"] #pc-dock .pc-dock-icon{background:linear-gradient(180deg,rgba(255,238,255,.97) 0%,rgba(246,218,255,.9) 100%)!important;border:1px solid rgba(208,104,240,.2)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.54),0 1px 4px rgba(160,0,200,.1)!important}
+    body[data-theme="y2k"] #pc-dock .pc-dock-btn>span{color:rgba(90,0,112,.54)!important;font-weight:600!important}
+    body[data-theme="y2k"] #pc-dock .pc-dock-dot.on{background:#C054DC!important}
+    body[data-theme="y2k"] .pc-profile-widget{background:rgba(255,190,240,.88)!important;border-color:rgba(196,72,220,.14)!important;box-shadow:0 1px 3px rgba(120,0,160,.06),0 4px 14px rgba(120,0,160,.07)!important}
+    body[data-theme="y2k"] #pc-profile-avatar{background:linear-gradient(135deg,#FAA8E8 0%,#E894F6 100%)!important}
+    body[data-theme="y2k"] #pc-widget-cal{background:#FEF0FF!important;border-color:rgba(188,64,218,.2)!important}
+    body[data-theme="y2k"] #pc-widget-cal>div:first-child{background:linear-gradient(90deg,#EE9AD2,#CC9EEE)!important}
+    body[data-theme="y2k"] #pc-cal-month{color:rgba(88,0,110,.7)!important}
+    body[data-theme="y2k"] .pc-btn{background:linear-gradient(180deg,rgba(255,255,255,.4) 0%,rgba(255,255,255,.06) 50%,rgba(0,0,0,.04) 100%),#E6B4F8!important;border:1px solid rgba(162,40,202,.24)!important;border-radius:12px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.54),0 1px 4px rgba(120,0,180,.17)!important;color:rgba(76,0,116,.9)!important;font-weight:700!important}
+    body[data-theme="y2k"] .pc-btn:hover{background:linear-gradient(180deg,rgba(255,255,255,.46) 0%,rgba(255,255,255,.08) 50%,rgba(0,0,0,.04) 100%),#D8A2F4!important}
+    body[data-theme="y2k"] .pc-btn-primary{background:linear-gradient(180deg,rgba(255,255,255,.28) 0%,rgba(255,255,255,.02) 50%,rgba(0,0,0,.1) 100%),#C050DA!important;color:#fff!important;border-color:rgba(142,20,178,.28)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.36),0 2px 8px rgba(140,0,200,.3)!important}
+    body[data-theme="y2k"] .pc-btn-primary:hover{background:linear-gradient(180deg,rgba(255,255,255,.26) 0%,rgba(255,255,255,.02) 50%,rgba(0,0,0,.12) 100%),#A83CC6!important}
+    body[data-theme="y2k"] .pc-contact-card{background:rgba(246,216,255,.92)!important;border-color:rgba(162,40,202,.13)!important}
+    body[data-theme="y2k"] .pc-contact-card:hover{background:rgba(232,192,254,.94)!important}
+    body[data-theme="y2k"] #pc-boot{background:radial-gradient(circle at 52% 42%,rgba(255,255,255,.72),rgba(255,255,255,0) 24%),linear-gradient(135deg,#FFF0FC 0%,#EDD8FF 45%,#D8EEFF 100%)!important}
+    body[data-theme="y2k"] .pc-boot-bar::before{background:linear-gradient(90deg,#EE9AD2,#A87AF5,#C8EEFF)!important}
+    body[data-theme="y2k"]{--pc-green:#C050DA}
+    body[data-theme="aero"]>div{font-family:'Segoe UI','Nunito',Calibri,system-ui,sans-serif!important}
+    body[data-theme="aero"] #pc-wallpaper{background:radial-gradient(ellipse at 50% -12%,rgba(255,255,255,.78) 0%,transparent 46%),radial-gradient(circle at var(--wp-mx,50%) var(--wp-my,50%),rgba(255,255,255,.62) 0%,transparent 18%),radial-gradient(ellipse at 8% 72%,rgba(128,212,142,.66) 0%,transparent 38%),radial-gradient(ellipse at 94% 74%,rgba(96,194,238,.58) 0%,transparent 36%),linear-gradient(172deg,#A4C8EE 0%,#C4E2C2 28%,#B4D4EE 56%,#BEECD6 82%,#ACCCE8 100%)!important}
+    body[data-theme="aero"] #pc-dotgrid{background-image:radial-gradient(circle,transparent 3.5px,rgba(96,176,255,.1) 3.5px,rgba(96,176,255,.1) 4.5px,transparent 4.5px),radial-gradient(circle,rgba(136,208,255,.13) 1px,transparent 1px)!important;background-size:32px 32px,48px 48px!important;background-position:0 0,16px 24px!important}
+    body[data-theme="aero"] #pc-menubar{background:rgba(164,216,255,.84)!important;border-bottom:1px solid rgba(0,96,200,.13)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.48),inset 0 -1px 0 rgba(0,56,160,.09)!important}
+    body[data-theme="aero"] #pc-menubar .pc-mb-item{color:rgba(0,42,110,.67)!important;font-weight:500!important}
+    body[data-theme="aero"] #pc-menubar .pc-mb-item:hover{background:rgba(0,92,196,.09)!important;border-radius:5px!important}
+    body[data-theme="aero"] #pc-mb-title{color:rgba(0,40,110,.42)!important}
+    body[data-theme="aero"] #pc-mb-themes{color:rgba(0,42,110,.8)!important;background:rgba(0,100,200,.1)!important;border-color:rgba(0,100,200,.22)!important}
+    body[data-theme="aero"] .pc-tbar{background:linear-gradient(180deg,rgba(255,255,255,.8) 0%,rgba(210,238,255,.92) 16%,rgba(158,210,254,.9) 46%,rgba(126,192,250,.88) 52%,rgba(156,212,254,.92) 100%)!important;border-bottom:1px solid rgba(0,92,200,.14)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.74)!important}
+    body[data-theme="aero"] .pc-tbar span{color:rgba(0,40,110,.42)!important;font-weight:500!important}
+    body[data-theme="aero"] [id^="pc-win-"]{border:1px solid rgba(255,255,255,.5)!important;box-shadow:0 0 0 1px rgba(0,92,196,.2),0 8px 32px rgba(0,68,180,.18),0 2px 4px rgba(0,68,180,.11)!important}
+    body[data-theme="aero"] .pc-scroll{background:rgba(236,250,255,.98)!important}
+    body[data-theme="aero"] .pc-sbar{background:rgba(204,234,255,.96)!important;border-right:1px solid rgba(0,92,196,.09)!important}
+    body[data-theme="aero"] #pc-win-about>div:last-child,body[data-theme="aero"] #pc-win-mail>div:last-child,body[data-theme="aero"] #pc-win-detail>div:last-child,body[data-theme="aero"] #pc-win-pixie>div:last-child,body[data-theme="aero"] #pc-win-loose>div:last-child{background:rgba(236,250,255,.98)!important}
+    body[data-theme="aero"] #pc-win-search{background:rgba(236,250,255,.98)!important}
+    body[data-theme="aero"] #pc-dock{background:rgba(164,216,255,.74)!important;border:1px solid rgba(255,255,255,.54)!important;box-shadow:0 0 0 1px rgba(0,92,196,.15),0 6px 26px rgba(0,68,180,.11),inset 0 1px 0 rgba(255,255,255,.58)!important}
+    body[data-theme="aero"] #pc-dock .pc-dock-icon{background:linear-gradient(180deg,rgba(230,248,255,.97) 0%,rgba(192,232,255,.9) 100%)!important;border:1px solid rgba(92,172,255,.19)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.65),0 1px 4px rgba(0,76,180,.12)!important}
+    body[data-theme="aero"] #pc-dock .pc-dock-btn>span{color:rgba(0,40,110,.55)!important}
+    body[data-theme="aero"] #pc-dock .pc-dock-dot.on{background:#43A047!important}
+    body[data-theme="aero"] .pc-profile-widget{background:rgba(192,230,255,.86)!important;border-color:rgba(92,172,255,.23)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.44),0 4px 14px rgba(0,68,180,.07)!important}
+    body[data-theme="aero"] #pc-profile-avatar{background:linear-gradient(135deg,#A4D6F8 0%,#7CC2F0 100%)!important}
+    body[data-theme="aero"] #pc-widget-cal{background:rgba(212,242,255,.92)!important;border-color:rgba(0,144,218,.16)!important}
+    body[data-theme="aero"] #pc-widget-cal>div:first-child{background:rgba(96,180,255,.72)!important}
+    body[data-theme="aero"] #pc-cal-month{color:rgba(0,36,100,.62)!important}
+    body[data-theme="aero"] .pc-btn{background:linear-gradient(180deg,rgba(255,255,255,.58) 0%,rgba(255,255,255,.12) 46%,rgba(0,0,0,.03) 100%),rgba(192,232,255,.98)!important;border:1px solid rgba(0,116,200,.19)!important;border-radius:8px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.68),0 1px 3px rgba(0,76,180,.15)!important;color:rgba(0,42,110,.86)!important}
+    body[data-theme="aero"] .pc-btn:hover{background:linear-gradient(180deg,rgba(255,255,255,.64) 0%,rgba(255,255,255,.14) 46%,rgba(0,0,0,.03) 100%),rgba(168,220,255,.98)!important}
+    body[data-theme="aero"] .pc-btn-primary{background:linear-gradient(180deg,rgba(255,255,255,.36) 0%,rgba(255,255,255,.04) 48%,rgba(0,0,0,.1) 100%),#1565C0!important;color:#fff!important;border-color:rgba(0,68,196,.28)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.44),0 2px 8px rgba(0,68,180,.3)!important}
+    body[data-theme="aero"] .pc-btn-primary:hover{background:linear-gradient(180deg,rgba(255,255,255,.32) 0%,rgba(255,255,255,.04) 48%,rgba(0,0,0,.12) 100%),#0D47A1!important}
+    body[data-theme="aero"] .pc-contact-card{background:rgba(212,240,255,.92)!important;border-color:rgba(0,116,200,.11)!important}
+    body[data-theme="aero"] .pc-contact-card:hover{background:rgba(186,226,255,.94)!important}
+    body[data-theme="aero"] #pc-boot{background:radial-gradient(circle at 52% 42%,rgba(255,255,255,.72),rgba(255,255,255,0) 24%),linear-gradient(135deg,#C4E2FF 0%,#D4EED4 45%,#BCD8F4 100%)!important}
+    body[data-theme="aero"] .pc-boot-bar::before{background:linear-gradient(90deg,#82C4F0,#43A047,#B8E8FF)!important}
+    body[data-theme="aero"]{--pc-green:#43A047}
+    body[data-theme="chrome"] #pc-wallpaper{background:radial-gradient(circle at 50% 44%,rgba(255,255,255,.72) 0%,transparent 26%),radial-gradient(ellipse at 18% 72%,rgba(240,200,230,.7) 0%,transparent 36%),radial-gradient(ellipse at 84% 20%,rgba(200,190,230,.64) 0%,transparent 34%),linear-gradient(148deg,#E8E4F4 0%,#DCD8EC 36%,#ECD8E8 64%,#E4E0F0 100%)!important}
+    body[data-theme="chrome"] #pc-dotgrid{background-image:radial-gradient(circle,rgba(160,140,200,.15) 1px,transparent 1px)!important;background-size:28px 28px!important}
+    body[data-theme="chrome"] #pc-menubar{background:linear-gradient(180deg,rgba(255,255,255,.5) 0%,rgba(220,216,240,.94) 100%)!important;border-bottom:1px solid rgba(160,140,200,.22)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.72)!important}
+    body[data-theme="chrome"] #pc-menubar .pc-mb-item{color:rgba(60,40,100,.62)!important}
+    body[data-theme="chrome"] #pc-menubar .pc-mb-item:hover{background:rgba(160,140,200,.12)!important}
+    body[data-theme="chrome"] #pc-mb-title{color:rgba(60,40,100,.45)!important}
+    body[data-theme="chrome"] #pc-mb-themes{color:rgba(80,60,140,.8)!important;background:rgba(130,80,200,.1)!important;border-color:rgba(130,80,200,.22)!important}
+    body[data-theme="chrome"] .pc-tbar{background:linear-gradient(180deg,rgba(255,255,255,.78) 0%,rgba(220,216,244,.9) 46%,rgba(200,196,232,.92) 52%,rgba(216,212,240,.9) 100%)!important;border-bottom:1px solid rgba(160,140,200,.18)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.72)!important}
+    body[data-theme="chrome"] .pc-tbar span{color:rgba(60,40,100,.4)!important}
+    body[data-theme="chrome"] [id^="pc-win-"]{border:1px solid rgba(255,255,255,.6)!important;box-shadow:0 0 0 1px rgba(160,140,200,.28),0 10px 32px rgba(80,60,120,.16),0 2px 4px rgba(80,60,120,.08)!important}
+    body[data-theme="chrome"] .pc-scroll{background:rgba(246,244,252,.98)!important}
+    body[data-theme="chrome"] .pc-sbar{background:rgba(236,232,248,.95)!important;border-right:1px solid rgba(160,140,200,.1)!important}
+    body[data-theme="chrome"] #pc-win-about>div:last-child,body[data-theme="chrome"] #pc-win-mail>div:last-child,body[data-theme="chrome"] #pc-win-detail>div:last-child,body[data-theme="chrome"] #pc-win-pixie>div:last-child,body[data-theme="chrome"] #pc-win-loose>div:last-child{background:rgba(246,244,252,.98)!important}
+    body[data-theme="chrome"] #pc-win-search{background:rgba(246,244,252,.98)!important}
+    body[data-theme="chrome"] #pc-dock{background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(220,216,240,.86))!important;border:1px solid rgba(255,255,255,.6)!important;box-shadow:0 0 0 1px rgba(160,140,200,.22),0 4px 18px rgba(100,80,160,.1),inset 0 1px 0 rgba(255,255,255,.7)!important}
+    body[data-theme="chrome"] #pc-dock .pc-dock-icon{background:linear-gradient(135deg,rgba(255,255,255,.7),rgba(200,190,230,.8))!important;border:1px solid rgba(160,140,200,.22)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.7)!important}
+    body[data-theme="chrome"] #pc-dock .pc-dock-btn>span{color:rgba(60,40,100,.5)!important}
+    body[data-theme="chrome"] #pc-dock .pc-dock-dot.on{background:#8060B0!important}
+    body[data-theme="chrome"] .pc-profile-widget{background:linear-gradient(148deg,rgba(255,255,255,.82),rgba(226,222,244,.9))!important;border-color:rgba(200,190,230,.4)!important;box-shadow:0 0 0 1px rgba(255,255,255,.5),0 6px 18px rgba(100,80,160,.1)!important}
+    body[data-theme="chrome"] #pc-profile-avatar{background:linear-gradient(135deg,rgba(255,255,255,.8),rgba(210,200,240,.9))!important}
+    body[data-theme="chrome"] #pc-widget-cal{background:rgba(246,244,252,.96)!important;border-color:rgba(160,140,200,.2)!important}
+    body[data-theme="chrome"] #pc-widget-cal>div:first-child{background:linear-gradient(90deg,rgba(220,216,244,.9),rgba(200,196,232,.92))!important}
+    body[data-theme="chrome"] #pc-cal-month{color:rgba(60,40,100,.55)!important}
+    body[data-theme="chrome"] .pc-btn{background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(190,180,228,.88))!important;border:1px solid rgba(160,140,200,.2)!important;border-radius:7px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.65)!important;color:rgba(60,40,100,.75)!important}
+    body[data-theme="chrome"] .pc-btn:hover{background:linear-gradient(180deg,rgba(255,255,255,.55),rgba(175,165,220,.9))!important}
+    body[data-theme="chrome"] .pc-btn-primary{background:linear-gradient(180deg,rgba(255,255,255,.3),rgba(100,80,180,.85))!important;color:#fff!important;border-color:rgba(100,80,160,.3)!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.4),0 2px 8px rgba(100,80,160,.25)!important}
+    body[data-theme="chrome"] .pc-contact-card{background:rgba(228,224,244,.8)!important;border-color:rgba(160,140,200,.15)!important}
+    body[data-theme="chrome"] .pc-contact-card:hover{background:rgba(220,216,240,.9)!important}
+    body[data-theme="chrome"] #pc-boot{background:radial-gradient(circle at 52% 42%,rgba(255,255,255,.72),rgba(255,255,255,0) 24%),linear-gradient(135deg,#E8E4F4 0%,#DCD8EC 45%,#ECD8E8 100%)!important}
+    body[data-theme="chrome"] .pc-boot-bar::before{background:linear-gradient(90deg,#DCD8EC,#B090D8,#ECD8E8)!important}
+    body[data-theme="chrome"]{--pc-green:#8060B0}
+    body[data-theme="night"]{color:#F0ECF8}
+    body[data-theme="night"]>div{color:#F0ECF8}
+    body[data-theme="night"] #pc-wallpaper{background:radial-gradient(ellipse at 30% 60%,rgba(120,40,160,.5) 0%,transparent 44%),radial-gradient(ellipse at 74% 30%,rgba(40,60,180,.38) 0%,transparent 40%),radial-gradient(ellipse at 50% 100%,rgba(200,40,100,.22) 0%,transparent 36%),#0D0A14!important;transition:none!important}
+    body[data-theme="night"] #pc-dotgrid{background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px)!important;background-size:28px 28px!important}
+    body[data-theme="night"] #pc-menubar{background:rgba(18,14,28,.82)!important;border-bottom:1px solid rgba(255,255,255,.06)!important;box-shadow:none!important}
+    body[data-theme="night"] #pc-menubar .pc-mb-item{color:rgba(255,255,255,.5)!important}
+    body[data-theme="night"] #pc-menubar .pc-mb-item:hover{background:rgba(255,255,255,.07)!important}
+    body[data-theme="night"] #pc-mb-title{color:rgba(255,255,255,.35)!important}
+    body[data-theme="night"] #pc-mb-themes{color:#FF4FA0!important;background:rgba(255,60,140,.12)!important;border-color:rgba(255,60,140,.25)!important}
+    body[data-theme="night"] .pc-tbar{background:linear-gradient(180deg,rgba(44,32,64,.9),rgba(28,20,48,.95))!important;border-bottom:1px solid rgba(255,255,255,.07)!important;box-shadow:none!important}
+    body[data-theme="night"] .pc-tbar span{color:rgba(255,255,255,.35)!important}
+    body[data-theme="night"] [id^="pc-win-"]{border:1px solid rgba(255,255,255,.07)!important;box-shadow:0 0 0 1px rgba(255,80,160,.1),0 12px 36px rgba(0,0,0,.6),0 2px 4px rgba(0,0,0,.4)!important;color:#F0ECF8!important}
+    body[data-theme="night"] .pc-scroll{background:rgba(18,14,28,.97)!important}
+    body[data-theme="night"] .pc-sbar{background:rgba(24,18,40,.96)!important;border-right:1px solid rgba(255,255,255,.05)!important}
+    body[data-theme="night"] .pc-sb-item{color:rgba(255,255,255,.55)!important}
+    body[data-theme="night"] .pc-sb-item:hover{background:rgba(255,255,255,.06)!important}
+    body[data-theme="night"] .pc-folder{background:rgba(24,20,38,.9)!important}
+    body[data-theme="night"] #finder-projects .pc-folder{border-color:rgba(255,255,255,.07)!important;background:rgba(20,16,34,.9)!important}
+    body[data-theme="night"] #finder-projects .pc-folder-body{background:rgba(20,16,34,.9)!important;border-top-color:rgba(255,255,255,.06)!important}
+    body[data-theme="night"] #finder-projects .pc-folder-peek{background:rgba(30,22,50,.8)!important}
+    body[data-theme="night"] #finder-projects .pc-folder-body>div:not([style*="position:absolute"]){color:rgba(255,255,255,.7)!important}
+    body[data-theme="night"] #pc-win-about>div:last-child,body[data-theme="night"] #pc-win-mail>div:last-child,body[data-theme="night"] #pc-win-detail>div:last-child,body[data-theme="night"] #pc-win-pixie>div:last-child,body[data-theme="night"] #pc-win-loose>div:last-child{background:rgba(18,14,28,.97)!important;color:#F0ECF8!important}
+    body[data-theme="night"] #pc-win-search{background:rgba(18,14,28,.97)!important}
+    body[data-theme="night"] #pc-dock{background:rgba(18,14,30,.9)!important;border:1px solid rgba(255,255,255,.08)!important;box-shadow:0 0 0 1px rgba(255,80,160,.08),0 4px 24px rgba(0,0,0,.6),inset 0 1px 0 rgba(255,255,255,.04)!important}
+    body[data-theme="night"] #pc-dock .pc-dock-icon{background:rgba(30,22,48,.9)!important;border:1px solid rgba(255,255,255,.08)!important;box-shadow:none!important}
+    body[data-theme="night"] #pc-dock .pc-dock-btn>span{color:rgba(255,255,255,.35)!important}
+    body[data-theme="night"] #pc-dock .pc-dock-dot.on{background:#FF4FA0!important;box-shadow:0 0 6px rgba(255,79,160,.6)!important}
+    body[data-theme="night"] .pc-profile-widget{background:rgba(22,16,36,.92)!important;border-color:rgba(255,255,255,.08)!important;box-shadow:0 0 0 1px rgba(255,80,160,.1),0 6px 20px rgba(0,0,0,.5)!important}
+    body[data-theme="night"] #pc-profile-avatar{background:linear-gradient(135deg,rgba(180,60,140,.5),rgba(80,60,180,.6))!important}
+    body[data-theme="night"] #pc-widget-cal{background:rgba(22,16,36,.92)!important;border-color:rgba(255,255,255,.08)!important;box-shadow:0 0 0 1px rgba(255,80,160,.1)!important}
+    body[data-theme="night"] #pc-widget-cal>div:first-child{background:linear-gradient(90deg,#FF4FA0,#6B4DFF)!important}
+    body[data-theme="night"] #pc-cal-month{color:rgba(255,255,255,.92)!important}
+    body[data-theme="night"] #pc-cal-day{color:#F0ECF8!important}
+    body[data-theme="night"] #pc-cal-weekday{color:rgba(255,255,255,.4)!important}
+    body[data-theme="night"] .pc-btn{background:rgba(30,22,50,.8)!important;border:1px solid rgba(255,255,255,.1)!important;color:rgba(255,255,255,.7)!important}
+    body[data-theme="night"] .pc-btn:hover{background:rgba(40,30,64,.9)!important}
+    body[data-theme="night"] .pc-btn-primary{background:linear-gradient(90deg,rgba(255,60,140,.8),rgba(100,60,220,.8))!important;border:1px solid rgba(255,80,160,.22)!important;color:#fff!important;box-shadow:0 0 8px rgba(255,60,140,.25)!important}
+    body[data-theme="night"] .pc-btn-primary:hover{background:linear-gradient(90deg,rgba(255,80,160,.9),rgba(120,80,240,.9))!important}
+    body[data-theme="night"] .pc-contact-card{background:rgba(30,22,48,.9)!important;border-color:rgba(255,255,255,.08)!important}
+    body[data-theme="night"] .pc-contact-card:hover{background:rgba(40,30,60,.95)!important}
+    body[data-theme="night"] .pc-contact-card-title{color:rgba(255,255,255,.8)!important}
+    body[data-theme="night"] .pc-contact-card-sub{color:rgba(255,255,255,.38)!important}
+    body[data-theme="night"] #pc-win-about p,body[data-theme="night"] #pc-win-about div,body[data-theme="night"] #pc-win-mail div{color:rgba(240,236,248,.75)!important}
+    body[data-theme="night"] #pc-win-about h3,body[data-theme="night"] #pc-win-detail h2{color:#F0ECF8!important}
+    body[data-theme="night"] .pc-spotify-label{color:rgba(255,255,255,.35)!important}
+    body[data-theme="night"] #pc-search-input{color:#F0ECF8!important}
+    body[data-theme="night"] #pc-search-input::placeholder{color:rgba(255,255,255,.28)!important}
+    body[data-theme="night"] #pc-boot{background:radial-gradient(ellipse at 50% 40%,rgba(120,40,160,.4) 0%,transparent 50%),#0D0A14!important}
+    body[data-theme="night"] .pc-boot-bar::before{background:linear-gradient(90deg,#FF4FA0,#6B4DFF,#FF4FA0)!important}
+    body[data-theme="night"]{--pc-green:#FF4FA0}
     /* ── Reduced motion ── */
     @media (prefers-reduced-motion: reduce) {
       .pc-folder, .pc-folder-peek, .pc-folder-img, .pc-folder-body,
@@ -241,11 +424,14 @@
       .pc-profile-widget:hover #pc-profile-avatar { transform: none !important; }
       .pc-widget-click { transition-duration: 0.01ms !important; }
       #pc-widget-asfalto, #pc-widget-asfalto:hover, #pc-widget-asfalto:active { transform: none !important; }
+      #pc-asfalto-bubble { transition-duration: 0.01ms !important; }
+      #pc-widget-cal { transition-duration: 0.01ms !important; }
     }
   
     @media (max-width: 820px) {
       .pc-profile-widget { right: 8px !important; top: 38px !important; }
       .pc-deskicon { display: none !important; }
+      #pc-widget-cal { display: none !important; }
       #pc-win-projects, #pc-win-case-viewer {
         width: calc(100vw - 24px) !important;
         height: min(76vh, 560px) !important;
@@ -254,9 +440,21 @@
       #pc-win-detail {
         width: calc(100vw - 24px) !important;
       }
-      #pc-win-about, #pc-win-mail, #pc-win-play, #pc-win-pixie, #pc-win-lost-file,
-      #pc-win-asfalto, #pc-win-loose, #pc-win-search {
+      #pc-win-about, #pc-win-mail, #pc-win-pixie, #pc-win-lost-file,
+      #pc-win-loose, #pc-win-search {
         width: calc(100vw - 32px) !important;
+      }
+      #pc-widget-asfalto {
+        left: 16px !important;
+        right: auto !important;
+        top: 158px !important;
+      }
+      #pc-asfalto-bubble {
+        left: 112px !important;
+        top: 164px !important;
+        right: auto !important;
+        width: calc(100vw - 128px) !important;
+        max-width: 198px !important;
       }
       #pc-win-search {
         height: min(70vh, 360px) !important;
@@ -282,6 +480,19 @@
       #finder-projects {
         grid-template-columns: 1fr !important;
       }
+      #pc-asfalto-bubble {
+        left: 16px !important;
+        top: 344px !important;
+        width: calc(100vw - 32px) !important;
+        padding:18px 48px 19px 22px !important;
+      }
+      #pc-asfalto-bubble::before {
+        left:48px !important;
+        top:-13px !important;
+        transform:rotate(135deg) !important;
+      }
+      .pc-asfalto-bubble-title { font-size:12px !important; }
+      .pc-asfalto-bubble-text { font-size:10px !important; }
       #pc-win-case-viewer [style*="width:136px"] {
         display: none !important;
       }
@@ -302,10 +513,10 @@
   </style>
 </head>
 <body>
-<div style="position:fixed;inset:0;overflow:hidden;font-family:'Inter Tight',system-ui,-apple-system,sans-serif;color:#26010B;-webkit-font-smoothing:antialiased;">
+<div style="position:fixed;inset:0;overflow:hidden;font-family:'Nunito','Inter Tight',system-ui,-apple-system,sans-serif;color:#26010B;-webkit-font-smoothing:antialiased;">
   <div id="pc-boot" aria-label="pietra's pc loading">
     <div class="pc-boot-inner">
-      <div class="pc-boot-icon"><img src="uploads/pc-menu-icon.png" alt=""></div>
+      <div class="pc-boot-icon"><img src="uploads/optimized/pc-menu-icon-ui.png" alt="" width="48" height="48" decoding="async" fetchpriority="high"></div>
       <div class="pc-boot-text">pietra's pc loading...</div>
       <div class="pc-boot-bar"></div>
     </div>
@@ -313,28 +524,21 @@
 
   <!-- Wallpaper -->
   <div id="pc-wallpaper" style="position:absolute;inset:0;background:radial-gradient(circle at var(--wp-mx,50%) var(--wp-my,50%),rgba(255,255,255,.44) 0%,transparent 19%),radial-gradient(ellipse at 82% 82%,rgba(221,238,244,.76) 0%,transparent 42%),radial-gradient(ellipse at 12% 86%,rgba(242,216,228,.44) 0%,transparent 34%),radial-gradient(ellipse at 18% 18%,rgba(242,196,218,.52) 0%,transparent 28%),radial-gradient(ellipse at 74% 18%,rgba(255,247,209,.48) 0%,transparent 26%),linear-gradient(152deg,#F8F3EF 0%,#FBF7F3 31%,#EEF6F8 66%,#F7F1F4 100%);z-index:0;transition:background 700ms ease;"></div>
-  <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(38,1,11,.052) 1px,transparent 1px);background-size:20px 20px;z-index:0;pointer-events:none;"></div>
+  <div id="pc-dotgrid" style="position:absolute;inset:0;background-image:radial-gradient(rgba(38,1,11,.052) 1px,transparent 1px);background-size:20px 20px;z-index:0;pointer-events:none;"></div>
   <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.026;" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><filter id="pcgrain"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#pcgrain)"/></svg>
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 52%,rgba(38,1,11,.048) 100%);z-index:0;pointer-events:none;"></div>
 
   <!-- ══ Menu bar ══ -->
-  <div style="position:absolute;top:0;left:0;right:0;height:30px;background:rgba(248,243,239,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(38,1,11,.07);z-index:100;display:flex;align-items:center;padding:0 14px;justify-content:space-between;user-select:none;">
-    <div style="display:flex;gap:16px;align-items:center;">
-      <span class="pc-menu-logo-wrap" aria-label="p/c"><img class="pc-menu-logo" src="uploads/pc-menu-icon.png" alt="p/c"></span>
-      <span class="pc-mb-item" data-open="search" style="font-size:11px;color:rgba(38,1,11,.5);cursor:pointer;">search</span>
-      <span class="pc-mb-item" data-open="projects" style="font-size:11px;color:rgba(38,1,11,.5);cursor:pointer;">projects</span>
-      <span class="pc-mb-item" data-open="about" style="font-size:11px;color:rgba(38,1,11,.5);cursor:pointer;">about</span>
-      <span class="pc-mb-item" data-open="mail" style="font-size:11px;color:rgba(38,1,11,.5);cursor:pointer;">mail</span>
-      <span class="pc-mb-item" data-mb-action="play-toast" style="font-size:11px;color:rgba(38,1,11,.5);cursor:pointer;">play</span>
-      <span class="pc-mb-item" data-mb-action="play-toast" style="font-size:11px;color:rgba(38,1,11,.5);cursor:pointer;">themes</span>
+  <div id="pc-menubar" style="position:absolute;top:0;left:0;right:0;height:30px;background:rgba(248,243,239,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(38,1,11,.07);z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 14px;user-select:none;">
+    <div style="display:flex;gap:12px;align-items:center;">
+      <span class="pc-menu-logo-wrap" aria-label="p/c"><img class="pc-menu-logo" src="uploads/optimized/pc-menu-icon-ui.png" alt="p/c" width="24" height="24" decoding="async" fetchpriority="high"></span>
+      <span class="pc-mb-item" data-dropdown="projects" style="font-size:11px;color:rgba(38,1,11,.5);cursor:pointer;display:flex;align-items:center;gap:3px;">projects <span style="font-size:8px;opacity:.5;">▾</span></span>
     </div>
-    <div style="display:flex;gap:13px;align-items:center;">
-      <span style="font-size:10px;color:rgba(38,1,11,.34);">são paulo</span>
-      <span style="font-size:11px;color:rgba(38,1,11,.52);font-variant-numeric:tabular-nums;letter-spacing:.01em;"><span id="pc-clock">--:--</span></span>
-      <div style="display:flex;gap:4px;align-items:center;">
-        <div style="width:6px;height:6px;border-radius:50%;background:var(--pc-green);box-shadow:0 0 0 1px rgba(255,255,255,.72),0 1px 5px rgba(84,140,92,.24);"></div>
-        <span style="font-size:10px;color:rgba(38,1,11,.36);">online</span>
-      </div>
+    <div style="text-align:center;pointer-events:none;">
+      <span id="pc-mb-title" style="font-size:11px;font-weight:600;color:rgba(38,1,11,.42);letter-spacing:.01em;">pietra's pc</span>
+    </div>
+    <div style="display:flex;gap:10px;align-items:center;justify-content:flex-end;">
+      <span class="pc-mb-item" id="pc-mb-themes" style="font-size:11px;color:#5F1E3E;cursor:pointer;background:rgba(242,196,218,.42);border:1px solid rgba(95,30,62,.10);border-radius:999px;padding:3px 10px;box-shadow:0 1px 3px rgba(38,1,11,.035);">themes</span>
     </div>
   </div>
 
@@ -342,28 +546,17 @@
   <div id="pc-mb-dropdown" style="position:fixed;top:30px;left:0;background:rgba(248,243,239,.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(38,1,11,.09);border-radius:7px;box-shadow:0 4px 24px rgba(38,1,11,.18),0 1px 4px rgba(38,1,11,.09);padding:4px 0;min-width:164px;z-index:999;opacity:0;transform:scale(.95) translateY(-5px);transform-origin:top left;pointer-events:none;transition:opacity 160ms cubic-bezier(.2,.7,.2,1),transform 160ms cubic-bezier(.2,.7,.2,1);">
     <div class="pc-dd-item" data-dd-action="open-projects">open projects</div>
     <div class="pc-dd-sep"></div>
-    <div class="pc-dd-item" data-dd-action="open-latest">open latest case</div>
+    <div class="pc-dd-item" data-dd-action="open-latest">random project ↩</div>
   </div>
 
   <!-- ══ Mini profile widget ══ -->
-  <div class="pc-profile-widget" data-open="about" style="position:absolute;top:44px;right:16px;z-index:10;background:rgba(248,243,239,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(38,1,11,.08);border-radius:14px;padding:10px 12px 10px 10px;display:flex;align-items:center;gap:8px;box-shadow:0 1px 3px rgba(38,1,11,.05),0 4px 12px rgba(38,1,11,.05);min-width:156px;">
-    <div id="pc-profile-avatar" style="width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#F2C4DA 0%,#F2D8E4 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;font-weight:700;color:rgba(38,1,11,.6);letter-spacing:-.01em;box-shadow:0 0 0 1.5px rgba(255,255,255,.65);overflow:hidden;position:relative;">pc<img src="uploads/pietra-profile.jpg" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';"></div>
+  <div class="pc-profile-widget" data-open="about" style="position:absolute;top:44px;right:16px;z-index:10;background:rgba(248,243,239,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(38,1,11,.08);border-radius:15px;padding:11px 14px 11px 11px;display:flex;align-items:center;gap:10px;box-shadow:0 1px 3px rgba(38,1,11,.05),0 4px 12px rgba(38,1,11,.05);min-width:174px;">
+    <div id="pc-profile-avatar" style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#F2C4DA 0%,#F2D8E4 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:700;color:rgba(38,1,11,.6);letter-spacing:-.01em;box-shadow:0 0 0 1.5px rgba(255,255,255,.65);overflow:hidden;position:relative;">pc<img src="uploads/optimized/pietra-profile-ui.jpg" loading="eager" decoding="async" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';"></div>
     <div>
-      <div style="font-size:11px;font-weight:600;color:#26010B;letter-spacing:-.01em;line-height:1.2;white-space:nowrap;">pietra costantin</div>
-      <div style="font-size:9px;color:rgba(38,1,11,.44);margin-top:1px;white-space:nowrap;">meet the designer</div>
+      <div style="font-size:12px;font-weight:650;color:#26010B;letter-spacing:-.01em;line-height:1.2;white-space:nowrap;">pietra costantin</div>
+      <div style="font-size:10px;color:rgba(38,1,11,.44);margin-top:2px;white-space:nowrap;">meet the designer</div>
     </div>
   </div>
-
-  <!-- ══ Desktop icons (direita, abaixo do perfil) ══ -->
-  <div class="pc-deskicon" data-open="play" style="position:absolute;right:16px;top:368px;">
-    <div style="width:60px;height:60px;border-radius:14px;border:.5px solid rgba(38,1,11,.08);display:flex;align-items:center;justify-content:center;margin-bottom:5px;box-shadow:0 1px 3px rgba(38,1,11,.05),0 4px 12px rgba(38,1,11,.05);overflow:hidden;">
-      <img src="uploads/coming-soon-app.png" alt="" loading="lazy" decoding="async" style="display:block;width:100%;height:100%;object-fit:contain;object-position:center;">
-    </div>
-    <span style="font-size:10px;color:rgba(38,1,11,.65);font-weight:500;text-align:center;text-shadow:0 1px 3px rgba(255,255,255,.8);">play</span>
-  </div>
-
-
-
   <!-- ══ WINDOW: projects (Finder) ══ -->
   <div id="pc-win-projects" style="position:absolute;width:720px;height:552px;border-radius:10px;box-shadow:0 1px 3px rgba(38,1,11,.06),0 12px 32px rgba(38,1,11,.10);overflow:hidden;">
     <!-- Titlebar -->
@@ -378,7 +571,7 @@
     <!-- Sidebar + content -->
     <div style="display:flex;height:calc(100% - 30px);">
       <!-- Sidebar -->
-      <div class="pc-sbar" style="width:140px;background:rgba(248,243,239,.95);border-right:1px solid rgba(38,1,11,.07);padding:8px 0;overflow-y:auto;flex-shrink:0;">
+      <div class="pc-sbar" style="width:140px;background:#F8F3EF;border-right:1px solid rgba(38,1,11,.07);padding:8px 0;overflow-y:auto;flex-shrink:0;">
         <div style="font-size:9px;color:rgba(38,1,11,.28);padding:6px 10px 4px;font-weight:500;">favorites</div>
         <div class="pc-sb-item" data-tab="projects" style="display:flex;align-items:center;gap:7px;padding:5px 10px;border-radius:5px;font-size:11px;color:rgba(38,1,11,.72);background:rgba(38,1,11,.08);font-weight:500;margin:0 6px 1px;"><span>⊟</span> projects</div>
       </div>
@@ -389,7 +582,7 @@
         <div id="finder-projects" style="display:grid;grid-template-columns:repeat(3,1fr);gap:11px;padding:14px;">
 
           <div class="pc-folder" data-project="pixie">
-            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><video class="pc-folder-img" muted loop playsinline preload="metadata"><source src="uploads/video-capa-pixie.mp4" type="video/mp4"></video></div>
+            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-poster" src="uploads/optimized/thumb-pixie.jpg" alt="" loading="lazy" decoding="async"><video class="pc-folder-img" muted loop playsinline preload="none" data-lazy-video="hover" data-src="uploads/video-capa-pixie.mp4"></video></div>
             <div class="pc-folder-body" style="background:#F2C4DA;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
               <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#F2C4DA;border-radius:4px 4px 0 0;"></div>
               <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">pixie club</div>
@@ -397,7 +590,7 @@
           </div>
 
           <div class="pc-folder" data-project="mari">
-            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><video class="pc-folder-img" muted loop playsinline preload="metadata"><source src="uploads/video-capa-mari.mp4" type="video/mp4"></video></div>
+            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-poster" src="uploads/optimized/thumb-mari.jpg" alt="" loading="lazy" decoding="async"><video class="pc-folder-img" muted loop playsinline preload="none" data-lazy-video="hover" data-src="uploads/video-capa-mari.mp4"></video></div>
             <div class="pc-folder-body" style="background:#FFF7D1;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
               <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#FFF7D1;border-radius:4px 4px 0 0;"></div>
               <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">mari froes</div>
@@ -405,7 +598,7 @@
           </div>
 
           <div class="pc-folder" data-project="dorian">
-            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><video class="pc-folder-img" muted loop playsinline preload="metadata"><source src="uploads/video-capa-dorian.mp4" type="video/mp4"></video></div>
+            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-poster" src="uploads/optimized/thumb-dorian.jpg" alt="" loading="lazy" decoding="async"><video class="pc-folder-img" muted loop playsinline preload="none" data-lazy-video="hover" data-src="uploads/video-capa-dorian.mp4"></video></div>
             <div class="pc-folder-body" style="background:#DDEEF4;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
               <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#DDEEF4;border-radius:4px 4px 0 0;"></div>
               <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">dorian electra</div>
@@ -413,7 +606,7 @@
           </div>
 
           <div class="pc-folder" data-project="sweat">
-            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><video class="pc-folder-img" muted loop playsinline preload="metadata"><source src="uploads/video-capa-sweat.mp4" type="video/mp4"></video></div>
+            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-poster" src="uploads/optimized/thumb-sweat.jpg" alt="" loading="lazy" decoding="async"><video class="pc-folder-img" muted loop playsinline preload="none" data-lazy-video="hover" data-src="uploads/video-capa-sweat.mp4"></video></div>
             <div class="pc-folder-body" style="background:#F2D8E4;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
               <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#F2D8E4;border-radius:4px 4px 0 0;"></div>
               <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">sweat</div>
@@ -421,7 +614,7 @@
           </div>
 
           <div class="pc-folder" data-project="grimes">
-            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><video class="pc-folder-img" muted loop playsinline preload="metadata"><source src="uploads/video-capa-grimes.mp4" type="video/mp4"></video></div>
+            <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-poster" src="uploads/optimized/thumb-grimes.jpg" alt="" loading="lazy" decoding="async"><video class="pc-folder-img" muted loop playsinline preload="none" data-lazy-video="hover" data-src="uploads/video-capa-grimes.mp4"></video></div>
             <div class="pc-folder-body" style="background:#DDEEF4;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
               <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#DDEEF4;border-radius:4px 4px 0 0;"></div>
               <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">grimes</div>
@@ -444,22 +637,24 @@
       <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;">about me</span>
     </div>
     <div style="background:#FEFBFE;padding:16px 16px 20px;">
-      <div style="width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,#F2C4DA 0%,#F2D8E4 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:700;color:rgba(38,1,11,.6);letter-spacing:-.01em;margin-bottom:12px;box-shadow:0 0 0 2px rgba(255,255,255,.8);overflow:hidden;position:relative;">pc<img src="uploads/pietra-profile.jpg" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';"></div>
-      <div style="font-size:16px;font-weight:600;letter-spacing:-.02em;color:#26010B;line-height:1.1;margin-bottom:4px;">pietra costantin</div>
-      <div style="font-size:10px;font-style:italic;color:rgba(38,1,11,.46);margin-bottom:12px;">visual systems + art direction</div>
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:13px;">
+        <div style="width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#F2C4DA 0%,#F2D8E4 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:700;color:rgba(38,1,11,.6);letter-spacing:-.01em;box-shadow:0 0 0 2px rgba(255,255,255,.8);overflow:hidden;position:relative;">pc<img src="uploads/optimized/pietra-profile-ui.jpg" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';"></div>
+        <div style="min-width:0;flex:1;">
+          <div style="font-size:17px;font-weight:650;letter-spacing:-.02em;color:#26010B;line-height:1.1;margin-bottom:8px;">pietra costantin</div>
+          <button data-open="mail" style="border:1px solid rgba(95,30,62,.12);background:#F8F3EF;padding:5px 10px;margin:0;font-family:inherit;font-size:10px;font-weight:650;color:#5F1E3E;cursor:pointer;transition:opacity 140ms;border-radius:999px;box-shadow:0 1px 3px rgba(38,1,11,.04);">contact me →</button>
+        </div>
+      </div>
       <div style="height:1px;background:rgba(38,1,11,.07);margin-bottom:12px;"></div>
       <p style="font-size:11px;line-height:1.74;color:rgba(38,1,11,.68);margin:0 0 14px;text-wrap:pretty;">graphic designer working across visual identity, art direction, editorial systems and web experiences for music, fashion and culture.</p>
       <div style="height:1px;background:rgba(38,1,11,.07);margin-bottom:12px;"></div>
       <div class="pc-about-tags" style="display:flex;flex-wrap:wrap;gap:5px;">
         <span style="font-size:9px;padding:2px 9px;background:#F2C4DA;color:#26010B;border-radius:12px;">identity</span>
         <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">art direction</span>
-        <span style="font-size:9px;padding:2px 9px;background:#DDEEF4;color:#26010B;border-radius:12px;">visual systems</span>
         <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">music</span>
         <span style="font-size:9px;padding:2px 9px;background:#DDEEF4;color:#26010B;border-radius:12px;">fashion</span>
         <span style="font-size:9px;padding:2px 9px;background:#F2C4DA;color:#26010B;border-radius:12px;">web</span>
         <span style="font-size:9px;padding:2px 9px;background:#FFF7D1;color:#26010B;border-radius:12px;">archive</span>
       </div>
-      <button data-open="mail" class="pc-about-contact" style="border:none;background:none;padding:0;margin:12px 0 0;font-family:inherit;font-size:10px;font-weight:600;color:#5F1E3E;cursor:pointer;transition:opacity 140ms;">contact me →</button>
     </div>
   </div>
 
@@ -473,9 +668,9 @@
       </div>
       <span id="detail-title-bar" style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;">—</span>
     </div>
-    <div id="detail-bg" style="height:210px;background:#F2C4DA url('uploads/pixie-preview-01.jpg') center/cover no-repeat;"></div>
+    <div id="detail-bg" style="height:210px;background:#F2C4DA url('uploads/optimized/thumb-pixie.jpg') center/cover no-repeat;"></div>
     <div style="background:#FEFBFE;padding:14px 16px 18px;position:relative;">
-      <div id="detail-clr" style="position:absolute;left:0;top:0;bottom:0;width:4px;background:#F2C4DA;"></div>
+      <div id="detail-clr" style="display:none;"></div>
       <span id="detail-year" style="display:none;"></span>
       <div style="display:flex;align-items:baseline;gap:8px;margin-bottom:6px;">
         <h2 id="detail-title" style="font-size:18px;font-weight:600;letter-spacing:-.02em;color:#26010B;margin:0;line-height:1.1;">—</h2>
@@ -501,7 +696,7 @@
     </div>
     <div style="background:#FEFBFE;padding:12px 14px 16px;display:flex;flex-direction:column;gap:10px;">
       <div style="display:flex;align-items:center;gap:9px;padding:10px 12px;background:#F8F3EF;border:1px solid rgba(38,1,11,.09);border-radius:11px;">
-        <div style="width:34px;height:34px;border-radius:50%;background:#F2C4DA;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 2px rgba(255,255,255,.8);"><img src="uploads/pietra-profile.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div>
+        <div style="width:34px;height:34px;border-radius:50%;background:#F2C4DA;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 2px rgba(255,255,255,.8);"><img src="uploads/optimized/pietra-profile-ui.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div>
         <div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:600;letter-spacing:-.02em;color:#26010B;line-height:1.2;">Pietra Costantin</div><div style="font-size:10px;color:rgba(38,1,11,.44);margin-top:1px;">graphic designer · São Paulo</div></div>
         <div style="display:flex;align-items:center;gap:3px;background:rgba(150,204,158,.14);border:1px solid rgba(150,204,158,.28);border-radius:100px;padding:3px 8px;flex-shrink:0;"><span style="width:5px;height:5px;border-radius:50%;background:var(--pc-green);display:block;"></span><span style="font-size:9px;color:rgba(38,1,11,.5);font-weight:500;">available</span></div>
       </div>
@@ -535,58 +730,35 @@
     </div>
   </div>
 
-
-  <!-- ══ Widget: now ══ -->
-  <div id="pc-widget-now" style="position:absolute;right:16px;top:118px;width:180px;height:96px;background:#FFFBEA;border:1px solid rgba(38,1,11,.10);border-radius:16px;box-shadow:0 1px 3px rgba(38,1,11,.05),0 4px 12px rgba(38,1,11,.05);padding:12px 14px;box-sizing:border-box;z-index:10;">
-    <div style="font-size:9px;font-weight:600;color:rgba(38,1,11,.42);margin-bottom:8px;">now</div>
-    <div style="display:flex;flex-direction:column;gap:5px;">
-      <div style="font-size:10px;color:rgba(38,1,11,.62);display:flex;gap:5px;"><span style="color:rgba(38,1,11,.34);min-width:62px;">working on</span>portfolio</div>
-      <div style="font-size:10px;color:rgba(38,1,11,.62);display:flex;gap:5px;"><span style="color:rgba(38,1,11,.34);min-width:62px;">status</span>available</div>
-      <div style="font-size:10px;color:rgba(38,1,11,.62);display:flex;gap:5px;"><span style="color:rgba(38,1,11,.34);min-width:62px;">location</span>são paulo</div>
-    </div>
-  </div>
-
-
-
   <!-- ══ Widget: asfalto (polaroid) ══ -->
-  <div id="pc-widget-asfalto" class="pc-widget-click" style="position:absolute;left:660px;top:148px;z-index:8;width:112px;height:138px;background:#F8F3EF;border:1px solid rgba(38,1,11,.12);border-radius:8px;box-shadow:0 1px 3px rgba(38,1,11,.05),0 4px 12px rgba(38,1,11,.05);padding:7px 7px 10px;box-sizing:border-box;">
-    <div style="width:98px;height:92px;border-radius:4px;background:#2A2530;overflow:hidden;margin-bottom:6px;display:flex;align-items:center;justify-content:center;font-size:9px;color:rgba(255,255,255,.28);font-weight:500;position:relative;">
-      <img src="uploads/asfalto.jpg" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';">
-      <span>asfalto</span>
+  <div id="pc-widget-asfalto" class="pc-widget-click" style="position:absolute;right:206px;top:166px;z-index:8;width:86px;background:rgba(255,255,255,.78);border:1px solid rgba(38,1,11,.10);border-radius:12px;box-shadow:0 1px 2px rgba(38,1,11,.04),0 5px 14px rgba(38,1,11,.06);padding:8px 8px 9px;overflow:hidden;box-sizing:border-box;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);">
+    <div class="pc-asfalto-photo">
+      <img src="uploads/asfalto.jpg" loading="lazy" decoding="async" alt="" onerror="this.style.display='none';">
     </div>
-    <div style="text-align:center;padding:0 2px;">
-      <div style="font-size:10px;font-weight:600;color:#26010B;line-height:1.2;letter-spacing:-.01em;">asfalto</div>
-      <div style="font-size:8px;color:rgba(38,1,11,.45);line-height:1.3;margin-top:1px;">assistant</div>
-    </div>
+    <div class="pc-asfalto-name">asfalto</div>
+    <div class="pc-asfalto-shift">assistant</div>
   </div>
 
-  <!-- ══ Janela: asfalto assistant ══ -->
-  <div id="pc-win-asfalto" style="position:absolute;width:340px;height:240px;border-radius:10px;box-shadow:0 1px 3px rgba(38,1,11,.06),0 12px 32px rgba(38,1,11,.10);overflow:hidden;">
-    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(38,1,11,.07);display:flex;align-items:center;padding:0 12px;position:relative;flex-shrink:0;">
-      <div style="display:flex;gap:7px;">
-        <div class="tl-r" data-close="pc-win-asfalto" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:#96CC9E;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-      </div>
-      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;">asfalto assistant</span>
+  <div id="pc-asfalto-bubble" class="is-hidden">
+    <div class="pc-asfalto-bubble-kicker">asfalto says</div>
+    <div class="pc-asfalto-bubble-title">psst, i'm on duty</div>
+    <p class="pc-asfalto-bubble-text">unofficial p/c assistant for late-night layout checks, snack breaks and emergency sleep-mode enforcement.</p>
+    <button class="pc-asfalto-bubble-close" type="button" aria-label="hide asfalto note">×</button>
+  </div>
+
+  <!-- ══ Widget: calendar ══ -->
+  <div id="pc-widget-cal" style="position:absolute;right:16px;top:226px;width:80px;z-index:10;background:#FEFBFE;border:1px solid rgba(38,1,11,.09);border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(38,1,11,.05),0 4px 12px rgba(38,1,11,.06);">
+    <div style="background:#F2AABB;padding:5px 0 4px;text-align:center;">
+      <span id="pc-cal-month" style="font-size:7.5px;font-weight:600;color:rgba(255,255,255,.92);text-transform:uppercase;letter-spacing:.1em;">jun</span>
     </div>
-    <div style="background:#FEFBFE;height:210px;padding:18px 20px 20px;display:flex;flex-direction:column;justify-content:space-between;">
-      <div>
-        <div style="display:flex;align-items:center;gap:10px;margin-bottom:14px;">
-          <div style="width:44px;height:44px;border-radius:50%;background:#2A2530;overflow:hidden;flex-shrink:0;border:.5px solid rgba(38,1,11,.1);display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:600;color:rgba(255,255,255,.35);position:relative;"><img src="uploads/asfalto.jpg" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;" onerror="this.style.display='none';"><span>as</span></div>
-          <div>
-            <div style="font-size:14px;font-weight:600;color:#26010B;letter-spacing:-.02em;line-height:1.1;">asfalto</div>
-            <div style="font-size:10px;color:rgba(38,1,11,.42);font-style:italic;">desktop assistant · night shift</div>
-          </div>
-        </div>
-        <p style="font-size:12px;line-height:1.7;color:rgba(38,1,11,.62);margin:0;text-wrap:pretty;">unofficial p/c assistant. late-night support, creative supervision and emergency sleep-mode enforcement.</p>
-      </div>
-      <div><button data-close="pc-win-asfalto" class="pc-btn">close</button></div>
+    <div style="padding:6px 8px 8px;text-align:center;">
+      <div id="pc-cal-day" style="font-size:34px;font-weight:700;color:#26010B;line-height:1;letter-spacing:-.03em;">28</div>
+      <div id="pc-cal-weekday" style="font-size:7.5px;color:rgba(38,1,11,.38);letter-spacing:.04em;margin-top:2px;text-transform:uppercase;">sat</div>
     </div>
   </div>
 
   <!-- ══ WINDOW: search / finder ══ -->
-  <div id="pc-win-search" style="position:absolute;width:420px;height:360px;border-radius:10px;box-shadow:0 1px 3px rgba(38,1,11,.06),0 12px 32px rgba(38,1,11,.10);overflow:hidden;display:flex;flex-direction:column;">
+  <div id="pc-win-search" style="position:absolute;width:440px;height:370px;border-radius:10px;box-shadow:0 1px 3px rgba(38,1,11,.06),0 12px 32px rgba(38,1,11,.10);overflow:hidden;display:flex;flex-direction:column;">
     <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(38,1,11,.07);display:flex;align-items:center;padding:0 12px;position:relative;flex-shrink:0;">
       <div style="display:flex;gap:7px;">
         <div class="tl-r" data-close="pc-win-search" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
@@ -596,16 +768,12 @@
       <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;">search</span>
     </div>
     <div style="background:#FEFBFE;padding:12px 14px 0;flex-shrink:0;">
-      <!-- header -->
-      <div style="margin-bottom:10px;">
-        <div style="font-size:12px;font-weight:600;color:#26010B;letter-spacing:-.01em;">find anything</div>
-        <div style="font-size:10px;font-style:italic;color:rgba(38,1,11,.4);margin-top:2px;">search projects and studies.</div>
-      </div>
       <!-- search input -->
-      <div style="display:flex;align-items:center;gap:7px;background:#F8F3EF;border:1px solid rgba(38,1,11,.10);border-radius:10px;padding:0 10px;height:32px;margin-bottom:10px;">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:rgba(38,1,11,.32);flex-shrink:0;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input id="pc-search-input" type="text" placeholder="search portfolio..." style="border:none;background:none;outline:none;font-size:11px;color:#26010B;font-family:inherit;flex:1;min-width:0;" />
-        <button id="pc-search-clear" style="display:none;border:none;background:none;padding:0;cursor:pointer;color:rgba(38,1,11,.35);font-size:13px;line-height:1;font-family:inherit;">×</button>
+      <div style="display:flex;align-items:center;gap:9px;background:#F5F1EE;border:1px solid rgba(38,1,11,.09);border-radius:12px;padding:0 12px;height:42px;margin-bottom:10px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:rgba(38,1,11,.28);flex-shrink:0;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input id="pc-search-input" type="text" placeholder="type to search..." style="border:none;background:none;outline:none;font-size:13px;color:#26010B;font-family:inherit;flex:1;min-width:0;letter-spacing:-.01em;" />
+        <button id="pc-search-clear" style="display:none;border:none;background:none;padding:0;cursor:pointer;color:rgba(38,1,11,.32);font-size:15px;line-height:1;font-family:inherit;">×</button>
+        <span style="font-size:9px;color:rgba(38,1,11,.2);background:rgba(38,1,11,.05);border:1px solid rgba(38,1,11,.08);border-radius:5px;padding:2px 5px;letter-spacing:.04em;white-space:nowrap;">esc</span>
       </div>
       <!-- chips -->
       <div id="pc-search-chips" style="display:flex;flex-wrap:wrap;gap:5px;padding-bottom:10px;border-bottom:1px solid rgba(38,1,11,.07);">
@@ -636,7 +804,7 @@
     <!-- Preview placeholders -->
     <div class="pc-pixie-preview-area">
       <div class="pc-pixie-main-preview">
-        <img src="uploads/pixie-preview-01.jpg" alt="" loading="lazy" decoding="async">
+        <img src="uploads/optimized/cases/pixie-preview-01.jpg" alt="" loading="lazy" decoding="async">
       </div>
     </div>
     <!-- Info -->
@@ -658,8 +826,101 @@
     </div>
   </div>
 
+  <!-- ══ WINDOW: themes ══ -->
+  <div id="pc-win-themes" style="position:absolute;width:308px;border-radius:10px;overflow:hidden;opacity:0;transform:scale(.92) translateY(10px);pointer-events:none;z-index:200;">
+    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(38,1,11,.07);display:flex;align-items:center;padding:0 12px;position:relative;cursor:grab;user-select:none;">
+      <div style="display:flex;gap:7px;">
+        <div id="pc-themes-close" class="tl-r" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;cursor:pointer;"></div>
+        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
+        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:#96CC9E;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
+      </div>
+      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;letter-spacing:.03em;">themes</span>
+    </div>
+    <div style="background:#FEFBFE;padding:10px 10px 12px;display:flex;flex-direction:column;gap:6px;">
+      <div class="pc-theme-card" data-theme="default" style="border:1.5px solid rgba(38,1,11,.1);border-radius:8px;overflow:hidden;">
+        <div style="width:100%;height:56px;position:relative;background:linear-gradient(142deg,#F4EDF1 0%,#F8F3EF 28%,#ECF3F7 62%);">
+          <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(38,1,11,.06) 1px,transparent 1px);background-size:14px 14px;"></div>
+          <div style="position:absolute;top:0;left:0;right:0;height:8px;background:rgba(248,243,239,.86);border-bottom:1px solid rgba(38,1,11,.07);display:flex;align-items:center;padding:0 6px;gap:4px;">
+            <div style="width:4px;height:4px;border-radius:50%;background:#F2AABB;"></div><div style="width:4px;height:4px;border-radius:50%;background:#F0D088;"></div><div style="width:4px;height:4px;border-radius:50%;background:#96CC9E;"></div>
+          </div>
+          <div style="position:absolute;bottom:4px;left:50%;transform:translateX(-50%);height:9px;width:72px;border-radius:5px;background:rgba(248,243,239,.8);border:1px solid rgba(255,255,255,.55);display:flex;align-items:center;justify-content:center;gap:3px;padding:0 4px;">
+            <div style="width:5px;height:5px;border-radius:1px;background:rgba(38,1,11,.16);"></div><div style="width:5px;height:5px;border-radius:1px;background:rgba(38,1,11,.1);"></div><div style="width:5px;height:5px;border-radius:1px;background:rgba(38,1,11,.1);"></div><div style="width:5px;height:5px;border-radius:1px;background:rgba(38,1,11,.1);"></div>
+          </div>
+        </div>
+        <div style="padding:6px 9px;display:flex;align-items:center;justify-content:space-between;">
+          <div style="font-size:11px;font-weight:600;color:#26010B;letter-spacing:-.01em;">default / pc</div>
+          <div class="pc-theme-check" style="width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(38,1,11,.18);display:flex;align-items:center;justify-content:center;font-size:8px;color:white;font-weight:700;line-height:1;"></div>
+        </div>
+      </div>
+
+      <div class="pc-theme-card" data-theme="y2k" style="border:1.5px solid rgba(38,1,11,.1);border-radius:8px;overflow:hidden;">
+        <div style="width:100%;height:56px;position:relative;background:linear-gradient(142deg,#FFF0FC 0%,#EDD8FF 42%,#D8EEFF 100%);">
+          <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(216,124,255,.22) 1.5px,transparent 1.5px);background-size:18px 18px;"></div>
+          <div style="position:absolute;top:0;left:0;right:0;height:8px;background:rgba(255,190,238,.92);border-bottom:1px solid rgba(196,56,196,.17);display:flex;align-items:center;padding:0 6px;gap:4px;box-shadow:inset 0 1px 0 rgba(255,255,255,.36);">
+            <div style="width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.6);"></div><div style="width:4px;height:4px;border-radius:50%;background:rgba(255,255,255,.5);"></div><div style="width:4px;height:4px;border-radius:50%;background:#C050DA;"></div>
+          </div>
+          <div style="position:absolute;bottom:4px;left:50%;transform:translateX(-50%);height:9px;width:72px;border-radius:5px;background:rgba(255,190,240,.9);border:1px solid rgba(216,104,244,.38);display:flex;align-items:center;justify-content:center;gap:3px;padding:0 4px;">
+            <div style="width:5px;height:5px;border-radius:1px;background:rgba(230,180,248,.9);"></div><div style="width:5px;height:5px;border-radius:1px;background:rgba(220,160,244,.9);"></div><div style="width:5px;height:5px;border-radius:1px;background:rgba(230,180,248,.9);"></div><div style="width:5px;height:5px;border-radius:1px;background:rgba(220,160,244,.9);"></div>
+          </div>
+        </div>
+        <div style="padding:6px 9px;display:flex;align-items:center;justify-content:space-between;">
+          <div style="font-size:11px;font-weight:600;color:#26010B;letter-spacing:-.01em;">y2k web nostalgia</div>
+          <div class="pc-theme-check" style="width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(38,1,11,.18);display:flex;align-items:center;justify-content:center;font-size:8px;color:white;font-weight:700;line-height:1;"></div>
+        </div>
+      </div>
+
+      <div class="pc-theme-card" data-theme="aero" style="border:1.5px solid rgba(38,1,11,.1);border-radius:8px;overflow:hidden;">
+        <div style="width:100%;height:56px;position:relative;background:linear-gradient(172deg,#A4C8EE 0%,#C4E2C2 28%,#B4D4EE 56%,#BEECD6 82%);">
+          <div style="position:absolute;inset:0;background-image:radial-gradient(circle,transparent 3.5px,rgba(96,176,255,.1) 3.5px,rgba(96,176,255,.1) 4.5px,transparent 4.5px);background-size:24px 24px;"></div>
+          <div style="position:absolute;top:0;left:0;right:0;height:8px;background:rgba(164,216,255,.86);border-bottom:1px solid rgba(0,96,200,.13);display:flex;align-items:center;padding:0 6px;gap:4px;box-shadow:inset 0 1px 0 rgba(255,255,255,.46);">
+            <div style="width:4px;height:4px;border-radius:50%;background:#F2AABB;"></div><div style="width:4px;height:4px;border-radius:50%;background:#F0D088;"></div><div style="width:4px;height:4px;border-radius:50%;background:#43A047;"></div>
+          </div>
+          <div style="position:absolute;bottom:4px;left:50%;transform:translateX(-50%);height:9px;width:72px;border-radius:5px;background:rgba(164,216,255,.76);border:1px solid rgba(255,255,255,.52);display:flex;align-items:center;justify-content:center;gap:3px;padding:0 4px;box-shadow:inset 0 1px 0 rgba(255,255,255,.58);">
+            <div style="width:5px;height:5px;border-radius:1px;background:rgba(192,232,255,.9);"></div><div style="width:5px;height:5px;border-radius:1px;background:rgba(180,224,255,.9);"></div><div style="width:5px;height:5px;border-radius:1px;background:rgba(192,232,255,.9);"></div><div style="width:5px;height:5px;border-radius:1px;background:rgba(180,224,255,.9);"></div>
+          </div>
+        </div>
+        <div style="padding:6px 9px;display:flex;align-items:center;justify-content:space-between;">
+          <div style="font-size:11px;font-weight:600;color:#26010B;letter-spacing:-.01em;">frutiger aero</div>
+          <div class="pc-theme-check" style="width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(38,1,11,.18);display:flex;align-items:center;justify-content:center;font-size:8px;color:white;font-weight:700;line-height:1;"></div>
+        </div>
+      </div>
+
+      <div class="pc-theme-card" data-theme="chrome" style="border:1.5px solid rgba(38,1,11,.1);border-radius:8px;overflow:hidden;">
+        <div style="width:100%;height:56px;position:relative;background:linear-gradient(148deg,#E8E4F4 0%,#DCD8EC 36%,#ECD8E8 64%);">
+          <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.36) 0%,transparent 42%,rgba(255,255,255,.12) 100%);"></div>
+          <div style="position:absolute;top:0;left:0;right:0;height:8px;background:linear-gradient(180deg,rgba(255,255,255,.5),rgba(220,216,240,.94));border-bottom:1px solid rgba(160,140,200,.22);display:flex;align-items:center;padding:0 6px;gap:4px;">
+            <div style="width:4px;height:4px;border-radius:50%;background:rgba(240,160,180,.85);"></div><div style="width:4px;height:4px;border-radius:50%;background:rgba(200,196,232,.9);"></div><div style="width:4px;height:4px;border-radius:50%;background:rgba(180,220,200,.85);"></div>
+          </div>
+          <div style="position:absolute;bottom:4px;left:50%;transform:translateX(-50%);height:9px;width:72px;border-radius:5px;background:linear-gradient(180deg,rgba(255,255,255,.6),rgba(220,216,240,.86));border:1px solid rgba(160,140,200,.22);display:flex;align-items:center;justify-content:center;gap:3px;padding:0 4px;box-shadow:inset 0 1px 0 rgba(255,255,255,.7);">
+            <div style="width:5px;height:5px;border-radius:1px;background:rgba(200,190,230,.8);"></div><div style="width:5px;height:5px;border-radius:1px;background:rgba(190,180,225,.8);"></div><div style="width:5px;height:5px;border-radius:1px;background:rgba(200,190,230,.8);"></div><div style="width:5px;height:5px;border-radius:1px;background:rgba(190,180,225,.8);"></div>
+          </div>
+        </div>
+        <div style="padding:6px 9px;display:flex;align-items:center;justify-content:space-between;">
+          <div style="font-size:11px;font-weight:600;color:#26010B;letter-spacing:-.01em;">chrome doll</div>
+          <div class="pc-theme-check" style="width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(38,1,11,.18);display:flex;align-items:center;justify-content:center;font-size:8px;color:white;font-weight:700;line-height:1;"></div>
+        </div>
+      </div>
+
+      <div class="pc-theme-card" data-theme="night" style="border:1.5px solid rgba(38,1,11,.1);border-radius:8px;overflow:hidden;">
+        <div style="width:100%;height:56px;position:relative;background:radial-gradient(ellipse at 30% 60%,rgba(120,40,160,.5),transparent 60%),radial-gradient(ellipse at 74% 30%,rgba(40,60,180,.38),transparent 60%),#0D0A14;">
+          <div style="position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,.04) 1px,transparent 1px);background-size:18px 18px;"></div>
+          <div style="position:absolute;top:0;left:0;right:0;height:8px;background:rgba(18,14,28,.82);border-bottom:1px solid rgba(255,255,255,.06);display:flex;align-items:center;padding:0 6px;gap:4px;">
+            <div style="width:4px;height:4px;border-radius:50%;background:rgba(255,80,120,.5);box-shadow:0 0 3px rgba(255,80,120,.4);"></div><div style="width:4px;height:4px;border-radius:50%;background:rgba(255,160,80,.3);"></div><div style="width:4px;height:4px;border-radius:50%;background:rgba(80,200,160,.3);"></div>
+          </div>
+          <div style="position:absolute;bottom:4px;left:50%;transform:translateX(-50%);height:9px;width:72px;border-radius:5px;background:rgba(18,14,30,.9);border:1px solid rgba(255,255,255,.08);display:flex;align-items:center;justify-content:center;gap:3px;padding:0 4px;">
+            <div style="width:5px;height:5px;border-radius:1px;background:rgba(38,28,60,.8);"></div><div style="width:5px;height:5px;border-radius:1px;background:rgba(38,28,60,.8);"></div><div style="width:5px;height:5px;border-radius:1px;background:rgba(38,28,60,.8);"></div><div style="width:4px;height:4px;border-radius:50%;background:#FF4FA0;box-shadow:0 0 4px rgba(255,79,160,.6);"></div>
+          </div>
+        </div>
+        <div style="padding:6px 9px;display:flex;align-items:center;justify-content:space-between;">
+          <div style="font-size:11px;font-weight:600;color:#26010B;letter-spacing:-.01em;">night pop</div>
+          <div class="pc-theme-check" style="width:14px;height:14px;border-radius:50%;border:1.5px solid rgba(38,1,11,.18);display:flex;align-items:center;justify-content:center;font-size:8px;color:white;font-weight:700;line-height:1;"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- ══ Dock ══ -->
-  <div style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(248,243,239,.72);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.55);border-radius:20px;box-shadow:0 4px 18px rgba(38,1,11,.08);padding:9px 16px;display:flex;gap:9px;align-items:flex-end;z-index:90;white-space:nowrap;">
+  <div id="pc-dock" style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(248,243,239,.72);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.55);border-radius:20px;box-shadow:0 4px 18px rgba(38,1,11,.08);padding:9px 16px;display:flex;gap:9px;align-items:flex-end;z-index:90;white-space:nowrap;">
 
     <button class="pc-dock-btn" data-open="search">
       <div class="pc-dock-icon" style="width:50px;height:50px;border-radius:13px;background:rgba(252,248,246,.9);border:.5px solid rgba(38,1,11,.09);display:flex;align-items:center;justify-content:center;margin-bottom:4px;">
@@ -718,10 +979,6 @@
 class PietraDesktop {
   setState(next) {
     this.state = { ...this.state, ...next };
-    if (Object.prototype.hasOwnProperty.call(next, 'clock')) {
-      const clock = document.getElementById('pc-clock');
-      if (clock) clock.textContent = next.clock;
-    }
   }
 
   _projects = [
@@ -737,21 +994,19 @@ class PietraDesktop {
   _videoObserver = null;
   _observedVideos = new WeakSet();
   _visibleVideos = new WeakMap();
-  state = { clock: '' };
+  state = {};
 
   componentDidMount() {
-    this._tick();
-    this._timer = setInterval(() => this._tick(), 60000);
     this._setup();
   }
 
   componentWillUnmount() {
-    clearInterval(this._timer);
   }
 
-  _tick() {
-    const d = new Date(), p = n => String(n).padStart(2, '0');
-    this.setState({ clock: `${p(d.getHours())}:${p(d.getMinutes())}` });
+  _displayImageSrc(src) {
+    if (!src || src.startsWith('uploads/optimized/')) return src;
+    const match = src.match(/^uploads\/([^/]+)\.(?:jpg|png)$/i);
+    return match ? `uploads/optimized/cases/${match[1]}.jpg` : src;
   }
 
   _pixieMedia() {
@@ -847,8 +1102,8 @@ class PietraDesktop {
         <div class="pc-case-media-item">
           <div class="pc-case-media-frame" data-media-index="${index}">
             ${item.type === 'video'
-              ? `<video muted loop playsinline preload="metadata"><source src="${item.src}" type="video/mp4"></video>`
-              : `<img src="${item.src}" alt="" loading="lazy" decoding="async">`}
+              ? `<video muted loop playsinline preload="none" data-src="${item.src}"></video>`
+              : `<img src="${this._displayImageSrc(item.src)}" alt="" loading="lazy" decoding="async">`}
           </div>
           ${item.caption ? `<div class="pc-case-media-caption">${item.caption}</div>` : ''}
         </div>`).join('')}
@@ -858,15 +1113,61 @@ class PietraDesktop {
   _autoplayVideos(root = document) {
     const videos = root.querySelectorAll ? root.querySelectorAll('video') : [];
     videos.forEach(video => {
+      if (video.dataset.lazyVideo === 'hover') return;
       video.muted = true;
       video.loop = true;
       video.playsInline = true;
-      video.preload = 'metadata';
+      video.preload = video.dataset.src ? 'none' : 'metadata';
       video.setAttribute('muted', '');
       video.setAttribute('loop', '');
       video.setAttribute('playsinline', '');
-      video.setAttribute('preload', 'metadata');
+      video.setAttribute('preload', video.dataset.src ? 'none' : 'metadata');
       this._observeVideo(video);
+    });
+  }
+
+  _loadLazyVideo(video) {
+    if (!video || video.src || !video.dataset.src) return;
+    video.src = video.dataset.src;
+    video.preload = 'metadata';
+    video.setAttribute('preload', 'metadata');
+    video.load();
+  }
+
+  _setupLazyFolderVideos() {
+    document.querySelectorAll('video[data-lazy-video="hover"]').forEach(video => {
+      video.muted = true;
+      video.loop = true;
+      video.playsInline = true;
+      video.setAttribute('muted', '');
+      video.setAttribute('loop', '');
+      video.setAttribute('playsinline', '');
+
+      const folder = video.closest('.pc-folder') || video;
+      const reveal = () => {
+        if (!folder.matches(':hover') && !folder.contains(document.activeElement)) return;
+        folder.classList.add('is-video-ready');
+      };
+      const play = () => {
+        this._loadLazyVideo(video);
+        const pending = video.play();
+        if (pending && typeof pending.then === 'function') {
+          pending.then(reveal).catch(() => {});
+        } else {
+          reveal();
+        }
+      };
+      const pause = () => {
+        folder.classList.remove('is-video-ready');
+        video.pause();
+      };
+
+      video.addEventListener('playing', reveal);
+      video.addEventListener('canplay', reveal);
+      folder.addEventListener('pointerenter', play);
+      folder.addEventListener('focusin', play);
+      folder.addEventListener('pointerleave', pause);
+      folder.addEventListener('focusout', pause);
     });
   }
 
@@ -905,6 +1206,7 @@ class PietraDesktop {
   _updateVideoPlayback(video) {
     if (!video) return;
     if (this._isVideoInActiveArea(video)) {
+      this._loadLazyVideo(video);
       const play = video.play();
       if (play && typeof play.catch === 'function') play.catch(() => {});
     } else {
@@ -1021,8 +1323,9 @@ class PietraDesktop {
     const p = this._projects.find(x => x.id === projectId);
     if (!p) return;
     const $ = id => document.getElementById(id);
-    $('detail-bg').style.backgroundImage = `url('${p.img}')`;
-    $('detail-clr').style.background = p.clr;
+    $('detail-bg').style.backgroundImage = `url('${this._displayImageSrc(p.img)}')`;
+    const detailClr = $('detail-clr');
+    if (detailClr) detailClr.style.background = p.clr;
     $('detail-title').textContent = p.name;
     $('detail-title-bar').textContent = p.name;
     $('detail-cat').textContent = p.cat;
@@ -1144,68 +1447,6 @@ class PietraDesktop {
     render();
   }
 
-  _showPlayNotif(anchor, label = 'play') {
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-    // --- bounce + glow on icon OR pulse on menu-bar text item ---
-    const iconEl = anchor.querySelector('.pc-dock-icon') || anchor.firstElementChild;
-    if (iconEl && !reduced) {
-      iconEl.style.animation = 'none';
-      void iconEl.offsetWidth;
-      iconEl.style.animation = 'pc-play-bounce 520ms cubic-bezier(.2,.7,.2,1) both';
-      iconEl.style.boxShadow = '0 0 0 2px rgba(255,160,80,.35), 0 4px 16px rgba(255,90,70,.2)';
-      setTimeout(() => { iconEl.style.animation = ''; iconEl.style.boxShadow = ''; }, 560);
-    } else if (!reduced) {
-      // pulse on menu-bar text item
-      const prev = anchor.style.transition;
-      anchor.style.transition = 'background 60ms, color 60ms';
-      anchor.style.background = 'rgba(38,1,11,.13)';
-      anchor.style.color = '#26010B';
-      setTimeout(() => {
-        anchor.style.background = '';
-        anchor.style.color = '';
-        setTimeout(() => { anchor.style.transition = prev; }, 160);
-      }, 160);
-    }
-
-    // --- balloon ---
-    const existing = document.getElementById('pc-play-notif');
-    if (existing) { existing.remove(); }
-
-    const rect = anchor.getBoundingClientRect();
-    const W = window.innerWidth;
-    const balW = 56;
-    const cx = rect.left + rect.width / 2;
-    const left = Math.max(8, Math.min(W - balW - 8, cx - balW / 2));
-    const top = rect.top - 54;
-    const balloon = document.createElement('div');
-    balloon.id = 'pc-play-notif';
-    balloon.innerHTML = '<img src="uploads/coming-soon-placa.png" alt="coming soon" style="display:block;width:56px;height:56px;object-fit:contain;object-position:center;">';
-    Object.assign(balloon.style, {
-      position: 'fixed',
-      left: left + 'px',
-      top:  Math.max(38, rect.top - 62) + 'px',
-      width: '56px',
-      height: '56px',
-      zIndex: '9999',
-      pointerEvents: 'none',
-      opacity: '0',
-      transform: reduced ? 'none' : 'scale(.9) translateY(4px)',
-      transition: 'opacity 180ms cubic-bezier(.2,.7,.2,1), transform 180ms cubic-bezier(.2,.7,.2,1)',
-    });
-    document.body.appendChild(balloon);
-
-    requestAnimationFrame(() => requestAnimationFrame(() => {
-      balloon.style.opacity = '1';
-      balloon.style.transform = 'scale(1) translateY(0)';
-    }));
-    setTimeout(() => {
-      balloon.style.opacity = '0';
-      balloon.style.transform = 'scale(.95) translateY(-3px)';
-    }, 1600);
-    setTimeout(() => { if (balloon.parentNode) balloon.remove(); }, 1850);
-  }
-
   _triggerProfileAnim() {
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     const avatar = document.getElementById('pc-profile-avatar');
@@ -1292,10 +1533,13 @@ class PietraDesktop {
   }
 
   _focusWindow(id) {
-    const allWins = ['pc-win-projects','pc-win-about','pc-win-detail','pc-win-mail','pc-win-case-viewer','pc-win-pixie','pc-win-asfalto','pc-win-loose','pc-win-search'];
+    const allWins = ['pc-win-projects','pc-win-about','pc-win-detail','pc-win-mail','pc-win-case-viewer','pc-win-pixie','pc-win-loose','pc-win-search','pc-win-themes'];
     const el = document.getElementById(id);
     if (!el) return;
     el.style.zIndex = String(++this._zTop);
+    const title = document.getElementById('pc-mb-title');
+    const winTitle = el.querySelector('.pc-tbar > span');
+    if (title) title.textContent = winTitle ? (winTitle.textContent.trim() || "pietra's pc") : "pietra's pc";
     allWins.forEach(wid => {
       const w = document.getElementById(wid);
       if (!w || !this._openWindows.has(wid)) return;
@@ -1325,7 +1569,7 @@ class PietraDesktop {
     }
   }
 
-  _showWindow(id) {
+  _showWindow(id, srcEl) {
     const el = document.getElementById(id);
     if (!el) return;
     const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1334,19 +1578,24 @@ class PietraDesktop {
     this._updateDockDots();
     el.style.transition = 'none';
     el.style.opacity = '0';
-    const isAsfalto = id === 'pc-win-asfalto';
-    el.style.transform = isAsfalto ? 'scale(.96) translateY(22px)' : 'scale(.92) translateY(10px)';
-    el.style.filter = 'blur(4px)';
     el.style.pointerEvents = 'none';
+    let initTransform = 'scale(.92) translateY(10px)';
+    if (srcEl && !reduced) {
+      const sr = srcEl.getBoundingClientRect();
+      const wr = el.getBoundingClientRect();
+      const ox = ((sr.left + sr.width / 2) - (wr.left + wr.width / 2)).toFixed(1);
+      const oy = ((sr.top + sr.height / 2) - (wr.top + wr.height / 2)).toFixed(1);
+      initTransform = `scale(.82) translate(${ox}px,${oy}px)`;
+    }
+    el.style.transform = initTransform;
+    el.style.filter = 'blur(3px)';
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         el.style.transition = reduced
           ? 'opacity 150ms linear'
-          : isAsfalto
-            ? 'opacity 520ms cubic-bezier(.34,1.42,.64,1),transform 540ms cubic-bezier(.34,1.42,.64,1),filter 380ms ease'
-            : 'opacity 260ms cubic-bezier(.25,1,.5,1),transform 400ms cubic-bezier(.34,1.28,.64,1),filter 220ms cubic-bezier(.25,1,.5,1)';
+          : 'opacity 260ms cubic-bezier(.25,1,.5,1),transform 400ms cubic-bezier(.34,1.28,.64,1),filter 220ms cubic-bezier(.25,1,.5,1)';
         el.style.opacity = '1';
-        el.style.transform = 'scale(1) translateY(0)';
+        el.style.transform = 'scale(1) translate(0px,0px)';
         el.style.filter = 'blur(0px)';
         el.style.pointerEvents = 'auto';
         this._autoplayVideos(el);
@@ -1378,6 +1627,10 @@ class PietraDesktop {
       .filter(Boolean)
       .sort((a, b) => Number(b.style.zIndex || 0) - Number(a.style.zIndex || 0))[0];
     if (topOpen) this._focusWindow(topOpen.id);
+    else {
+      const title = document.getElementById('pc-mb-title');
+      if (title) title.textContent = "pietra's pc";
+    }
   }
 
   _showCaseViewer() {
@@ -1463,7 +1716,7 @@ class PietraDesktop {
           this._openWindows.has('pc-win-projects') ? this._focusWindow('pc-win-projects') : this._showWindow('pc-win-projects');
           this._switchFinderTab('projects');
         } else if (action === 'open-latest') {
-          const p = this._projects[0];
+          const p = this._projects[Math.floor(Math.random() * this._projects.length)];
           if (!p) return;
           this._openProject(p.id);
         }
@@ -1481,15 +1734,15 @@ class PietraDesktop {
 
     this._place('pc-win-case-viewer', W < 820 ? 12 : Math.round(W/2 - 380), Math.max(44, Math.round(H/2 - 290)), 26);
     this._place('pc-win-pixie',       Math.round(W/2 - 180),   Math.round(H/2 - 200), 25);
-    this._place('pc-win-asfalto',     W < 820 ? 16 : Math.round(W/2 - 170), Math.max(74, Math.round(H/2 - 120)), 19);
     this._place('pc-win-loose',       W < 820 ? 16 : Math.round(W/2 - 100), Math.max(84, Math.round(H/2 - 80)), 17);
-    this._place('pc-win-search',      W < 820 ? 16 : Math.min(820, Math.round(W/2 + 20)), W < 820 ? 92 : 100, 16);
+    this._place('pc-win-search',      W < 820 ? 16 : Math.round(W/2 - 220), W < 820 ? 92 : 100, 16);
+    this._place('pc-win-themes',      W < 820 ? 16 : Math.round(W/2 - 154), Math.max(44, Math.round(H/2 - 190)), 19);
 
     requestAnimationFrame(() => {
       this._showWindow('pc-win-projects');
     });
 
-    ['pc-win-projects','pc-win-about','pc-win-detail','pc-win-mail','pc-win-case-viewer','pc-win-pixie','pc-win-asfalto','pc-win-loose','pc-win-search'].forEach(id => {
+    ['pc-win-projects','pc-win-about','pc-win-detail','pc-win-mail','pc-win-case-viewer','pc-win-pixie','pc-win-loose','pc-win-search','pc-win-themes'].forEach(id => {
       const el = document.getElementById(id);
       if (!el) return;
       el.addEventListener('mousedown', () => this._focusWindow(id));
@@ -1549,9 +1802,31 @@ class PietraDesktop {
     };
 
     _deskDrag(document.querySelector('.pc-profile-widget'));
-    _deskDrag(document.getElementById('pc-widget-now'));
-    _deskDrag(document.querySelector('.pc-deskicon[data-open="play"]'));
     _deskDrag(document.getElementById('pc-desktop-loose'));
+    _deskDrag(document.getElementById('pc-widget-cal'));
+
+    (function() {
+      const MONTHS = ['jan','feb','mar','apr','may','jun','jul','aug','sep','oct','nov','dec'];
+      const DAYS = ['sun','mon','tue','wed','thu','fri','sat'];
+      const now = new Date();
+      const m = document.getElementById('pc-cal-month');
+      const d = document.getElementById('pc-cal-day');
+      const w = document.getElementById('pc-cal-weekday');
+      if (m) m.textContent = MONTHS[now.getMonth()];
+      if (d) d.textContent = now.getDate();
+      if (w) w.textContent = DAYS[now.getDay()];
+    })();
+
+    const asfaltoWidget = document.getElementById('pc-widget-asfalto');
+    const asfaltoBubble = document.getElementById('pc-asfalto-bubble');
+    if (asfaltoWidget && asfaltoBubble) {
+      asfaltoWidget.addEventListener('click', () => asfaltoBubble.classList.remove('is-hidden'));
+      const close = asfaltoBubble.querySelector('.pc-asfalto-bubble-close');
+      if (close) close.addEventListener('click', event => {
+        event.stopPropagation();
+        asfaltoBubble.classList.add('is-hidden');
+      });
+    }
 
     document.querySelectorAll('[data-close]').forEach(btn => {
       btn.addEventListener('click', e => {
@@ -1573,11 +1848,11 @@ class PietraDesktop {
     document.querySelectorAll('[data-open]').forEach(el => {
       el.addEventListener('click', () => {
         const t = el.dataset.open;
-        if (t === 'play') {
-          this._showPlayNotif(el);
-        } else {
-          const winId = 'pc-win-' + t;
-          this._openWindows.has(winId) ? this._hideWindow(winId) : this._showWindow(winId);
+        const winId = 'pc-win-' + t;
+        const wasOpen = this._openWindows.has(winId);
+        wasOpen ? this._hideWindow(winId) : this._showWindow(winId, el);
+        if (t === 'search' && !wasOpen) {
+          setTimeout(() => { const inp = document.getElementById('pc-search-input'); if (inp) inp.focus(); }, 300);
         }
       });
     });
@@ -1609,25 +1884,16 @@ class PietraDesktop {
       });
     });
 
-    // asfalto widget
-    const asfaltoWidget = document.getElementById('pc-widget-asfalto');
-    if (asfaltoWidget) {
-      asfaltoWidget.addEventListener('click', () => {
-        this._openWindows.has('pc-win-asfalto')
-          ? this._focusWindow('pc-win-asfalto')
-          : this._showWindow('pc-win-asfalto');
-      });
-    }
-
     // ── Search / finder window ─────────────────────────────────────
     this._initSearch();
+    this._setupLazyFolderVideos();
 
     // archive desktop object → open pc-win-loose
     const desktopLoose = document.getElementById('pc-desktop-loose');
     if (desktopLoose) {
       desktopLoose.addEventListener('click', () => {
         if (this._openWindows.has('pc-win-loose')) { this._focusWindow('pc-win-loose'); }
-        else { this._showWindow('pc-win-loose'); }
+        else { this._showWindow('pc-win-loose', desktopLoose); }
       });
     }
 
@@ -1727,6 +1993,17 @@ class PietraDesktop {
         if (event.key === 'ArrowRight') this._stepPixieQuickLook(1);
         return;
       }
+      if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
+        event.preventDefault();
+        const wasOpen = this._openWindows.has('pc-win-search');
+        wasOpen ? this._hideWindow('pc-win-search') : this._showWindow('pc-win-search');
+        if (!wasOpen) setTimeout(() => { const inp = document.getElementById('pc-search-input'); if (inp) inp.focus(); }, 300);
+        return;
+      }
+      if (event.key === 'Escape') {
+        const inp = document.getElementById('pc-search-input');
+        if (document.activeElement === inp) { this._hideWindow('pc-win-search'); inp.blur(); return; }
+      }
       if (event.key === 'Escape' && this._openWindows.has('pc-win-case-viewer')) {
         this._hideWindow('pc-win-case-viewer');
       }
@@ -1739,15 +2016,6 @@ class PietraDesktop {
         if (this._openWindows.has('pc-win-about')) this._triggerProfileAnim();
       });
     }
-
-    // play-toast (menu bar)
-    document.querySelectorAll('[data-mb-action="play-toast"]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const label = btn.textContent.trim();
-        const anchor = label === 'play' ? (document.querySelector('.pc-deskicon[data-open="play"]') || btn) : btn;
-        this._showPlayNotif(anchor, label);
-      });
-    });
 
     // Ambient wallpaper: a very soft light follows the cursor.
     const wallpaper = document.getElementById('pc-wallpaper');
@@ -1765,14 +2033,14 @@ class PietraDesktop {
       window.setTimeout(() => {
         boot.classList.add('is-hidden');
         window.setTimeout(() => boot.remove(), 320);
-      }, 980);
+      }, 480);
     }
 
     this._setupDropdown();
   }
 
   renderVals() {
-    return { clock: this.state.clock };
+    return {};
   }
 }
 
@@ -1782,6 +2050,60 @@ document.addEventListener('DOMContentLoaded', () => {
   window.pietraDesktop = new PietraDesktop();
   window.pietraDesktop.componentDidMount();
 });
+</script>
+<script>
+(function(){
+  const win = document.getElementById('pc-win-themes');
+  const openBtn = document.getElementById('pc-mb-themes');
+  const closeBtn = document.getElementById('pc-themes-close');
+
+  function showWin(event) {
+    if (event) event.stopPropagation();
+    if (!win) return;
+    if (window.pietraDesktop) {
+      window.pietraDesktop._openWindows.has('pc-win-themes')
+        ? window.pietraDesktop._focusWindow('pc-win-themes')
+        : window.pietraDesktop._showWindow('pc-win-themes', openBtn);
+      return;
+    }
+    win.style.opacity = '1';
+    win.style.transform = 'scale(1) translateY(0)';
+    win.style.pointerEvents = 'auto';
+  }
+
+  function hideWin(event) {
+    if (event) event.stopPropagation();
+    if (!win) return;
+    if (window.pietraDesktop) window.pietraDesktop._hideWindow('pc-win-themes');
+    else {
+      win.style.opacity = '0';
+      win.style.transform = 'scale(.92) translateY(10px)';
+      win.style.pointerEvents = 'none';
+    }
+  }
+
+  function applyTheme(theme) {
+    if (theme === 'default') document.body.removeAttribute('data-theme');
+    else document.body.setAttribute('data-theme', theme);
+    try { localStorage.setItem('pc-theme', theme); } catch (error) {}
+    document.querySelectorAll('.pc-theme-card').forEach(card => {
+      const active = card.dataset.theme === theme;
+      card.classList.toggle('is-active', active);
+      const check = card.querySelector('.pc-theme-check');
+      if (check) check.textContent = active ? '✓' : '';
+    });
+  }
+
+  if (openBtn) openBtn.addEventListener('click', showWin);
+  if (closeBtn) closeBtn.addEventListener('click', hideWin);
+  document.querySelectorAll('.pc-theme-card').forEach(card => {
+    card.addEventListener('click', () => applyTheme(card.dataset.theme || 'default'));
+  });
+
+  let saved = 'default';
+  try { saved = localStorage.getItem('pc-theme') || 'default'; } catch (error) {}
+  applyTheme(saved);
+})();
 </script>
 </body>
 </html>
