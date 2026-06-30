@@ -23,10 +23,9 @@
   <link rel="preload" as="image" href="uploads/optimized/pietra-profile-ui.jpg" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;500;600;700&display=swap" rel="stylesheet"></noscript>
 <style>
-    @font-face { font-family:"Inter Tight"; src:url("_ds/pixie-club-design-system-019df67a-27c9-7445-9f51-de5144ee30d8/fonts/InterTight-VariableFont_wght.ttf") format("truetype-variations"); font-weight:100 900; font-style:normal; font-display:swap; }
-    @font-face { font-family:"Inter Tight"; src:url("_ds/pixie-club-design-system-019df67a-27c9-7445-9f51-de5144ee30d8/fonts/InterTight-Italic-VariableFont_wght.ttf") format("truetype-variations"); font-weight:100 900; font-style:italic; font-display:swap; }
     *, *::before, *::after { box-sizing: border-box; }
     body { margin: 0; overflow: hidden; }
     :root { --pc-green:#96CC9E; }
@@ -563,7 +562,7 @@
     }
 
     /* ── Mobile portfolio ── */
-    #pc-mobile { display:none; position:fixed; inset:0; z-index:500; background:#FEFBFE; flex-direction:column; overflow:hidden; -webkit-font-smoothing:antialiased; font-family:'Nunito','Inter Tight',system-ui,-apple-system,sans-serif; color:#26010B; }
+    #pc-mobile { display:none; position:fixed; inset:0; z-index:500; background:#FEFBFE; flex-direction:column; overflow:hidden; -webkit-font-smoothing:antialiased; font-family:'Nunito',system-ui,-apple-system,sans-serif; color:#26010B; }
     .mob-scroll { overflow-y:auto; overflow-x:hidden; flex:1; -webkit-overflow-scrolling:touch; overscroll-behavior:contain; }
     .mob-nav { flex-shrink:0; height:48px; background:rgba(254,251,254,.97); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid rgba(38,1,11,.06); display:flex; align-items:center; justify-content:space-between; padding:0 18px; box-sizing:border-box; }
     .mob-nav img { width:22px; height:22px; object-fit:contain; display:block; }
@@ -623,7 +622,7 @@
   </style>
 </head>
 <body>
-<div id="pc-desktop-root" style="position:fixed;inset:0;overflow:hidden;font-family:'Nunito','Inter Tight',system-ui,-apple-system,sans-serif;color:#26010B;-webkit-font-smoothing:antialiased;">
+<div id="pc-desktop-root" style="position:fixed;inset:0;overflow:hidden;font-family:'Nunito',system-ui,-apple-system,sans-serif;color:#26010B;-webkit-font-smoothing:antialiased;">
   <div id="pc-boot" aria-label="pietra's pc loading">
     <div class="pc-boot-inner">
       <div class="pc-boot-icon"><img src="uploads/optimized/pc-menu-icon-ui.png" alt="" width="48" height="48" decoding="async" fetchpriority="high"></div>
@@ -633,9 +632,8 @@
   </div>
 
   <!-- Wallpaper -->
-  <div id="pc-wallpaper" style="position:absolute;inset:0;background:radial-gradient(circle at var(--wp-mx,50%) var(--wp-my,50%),rgba(255,255,255,.44) 0%,transparent 19%),radial-gradient(ellipse at 82% 82%,rgba(221,238,244,.76) 0%,transparent 42%),radial-gradient(ellipse at 12% 86%,rgba(242,216,228,.44) 0%,transparent 34%),radial-gradient(ellipse at 18% 18%,rgba(242,196,218,.52) 0%,transparent 28%),radial-gradient(ellipse at 74% 18%,rgba(255,247,209,.48) 0%,transparent 26%),linear-gradient(152deg,#F8F3EF 0%,#FBF7F3 31%,#EEF6F8 66%,#F7F1F4 100%);z-index:0;transition:background 700ms ease;"></div>
+  <div id="pc-wallpaper" style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(255,255,255,.44) 0%,transparent 19%),radial-gradient(ellipse at 82% 82%,rgba(221,238,244,.76) 0%,transparent 42%),radial-gradient(ellipse at 12% 86%,rgba(242,216,228,.44) 0%,transparent 34%),radial-gradient(ellipse at 18% 18%,rgba(242,196,218,.52) 0%,transparent 28%),radial-gradient(ellipse at 74% 18%,rgba(255,247,209,.48) 0%,transparent 26%),linear-gradient(152deg,#F8F3EF 0%,#FBF7F3 31%,#EEF6F8 66%,#F7F1F4 100%);z-index:0;"></div>
   <div id="pc-dotgrid" style="position:absolute;inset:0;background-image:radial-gradient(rgba(38,1,11,.052) 1px,transparent 1px);background-size:20px 20px;z-index:0;pointer-events:none;"></div>
-  <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.026;" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><filter id="pcgrain"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#pcgrain)"/></svg>
   <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 52%,rgba(38,1,11,.048) 100%);z-index:0;pointer-events:none;"></div>
 
   <!-- ══ Menu bar ══ -->
@@ -1806,7 +1804,7 @@ class PietraDesktop {
         ? '0 2px 8px rgba(38,1,11,.08),0 18px 44px rgba(38,1,11,.14)'
         : '0 1px 2px rgba(38,1,11,.04),0 8px 20px rgba(38,1,11,.08)';
       w.style.opacity = '1';
-      w.style.filter = isActive ? '' : 'brightness(.985) blur(.25px)';
+      w.style.filter = '';
     });
     el.style.boxShadow = '0 2px 8px rgba(38,1,11,.08),0 18px 44px rgba(38,1,11,.14)';
     el.style.opacity = '1';
@@ -1842,15 +1840,15 @@ class PietraDesktop {
       initTransform = `scale(.82) translate(${ox}px,${oy}px)`;
     }
     el.style.transform = initTransform;
-    el.style.filter = 'blur(3px)';
+    el.style.filter = '';
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         el.style.transition = reduced
           ? 'opacity 150ms linear'
-          : 'opacity 260ms cubic-bezier(.25,1,.5,1),transform 400ms cubic-bezier(.34,1.28,.64,1),filter 220ms cubic-bezier(.25,1,.5,1)';
+          : 'opacity 220ms cubic-bezier(.25,1,.5,1),transform 320ms cubic-bezier(.34,1.18,.64,1)';
         el.style.opacity = '1';
         el.style.transform = 'scale(1) translate(0px,0px)';
-        el.style.filter = 'blur(0px)';
+        el.style.filter = '';
         el.style.pointerEvents = 'auto';
         this._autoplayVideos(el);
         this._refreshVideos(el);
@@ -1871,10 +1869,10 @@ class PietraDesktop {
     this._updateDockDots();
     el.style.transition = reduced
       ? 'opacity 120ms linear'
-      : 'opacity 160ms cubic-bezier(.4,0,1,1),transform 160ms cubic-bezier(.4,0,1,1),filter 160ms cubic-bezier(.4,0,1,1)';
+      : 'opacity 140ms cubic-bezier(.4,0,1,1),transform 140ms cubic-bezier(.4,0,1,1)';
     el.style.opacity = '0';
     el.style.transform = 'scale(.96) translateY(0)';
-    el.style.filter = 'blur(2px)';
+    el.style.filter = '';
     el.style.pointerEvents = 'none';
     const topOpen = [...this._openWindows]
       .map(wid => document.getElementById(wid))
@@ -1903,16 +1901,16 @@ class PietraDesktop {
     el.style.transition = 'none';
     el.style.opacity = '0';
     el.style.transform = 'scale(.86) translateY(28px)';
-    el.style.filter = 'blur(4px)';
+    el.style.filter = '';
     el.style.pointerEvents = 'none';
     requestAnimationFrame(() => {
       requestAnimationFrame(() => {
         el.style.transition = reduced
           ? 'opacity 150ms linear'
-          : 'opacity 260ms cubic-bezier(.25,1,.5,1),transform 260ms cubic-bezier(.25,1,.5,1),filter 220ms cubic-bezier(.25,1,.5,1)';
+          : 'opacity 220ms cubic-bezier(.25,1,.5,1),transform 220ms cubic-bezier(.25,1,.5,1)';
         el.style.opacity = '1';
         el.style.transform = 'scale(1) translateY(0)';
-        el.style.filter = 'blur(0px)';
+        el.style.filter = '';
         el.style.pointerEvents = 'auto';
         this._autoplayVideos(el);
         this._refreshVideos(el);
@@ -2271,23 +2269,12 @@ class PietraDesktop {
       });
     }
 
-    // Ambient wallpaper: a very soft light follows the cursor.
-    const wallpaper = document.getElementById('pc-wallpaper');
-    if (wallpaper) {
-      document.addEventListener('mousemove', (event) => {
-        const x = (event.clientX / window.innerWidth * 100).toFixed(1) + '%';
-        const y = (event.clientY / window.innerHeight * 100).toFixed(1) + '%';
-        wallpaper.style.setProperty('--wp-mx', x);
-        wallpaper.style.setProperty('--wp-my', y);
-      });
-    }
-
     const boot = document.getElementById('pc-boot');
     if (boot) {
       window.setTimeout(() => {
         boot.classList.add('is-hidden');
         window.setTimeout(() => boot.remove(), 320);
-      }, 480);
+      }, 260);
     }
 
     this._setupDropdown();
