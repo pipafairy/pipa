@@ -67,7 +67,7 @@
     #finder-projects .pc-folder:not(.is-video-ready) .pc-folder-img { opacity:0 !important; }
     #finder-projects .pc-folder-body { min-height:40px; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:2px; background:#F8F3EF !important; border-top:1px solid rgba(38,1,11,.055); padding:8px 12px 9px !important; }
     #finder-projects .pc-folder-body > div:not([style*="position:absolute"]) { margin:0 !important; font-size:11px !important; line-height:1.2 !important; }
-    #finder-projects .pc-folder-body > div.pc-folder-meta { font-size:8.5px !important; letter-spacing:.04em; color:rgba(38,1,11,.44) !important; line-height:1.3 !important; }
+    #finder-projects .pc-folder-body > div.pc-folder-meta { font-size:9px !important; letter-spacing:.04em; color:rgba(38,1,11,.6) !important; line-height:1.3 !important; }
     .pc-menu-logo { width:24px; height:24px; display:block; object-fit:contain; object-position:center; image-rendering:auto; transform:scale(1.16); }
     .pc-menu-logo-wrap { width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
     /* ── Traffic lights ── */
@@ -84,7 +84,8 @@
     .pc-dock-icon { transition: transform 200ms cubic-bezier(.2,.7,.2,1), box-shadow 200ms cubic-bezier(.2,.7,.2,1); }
     .pc-dock-btn[data-open="pixie"] .pc-dock-icon { display:flex; align-items:center; justify-content:center; background:rgba(252,248,246,.9); }
     .pc-dock-btn[data-open="pixie"] .pc-dock-icon img { width:44px !important; height:44px !important; transform:none; }
-    .pc-dock-btn:hover .pc-dock-icon { transform: translateY(-4px) scale(1.06); box-shadow: 0 4px 10px rgba(38,1,11,.1); }
+    .pc-dock-icon { box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 1px 2px rgba(38,1,11,.05); }
+    .pc-dock-btn:hover .pc-dock-icon { transform: translateY(-4px) scale(1.06); box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 5px 12px rgba(38,1,11,.10); }
     @keyframes pc-dock-click {
       0%   { transform: translateY(-4px) scale(1.06); }
       45%  { transform: translateY(-1px) scale(.95); }
@@ -133,7 +134,8 @@
     .pc-case-btn { transition: background 120ms cubic-bezier(.2,.7,.2,1), transform 80ms; }
     /* ── Window buttons ── */
     .pc-btn { display:inline-flex; align-items:center; justify-content:center; gap:4px; height:28px; padding:0 10px; border-radius:7px; font-size:12px; font-weight:500; line-height:1; font-family:inherit; cursor:pointer; border:1px solid rgba(38,1,11,.11); transition:background 110ms cubic-bezier(.2,.7,.2,1), transform 80ms; text-decoration:none; box-sizing:border-box; white-space:nowrap; flex-shrink:0; background:#F3F1EE; color:rgba(38,1,11,.72); }
-    .pc-btn:hover { background:#ECEAE6; }
+    .pc-btn { box-shadow: inset 0 1px 0 rgba(255,255,255,.72), 0 1px 2px rgba(38,1,11,.04); }
+    .pc-btn:hover { background:#F0EBE5; }
     .pc-btn:active { transform:translateY(1px) !important; }
     .pc-btn-primary { background:#26010B; color:#FEFBFE; border-color:rgba(38,1,11,.18); }
     .pc-btn-primary:hover { background:#3A0A18; }
@@ -272,11 +274,31 @@
     .pc-dock-btn > span { letter-spacing:.035em !important; }
     .pc-mb-item { letter-spacing:.012em !important; }
     .pc-boot-text { letter-spacing:-.01em !important; font-weight:500 !important; }
-    [id^="pc-win-"] { box-shadow:0 1px 2px rgba(38,1,11,.05),0 8px 22px rgba(38,1,11,.085),0 22px 42px rgba(38,1,11,.08) !important; }
+    [id^="pc-win-"] { border:1px solid rgba(255,255,255,.62); box-shadow:0 0 0 1px rgba(38,1,11,.05),0 1px 2px rgba(38,1,11,.05),0 8px 22px rgba(38,1,11,.085),0 22px 42px rgba(38,1,11,.08) !important; }
     /* ── Mini calendar widget ── */
     #pc-widget-cal { transition: transform 160ms cubic-bezier(.2,.7,.2,1), box-shadow 160ms cubic-bezier(.2,.7,.2,1); }
     #pc-widget-cal:hover { transform: translateY(-2px); box-shadow: 0 3px 10px rgba(38,1,11,.08) !important; }
     #pc-widget-cal:active { transform: translateY(0) !important; transition-duration: 60ms !important; }
+    /* ═══ Step 1 · default-theme refinement ═══ */
+    /* themes temporarily hidden while the default experience is refined */
+    #pc-mb-themes, #pc-win-themes { display:none !important; }
+    /* menubar: crisper hairline + top light */
+    #pc-menubar { box-shadow: inset 0 1px 0 rgba(255,255,255,.6); }
+    /* titlebars: soft vertical light instead of flat fill */
+    .pc-tbar { background:linear-gradient(180deg,#F7F1F4 0%,#F1EAED 100%) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.66), inset 0 -0.5px 0 rgba(38,1,11,.03); }
+    /* traffic lights: candy finish */
+    .tl-r, .tl-y, .tl-g { box-shadow: inset 0 1px 1.5px rgba(255,255,255,.6), inset 0 -1px 1.5px rgba(38,1,11,.09); }
+    /* dock: glassier plate */
+    #pc-dock { background:rgba(250,246,243,.78) !important; border:1px solid rgba(255,255,255,.68) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 0 0 1px rgba(38,1,11,.045), 0 1px 2px rgba(38,1,11,.05), 0 12px 30px rgba(38,1,11,.10) !important; }
+    /* desktop widgets: one material — 14px radius, inner light, same shadow */
+    .pc-profile-widget, #pc-widget-asfalto { border-radius:14px !important; }
+    .pc-profile-widget, #pc-widget-cal, #pc-widget-asfalto { box-shadow: inset 0 1px 0 rgba(255,255,255,.75), 0 1px 2px rgba(38,1,11,.045), 0 5px 14px rgba(38,1,11,.06) !important; }
+    .pc-profile-widget:hover, .pc-widget-click:hover, #pc-widget-cal:hover { box-shadow: inset 0 1px 0 rgba(255,255,255,.75), 0 2px 4px rgba(38,1,11,.05), 0 10px 24px rgba(38,1,11,.09) !important; }
+    /* calendar: plum ink on the pink header (was low-contrast white) */
+    #pc-widget-cal > div:first-child { background:linear-gradient(180deg,#F5B3C3,#F0A4B6) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.4); }
+    #pc-cal-month { color:rgba(95,30,62,.82) !important; font-weight:700 !important; }
+    /* about tags: keep project pastels, add craft */
+    .pc-about-tags span { border:1px solid rgba(38,1,11,.08); padding:3px 10px !important; font-weight:500; color:rgba(38,1,11,.78) !important; letter-spacing:.01em; }
     /* ── Theme switcher ── */
     .pc-theme-card { transition:background 120ms,border-color 120ms; cursor:pointer; }
     .pc-theme-card:not(.is-active):hover { background:rgba(38,1,11,.03) !important; }
@@ -991,7 +1013,7 @@
     <div id="pc-profile-avatar" style="width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,#F2C4DA 0%,#F2D8E4 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:700;color:rgba(38,1,11,.6);letter-spacing:-.01em;box-shadow:0 0 0 1.5px rgba(255,255,255,.65);overflow:hidden;position:relative;">pc<img src="uploads/pietra-profile.jpg" loading="eager" decoding="async" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';"></div>
     <div>
       <div style="font-size:12px;font-weight:650;color:#26010B;letter-spacing:-.01em;line-height:1.2;white-space:nowrap;">pietra costantin</div>
-      <div style="font-size:10px;color:rgba(38,1,11,.44);margin-top:2px;white-space:nowrap;">meet the designer</div>
+      <div style="font-size:10px;color:rgba(38,1,11,.56);margin-top:2px;white-space:nowrap;">meet the designer</div>
     </div>
   </div>
   <!-- ══ WINDOW: projects (Finder) ══ -->
@@ -1083,7 +1105,7 @@
         <div style="width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#F2C4DA 0%,#F2D8E4 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:700;color:rgba(38,1,11,.6);letter-spacing:-.01em;box-shadow:0 0 0 2px rgba(255,255,255,.8);overflow:hidden;position:relative;">pc<img src="uploads/pietra-profile.jpg" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';"></div>
         <div style="min-width:0;flex:1;">
           <div style="font-size:17px;font-weight:650;letter-spacing:-.02em;color:#26010B;line-height:1.1;margin-bottom:3px;">pietra costantin</div>
-          <div style="font-size:10px;color:rgba(38,1,11,.45);margin-bottom:8px;">graphic designer · são paulo</div>
+          <div style="font-size:10px;color:rgba(38,1,11,.58);margin-bottom:8px;">graphic designer · são paulo</div>
           <button data-open="mail" style="border:1px solid rgba(95,30,62,.12);background:#F8F3EF;padding:5px 10px;margin:0;font-family:inherit;font-size:10px;font-weight:650;color:#5F1E3E;cursor:pointer;transition:opacity 140ms;border-radius:999px;box-shadow:0 1px 3px rgba(38,1,11,.04);">contact me →</button>
         </div>
       </div>
@@ -1146,8 +1168,8 @@
       </div>
       <div style="background:#F8F3EF;border:1px solid rgba(38,1,11,.09);border-radius:11px;padding:11px 12px;">
         <div style="font-size:9px;font-weight:600;color:rgba(38,1,11,.34);letter-spacing:.07em;margin-bottom:5px;">email</div>
-        <div style="font-size:12px;font-weight:500;color:#26010B;margin-bottom:8px;word-break:break-all;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="dfafb6baabadbe9fafb6a7b6babcb3aabdf1bcb0b2f1bdad">[email&#160;protected]</a></div>
-        <div style="display:flex;gap:6px;"><button id="mail-copy-btn" class="pc-btn">copy email</button><a href="/cdn-cgi/l/email-protection#11617874656370516178697874727d64733f727e7c3f7363" class="pc-btn" style="text-decoration:none;">open mail</a></div>
+        <div style="font-size:12px;font-weight:500;color:#26010B;margin-bottom:8px;word-break:break-all;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="7a0a131f0e081b3a0a1302131f19160f1854191517541808">[email&#160;protected]</a></div>
+        <div style="display:flex;gap:6px;"><button id="mail-copy-btn" class="pc-btn">copy email</button><a href="/cdn-cgi/l/email-protection#5a2a333f2e283b1a2a3322333f39362f3874393537743828" class="pc-btn" style="text-decoration:none;">open mail</a></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
         <a href="https://www.behance.net/pietrabc" target="_blank" rel="noopener" class="pc-contact-card"><span style="font-size:14px;font-weight:700;color:#5F1E3E;line-height:1;">Bē</span><div><div class="pc-contact-card-title">behance</div><div class="pc-contact-card-sub">portfolio archive</div></div><span class="pc-contact-card-arrow">↗</span></a>
@@ -1964,6 +1986,33 @@ class PietraDesktop {
     if (el) Object.assign(el.style, { position: 'absolute', left: l + 'px', top: t + 'px', zIndex: String(z) });
   }
 
+  _fitProjectsHeight() {
+    const win = document.getElementById('pc-win-projects');
+    if (!win || window.innerWidth < 820) return; // narrow widths handled by CSS breakpoint
+    const top = 44, dockReserve = 116;
+    const avail = window.innerHeight - top - dockReserve;
+    const h = Math.max(340, Math.min(552, avail));
+    win.style.height = h + 'px';
+  }
+
+  _clampWindow(id) {
+    const el = document.getElementById(id);
+    if (!el || window.innerWidth < 820) return;
+    const margin = 12;
+    const menuBarH = 30;
+    const dockReserve = 116;
+    const w = el.offsetWidth || 300;
+    const h = el.offsetHeight || 240;
+    const minLeft = margin;
+    const maxLeft = Math.max(margin, window.innerWidth - w - margin);
+    const minTop = menuBarH + margin;
+    const maxTop = Math.max(minTop, window.innerHeight - dockReserve - h);
+    const left = parseFloat(el.style.left) || 0;
+    const top = parseFloat(el.style.top) || 0;
+    el.style.left = Math.min(Math.max(left, minLeft), maxLeft) + 'px';
+    el.style.top = Math.min(Math.max(top, minTop), maxTop) + 'px';
+  }
+
   _positionDetailWindow() {
     const win = document.getElementById('pc-win-detail');
     if (!win || window.innerWidth < 820) return;
@@ -2001,12 +2050,12 @@ class PietraDesktop {
         setTimeout(() => { w.style.transition = ''; }, 230);
       }
       w.style.boxShadow = isActive
-        ? '0 2px 8px rgba(38,1,11,.08),0 18px 44px rgba(38,1,11,.14)'
-        : '0 1px 2px rgba(38,1,11,.04),0 8px 20px rgba(38,1,11,.08)';
-      w.style.opacity = '1';
-      w.style.filter = isActive ? '' : 'brightness(.985) blur(.25px)';
+        ? '0 4px 12px rgba(38,1,11,.10),0 24px 56px rgba(38,1,11,.20)'
+        : '0 1px 2px rgba(38,1,11,.04),0 6px 16px rgba(38,1,11,.07)';
+      w.style.opacity = isActive ? '1' : '0.93';
+      w.style.filter = isActive ? '' : 'brightness(.975) saturate(.92)';
     });
-    el.style.boxShadow = '0 2px 8px rgba(38,1,11,.08),0 18px 44px rgba(38,1,11,.14)';
+    el.style.boxShadow = '0 4px 12px rgba(38,1,11,.10),0 24px 56px rgba(38,1,11,.20)';
     el.style.opacity = '1';
     el.style.filter = '';
     if (id === 'pc-win-case-viewer') this._syncViewerBackdropZ();
@@ -2028,6 +2077,7 @@ class PietraDesktop {
     this._openWindows.add(id);
     this._focusWindow(id);
     this._updateDockDots();
+    if (id !== 'pc-win-detail' && id !== 'pc-win-case-viewer') this._clampWindow(id);
     el.style.transition = 'none';
     el.style.opacity = '0';
     el.style.pointerEvents = 'none';
@@ -2181,7 +2231,7 @@ class PietraDesktop {
     const W = window.innerWidth, H = window.innerHeight;
 
     this._place('pc-win-projects',    W < 820 ? 12 : 60,       44,                    20);
-    this._place('pc-win-about',       W < 820 ? 16 : Math.max(830, W - 300),  W < 820 ? 96 : 130, 18);
+    this._place('pc-win-about',       W < 820 ? 16 : Math.max(16, W - 300),  W < 820 ? 96 : 130, 18);
     this._place('pc-win-detail',      W < 820 ? 12 : Math.round(W/2 - 260), Math.max(44, Math.round(H/2 - 220)), 24);
     this._place('pc-win-mail',        W < 820 ? 16 : Math.round(W/2 - 160), Math.max(56, Math.round(H/2 - 135)), 22);
 
@@ -2191,6 +2241,7 @@ class PietraDesktop {
     this._place('pc-win-search',      W < 820 ? 16 : Math.round(W/2 - 220), W < 820 ? 92 : 100, 16);
     this._place('pc-win-themes',      W < 820 ? 16 : Math.round(W/2 - 154), Math.max(44, Math.round(H/2 - 190)), 19);
 
+    this._fitProjectsHeight();
     requestAnimationFrame(() => {
       this._showWindow('pc-win-projects');
     });
@@ -2480,6 +2531,19 @@ class PietraDesktop {
         wallpaper.style.setProperty('--wp-my', y);
       });
     }
+
+    // Keep open windows inside the viewport (never off-screen / under the dock) on resize.
+    let _resizeRaf = null;
+    window.addEventListener('resize', () => {
+      if (_resizeRaf) cancelAnimationFrame(_resizeRaf);
+      _resizeRaf = requestAnimationFrame(() => {
+        this._fitProjectsHeight();
+        this._openWindows.forEach(id => {
+          if (id === 'pc-win-detail') this._positionDetailWindow();
+          else if (id !== 'pc-win-case-viewer') this._clampWindow(id);
+        });
+      });
+    });
 
     const boot = document.getElementById('pc-boot');
     if (boot) {
@@ -2878,7 +2942,7 @@ document.addEventListener('DOMContentLoaded', () => {
     <div style="flex:1;"></div>
     <a href="#pcm-work" style="font-size:14px;color:rgba(38,1,11,.62);text-decoration:none;padding:8px 9px;">work</a>
     <a href="#pcm-about" style="font-size:14px;color:rgba(38,1,11,.62);text-decoration:none;padding:8px 9px;margin-right:6px;">about</a>
-    <a href="/cdn-cgi/l/email-protection#85f5ece0f1f7e4c5f5ecfdece0e6e9f0e7abe6eae8abe7f7" style="font-size:14px;font-weight:600;color:#5F1E3E;text-decoration:none;background:#F8E3EE;border:1px solid rgba(95,30,62,.12);border-radius:999px;padding:9px 18px;">contact</a>
+    <a href="/cdn-cgi/l/email-protection#16667f7362647756667f6e7f73757a63743875797b387464" style="font-size:14px;font-weight:600;color:#5F1E3E;text-decoration:none;background:#F8E3EE;border:1px solid rgba(95,30,62,.12);border-radius:999px;padding:9px 18px;">contact</a>
   </div>
 
   <div style="position:relative;padding:54px 24px 42px;text-align:center;background:radial-gradient(ellipse at 16% 16%,rgba(242,196,218,.55) 0%,transparent 36%),radial-gradient(ellipse at 84% 20%,rgba(255,247,209,.6) 0%,transparent 32%),radial-gradient(ellipse at 82% 86%,rgba(221,238,244,.75) 0%,transparent 42%),linear-gradient(152deg,#F8F3EF 0%,#FBF7F3 40%,#EEF6F8 100%);border-bottom:1px solid rgba(38,1,11,.05);">
@@ -2950,9 +3014,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <div style="padding:30px 16px 14px;">
     <div style="font-size:11px;font-weight:700;letter-spacing:.14em;color:rgba(38,1,11,.36);text-transform:uppercase;margin:0 6px 12px;">contact</div>
-    <a href="/cdn-cgi/l/email-protection#7e0e171b0a0c1f3e0e1706171b1d120b1c501d1113501c0c" style="display:block;text-decoration:none;background:linear-gradient(135deg,#F8E3EE 0%,#F8F3EF 70%);border:1px solid rgba(95,30,62,.12);border-radius:18px;padding:20px 18px;">
+    <a href="/cdn-cgi/l/email-protection#bfcfd6dacbcddeffcfd6c7d6dadcd3cadd91dcd0d291ddcd" style="display:block;text-decoration:none;background:linear-gradient(135deg,#F8E3EE 0%,#F8F3EF 70%);border:1px solid rgba(95,30,62,.12);border-radius:18px;padding:20px 18px;">
       <div style="font-size:16px;font-weight:700;color:#26010B;margin-bottom:4px;">get in touch</div>
-      <div style="font-size:13.5px;color:rgba(38,1,11,.5);margin-bottom:12px;"><span class="__cf_email__" data-cfemail="5a2a333f2e283b1a2a3322333f39362f3874393537743828">[email&#160;protected]</span></div>
+      <div style="font-size:13.5px;color:rgba(38,1,11,.5);margin-bottom:12px;"><span class="__cf_email__" data-cfemail="16667f7362647756667f6e7f73757a63743875797b387464">[email&#160;protected]</span></div>
       <div style="font-size:14px;font-weight:700;color:#5F1E3E;">send email →</div>
     </a>
   </div>
