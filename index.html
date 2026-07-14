@@ -295,89 +295,9 @@
     #pc-widget-cal { transition: transform 160ms cubic-bezier(.2,.7,.2,1), box-shadow 160ms cubic-bezier(.2,.7,.2,1); }
     #pc-widget-cal:hover { transform: translateY(-2px); box-shadow: 0 3px 10px rgba(38,1,11,.08) !important; }
     #pc-widget-cal:active { transform: translateY(0) !important; transition-duration: 60ms !important; }
-    /* ═══ Photocard Studio ═══ */
-    .pcs-stage { background:radial-gradient(ellipse at 50% 30%, #FBF1F5 0%, #F5E9EE 60%, #EFE1E8 100%); }
-    .pcs-card { position:relative; width:214px; height:336px; border-radius:15px; overflow:hidden;
-      box-shadow:0 1px 2px rgba(38,1,11,.12), 0 14px 30px rgba(38,1,11,.20), 0 2px 6px rgba(38,1,11,.10);
-      background:#fff; padding:6px; box-sizing:border-box; transition:transform .5s cubic-bezier(.2,.7,.2,1); }
-    .pcs-photo { position:absolute; inset:6px; border-radius:10px; overflow:hidden; background:#E9E1E6; }
-    .pcs-photo-ph { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; }
-    .pcs-photo-ph span { display:flex; align-items:center; gap:5px; font-size:10px; font-weight:600; letter-spacing:.01em;
-      color:#5F1E3E; background:rgba(255,255,255,.72); backdrop-filter:blur(6px); -webkit-backdrop-filter:blur(6px);
-      padding:6px 11px; border-radius:999px; box-shadow:0 1px 4px rgba(38,1,11,.12); transition:transform .16s, background .16s; }
-    .pcs-photo-ph span::before { content:"＋"; font-size:12px; line-height:1; opacity:.7; }
-    .pcs-photo:hover .pcs-photo-ph span { transform:translateY(-1px); background:rgba(255,255,255,.85); }
-    .pcs-photo.drag-over .pcs-photo-ph span { background:#fff; transform:scale(1.04); box-shadow:0 3px 10px rgba(200,80,130,.28); }
-    .pcs-holo { position:absolute; inset:0; pointer-events:none; opacity:0; transition:opacity .35s ease; mix-blend-mode:overlay;
-      background:linear-gradient(105deg,transparent 30%,rgba(255,255,255,.62) 43%,rgba(150,225,255,.55) 48%,rgba(255,170,235,.55) 54%,rgba(255,240,150,.45) 60%,transparent 72%),
-                 repeating-linear-gradient(58deg,rgba(255,0,170,.11) 0px,rgba(0,190,255,.11) 8px,rgba(150,255,120,.11) 16px,rgba(255,210,0,.11) 24px);
-      background-size:240% 240%, 180% 180%; background-position:var(--hx,50%) var(--hy,50%), 0 0; }
-    .pcs-photo.is-holo .pcs-holo { opacity:.9; }
-    .pcs-photo.is-glitter .pcs-holo { opacity:.85; mix-blend-mode:screen;
-      background-image:radial-gradient(rgba(255,255,255,.9) 1px, transparent 1.6px); background-size:13px 13px; background-position:var(--hx,50%) var(--hy,50%);
-      animation:pcs-glint 3.2s linear infinite; }
-    @keyframes pcs-glint { 0%{filter:brightness(1)} 50%{filter:brightness(1.5)} 100%{filter:brightness(1)} }
-    .pcs-scrim { position:absolute; left:0; right:0; bottom:0; height:44%; pointer-events:none;
-      background:linear-gradient(to top, rgba(20,2,10,.5), rgba(20,2,10,.14) 55%, transparent); }
-    .pcs-stickers { position:absolute; inset:0; }
-    .pcs-sticker { position:absolute; transform:translate(-50%,-50%) rotate(var(--r,0deg)) scale(var(--s,1));
-      font-size:28px; line-height:1; cursor:grab; user-select:none; will-change:transform; touch-action:none;
-      filter:drop-shadow(0 1px 2px rgba(0,0,0,.28)); }
-    .pcs-sticker.is-word { font-size:13px; font-weight:800; letter-spacing:.02em; color:#fff; padding:3px 9px;
-      border-radius:999px; box-shadow:0 1px 3px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.4); }
-    .pcs-sticker:active { cursor:grabbing; }
-    .pcs-sticker.sel::after { content:""; position:absolute; inset:-6px; border:1.5px dashed rgba(255,255,255,.95);
-      border-radius:8px; pointer-events:none; }
-    .pcs-caption { position:absolute; left:14px; right:14px; bottom:13px; pointer-events:none; }
-    .pcs-kicker { font-size:7.5px; font-weight:700; letter-spacing:.14em; text-transform:uppercase; opacity:.86; margin-bottom:3px; }
-    .pcs-name { font-family:'Inter Tight','Nunito',sans-serif; font-weight:700; font-size:26px; line-height:.92; letter-spacing:-.03em; }
-    .pcs-tag { font-size:10px; font-weight:600; letter-spacing:.02em; margin-top:3px; opacity:.92; }
-    /* right panel */
-    .pcs-sect-label { font-size:9px; font-weight:700; letter-spacing:.09em; text-transform:uppercase; color:rgba(38,1,11,.38); margin-bottom:7px; }
-    .pcs-era { border:none; padding:0; cursor:pointer; background:none; display:flex; flex-direction:column; gap:3px; align-items:stretch; }
-    .pcs-era-sw { height:30px; border-radius:8px; border:1.5px solid rgba(38,1,11,.10); box-shadow:inset 0 1px 0 rgba(255,255,255,.4); transition:transform .12s, box-shadow .12s; }
-    .pcs-era:hover .pcs-era-sw { transform:translateY(-1px); }
-    .pcs-era.sel .pcs-era-sw { border-color:#26010B; box-shadow:0 0 0 1.5px #26010B, inset 0 1px 0 rgba(255,255,255,.4); }
-    .pcs-era-name { font-size:8px; text-align:center; color:rgba(38,1,11,.5); letter-spacing:.01em; }
-    .pcs-era.sel .pcs-era-name { color:#26010B; font-weight:700; }
-    .pcs-tray-btn { border:1px solid rgba(38,1,11,.09); background:#FFFDFC; border-radius:9px; height:34px; cursor:pointer;
-      font-size:19px; line-height:1; color:#5F1E3E; display:flex; align-items:center; justify-content:center; transition:transform .1s, background .12s, box-shadow .12s; }
-    .pcs-tray-btn:hover { background:#FBF1F5; transform:translateY(-1px); box-shadow:0 2px 6px rgba(38,1,11,.08); }
-    .pcs-tray-btn:active { transform:scale(.92); }
-    .pcs-word-btn { border:1px solid rgba(95,30,62,.14); background:#FBEEF4; color:#5F1E3E; border-radius:999px;
-      font-size:10px; font-weight:700; padding:4px 10px; cursor:pointer; transition:transform .1s, background .12s; }
-    .pcs-word-btn:hover { background:#F6DCEB; transform:translateY(-1px); }
-    .pcs-word-btn:active { transform:scale(.94); }
-    .pcs-seg { display:flex; background:#F1E7EC; border-radius:9px; padding:2px; gap:2px; }
-    .pcs-seg-btn { flex:1; border:none; background:none; font-family:inherit; font-size:10px; font-weight:600; color:rgba(38,1,11,.5);
-      padding:5px 0; border-radius:7px; cursor:pointer; transition:background .12s, color .12s; }
-    .pcs-seg-btn.on { background:#fff; color:#26010B; box-shadow:0 1px 2px rgba(38,1,11,.1); }
-    .pcs-input { width:100%; border:1px solid rgba(38,1,11,.1); background:#fff; border-radius:8px; padding:6px 9px;
-      font-family:inherit; font-size:12px; color:#26010B; outline:none; box-sizing:border-box; transition:border-color .12s; }
-    .pcs-input:focus { border-color:rgba(95,30,62,.4); }
-    .pcs-act { flex:1; height:30px; border:1px solid rgba(38,1,11,.1); background:#F8F3EF; border-radius:8px; cursor:pointer;
-      font-family:inherit; font-size:11px; font-weight:600; color:#5F1E3E; display:flex; align-items:center; justify-content:center; gap:4px;
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.72); transition:background .12s, transform .08s; }
-    .pcs-act:hover { background:#F0EBE5; }
-    .pcs-act:active { transform:scale(.97); }
-    .pcs-act-primary { background:linear-gradient(180deg,#F2AABB,#E88BAD); border-color:rgba(180,60,110,.3); color:#fff;
-      box-shadow:inset 0 1px 0 rgba(255,255,255,.4), 0 2px 6px rgba(200,80,130,.24); }
-    .pcs-act-primary:hover { background:linear-gradient(180deg,#F0A0B4,#E27FA3); }
-    .pcs-selbtn { width:26px; height:26px; border:1px solid rgba(38,1,11,.12); background:#fff; border-radius:7px; cursor:pointer;
-      font-size:13px; line-height:1; color:#5F1E3E; display:flex; align-items:center; justify-content:center; transition:background .1s, transform .08s; }
-    .pcs-selbtn:hover { background:#FBF1F5; }
-    .pcs-selbtn:active { transform:scale(.9); }
-    .pcs-selbtn.del { color:#C24B6E; border-color:rgba(194,75,110,.3); }
-    @media (max-width: 820px) {
-      #pc-win-photocard { width:96vw !important; max-width:360px; height:auto !important; }
-      #pc-win-photocard .pcs-body { flex-direction:column !important; height:auto !important; }
-      #pc-win-photocard .pcs-panel { width:100% !important; border-left:none !important; border-top:1px solid rgba(38,1,11,.07); }
-    }
     /* ═══ Step 1 · default-theme refinement ═══ */
     /* themes temporarily hidden while the default experience is refined */
     #pc-mb-themes, #pc-win-themes { display:none !important; }
-    /* photocard studio temporarily disabled */
-    #pc-win-photocard, .pc-dock-btn[data-open="photocard"] { display:none !important; }
     /* menubar: crisper hairline + top light */
     #pc-menubar { box-shadow: inset 0 1px 0 rgba(255,255,255,.6); }
     /* titlebars: soft vertical light instead of flat fill */
@@ -1291,81 +1211,6 @@
 
 
 
-  <!-- ══ WINDOW: photocard studio ══ -->
-  <div id="pc-win-photocard" style="position:absolute;width:648px;height:470px;border-radius:10px;box-shadow:0 1px 3px rgba(38,1,11,.06),0 12px 32px rgba(38,1,11,.10);overflow:hidden;">
-    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(38,1,11,.07);display:flex;align-items:center;padding:0 12px;position:relative;flex-shrink:0;">
-      <div style="display:flex;gap:7px;">
-        <div class="tl-r" data-close="pc-win-photocard" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:var(--pc-green);border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-      </div>
-      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;">photocard studio</span>
-    </div>
-    <div class="pcs-body" style="display:flex;height:440px;background:#FEFBFE;">
-      <!-- STAGE -->
-      <div class="pcs-stage" style="flex:1;position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;min-width:0;">
-        <div class="pcs-card" id="pcs-card">
-          <div class="pcs-photo" id="pcs-photo">
-            <div class="pcs-photo-ph" id="pcs-photo-ph"><span>adicionar foto</span></div>
-            <img id="pcs-photo-img" alt="" style="display:none;position:absolute;inset:0;width:100%;height:100%;object-fit:cover;">
-            <div class="pcs-holo" id="pcs-holo"></div>
-            <div class="pcs-scrim"></div>
-            <div class="pcs-stickers" id="pcs-stickers"></div>
-            <div class="pcs-caption" id="pcs-caption">
-              <div class="pcs-kicker" id="pcs-kicker">collector's edition · no. 001</div>
-              <div class="pcs-name" id="pcs-name-out">pixie</div>
-              <div class="pcs-tag" id="pcs-tag-out">✦ pixie club ✦</div>
-            </div>
-          </div>
-        </div>
-        <div id="pcs-selbar" style="display:none;align-items:center;gap:5px;background:rgba(255,255,255,.85);border:1px solid rgba(38,1,11,.09);border-radius:10px;padding:5px 7px;box-shadow:0 2px 8px rgba(38,1,11,.08);backdrop-filter:blur(10px);">
-          <span style="font-size:9px;color:rgba(38,1,11,.4);font-weight:600;margin-right:1px;">sticker</span>
-          <button class="pcs-selbtn" data-selact="smaller" title="menor">–</button>
-          <button class="pcs-selbtn" data-selact="bigger" title="maior">+</button>
-          <button class="pcs-selbtn" data-selact="rotL" title="girar">↺</button>
-          <button class="pcs-selbtn" data-selact="rotR" title="girar">↻</button>
-          <button class="pcs-selbtn del" data-selact="del" title="remover">✕</button>
-        </div>
-        <div id="pcs-hint" style="font-size:9.5px;color:rgba(38,1,11,.4);letter-spacing:.01em;">clique nos stickers pra adicionar · arraste pra posicionar</div>
-      </div>
-      <!-- CONTROLS -->
-      <div class="pc-scroll pcs-panel" style="width:214px;flex-shrink:0;border-left:1px solid rgba(38,1,11,.07);background:#FCF8F6;overflow-y:auto;padding:13px 13px 15px;display:flex;flex-direction:column;gap:15px;box-sizing:border-box;">
-        <div>
-          <div class="pcs-sect-label">edição</div>
-          <div id="pcs-eras" style="display:grid;grid-template-columns:repeat(3,1fr);gap:7px;"></div>
-        </div>
-        <div>
-          <div class="pcs-sect-label">acabamento</div>
-          <div class="pcs-seg" id="pcs-finish">
-            <button class="pcs-seg-btn on" data-finish="holo">holo</button>
-            <button class="pcs-seg-btn" data-finish="glitter">glitter</button>
-            <button class="pcs-seg-btn" data-finish="matte">fosco</button>
-          </div>
-        </div>
-        <div>
-          <div class="pcs-sect-label">stickers</div>
-          <div id="pcs-tray" style="display:grid;grid-template-columns:repeat(5,1fr);gap:6px;"></div>
-          <div id="pcs-words" style="display:flex;flex-wrap:wrap;gap:5px;margin-top:8px;"></div>
-        </div>
-        <div>
-          <div class="pcs-sect-label">texto</div>
-          <div style="display:flex;flex-direction:column;gap:7px;">
-            <input class="pcs-input" id="pcs-name-in" maxlength="14" placeholder="nome" value="pixie">
-            <input class="pcs-input" id="pcs-tag-in" maxlength="24" placeholder="legenda" value="✦ pixie club ✦">
-          </div>
-        </div>
-        <div style="margin-top:auto;display:flex;flex-direction:column;gap:7px;padding-top:4px;">
-          <div style="display:flex;gap:7px;">
-            <button class="pcs-act" id="pcs-shuffle">🎲 shuffle</button>
-            <button class="pcs-act" id="pcs-clear">limpar</button>
-          </div>
-          <button class="pcs-act pcs-act-primary" id="pcs-save">↓ salvar photocard</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <input type="file" id="pcs-file" accept="image/*" style="display:none;">
-
   <!-- ══ WINDOW: case viewer ══ -->
   <div id="pc-viewer-backdrop"></div>
   <div id="pc-win-case-viewer" style="position:absolute;width:760px;height:560px;border-radius:10px;box-shadow:0 1px 3px rgba(38,1,11,.06),0 12px 32px rgba(38,1,11,.10);overflow:hidden;">
@@ -1618,16 +1463,6 @@
       </div>
       <div class="pc-dock-dot" data-dot-win="pc-win-mail"></div>
       <span style="font-size:9px;color:rgba(38,1,11,.42);">contact</span>
-    </button>
-
-    <button class="pc-dock-btn" data-open="photocard">
-      <div class="pc-dock-icon" style="width:50px;height:50px;border-radius:13px;background:linear-gradient(135deg,#F6D6E7 0%,#D9DCFB 52%,#F6E0EC 100%);border:.5px solid rgba(38,1,11,.09);display:flex;align-items:center;justify-content:center;margin-bottom:4px;overflow:hidden;">
-        <span style="width:25px;height:33px;border-radius:5px;background:linear-gradient(160deg,#fff 0%,#FDEFF6 100%);box-shadow:0 1px 3px rgba(38,1,11,.22),inset 0 0 0 1px rgba(255,255,255,.8);display:flex;align-items:flex-end;justify-content:center;padding-bottom:3px;box-sizing:border-box;">
-          <span style="font-size:13px;line-height:1;color:#D06A9E;">★</span>
-        </span>
-      </div>
-      <div class="pc-dock-dot" data-dot-win="pc-win-photocard"></div>
-      <span style="font-size:9px;color:rgba(38,1,11,.42);">studio</span>
     </button>
 
     <div style="width:1px;height:40px;background:rgba(38,1,11,.1);margin:0 2px;align-self:center;"></div>
@@ -2240,7 +2075,7 @@ class PietraDesktop {
   }
 
   _focusWindow(id) {
-    const allWins = ['pc-win-projects','pc-win-about','pc-win-detail','pc-win-mail','pc-win-case-viewer','pc-win-pixie','pc-win-loose','pc-win-search','pc-win-themes','pc-win-photocard'];
+    const allWins = ['pc-win-projects','pc-win-about','pc-win-detail','pc-win-mail','pc-win-case-viewer','pc-win-pixie','pc-win-loose','pc-win-search','pc-win-themes'];
     const el = document.getElementById(id);
     if (!el) return;
     el.style.zIndex = String(++this._zTop);
@@ -2446,14 +2281,13 @@ class PietraDesktop {
     this._place('pc-win-loose',       W < 820 ? 16 : Math.round(W/2 - 100), Math.max(84, Math.round(H/2 - 80)), 17);
     this._place('pc-win-search',      W < 820 ? 16 : Math.round(W/2 - 220), W < 820 ? 92 : 100, 16);
     this._place('pc-win-themes',      W < 820 ? 16 : Math.round(W/2 - 154), Math.max(44, Math.round(H/2 - 190)), 19);
-    this._place('pc-win-photocard',   W < 820 ? 12 : Math.round(W/2 - 324), Math.max(44, Math.round(H/2 - 235)), 23);
 
     this._fitProjectsHeight();
     requestAnimationFrame(() => {
       this._showWindow('pc-win-projects');
     });
 
-    ['pc-win-projects','pc-win-about','pc-win-detail','pc-win-mail','pc-win-case-viewer','pc-win-pixie','pc-win-loose','pc-win-search','pc-win-themes','pc-win-photocard'].forEach(id => {
+    ['pc-win-projects','pc-win-about','pc-win-detail','pc-win-mail','pc-win-case-viewer','pc-win-pixie','pc-win-loose','pc-win-search','pc-win-themes'].forEach(id => {
       const el = document.getElementById(id);
       if (!el) return;
       el.addEventListener('pointerdown', () => this._focusWindow(id));
@@ -3430,254 +3264,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if(elSun)elSun.addEventListener('click',function(){sunTwk=performance.now();if(reduced)draw(sunTwk);});
   resize();
   if(!reduced)requestAnimationFrame(loop);
-})();
-</script>
-<script>
-/* ══ Photocard Studio ══ */
-(function(){
-  var card=document.getElementById('pcs-card');
-  if(!card) return;
-  var photo=document.getElementById('pcs-photo'),
-      ph=document.getElementById('pcs-photo-ph'),
-      img=document.getElementById('pcs-photo-img'),
-      holo=document.getElementById('pcs-holo'),
-      stickersEl=document.getElementById('pcs-stickers'),
-      kickerEl=document.getElementById('pcs-kicker'),
-      nameOut=document.getElementById('pcs-name-out'),
-      tagOut=document.getElementById('pcs-tag-out'),
-      nameIn=document.getElementById('pcs-name-in'),
-      tagIn=document.getElementById('pcs-tag-in'),
-      selbar=document.getElementById('pcs-selbar'),
-      fileInput=document.getElementById('pcs-file');
-
-  var ERAS=[
-    {id:'sugar',   name:'sugar rush',    bg:['#FFD9EC','#F7A8CE','#F26FA6'], frame:'#ffffff', accent:'#E0559A', name_c:'#ffffff', text_c:'#ffffff', finish:'holo'},
-    {id:'club',    name:'club classic',  bg:['#D6EA6E','#B8D84B','#96BE2A'], frame:'#14140F', accent:'#14140F', name_c:'#14140F', text_c:'#14140F', finish:'matte'},
-    {id:'sour',    name:'sour candy',    bg:['#E7D6FF','#B79BEE','#8E6FE0'], frame:'#ffffff', accent:'#6B45C9', name_c:'#ffffff', text_c:'#ffffff', finish:'holo'},
-    {id:'peach',   name:'eternal peach', bg:['#FFE8D6','#FFC9A8','#F7A98A'], frame:'#ffffff', accent:'#E07A4E', name_c:'#5A2A18', text_c:'#5A2A18', finish:'glitter'},
-    {id:'icy',     name:'icy heart',     bg:['#DCF0FF','#A9D6F5','#7FB9EC'], frame:'#ffffff', accent:'#3E7FC2', name_c:'#17385C', text_c:'#17385C', finish:'holo'},
-    {id:'magenta', name:'hyper magenta', bg:['#FF7AC8','#FF3E9E','#E01E7E'], frame:'#ffffff', accent:'#FFE04A', name_c:'#ffffff', text_c:'#ffffff', finish:'glitter'}
-  ];
-  var GLYPHS=['★','✦','♡','✿','⟡','♪','☾','✰','❀','✎'];
-  var WORDS=['muse','vip','b-side','2025','encore','♥ u'];
-  var TAGS=['✦ pixie club ✦','limited pressing','deluxe edition','side a / side b',"collector's item",'press play ♪','fan-made forever'];
-
-  var state={era:ERAS[0], finish:'holo', hasPhoto:false, stickers:[], sel:null, num:1, dragging:false};
-  var uid=0;
-
-  /* ── build right-panel controls ── */
-  var erasWrap=document.getElementById('pcs-eras');
-  ERAS.forEach(function(era){
-    var b=document.createElement('button'); b.className='pcs-era'; b.dataset.era=era.id;
-    b.innerHTML='<span class="pcs-era-sw" style="background:linear-gradient(160deg,'+era.bg[0]+','+era.bg[1]+' 52%,'+era.bg[2]+')"></span><span class="pcs-era-name">'+era.name+'</span>';
-    b.addEventListener('click',function(){ applyEra(era); });
-    erasWrap.appendChild(b);
-  });
-  var trayWrap=document.getElementById('pcs-tray');
-  GLYPHS.forEach(function(g){
-    var b=document.createElement('button'); b.className='pcs-tray-btn'; b.textContent=g;
-    b.addEventListener('click',function(){ addSticker(g,false); });
-    trayWrap.appendChild(b);
-  });
-  var wordsWrap=document.getElementById('pcs-words');
-  WORDS.forEach(function(w){
-    var b=document.createElement('button'); b.className='pcs-word-btn'; b.textContent=w;
-    b.addEventListener('click',function(){ addSticker(w,true); });
-    wordsWrap.appendChild(b);
-  });
-
-  /* ── era / finish ── */
-  function applyEra(era){
-    state.era=era;
-    card.style.background=era.frame;
-    photo.style.background='linear-gradient(160deg,'+era.bg[0]+','+era.bg[1]+' 52%,'+era.bg[2]+')';
-    nameOut.style.color=era.name_c; kickerEl.style.color=era.text_c; tagOut.style.color=era.text_c;
-    document.querySelectorAll('.pcs-era').forEach(function(e){ e.classList.toggle('sel', e.dataset.era===era.id); });
-    setFinish(era.finish);
-  }
-  function setFinish(f){
-    state.finish=f;
-    photo.classList.remove('is-holo','is-glitter','is-matte');
-    photo.classList.add('is-'+f);
-    document.querySelectorAll('#pcs-finish .pcs-seg-btn').forEach(function(b){ b.classList.toggle('on', b.dataset.finish===f); });
-  }
-  document.querySelectorAll('#pcs-finish .pcs-seg-btn').forEach(function(b){
-    b.addEventListener('click',function(){ setFinish(b.dataset.finish); });
-  });
-
-  /* ── stickers ── */
-  function addSticker(glyph,isWord){
-    var s={id:++uid, glyph:glyph, isWord:isWord,
-      x:0.5+(Math.random()-0.5)*0.24, y:0.42+(Math.random()-0.5)*0.24,
-      rot:(Math.random()-0.5)*24, scale:isWord?1:1, color:state.era.accent};
-    state.stickers.push(s); renderStickers(); select(s.id);
-  }
-  function renderStickers(){
-    stickersEl.innerHTML='';
-    state.stickers.forEach(function(s){
-      var el=document.createElement('span');
-      el.className='pcs-sticker'+(s.isWord?' is-word':'')+(state.sel===s.id?' sel':'');
-      el.textContent=s.glyph;
-      el.style.left=(s.x*100)+'%'; el.style.top=(s.y*100)+'%';
-      el.style.setProperty('--r',s.rot+'deg'); el.style.setProperty('--s',s.scale);
-      if(s.isWord) el.style.background=s.color; else el.style.color=s.color;
-      el.addEventListener('pointerdown',function(e){ startStickerDrag(e,s,el); });
-      stickersEl.appendChild(el);
-    });
-  }
-  function startStickerDrag(e,s,el){
-    e.stopPropagation(); e.preventDefault();
-    select(s.id);
-    var rect=stickersEl.getBoundingClientRect();
-    var moved=false, sx=e.clientX, sy=e.clientY;
-    state.dragging=true;
-    try{ el.setPointerCapture(e.pointerId); }catch(_){ }
-    function mv(me){
-      if(!moved && Math.abs(me.clientX-sx)+Math.abs(me.clientY-sy)>3) moved=true;
-      var fx=(me.clientX-rect.left)/rect.width, fy=(me.clientY-rect.top)/rect.height;
-      s.x=Math.max(0.06,Math.min(0.94,fx)); s.y=Math.max(0.06,Math.min(0.94,fy));
-      el.style.left=(s.x*100)+'%'; el.style.top=(s.y*100)+'%';
-    }
-    function up(){ state.dragging=false; el.removeEventListener('pointermove',mv); el.removeEventListener('pointerup',up); el.removeEventListener('pointercancel',up); }
-    el.addEventListener('pointermove',mv); el.addEventListener('pointerup',up); el.addEventListener('pointercancel',up);
-  }
-  function select(id){
-    state.sel=id;
-    document.querySelectorAll('.pcs-sticker').forEach(function(el,i){ el.classList.toggle('sel', state.stickers[i] && state.stickers[i].id===id); });
-    selbar.style.display = id? 'flex':'none';
-  }
-  function deselect(){ select(null); }
-  photo.addEventListener('pointerdown',function(e){ if(!e.target.closest('.pcs-sticker')) deselect(); });
-
-  selbar.addEventListener('click',function(e){
-    var b=e.target.closest('[data-selact]'); if(!b||!state.sel) return;
-    var s=state.stickers.find(function(x){return x.id===state.sel;}); if(!s) return;
-    var a=b.dataset.selact;
-    if(a==='bigger') s.scale=Math.min(2.6,s.scale+0.18);
-    else if(a==='smaller') s.scale=Math.max(0.45,s.scale-0.18);
-    else if(a==='rotL') s.rot-=12;
-    else if(a==='rotR') s.rot+=12;
-    else if(a==='del'){ state.stickers=state.stickers.filter(function(x){return x.id!==s.id;}); deselect(); renderStickers(); return; }
-    var el=stickersEl.children[state.stickers.indexOf(s)];
-    if(el){ el.style.setProperty('--r',s.rot+'deg'); el.style.setProperty('--s',s.scale); }
-  });
-  document.addEventListener('keydown',function(e){
-    if((e.key==='Backspace'||e.key==='Delete') && state.sel){
-      var t=e.target.tagName; if(t==='INPUT'||t==='TEXTAREA') return;
-      if(window.pietraDesktop && !window.pietraDesktop._openWindows.has('pc-win-photocard')) return;
-      e.preventDefault();
-      state.stickers=state.stickers.filter(function(x){return x.id!==state.sel;}); deselect(); renderStickers();
-    }
-  });
-
-  /* ── holo sheen + card tilt ── */
-  card.addEventListener('pointermove',function(e){
-    if(state.dragging) return;
-    var r=photo.getBoundingClientRect();
-    var fx=(e.clientX-r.left)/r.width, fy=(e.clientY-r.top)/r.height;
-    if(state.finish!=='matte'){ holo.style.setProperty('--hx',(fx*100)+'%'); holo.style.setProperty('--hy',(fy*100)+'%'); }
-    card.style.transition='transform .08s linear';
-    card.style.transform='perspective(760px) rotateX('+((0.5-fy)*8).toFixed(2)+'deg) rotateY('+((fx-0.5)*8).toFixed(2)+'deg)';
-  });
-  card.addEventListener('pointerleave',function(){
-    card.style.transition='transform .5s cubic-bezier(.2,.7,.2,1)';
-    card.style.transform='';
-  });
-
-  /* ── text ── */
-  nameIn.addEventListener('input',function(){ nameOut.textContent=nameIn.value||'—'; });
-  tagIn.addEventListener('input',function(){ tagOut.textContent=tagIn.value; });
-
-  /* ── photo drop / browse ── */
-  function handleFile(file){
-    if(!file || !/^image\//.test(file.type)) return;
-    var url=URL.createObjectURL(file);
-    img.onload=function(){ img.style.display='block'; ph.style.display='none'; state.hasPhoto=true; };
-    img.src=url;
-  }
-  ph.addEventListener('click',function(){ fileInput.click(); });
-  photo.addEventListener('dblclick',function(){ fileInput.click(); });
-  fileInput.addEventListener('change',function(){ if(fileInput.files[0]) handleFile(fileInput.files[0]); fileInput.value=''; });
-  ['dragenter','dragover'].forEach(function(ev){ photo.addEventListener(ev,function(e){ e.preventDefault(); photo.classList.add('drag-over'); }); });
-  ['dragleave','drop'].forEach(function(ev){ photo.addEventListener(ev,function(e){ e.preventDefault(); photo.classList.remove('drag-over'); }); });
-  photo.addEventListener('drop',function(e){ var f=e.dataTransfer&&e.dataTransfer.files[0]; if(f) handleFile(f); });
-
-  /* ── actions ── */
-  document.getElementById('pcs-shuffle').addEventListener('click',function(){
-    applyEra(ERAS[Math.floor(Math.random()*ERAS.length)]);
-    state.stickers=[];
-    var n=3+Math.floor(Math.random()*3);
-    for(var i=0;i<n;i++){
-      var word=Math.random()<0.34;
-      addSticker(word?WORDS[Math.floor(Math.random()*WORDS.length)]:GLYPHS[Math.floor(Math.random()*GLYPHS.length)], word);
-    }
-    deselect();
-    var tag=TAGS[Math.floor(Math.random()*TAGS.length)];
-    tagIn.value=tag; tagOut.textContent=tag;
-    state.num=1+Math.floor(Math.random()*499);
-    kickerEl.textContent="collector's edition · no. "+String(state.num).padStart(3,'0');
-  });
-  document.getElementById('pcs-clear').addEventListener('click',function(){ state.stickers=[]; deselect(); renderStickers(); });
-  document.getElementById('pcs-save').addEventListener('click',savePng);
-
-  function rr(ctx,x,y,w,h,r){ r=Math.min(r,w/2,h/2); ctx.beginPath(); ctx.moveTo(x+r,y); ctx.arcTo(x+w,y,x+w,y+h,r); ctx.arcTo(x+w,y+h,x,y+h,r); ctx.arcTo(x,y+h,x,y,r); ctx.arcTo(x,y,x+w,y,r); ctx.closePath(); }
-  async function savePng(){
-    if(document.fonts && document.fonts.ready){ try{ await document.fonts.ready; }catch(_){ } }
-    var S=3, W=214*S, H=336*S, pad=6*S;
-    var cv=document.createElement('canvas'); cv.width=W; cv.height=H;
-    var ctx=cv.getContext('2d');
-    rr(ctx,0,0,W,H,15*S); ctx.fillStyle=state.era.frame; ctx.fill();
-    var px=pad, py=pad, pw=W-2*pad, ph2=H-2*pad;
-    ctx.save(); rr(ctx,px,py,pw,ph2,10*S); ctx.clip();
-    var grad=ctx.createLinearGradient(px,py,px+pw,py+ph2);
-    grad.addColorStop(0,state.era.bg[0]); grad.addColorStop(0.52,state.era.bg[1]); grad.addColorStop(1,state.era.bg[2]);
-    ctx.fillStyle=grad; ctx.fillRect(px,py,pw,ph2);
-    if(state.hasPhoto && img.naturalWidth){
-      var ir=img.naturalWidth/img.naturalHeight, tr=pw/ph2, dw,dh,dx,dy;
-      if(ir>tr){ dh=ph2; dw=ph2*ir; dx=px-(dw-pw)/2; dy=py; } else { dw=pw; dh=pw/ir; dx=px; dy=py-(dh-ph2)/2; }
-      ctx.drawImage(img,dx,dy,dw,dh);
-    }
-    if(state.finish==='holo'){
-      var sg=ctx.createLinearGradient(px,py,px+pw,py+ph2);
-      sg.addColorStop(0.30,'rgba(255,255,255,0)'); sg.addColorStop(0.45,'rgba(255,255,255,.38)');
-      sg.addColorStop(0.50,'rgba(160,225,255,.32)'); sg.addColorStop(0.55,'rgba(255,180,235,.32)');
-      sg.addColorStop(0.70,'rgba(255,255,255,0)'); ctx.fillStyle=sg; ctx.fillRect(px,py,pw,ph2);
-    } else if(state.finish==='glitter'){
-      ctx.fillStyle='rgba(255,255,255,.85)';
-      for(var i=0;i<120;i++){ ctx.beginPath(); ctx.arc(px+Math.random()*pw,py+Math.random()*ph2,0.9*S,0,7); ctx.fill(); }
-    }
-    var scr=ctx.createLinearGradient(0,py+ph2-ph2*0.44,0,py+ph2);
-    scr.addColorStop(0,'rgba(20,2,10,0)'); scr.addColorStop(1,'rgba(20,2,10,.5)');
-    ctx.fillStyle=scr; ctx.fillRect(px,py+ph2-ph2*0.44,pw,ph2*0.44);
-    state.stickers.forEach(function(s){
-      ctx.save(); ctx.translate(px+s.x*pw, py+s.y*ph2); ctx.rotate(s.rot*Math.PI/180); ctx.scale(s.scale,s.scale);
-      ctx.textAlign='center'; ctx.textBaseline='middle'; ctx.shadowColor='rgba(0,0,0,.3)'; ctx.shadowBlur=2*S; ctx.shadowOffsetY=1*S;
-      if(s.isWord){
-        ctx.font='800 '+(13*S)+'px "Inter Tight","Nunito",sans-serif';
-        var tw=ctx.measureText(s.glyph).width, w=tw+18*S, h=22*S;
-        rr(ctx,-w/2,-h/2,w,h,h/2); ctx.fillStyle=s.color; ctx.fill();
-        ctx.shadowColor='transparent'; ctx.fillStyle='#fff'; ctx.fillText(s.glyph,0,1*S);
-      } else {
-        ctx.font=(28*S)+'px "Nunito","Inter Tight",sans-serif'; ctx.fillStyle=s.color; ctx.fillText(s.glyph,0,0);
-      }
-      ctx.restore();
-    });
-    ctx.shadowColor='transparent'; ctx.textAlign='left'; ctx.textBaseline='alphabetic';
-    var capX=px+8*S, capBottom=py+ph2-11*S;
-    ctx.fillStyle=state.era.text_c; ctx.globalAlpha=.92; ctx.font='600 '+(10*S)+'px "Nunito",sans-serif';
-    ctx.fillText(tagOut.textContent, capX, capBottom); ctx.globalAlpha=1;
-    ctx.fillStyle=state.era.name_c; ctx.font='700 '+(26*S)+'px "Inter Tight","Nunito",sans-serif';
-    ctx.fillText(nameOut.textContent, capX, capBottom-17*S);
-    ctx.fillStyle=state.era.text_c; ctx.globalAlpha=.86; ctx.font='700 '+(7.5*S)+'px "Nunito",sans-serif';
-    ctx.fillText(kickerEl.textContent.toUpperCase(), capX, capBottom-17*S-30*S); ctx.globalAlpha=1;
-    ctx.restore();
-    var a=document.createElement('a'); a.download='photocard-'+state.era.id+'.png';
-    try{ a.href=cv.toDataURL('image/png'); a.click(); }catch(_){ }
-  }
-
-  /* ── init ── */
-  applyEra(ERAS[0]);
-  renderStickers();
 })();
 </script>
 </body>
