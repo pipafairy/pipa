@@ -800,7 +800,7 @@
   </div>
 
   <!-- ══ Widget: asfalto (polaroid) ══ -->
-  <div id="pc-widget-asfalto" class="pc-widget-click" style="position:absolute;right:28px;top:218px;z-index:8;width:86px;background:rgba(255,255,255,.78);border:1px solid rgba(38,1,11,.10);border-radius:12px;box-shadow:0 1px 2px rgba(38,1,11,.04),0 5px 14px rgba(38,1,11,.06);padding:8px 8px 9px;overflow:hidden;box-sizing:border-box;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);">
+  <div id="pc-widget-asfalto" class="pc-widget-click" style="position:absolute;right:28px;top:226px;z-index:8;width:86px;background:rgba(255,255,255,.78);border:1px solid rgba(38,1,11,.10);border-radius:12px;box-shadow:0 1px 2px rgba(38,1,11,.04),0 5px 14px rgba(38,1,11,.06);padding:8px 8px 9px;overflow:hidden;box-sizing:border-box;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);">
     <div class="pc-asfalto-photo">
       <img src="uploads/asfalto.jpg" loading="lazy" decoding="async" alt="" onerror="this.style.display='none';">
     </div>
@@ -816,7 +816,7 @@
   </div>
 
   <!-- ══ Widget: calendar ══ -->
-  <div id="pc-widget-cal" style="position:absolute;right:28px;top:128px;width:80px;z-index:10;background:#FEFBFE;border:1px solid rgba(38,1,11,.09);border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(38,1,11,.05),0 4px 12px rgba(38,1,11,.06);">
+  <div id="pc-widget-cal" style="position:absolute;right:148px;top:134px;width:80px;z-index:10;background:#FEFBFE;border:1px solid rgba(38,1,11,.09);border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(38,1,11,.05),0 4px 12px rgba(38,1,11,.06);">
     <div style="background:#F2AABB;padding:5px 0 4px;text-align:center;">
       <span id="pc-cal-month" style="font-size:7.5px;font-weight:600;color:rgba(255,255,255,.92);text-transform:uppercase;letter-spacing:.1em;">jun</span>
     </div>
@@ -827,7 +827,7 @@
   </div>
 
   <!-- ══ Widget: on rotation (music) ══ -->
-  <div id="pc-widget-music" style="position:absolute;right:28px;top:338px;z-index:9;width:200px;background:rgba(248,243,239,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(38,1,11,.08);border-radius:14px;padding:8px 8px 7px;">
+  <div id="pc-widget-music" style="position:absolute;right:28px;top:355px;z-index:9;width:200px;background:rgba(248,243,239,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(38,1,11,.08);border-radius:14px;padding:8px 8px 7px;">
     <div style="padding:0 3px 6px;">
       <span style="font-size:9px;font-weight:700;color:rgba(38,1,11,.46);letter-spacing:.05em;">now listening</span>
     </div>
@@ -1267,9 +1267,9 @@ class PietraDesktop {
       const base = project && project.id === 'grimes'
         ? Math.min(940, Math.max(760, window.innerWidth - 48))
         : 760;
-      const width = Math.min(base, window.innerWidth - 24);
+      const width = Math.min(base, window.innerWidth - 40);
       win.style.width = width + 'px';
-      win.style.left = Math.max(12, Math.round(window.innerWidth / 2 - width / 2)) + 'px';
+      win.style.left = Math.max(20, Math.round(window.innerWidth / 2 - width / 2)) + 'px';
     }
     const scroller = document.querySelector('#pc-win-case-viewer .pc-scroll');
     if (scroller) scroller.style.overflowX = 'hidden';
@@ -1537,7 +1537,7 @@ class PietraDesktop {
   _clampWindow(id) {
     const el = document.getElementById(id);
     if (!el || window.innerWidth < 820) return;
-    const margin = 12;
+    const margin = 20;
     const menuBarH = 30;
     const dockReserve = 116;
     const w = el.offsetWidth || 300;
@@ -1778,15 +1778,15 @@ class PietraDesktop {
   _setup() {
     const W = window.innerWidth, H = window.innerHeight;
 
-    this._place('pc-win-projects',    W < 820 ? 12 : 60,       44,                    20);
-    this._place('pc-win-about',       W < 820 ? 16 : Math.max(20, W - 578),   W < 820 ? 96 : 130, 18);
-    this._place('pc-win-detail',      W < 820 ? 12 : Math.round(W/2 - 260), Math.max(44, Math.round(H/2 - 220)), 24);
-    this._place('pc-win-mail',        W < 820 ? 16 : Math.round(W/2 - 160), Math.max(56, Math.round(H/2 - 135)), 22);
+    this._place('pc-win-projects',    W < 820 ? 20 : 60,       44,                    20);
+    this._place('pc-win-about',       W < 820 ? 20 : Math.max(20, W - 578),   W < 820 ? 96 : 130, 18);
+    this._place('pc-win-detail',      W < 820 ? 20 : Math.round(W/2 - 260), Math.max(44, Math.round(H/2 - 220)), 24);
+    this._place('pc-win-mail',        W < 820 ? 20 : Math.round(W/2 - 160), Math.max(56, Math.round(H/2 - 135)), 22);
 
-    this._place('pc-win-case-viewer', W < 820 ? 12 : Math.round(W/2 - 380), Math.max(44, Math.round(H/2 - 290)), 26);
+    this._place('pc-win-case-viewer', W < 820 ? 20 : Math.round(W/2 - 380), Math.max(44, Math.round(H/2 - 290)), 26);
     this._place('pc-win-pixie',       Math.round(W/2 - 180),   Math.round(H/2 - 200), 25);
-    this._place('pc-win-loose',       W < 820 ? 16 : Math.round(W/2 - 100), Math.max(84, Math.round(H/2 - 80)), 17);
-    this._place('pc-win-search',      W < 820 ? 16 : Math.round(W/2 - 220), W < 820 ? 92 : 100, 16);
+    this._place('pc-win-loose',       W < 820 ? 20 : Math.round(W/2 - 100), Math.max(84, Math.round(H/2 - 80)), 17);
+    this._place('pc-win-search',      W < 820 ? 20 : Math.round(W/2 - 220), W < 820 ? 92 : 100, 16);
 
     this._fitProjectsHeight();
     requestAnimationFrame(() => {
@@ -1897,15 +1897,21 @@ class PietraDesktop {
     const asfaltoWidget = document.getElementById('pc-widget-asfalto');
     const asfaltoBubble = document.getElementById('pc-asfalto-bubble');
     if (asfaltoWidget && asfaltoBubble) {
-      asfaltoWidget.addEventListener('click', () => {
+      const positionBubble = () => {
         const root = document.getElementById('pc-desktop-root');
         const wr = asfaltoWidget.getBoundingClientRect();
         const rr = root ? root.getBoundingClientRect() : { left: 0, top: 0 };
         asfaltoBubble.style.left = Math.max(8, Math.round(wr.left - rr.left - 208)) + 'px';
         asfaltoBubble.style.top = Math.max(44, Math.round(wr.top - rr.top + wr.height / 2 - 50)) + 'px';
         asfaltoBubble.style.right = 'auto';
+      };
+      asfaltoWidget.addEventListener('click', () => {
+        positionBubble();
         asfaltoBubble.classList.remove('is-hidden');
+        const root = document.getElementById('pc-desktop-root');
         if (root) {
+          const wr = asfaltoWidget.getBoundingClientRect();
+          const rr = root.getBoundingClientRect();
           const cx = Math.round(wr.left - rr.left + wr.width / 2);
           const ty = Math.round(wr.top - rr.top - 2);
           [{ dx: -11, delay: 0 }, { dx: 8, delay: 130 }, { dx: -1, delay: 255 }].forEach(({ dx, delay }) => {
@@ -1917,6 +1923,9 @@ class PietraDesktop {
             setTimeout(() => h.remove(), 1500 + delay);
           });
         }
+      });
+      asfaltoWidget.addEventListener('pointermove', () => {
+        if (!asfaltoBubble.classList.contains('is-hidden')) positionBubble();
       });
       const close = asfaltoBubble.querySelector('.pc-asfalto-bubble-close');
       if (close) close.addEventListener('click', event => {
