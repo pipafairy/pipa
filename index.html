@@ -29,29 +29,29 @@
     @font-face { font-family:"Inter Tight"; src:url("_ds/pixie-club-design-system-019df67a-27c9-7445-9f51-de5144ee30d8/fonts/InterTight-Italic-VariableFont_wght.ttf") format("truetype-variations"); font-weight:100 900; font-style:italic; font-display:swap; }
     *, *::before, *::after { box-sizing: border-box; }
     body { margin: 0; overflow: hidden; }
-    :root { --pc-green:#96CC9E; }
-    ::selection { background:rgba(242,196,218,.85); color:#26010B; }
-    a { color:#5F1E3E; }
+    :root { --pc-green:#BFDBA0; }
+    ::selection { background:rgba(254,223,221,.85); color:#5B4B45; }
+    a { color:#5B4B45; }
     a:hover { color:#3A0A18; }
-    button:focus-visible, a:focus-visible { outline:2px solid rgba(95,30,62,.4); outline-offset:2px; }
+    button:focus-visible, a:focus-visible { outline:2px solid rgba(91,75,69,.4); outline-offset:2px; }
     /* ── Initial window state ── */
     #pc-win-projects, #pc-win-about, #pc-win-detail, #pc-win-mail, #pc-win-case-viewer, #pc-win-pixie, #pc-win-search, #pc-win-loose {
       opacity: 0; transform: scale(.92) translateY(10px); pointer-events: none;
     }
     /* ── Folder hover ── */
-    .pc-folder { position: relative; z-index: 1; transition: transform 260ms cubic-bezier(.25,1,.5,1), box-shadow 260ms cubic-bezier(.25,1,.5,1); cursor: pointer; border-radius:8px; overflow:hidden; background:#F8F3EF; }
-    .pc-folder:hover { transform: translateY(-3px); z-index: 10; box-shadow: 0 6px 22px rgba(38,1,11,.14); }
+    .pc-folder { position: relative; z-index: 1; transition: transform 260ms cubic-bezier(.25,1,.5,1), box-shadow 260ms cubic-bezier(.25,1,.5,1); cursor: pointer; border-radius:8px; overflow:hidden; background:#FFF8F3; }
+    .pc-folder:hover { transform: translateY(-3px); z-index: 10; box-shadow: 0 6px 22px rgba(91,75,69,.14); }
     .pc-folder:active { transform: translateY(-1px) scale(.98) !important; transition-duration: 80ms !important; }
     .pc-folder-peek { overflow: hidden; aspect-ratio: 4 / 3; position: relative; background:#F3F0F3; border-radius:8px 8px 0 0 !important; }
     .pc-folder-img { display: block; width: 100%; height: 100%; object-fit: contain; object-position: center; transform: translateY(0); transition: transform 300ms cubic-bezier(.25,1,.5,1); }
     .pc-folder:hover .pc-folder-img { transform: none; }
     .pc-folder[data-project="sweat"] .pc-folder-img { transform: none; transform-origin: center; }
     .pc-folder[data-project="sweat"]:hover .pc-folder-img { transform: none; }
-    .pc-folder-body { transition: none; background:#F8F3EF !important; border-radius:0 0 8px 8px !important; padding:7px 10px 8px !important; }
+    .pc-folder-body { transition: none; background:#FFF8F3 !important; border-radius:0 0 8px 8px !important; padding:7px 10px 8px !important; }
     .pc-folder-body > div[style*="position:absolute"] { display:none !important; }
     #finder-projects { grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:11px !important; padding:12px 14px 16px !important; align-items:start; }
-    #finder-projects .pc-folder { border:1px solid rgba(38,1,11,.075); border-radius:8px; background:#F8F3EF; box-shadow:0 1px 2px rgba(38,1,11,.025); transition:transform 180ms cubic-bezier(.2,.7,.2,1), box-shadow 180ms cubic-bezier(.2,.7,.2,1); }
-    #finder-projects .pc-folder:hover { transform:translateY(-2px); box-shadow:0 5px 14px rgba(38,1,11,.08); }
+    #finder-projects .pc-folder { border:1px solid rgba(91,75,69,.075); border-radius:8px; background:#FFF8F3; box-shadow:0 1px 2px rgba(91,75,69,.025); transition:transform 180ms cubic-bezier(.2,.7,.2,1), box-shadow 180ms cubic-bezier(.2,.7,.2,1); }
+    #finder-projects .pc-folder:hover { transform:translateY(-2px); box-shadow:0 5px 14px rgba(91,75,69,.08); }
     #finder-projects .pc-folder:active { transform:translateY(0) scale(.99) !important; }
     #finder-projects .pc-folder[data-project="pixie"] { grid-column:1 / -1; }
     #finder-projects .pc-folder-peek { aspect-ratio:4 / 3; border-radius:8px 8px 0 0 !important; background:#F0EEF2; }
@@ -65,9 +65,9 @@
     #finder-projects .pc-folder.is-video-ready .pc-folder-img { opacity:1; filter:saturate(1) brightness(1); }
     #finder-projects .pc-folder.is-video-ready .pc-folder-poster { opacity:0; }
     #finder-projects .pc-folder:not(.is-video-ready) .pc-folder-img { opacity:0 !important; }
-    #finder-projects .pc-folder-body { min-height:40px; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:2px; background:#F8F3EF !important; border-top:1px solid rgba(38,1,11,.055); padding:8px 12px 9px !important; }
+    #finder-projects .pc-folder-body { min-height:40px; display:flex; flex-direction:column; align-items:flex-start; justify-content:center; gap:2px; background:#FFF8F3 !important; border-top:1px solid rgba(91,75,69,.055); padding:8px 12px 9px !important; }
     #finder-projects .pc-folder-body > div:not([style*="position:absolute"]) { margin:0 !important; font-size:11px !important; line-height:1.2 !important; }
-    #finder-projects .pc-folder-body > div.pc-folder-meta { font-size:9px !important; letter-spacing:.04em; color:rgba(38,1,11,.6) !important; line-height:1.3 !important; }
+    #finder-projects .pc-folder-body > div.pc-folder-meta { font-size:9px !important; letter-spacing:.04em; color:rgba(91,75,69,.6) !important; line-height:1.3 !important; }
     .pc-menu-logo { width:24px; height:24px; display:block; object-fit:contain; object-position:center; image-rendering:auto; transform:scale(1.16); }
     .pc-menu-logo-wrap { width:30px; height:30px; display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; }
     /* ── Traffic lights ── */
@@ -77,7 +77,7 @@
     .pc-tl-g:hover .tl-g { background: var(--pc-green) !important; }
     .tl-r, .tl-y, .tl-g { position: relative; }
     .tl-r[data-close] { cursor: pointer; }
-    .tl-r::after, .tl-y::after, .tl-g::after { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:9.5px; line-height:1; font-weight:700; color:rgba(38,1,11,.5); opacity:0; transition:opacity 110ms; pointer-events:none; }
+    .tl-r::after, .tl-y::after, .tl-g::after { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; font-size:9.5px; line-height:1; font-weight:700; color:rgba(91,75,69,.5); opacity:0; transition:opacity 110ms; pointer-events:none; }
     .tl-r::after { content:"×"; }
     .tl-y::after { content:"−"; }
     .tl-g::after { content:"+"; }
@@ -85,18 +85,18 @@
     .tl-r[data-close]:active { transform:scale(.86); }
     /* ── Sidebar ── */
     .pc-sb-item { cursor: pointer; transition: background 100ms; }
-    .pc-sb-item:hover { background: rgba(38,1,11,.05) !important; }
+    .pc-sb-item:hover { background: rgba(91,75,69,.05) !important; }
     /* ── Dock ── */
     .pc-dock-btn { cursor: pointer; border: none; background: none; font-family: inherit; padding: 0; display: flex; flex-direction: column; align-items: center; }
     .pc-dock-icon img { width:42px !important; height:42px !important; object-fit:contain !important; object-position:center !important; display:block !important; }
     .pc-dock-icon { transition: transform 200ms cubic-bezier(.2,.7,.2,1), box-shadow 200ms cubic-bezier(.2,.7,.2,1); }
-    .pc-dock-btn:hover .pc-dock-icon { transform: translateY(-5px) scale(1.06); box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 8px 18px rgba(38,1,11,.12); }
+    .pc-dock-btn:hover .pc-dock-icon { transform: translateY(-5px) scale(1.06); box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 8px 18px rgba(91,75,69,.12); }
     .pc-dock-btn > span { transition: color 160ms; }
-    .pc-dock-btn:hover > span { color: rgba(38,1,11,.72) !important; }
+    .pc-dock-btn:hover > span { color: rgba(91,75,69,.72) !important; }
     .pc-dock-btn[data-open="pixie"] .pc-dock-icon { display:flex; align-items:center; justify-content:center; background:rgba(252,248,246,.9); }
     .pc-dock-btn[data-open="pixie"] .pc-dock-icon img { width:44px !important; height:44px !important; transform:none; }
-    .pc-dock-icon { box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 1px 2px rgba(38,1,11,.05); }
-    .pc-dock-btn:hover .pc-dock-icon { transform: translateY(-4px) scale(1.06); box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 5px 12px rgba(38,1,11,.10); }
+    .pc-dock-icon { box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 1px 2px rgba(91,75,69,.05); }
+    .pc-dock-btn:hover .pc-dock-icon { transform: translateY(-4px) scale(1.06); box-shadow: inset 0 1px 0 rgba(255,255,255,.85), 0 5px 12px rgba(91,75,69,.10); }
     @keyframes pc-dock-click {
       0%   { transform: translateY(-4px) scale(1.06); }
       45%  { transform: translateY(-1px) scale(.95); }
@@ -116,23 +116,23 @@
     .pc-deskicon:active { transform: scale(.94) !important; transition-duration: 80ms !important; }
     /* ── Menu bar items ── */
     .pc-mb-item { cursor: default; padding: 2px 7px; border-radius: 4px; transition: background 100ms; }
-    .pc-mb-item:hover { background: rgba(38,1,11,.09); }
-    .pc-mb-item.pc-mb-active { background: rgba(38,1,11,.13); }
+    .pc-mb-item:hover { background: rgba(91,75,69,.09); }
+    .pc-mb-item.pc-mb-active { background: rgba(91,75,69,.13); }
     /* ── Dropdown ── */
-    .pc-dd-item { font-size: 11px; color: rgba(38,1,11,.78); padding: 6px 14px; cursor: default; transition: background 80ms; user-select: none; white-space: nowrap; }
-    .pc-dd-item:hover { background: rgba(38,1,11,.08); }
-    .pc-dd-sep { height: 1px; background: rgba(38,1,11,.08); margin: 3px 0; }
+    .pc-dd-item { font-size: 11px; color: rgba(91,75,69,.78); padding: 6px 14px; cursor: default; transition: background 80ms; user-select: none; white-space: nowrap; }
+    .pc-dd-item:hover { background: rgba(91,75,69,.08); }
+    .pc-dd-sep { height: 1px; background: rgba(91,75,69,.08); margin: 3px 0; }
     /* ── Titlebar ── */
     .pc-tbar { cursor: grab; user-select: none; }
     .pc-tbar:active { cursor: grabbing; }
     /* ── Scrollbars ── */
     .pc-scroll::-webkit-scrollbar { width: 4px; }
     .pc-scroll::-webkit-scrollbar-track { background: transparent; }
-    .pc-scroll::-webkit-scrollbar-thumb { background: rgba(38,1,11,.1); border-radius: 4px; }
-    #pc-win-projects .pc-scroll::-webkit-scrollbar-thumb { background: rgba(38,1,11,.16); }
+    .pc-scroll::-webkit-scrollbar-thumb { background: rgba(91,75,69,.1); border-radius: 4px; }
+    #pc-win-projects .pc-scroll::-webkit-scrollbar-thumb { background: rgba(91,75,69,.16); }
     .pc-sbar::-webkit-scrollbar { width: 3px; }
     .pc-sbar::-webkit-scrollbar-track { background: transparent; }
-    .pc-sbar::-webkit-scrollbar-thumb { background: rgba(38,1,11,.08); border-radius: 2px; }
+    .pc-sbar::-webkit-scrollbar-thumb { background: rgba(91,75,69,.08); border-radius: 2px; }
     /* ── Tags + links ── */
     .pc-tag { cursor: pointer; transition: opacity 130ms; display: inline-block; }
     .pc-tag:hover { opacity: .65; }
@@ -140,44 +140,44 @@
     .pc-clink:hover { opacity: .6; }
     .pc-case-btn { transition: background 120ms cubic-bezier(.2,.7,.2,1), transform 80ms; }
     /* ── Window buttons ── */
-    .pc-btn { display:inline-flex; align-items:center; justify-content:center; gap:4px; height:28px; padding:0 10px; border-radius:7px; font-size:12px; font-weight:500; line-height:1; font-family:inherit; cursor:pointer; border:1px solid rgba(38,1,11,.11); transition:background 110ms cubic-bezier(.2,.7,.2,1), transform 80ms; text-decoration:none; box-sizing:border-box; white-space:nowrap; flex-shrink:0; background:#F3F1EE; color:rgba(38,1,11,.72); }
-    .pc-btn { box-shadow: inset 0 1px 0 rgba(255,255,255,.72), 0 1px 2px rgba(38,1,11,.04); }
+    .pc-btn { display:inline-flex; align-items:center; justify-content:center; gap:4px; height:28px; padding:0 10px; border-radius:7px; font-size:12px; font-weight:500; line-height:1; font-family:inherit; cursor:pointer; border:1px solid rgba(91,75,69,.11); transition:background 110ms cubic-bezier(.2,.7,.2,1), transform 80ms; text-decoration:none; box-sizing:border-box; white-space:nowrap; flex-shrink:0; background:#F3F1EE; color:rgba(91,75,69,.72); }
+    .pc-btn { box-shadow: inset 0 1px 0 rgba(255,255,255,.72), 0 1px 2px rgba(91,75,69,.04); }
     .pc-btn:hover { background:#F0EBE5; }
     .pc-btn:active { transform:translateY(1px) !important; }
-    .pc-btn-primary { background:#26010B; color:#FEFBFE; border-color:rgba(38,1,11,.18); }
+    .pc-btn-primary { background:#5B4B45; color:#FFF8F3; border-color:rgba(91,75,69,.18); }
     .pc-btn-primary:hover { background:#3A0A18; }
     .pc-btn-secondary { }
-    .pc-btn-ghost { color:rgba(38,1,11,.52); }
+    .pc-btn-ghost { color:rgba(91,75,69,.52); }
     .pc-close-txt { transition: color 130ms; cursor: pointer; border: none; background: none; font-family: inherit; }
-    .pc-close-txt:hover { color: rgba(38,1,11,.7) !important; }
+    .pc-close-txt:hover { color: rgba(91,75,69,.7) !important; }
     .pc-btn.is-copied { background:#EDF8F2 !important; border-color:var(--pc-green) !important; color:#2C7A52 !important; }
-    .pc-contact-card { text-decoration:none; display:flex; flex-direction:column; gap:7px; min-height:76px; padding:11px 12px; background:#F8F3EF; border:1px solid rgba(38,1,11,.09); border-radius:11px; position:relative; transition:background 170ms, transform 180ms cubic-bezier(.2,.7,.2,1), box-shadow 180ms; }
-    .pc-contact-card:hover { background:#F3ECEF; transform:translateY(-2px); box-shadow:0 5px 14px rgba(38,1,11,.08); }
-    .pc-contact-card-title { font-size:11px; font-weight:600; color:#26010B; line-height:1.2; transition:color 170ms; }
-    .pc-contact-card-sub { font-size:9px; color:rgba(38,1,11,.42); margin-top:1px; }
-    .pc-contact-card-arrow { position:absolute; top:9px; right:10px; font-size:10px; color:rgba(38,1,11,.22); transition:transform 200ms cubic-bezier(.2,.7,.2,1), color 200ms; }
-    .pc-contact-card:hover .pc-contact-card-arrow { transform:translate(2px,-2px); color:#5F1E3E; }
-    .pc-contact-card:hover .pc-contact-card-title { color:#5F1E3E; }
+    .pc-contact-card { text-decoration:none; display:flex; flex-direction:column; gap:7px; min-height:76px; padding:11px 12px; background:#FFF8F3; border:1px solid rgba(91,75,69,.09); border-radius:11px; position:relative; transition:background 170ms, transform 180ms cubic-bezier(.2,.7,.2,1), box-shadow 180ms; }
+    .pc-contact-card:hover { background:#F3ECEF; transform:translateY(-2px); box-shadow:0 5px 14px rgba(91,75,69,.08); }
+    .pc-contact-card-title { font-size:11px; font-weight:600; color:#5B4B45; line-height:1.2; transition:color 170ms; }
+    .pc-contact-card-sub { font-size:9px; color:rgba(91,75,69,.42); margin-top:1px; }
+    .pc-contact-card-arrow { position:absolute; top:9px; right:10px; font-size:10px; color:rgba(91,75,69,.22); transition:transform 200ms cubic-bezier(.2,.7,.2,1), color 200ms; }
+    .pc-contact-card:hover .pc-contact-card-arrow { transform:translate(2px,-2px); color:#5B4B45; }
+    .pc-contact-card:hover .pc-contact-card-title { color:#5B4B45; }
     .pc-contact-card:active { transform:translateY(0) scale(.985) !important; transition-duration:70ms !important; }
     .tl-r[data-close] { cursor: pointer; }
     .pc-spotify-wrap { margin: 14px 0 14px; }
-    .pc-spotify-label { font-size: 10px; color: rgba(38,1,11,.38); margin-bottom: 6px; letter-spacing: .02em; }
-    .pc-spotify-frame { width: 100%; height: 80px; border: 0; border-radius: 12px; display: block; background: rgba(38,1,11,.04); }
+    .pc-spotify-label { font-size: 10px; color: rgba(91,75,69,.38); margin-bottom: 6px; letter-spacing: .02em; }
+    .pc-spotify-frame { width: 100%; height: 80px; border: 0; border-radius: 12px; display: block; background: rgba(91,75,69,.04); }
     /* ── Mini profile widget ── */
     .pc-profile-widget { cursor: pointer; transition: transform 200ms cubic-bezier(.2,.7,.2,1), box-shadow 200ms cubic-bezier(.2,.7,.2,1); user-select: none; }
-    .pc-profile-widget:hover { transform: translateY(-2px); box-shadow: 0 3px 10px rgba(38,1,11,.07); }
+    .pc-profile-widget:hover { transform: translateY(-2px); box-shadow: 0 3px 10px rgba(91,75,69,.07); }
     .pc-profile-widget:active { transform: scale(.97) !important; transition-duration: 80ms !important; }
     /* ── Media slots ── */
-    .pc-media-slot { overflow:hidden; border-radius:6px; border:1px solid rgba(38,1,11,.12); background:#16121A; flex-shrink:0; }
+    .pc-media-slot { overflow:hidden; border-radius:6px; border:1px solid rgba(91,75,69,.12); background:#16121A; flex-shrink:0; }
     .pc-media-slot img { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
     .pc-media-slot video { width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
     .pc-pixie-preview-area { background:#F0EEF2; padding:4px; }
     .pc-pixie-main-preview { width:100%; height:auto; border-radius:8px; overflow:hidden; background:transparent; display:block; padding:0; }
     .pc-pixie-main-preview img { display:block; width:100%; height:auto; object-fit:unset; object-position:center; }
-    .pc-case-media-viewer { min-height:100%; background:#FEFBFE; padding:14px; display:flex; flex-direction:column; gap:8px; box-sizing:border-box; }
+    .pc-case-media-viewer { min-height:100%; background:#FFF8F3; padding:14px; display:flex; flex-direction:column; gap:8px; box-sizing:border-box; }
     .pc-case-media-item { width:100%; display:flex; flex-direction:column; gap:4px; }
     .pc-case-media-frame { width:100%; border-radius:0; overflow:hidden; background:#F0EEF2; cursor:zoom-in; transition:transform .18s cubic-bezier(.2,.7,.2,1), box-shadow .18s ease, filter .18s ease; }
-    .pc-case-media-frame:hover { transform:translateY(-1px); box-shadow:0 8px 18px rgba(38,1,11,.07); }
+    .pc-case-media-frame:hover { transform:translateY(-1px); box-shadow:0 8px 18px rgba(91,75,69,.07); }
     .pc-case-media-frame:active,
     .pc-case-media-frame.is-opening { transform:scale(.992); filter:saturate(1.02) brightness(.985); }
     .pc-case-media-frame img,
@@ -199,7 +199,7 @@
     .pc-quicklook-panel video { width:auto; height:auto; max-width:82vw; max-height:76vh; object-fit:contain; display:block; border-radius:8px; }
     .pc-quicklook-stage { width:auto; height:auto; display:flex; align-items:center; justify-content:center; }
     .pc-quicklook-close,
-    .pc-quicklook-nav { position:absolute; border:0; background:rgba(255,255,255,.72); color:rgba(38,1,11,.68); box-shadow:0 2px 8px rgba(38,1,11,.12); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .15s ease, transform .15s ease; }
+    .pc-quicklook-nav { position:absolute; border:0; background:rgba(255,255,255,.72); color:rgba(91,75,69,.68); box-shadow:0 2px 8px rgba(91,75,69,.12); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .15s ease, transform .15s ease; }
     .pc-quicklook-close, .pc-quicklook-nav { opacity:0; transition:opacity 180ms cubic-bezier(.2,.7,.2,1) 160ms, background .15s ease, transform .15s ease !important; }
     .pc-quicklook.is-visible .pc-quicklook-close, .pc-quicklook.is-visible .pc-quicklook-nav { opacity:1; }
     .pc-quicklook-close:hover,
@@ -214,7 +214,7 @@
     .is-portrait { aspect-ratio:3/4; }
     /* ── Widgets ── */
     .pc-widget-click { cursor:pointer; transition:transform 160ms cubic-bezier(.2,.7,.2,1), box-shadow 160ms cubic-bezier(.2,.7,.2,1); }
-    .pc-widget-click:hover { transform:translateY(-2px); box-shadow:0 3px 8px rgba(38,1,11,.06) !important; }
+    .pc-widget-click:hover { transform:translateY(-2px); box-shadow:0 3px 8px rgba(91,75,69,.06) !important; }
     .pc-widget-click:active { transform:translateY(0) !important; transition-duration:60ms !important; }
     /* ── Animations ── */
     @keyframes pc-play-bounce {
@@ -245,65 +245,65 @@
       85%  { transform: scale(.99); }
       100% { transform: scale(1); }
     }
-    #pc-boot { position:fixed; inset:0; z-index:20000; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 52% 42%,rgba(255,255,255,.72),rgba(255,255,255,0) 24%),linear-gradient(135deg,#F8F3EF 0%,#F2D8E4 45%,#DDEEF4 100%); transition:opacity 260ms cubic-bezier(.2,.7,.2,1),visibility 0s linear 260ms; }
+    #pc-boot { position:fixed; inset:0; z-index:20000; display:flex; align-items:center; justify-content:center; background:radial-gradient(circle at 52% 42%,rgba(255,255,255,.72),rgba(255,255,255,0) 24%),linear-gradient(135deg,#FFF8F3 0%,#F2D8E4 45%,#FEDFDD 100%); transition:opacity 260ms cubic-bezier(.2,.7,.2,1),visibility 0s linear 260ms; }
     #pc-boot.is-hidden { opacity:0; visibility:hidden; pointer-events:none; }
     .pc-boot-inner { display:flex; flex-direction:column; align-items:center; gap:12px; animation:pc-boot-arrive 480ms cubic-bezier(.25,1,.5,1) both; }
-    .pc-boot-icon { width:58px; height:58px; border-radius:16px; background:#FEFBFE; border:1px solid rgba(38,1,11,.08); box-shadow:0 8px 24px rgba(38,1,11,.10),0 1px 3px rgba(38,1,11,.05); display:flex; align-items:center; justify-content:center; overflow:hidden; }
+    .pc-boot-icon { width:58px; height:58px; border-radius:16px; background:#FFF8F3; border:1px solid rgba(91,75,69,.08); box-shadow:0 8px 24px rgba(91,75,69,.10),0 1px 3px rgba(91,75,69,.05); display:flex; align-items:center; justify-content:center; overflow:hidden; }
     .pc-boot-icon img { width:48px; height:48px; object-fit:contain; display:block; }
-    .pc-boot-text { font-size:13px; font-weight:600; letter-spacing:0; color:rgba(38,1,11,.76); }
-    .pc-boot-bar { width:132px; height:5px; border-radius:999px; background:rgba(255,255,255,.64); border:1px solid rgba(38,1,11,.06); overflow:hidden; }
-    .pc-boot-bar::before { content:""; display:block; height:100%; width:100%; border-radius:inherit; background:linear-gradient(90deg,#F2C4DA,var(--pc-green),#DDEEF4); transform-origin:left center; animation:pc-boot-load 440ms cubic-bezier(.2,.7,.2,1) both; }
+    .pc-boot-text { font-size:13px; font-weight:600; letter-spacing:0; color:rgba(91,75,69,.76); }
+    .pc-boot-bar { width:132px; height:5px; border-radius:999px; background:rgba(255,255,255,.64); border:1px solid rgba(91,75,69,.06); overflow:hidden; }
+    .pc-boot-bar::before { content:""; display:block; height:100%; width:100%; border-radius:inherit; background:linear-gradient(90deg,#FEDFDD,var(--pc-green),#FEDFDD); transform-origin:left center; animation:pc-boot-load 440ms cubic-bezier(.2,.7,.2,1) both; }
     @keyframes pc-boot-arrive { 0% { opacity:0; transform:translateY(12px) scale(.98); } 100% { opacity:1; transform:translateY(0) scale(1); } }
     @keyframes pc-boot-load { 0% { transform:scaleX(.08); } 100% { transform:scaleX(1); } }
     /* ── Profile avatar hover ── */
     #pc-profile-avatar { transition: box-shadow 220ms cubic-bezier(.2,.7,.2,1), transform 220ms cubic-bezier(.2,.7,.2,1); }
-    .pc-profile-widget:hover #pc-profile-avatar { box-shadow: 0 0 0 2.5px rgba(95,30,62,.22), 0 0 0 1.5px rgba(255,255,255,.75); transform: scale(1.06); }
+    .pc-profile-widget:hover #pc-profile-avatar { box-shadow: 0 0 0 2.5px rgba(91,75,69,.22), 0 0 0 1.5px rgba(255,255,255,.75); transform: scale(1.06); }
     .pc-about-tags { display:flex; flex-wrap:wrap; gap:5px 6px; justify-content:center; margin:0 auto; max-width:220px; }
-    .pc-about-contact { border:1px solid rgba(95,30,62,.12) !important; background:#F8F3EF !important; border-radius:999px !important; padding:5px 10px !important; margin:12px auto 0 !important; font-size:10.5px !important; line-height:1 !important; color:#5F1E3E !important; display:flex !important; width:max-content !important; align-items:center !important; justify-content:center !important; box-shadow:0 1px 3px rgba(38,1,11,.04) !important; }
+    .pc-about-contact { border:1px solid rgba(91,75,69,.12) !important; background:#FFF8F3 !important; border-radius:999px !important; padding:5px 10px !important; margin:12px auto 0 !important; font-size:10.5px !important; line-height:1 !important; color:#5B4B45 !important; display:flex !important; width:max-content !important; align-items:center !important; justify-content:center !important; box-shadow:0 1px 3px rgba(91,75,69,.04) !important; }
     .pc-about-contact:hover { background:#F3ECEF !important; }
     /* ── Asfalto polaroid ── */
     #pc-widget-asfalto { transform: none; transition: transform .22s cubic-bezier(.2,.7,.2,1), box-shadow .22s ease; }
-    #pc-widget-asfalto:hover { transform: translateY(-1px) !important; box-shadow:0 1px 3px rgba(38,1,11,.05),0 8px 18px rgba(38,1,11,.075) !important; }
+    #pc-widget-asfalto:hover { transform: translateY(-1px) !important; box-shadow:0 1px 3px rgba(91,75,69,.05),0 8px 18px rgba(91,75,69,.075) !important; }
     #pc-widget-asfalto:active { transform: translateY(0) !important; transition-duration: 60ms !important; }
     .pc-asfalto-photo { width:66px; height:66px; border-radius:6px; overflow:hidden; background:#2A2530; margin:0 auto 5px; position:relative; }
     .pc-asfalto-photo img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:center; display:block; }
-    .pc-asfalto-name { font-size:10px; font-weight:700; line-height:1.05; color:#26010B; letter-spacing:-.01em; text-align:center; }
-    .pc-asfalto-shift { font-size:8px; line-height:1.2; color:rgba(38,1,11,.48); text-align:center; margin-top:2px; }
-    #pc-asfalto-bubble { position:absolute; left:0; top:0; z-index:12; width:198px; padding:12px 34px 13px 16px; border-radius:14px; background:rgba(254,251,254,.94); border:1px solid rgba(38,1,11,.09); box-shadow:0 1px 3px rgba(38,1,11,.05),0 8px 18px rgba(38,1,11,.075); box-sizing:border-box; opacity:1; transform:translateY(0) scale(1); pointer-events:auto; transition:opacity 240ms cubic-bezier(.2,.7,.2,1), transform 280ms cubic-bezier(.18,.9,.22,1), visibility 0s linear 0s; }
+    .pc-asfalto-name { font-size:10px; font-weight:700; line-height:1.05; color:#5B4B45; letter-spacing:-.01em; text-align:center; }
+    .pc-asfalto-shift { font-size:8px; line-height:1.2; color:rgba(91,75,69,.48); text-align:center; margin-top:2px; }
+    #pc-asfalto-bubble { position:absolute; left:0; top:0; z-index:12; width:198px; padding:12px 34px 13px 16px; border-radius:14px; background:rgba(255,248,243,.94); border:1px solid rgba(91,75,69,.09); box-shadow:0 1px 3px rgba(91,75,69,.05),0 8px 18px rgba(91,75,69,.075); box-sizing:border-box; opacity:1; transform:translateY(0) scale(1); pointer-events:auto; transition:opacity 240ms cubic-bezier(.2,.7,.2,1), transform 280ms cubic-bezier(.18,.9,.22,1), visibility 0s linear 0s; }
     #pc-asfalto-bubble.is-hidden { opacity:0; visibility:hidden; transform:translateY(-8px) scale(.975); pointer-events:none; transition:opacity 180ms cubic-bezier(.4,0,1,1), transform 180ms cubic-bezier(.4,0,1,1), visibility 0s linear 180ms; }
-    #pc-asfalto-bubble::before { content:""; position:absolute; right:-8px; top:50%; margin-top:-7.5px; width:15px; height:15px; background:rgba(254,251,254,.94); border-right:1px solid rgba(38,1,11,.09); border-top:1px solid rgba(38,1,11,.09); transform:rotate(45deg); border-radius:2px; }
-    .pc-asfalto-bubble-kicker { font-size:8.5px; font-weight:700; line-height:1.2; color:rgba(38,1,11,.34); margin-bottom:6px; }
-    .pc-asfalto-bubble-title { font-size:12px; font-weight:800; line-height:1.05; letter-spacing:-.01em; color:#26010B; margin-bottom:7px; }
-    .pc-asfalto-bubble-text { font-size:9.5px; line-height:1.45; color:rgba(38,1,11,.60); margin:0; text-wrap:pretty; }
-    .pc-asfalto-bubble-close { position:absolute; top:50%; right:10px; transform:translateY(-50%); border:0; background:rgba(38,1,11,.06); color:rgba(38,1,11,.38); width:18px; height:18px; border-radius:50%; line-height:1; padding:0; cursor:pointer; font-family:inherit; font-size:13px; }
-    .pc-asfalto-bubble-close:hover { background:rgba(38,1,11,.10); color:rgba(38,1,11,.58); }
+    #pc-asfalto-bubble::before { content:""; position:absolute; right:-8px; top:50%; margin-top:-7.5px; width:15px; height:15px; background:rgba(255,248,243,.94); border-right:1px solid rgba(91,75,69,.09); border-top:1px solid rgba(91,75,69,.09); transform:rotate(45deg); border-radius:2px; }
+    .pc-asfalto-bubble-kicker { font-size:8.5px; font-weight:700; line-height:1.2; color:rgba(91,75,69,.34); margin-bottom:6px; }
+    .pc-asfalto-bubble-title { font-size:12px; font-weight:800; line-height:1.05; letter-spacing:-.01em; color:#5B4B45; margin-bottom:7px; }
+    .pc-asfalto-bubble-text { font-size:9.5px; line-height:1.45; color:rgba(91,75,69,.60); margin:0; text-wrap:pretty; }
+    .pc-asfalto-bubble-close { position:absolute; top:50%; right:10px; transform:translateY(-50%); border:0; background:rgba(91,75,69,.06); color:rgba(91,75,69,.38); width:18px; height:18px; border-radius:50%; line-height:1; padding:0; cursor:pointer; font-family:inherit; font-size:13px; }
+    .pc-asfalto-bubble-close:hover { background:rgba(91,75,69,.10); color:rgba(91,75,69,.58); }
     .pc-tbar span { letter-spacing:.025em; }
     .pc-dock-btn > span { letter-spacing:.035em !important; }
     .pc-mb-item { letter-spacing:.012em !important; }
     .pc-boot-text { letter-spacing:-.01em !important; font-weight:500 !important; }
-    [id^="pc-win-"] { border:1px solid rgba(255,255,255,.62); box-shadow:0 0 0 1px rgba(38,1,11,.05),0 1px 2px rgba(38,1,11,.05),0 8px 22px rgba(38,1,11,.085),0 22px 42px rgba(38,1,11,.08) !important; }
+    [id^="pc-win-"] { border:1px solid rgba(255,255,255,.62); box-shadow:0 0 0 1px rgba(91,75,69,.05),0 1px 2px rgba(91,75,69,.05),0 8px 22px rgba(91,75,69,.085),0 22px 42px rgba(91,75,69,.08) !important; }
     /* ── Mini calendar widget ── */
     #pc-widget-cal { transition: transform 160ms cubic-bezier(.2,.7,.2,1), box-shadow 160ms cubic-bezier(.2,.7,.2,1); }
-    #pc-widget-cal:hover { transform: translateY(-2px); box-shadow: 0 3px 10px rgba(38,1,11,.08) !important; }
+    #pc-widget-cal:hover { transform: translateY(-2px); box-shadow: 0 3px 10px rgba(91,75,69,.08) !important; }
     #pc-widget-cal:active { transform: translateY(0) !important; transition-duration: 60ms !important; }
 
     /* menubar: crisper hairline + top light */
     #pc-menubar { box-shadow: inset 0 1px 0 rgba(255,255,255,.6); }
     /* titlebars: soft vertical light instead of flat fill */
-    .pc-tbar { background:linear-gradient(180deg,#F7F1F4 0%,#F1EAED 100%) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.66), inset 0 -0.5px 0 rgba(38,1,11,.03); }
+    .pc-tbar { background:linear-gradient(180deg,#F7F1F4 0%,#F1EAED 100%) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.66), inset 0 -0.5px 0 rgba(91,75,69,.03); }
     /* traffic lights: candy finish */
-    .tl-r, .tl-y, .tl-g { box-shadow: inset 0 1px 1.5px rgba(255,255,255,.6), inset 0 -1px 1.5px rgba(38,1,11,.09); }
+    .tl-r, .tl-y, .tl-g { box-shadow: inset 0 1px 1.5px rgba(255,255,255,.6), inset 0 -1px 1.5px rgba(91,75,69,.09); }
     /* dock: glassier plate */
-    #pc-dock { background:rgba(250,246,243,.78) !important; border:1px solid rgba(255,255,255,.68) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 0 0 1px rgba(38,1,11,.045), 0 1px 2px rgba(38,1,11,.05), 0 12px 30px rgba(38,1,11,.10) !important; }
+    #pc-dock { background:rgba(250,246,243,.78) !important; border:1px solid rgba(255,255,255,.68) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.7), 0 0 0 1px rgba(91,75,69,.045), 0 1px 2px rgba(91,75,69,.05), 0 12px 30px rgba(91,75,69,.10) !important; }
     /* desktop widgets: one material — 14px radius, inner light, same shadow */
     .pc-profile-widget, #pc-widget-asfalto { border-radius:14px !important; }
-    .pc-profile-widget, #pc-widget-cal, #pc-widget-asfalto, #pc-widget-music { box-shadow: inset 0 1px 0 rgba(255,255,255,.75), 0 1px 2px rgba(38,1,11,.045), 0 5px 14px rgba(38,1,11,.06) !important; }
-    .pc-profile-widget:hover, .pc-widget-click:hover, #pc-widget-cal:hover { box-shadow: inset 0 1px 0 rgba(255,255,255,.75), 0 2px 4px rgba(38,1,11,.05), 0 10px 24px rgba(38,1,11,.09) !important; }
+    .pc-profile-widget, #pc-widget-cal, #pc-widget-asfalto, #pc-widget-music { box-shadow: inset 0 1px 0 rgba(255,255,255,.75), 0 1px 2px rgba(91,75,69,.045), 0 5px 14px rgba(91,75,69,.06) !important; }
+    .pc-profile-widget:hover, .pc-widget-click:hover, #pc-widget-cal:hover { box-shadow: inset 0 1px 0 rgba(255,255,255,.75), 0 2px 4px rgba(91,75,69,.05), 0 10px 24px rgba(91,75,69,.09) !important; }
     /* calendar: plum ink on the pink header (was low-contrast white) */
     #pc-widget-cal > div:first-child { background:linear-gradient(180deg,#F5B3C3,#F0A4B6) !important; box-shadow: inset 0 1px 0 rgba(255,255,255,.4); }
-    #pc-cal-month { color:rgba(95,30,62,.82) !important; font-weight:700 !important; }
+    #pc-cal-month { color:rgba(91,75,69,.82) !important; font-weight:700 !important; }
     /* about tags: keep project pastels, add craft */
-    .pc-about-tags span { border:1px solid rgba(38,1,11,.08); padding:3px 10px !important; font-weight:500; color:rgba(38,1,11,.78) !important; letter-spacing:.01em; }
+    .pc-about-tags span { border:1px solid rgba(91,75,69,.08); padding:3px 10px !important; font-weight:500; color:rgba(91,75,69,.78) !important; letter-spacing:.01em; }
     /* asfalto: floating hearts on click */
     @keyframes pc-heart-float { 0%{opacity:.88;transform:translateY(0) scale(1)} 100%{opacity:0;transform:translateY(-40px) scale(.72)} }
     .pc-asfalto-heart { position:absolute; pointer-events:none; z-index:50; animation:pc-heart-float 1.2s ease-out forwards; }
@@ -448,7 +448,7 @@
     .y2k-tbar-close{background:linear-gradient(180deg,rgba(255,255,255,.36) 0%,#FF3366 40%,#CC0044 100%)!important;border-color:rgba(200,0,50,.3)!important}
 
     /* Launcher header */
-    .y2k-lhdr{background:linear-gradient(180deg,rgba(255,255,255,.48) 0%,#FF5AB0 14%,#E0108A 50%,#FF5AB0 86%,rgba(255,255,255,.3) 100%);padding:9px 10px 8px;text-align:center;font-size:10px;font-weight:800;color:white;letter-spacing:.1em;text-transform:uppercase;text-shadow:0 1px 2px rgba(150,0,80,.42);border-bottom:1.5px solid rgba(255,255,255,.35);flex-shrink:0}
+    .y2k-lhdr{background:linear-gradient(180deg,rgba(255,255,255,.48) 0%,#FF5AB0 14%,#FFAED5 50%,#FF5AB0 86%,rgba(255,255,255,.3) 100%);padding:9px 10px 8px;text-align:center;font-size:10px;font-weight:800;color:white;letter-spacing:.1em;text-transform:uppercase;text-shadow:0 1px 2px rgba(150,0,80,.42);border-bottom:1.5px solid rgba(255,255,255,.35);flex-shrink:0}
 
     /* Launcher buttons */
     .y2k-lbtn{display:flex;align-items:center;gap:9px;padding:6px 10px 6px 9px;border:none;background:transparent;cursor:pointer;width:100%;text-align:left;position:relative;border-bottom:1px solid rgba(255,255,255,.18);transition:background 100ms}
@@ -562,18 +562,20 @@
     #pc-mobile{display:none;}
     @media (max-width:700px){
       #pc-desktop-root,#pc-pixie-quicklook,#y2k-topbar,#y2k-launcher,#y2k-bottombar,#aero-taskbar,#aero-sidebar{display:none!important}
-      #pc-mobile{display:block;position:fixed;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;background:#FEFBFE;font-family:'Nunito',system-ui,sans-serif;color:#26010B;-webkit-font-smoothing:antialiased;z-index:50;}
+      #pc-mobile{display:block;position:fixed;inset:0;overflow-y:auto;-webkit-overflow-scrolling:touch;background:#FFF8F3;font-family:'Nunito',system-ui,sans-serif;color:#5B4B45;-webkit-font-smoothing:antialiased;z-index:50;}
     }
     #pc-mood-light.is-active { opacity:.5; animation: pc-mood-pulse 6s ease-in-out infinite; }
     @keyframes pc-mood-pulse { 0%,100%{opacity:.4;} 50%{opacity:.58;} }
+    #pc-mood-veil.is-active { opacity:.15; }
     @media (prefers-reduced-motion: reduce) {
       #pc-mood-light { transition:opacity 300ms linear; }
       #pc-mood-light.is-active { animation:none; opacity:.48; }
+      #pc-mood-veil { transition:opacity 300ms linear; }
     }
 </style>
 </head>
 <body>
-<div id="pc-desktop-root" style="position:fixed;inset:0;overflow:hidden;font-family:'Nunito','Inter Tight',system-ui,-apple-system,sans-serif;color:#26010B;-webkit-font-smoothing:antialiased;">
+<div id="pc-desktop-root" style="position:fixed;inset:0;overflow:hidden;font-family:'Nunito','Inter Tight',system-ui,-apple-system,sans-serif;color:#5B4B45;-webkit-font-smoothing:antialiased;">
   <div id="pc-boot" aria-label="pietra's pc loading">
     <div class="pc-boot-inner">
       <div class="pc-boot-icon"><img src="uploads/pc-menu-icon.png" alt="" width="48" height="48" decoding="async" fetchpriority="high"></div>
@@ -583,20 +585,21 @@
   </div>
 
   <!-- Wallpaper -->
-  <div id="pc-wallpaper" style="position:absolute;inset:0;background:radial-gradient(circle at var(--wp-mx,50%) var(--wp-my,50%),rgba(255,255,255,.16) 0%,rgba(255,255,255,.05) 13%,transparent 26%) 0 0/100% 100%,repeating-linear-gradient(transparent,transparent 50%,rgba(255,255,255,.50) 50%,rgba(255,255,255,.50)) 0 0/40px 40px,repeating-linear-gradient(90deg,transparent,transparent 50%,rgba(255,255,255,.50) 50%,rgba(255,255,255,.50)) 0 0/40px 40px,#B8CEA8;z-index:0;"></div>
-  <div id="pc-dotgrid" style="position:absolute;inset:0;background-image:radial-gradient(rgba(38,1,11,.052) 1px,transparent 1px);background-size:20px 20px;z-index:0;pointer-events:none;"></div>
+  <div id="pc-wallpaper" style="position:absolute;inset:0;background:radial-gradient(circle at var(--wp-mx,50%) var(--wp-my,50%),rgba(255,255,255,.16) 0%,rgba(255,255,255,.05) 13%,transparent 26%) 0 0/100% 100%,repeating-linear-gradient(transparent,transparent 50%,rgba(255,255,255,.50) 50%,rgba(255,255,255,.50)) 0 0/40px 40px,repeating-linear-gradient(90deg,transparent,transparent 50%,rgba(255,255,255,.50) 50%,rgba(255,255,255,.50)) 0 0/40px 40px,#BFDBA0;z-index:0;"></div>
+  <div id="pc-dotgrid" style="position:absolute;inset:0;background-image:radial-gradient(rgba(91,75,69,.052) 1px,transparent 1px);background-size:20px 20px;z-index:0;pointer-events:none;"></div>
   <svg style="position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none;opacity:.044;" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg"><filter id="pcgrain"><feTurbulence type="fractalNoise" baseFrequency=".7" numOctaves="3" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/></filter><rect width="100%" height="100%" filter="url(#pcgrain)"/></svg>
-  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 52%,rgba(38,1,11,.048) 100%);z-index:0;pointer-events:none;"></div>
-  <div id="pc-mood-light" style="position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity 1100ms ease;background:radial-gradient(ellipse 70% 55% at 50% 28%, var(--mood-color,#F2C4DA) 0%, transparent 68%);"></div>
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 52%,rgba(91,75,69,.048) 100%);z-index:0;pointer-events:none;"></div>
+  <div id="pc-mood-light" style="position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity 1100ms ease;background:radial-gradient(ellipse 70% 55% at 50% 28%, var(--mood-color,#FEDFDD) 0%, transparent 68%);"></div>
+  <div id="pc-mood-veil" style="position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity 1100ms ease;background:var(--mood-color,#FEDFDD);"></div>
 
   <!-- ══ Menu bar ══ -->
-  <div id="pc-menubar" style="position:absolute;top:0;left:0;right:0;height:30px;background:rgba(248,243,239,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(38,1,11,.07);z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 14px;user-select:none;">
+  <div id="pc-menubar" style="position:absolute;top:0;left:0;right:0;height:30px;background:rgba(255,248,243,.75);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(91,75,69,.07);z-index:100;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 14px;user-select:none;">
     <div style="display:flex;gap:12px;align-items:center;">
       <span class="pc-menu-logo-wrap" aria-label="p/c"><img class="pc-menu-logo" src="uploads/pc-menu-icon.png" alt="p/c" width="24" height="24" decoding="async" fetchpriority="high"></span>
-      <span class="pc-mb-item" data-dropdown="projects" style="font-size:11px;color:rgba(38,1,11,.5);cursor:pointer;display:flex;align-items:center;gap:3px;">projects <span style="font-size:8px;opacity:.5;">▾</span></span>
+      <span class="pc-mb-item" data-dropdown="projects" style="font-size:11px;color:rgba(91,75,69,.5);cursor:pointer;display:flex;align-items:center;gap:3px;">projects <span style="font-size:8px;opacity:.5;">▾</span></span>
     </div>
     <div style="text-align:center;pointer-events:none;">
-      <span id="pc-mb-title" style="font-size:11px;font-weight:600;color:rgba(38,1,11,.42);letter-spacing:.01em;">pietra's pc</span>
+      <span id="pc-mb-title" style="font-size:11px;font-weight:600;color:rgba(91,75,69,.42);letter-spacing:.01em;">pietra's pc</span>
     </div>
     <div style="display:flex;gap:12px;align-items:center;justify-content:flex-end;">
       <span id="pc-mb-clock" style="font-size:11px;opacity:.42;font-variant-numeric:tabular-nums;letter-spacing:.01em;cursor:default;">--:--</span>
@@ -604,7 +607,7 @@
   </div>
 
   <!-- Projects dropdown -->
-  <div id="pc-mb-dropdown" style="position:fixed;top:30px;left:0;background:rgba(248,243,239,.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(38,1,11,.09);border-radius:7px;box-shadow:0 4px 24px rgba(38,1,11,.18),0 1px 4px rgba(38,1,11,.09);padding:4px 0;min-width:164px;z-index:999;opacity:0;transform:scale(.95) translateY(-5px);transform-origin:top left;pointer-events:none;transition:opacity 160ms cubic-bezier(.2,.7,.2,1),transform 160ms cubic-bezier(.2,.7,.2,1);">
+  <div id="pc-mb-dropdown" style="position:fixed;top:30px;left:0;background:rgba(255,248,243,.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(91,75,69,.09);border-radius:7px;box-shadow:0 4px 24px rgba(91,75,69,.18),0 1px 4px rgba(91,75,69,.09);padding:4px 0;min-width:164px;z-index:999;opacity:0;transform:scale(.95) translateY(-5px);transform-origin:top left;pointer-events:none;transition:opacity 160ms cubic-bezier(.2,.7,.2,1),transform 160ms cubic-bezier(.2,.7,.2,1);">
     <div class="pc-dd-item" data-dd-action="open-projects">open projects</div>
     <div class="pc-dd-sep"></div>
     <div class="pc-dd-item" data-dd-action="open-latest">random project ↩</div>
@@ -617,60 +620,60 @@
   </div>
 
   <!-- ══ Mini profile widget ══ -->
-  <div class="pc-profile-widget" data-open="about" style="position:absolute;top:44px;right:28px;z-index:10;background:rgba(248,243,239,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(38,1,11,.08);border-radius:16px;padding:13px 16px 13px 13px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 3px rgba(38,1,11,.05),0 4px 12px rgba(38,1,11,.05);min-width:192px;">
-    <div id="pc-profile-avatar" style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#F2C4DA 0%,#F2D8E4 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:700;color:rgba(38,1,11,.6);letter-spacing:-.01em;box-shadow:0 0 0 1.5px rgba(255,255,255,.65);overflow:hidden;position:relative;">pc<img src="uploads/pietra-profile.jpg" loading="eager" decoding="async" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';"></div>
+  <div class="pc-profile-widget" data-open="about" style="position:absolute;top:44px;right:28px;z-index:10;background:rgba(255,248,243,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(91,75,69,.08);border-radius:16px;padding:13px 16px 13px 13px;display:flex;align-items:center;gap:12px;box-shadow:0 1px 3px rgba(91,75,69,.05),0 4px 12px rgba(91,75,69,.05);min-width:192px;">
+    <div id="pc-profile-avatar" style="width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,#FEDFDD 0%,#F2D8E4 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px;font-weight:700;color:rgba(91,75,69,.6);letter-spacing:-.01em;box-shadow:0 0 0 1.5px rgba(255,255,255,.65);overflow:hidden;position:relative;">pc<img src="uploads/pietra-profile.jpg" loading="eager" decoding="async" fetchpriority="high" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';"></div>
     <div>
-      <div style="font-size:13px;font-weight:650;color:#26010B;letter-spacing:-.01em;line-height:1.2;white-space:nowrap;">pietra costantin</div>
-      <div style="font-size:11px;color:rgba(38,1,11,.56);margin-top:2px;white-space:nowrap;">meet the designer</div>
+      <div style="font-size:13px;font-weight:650;color:#5B4B45;letter-spacing:-.01em;line-height:1.2;white-space:nowrap;">pietra costantin</div>
+      <div style="font-size:11px;color:rgba(91,75,69,.56);margin-top:2px;white-space:nowrap;">meet the designer</div>
     </div>
   </div>
   <!-- ══ WINDOW: projects (Finder) ══ -->
-  <div id="pc-win-projects" style="position:absolute;width:720px;height:552px;border-radius:10px;box-shadow:0 1px 3px rgba(38,1,11,.06),0 12px 32px rgba(38,1,11,.10);overflow:hidden;">
+  <div id="pc-win-projects" style="position:absolute;width:720px;height:552px;border-radius:10px;box-shadow:0 1px 3px rgba(91,75,69,.06),0 12px 32px rgba(91,75,69,.10);overflow:hidden;">
     <!-- Titlebar -->
-    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(38,1,11,.07);display:flex;align-items:center;padding:0 12px;position:relative;flex-shrink:0;">
+    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(91,75,69,.07);display:flex;align-items:center;padding:0 12px;position:relative;flex-shrink:0;">
       <div style="display:flex;gap:7px;">
-        <div class="tl-r" data-close="pc-win-projects" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:#96CC9E;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
+        <div class="tl-r" data-close="pc-win-projects" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
+        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
+        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:#BFDBA0;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
       </div>
-      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;letter-spacing:.01em;">projects</span>
+      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(91,75,69,.3);font-weight:500;pointer-events:none;letter-spacing:.01em;">projects</span>
     </div>
     <!-- Sidebar + content -->
     <div style="display:flex;height:calc(100% - 30px);">
       <!-- Sidebar -->
-      <div class="pc-sbar" style="width:140px;background:#F8F3EF;border-right:1px solid rgba(38,1,11,.07);padding:8px 0;overflow-y:auto;flex-shrink:0;">
-        <div style="font-size:9px;color:rgba(38,1,11,.28);padding:6px 10px 4px;font-weight:500;">favorites</div>
-        <div class="pc-sb-item" data-tab="projects" style="display:flex;align-items:center;gap:7px;padding:5px 10px;border-radius:5px;font-size:11px;color:rgba(38,1,11,.72);background:rgba(38,1,11,.08);font-weight:500;margin:0 6px 1px;"><span>⊟</span> projects</div>
+      <div class="pc-sbar" style="width:140px;background:#FFF8F3;border-right:1px solid rgba(91,75,69,.07);padding:8px 0;overflow-y:auto;flex-shrink:0;">
+        <div style="font-size:9px;color:rgba(91,75,69,.28);padding:6px 10px 4px;font-weight:500;">favorites</div>
+        <div class="pc-sb-item" data-tab="projects" style="display:flex;align-items:center;gap:7px;padding:5px 10px;border-radius:5px;font-size:11px;color:rgba(91,75,69,.72);background:rgba(91,75,69,.08);font-weight:500;margin:0 6px 1px;"><span>⊟</span> projects</div>
       </div>
       <!-- Content area -->
-      <div class="pc-scroll" style="flex:1;overflow-y:auto;background:#FEFBFE;min-width:0;">
+      <div class="pc-scroll" style="flex:1;overflow-y:auto;background:#FFF8F3;min-width:0;">
 
         <!-- projects grid -->
         <div id="finder-projects" style="display:grid;grid-template-columns:repeat(3,1fr);gap:11px;padding:14px;">
 
           <div class="pc-folder" data-project="pixie">
             <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-poster" src="uploads/pixie-preview-01.jpg" alt="" loading="lazy" decoding="async"><video class="pc-folder-img" muted loop playsinline preload="none" data-lazy-video="hover" data-src="uploads/video-capa-pixie.mp4"></video></div>
-            <div class="pc-folder-body" style="background:#F2C4DA;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
-              <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#F2C4DA;border-radius:4px 4px 0 0;"></div>
-              <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">pixie club</div>
+            <div class="pc-folder-body" style="background:#FEDFDD;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
+              <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#FEDFDD;border-radius:4px 4px 0 0;"></div>
+              <div style="font-size:11px;font-weight:600;color:rgba(91,75,69,.82);margin-bottom:3px;line-height:1.25;">pixie club</div>
               <div class="pc-folder-meta">identity · web · 2026</div>
             </div>
           </div>
 
           <div class="pc-folder" data-project="mari">
             <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-poster" src="uploads/maricvr.jpg" alt="" loading="lazy" decoding="async"><video class="pc-folder-img" muted loop playsinline preload="none" data-lazy-video="hover" data-src="uploads/video-capa-mari.mp4"></video></div>
-            <div class="pc-folder-body" style="background:#FFF7D1;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
-              <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#FFF7D1;border-radius:4px 4px 0 0;"></div>
-              <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">mari froes</div>
+            <div class="pc-folder-body" style="background:#BFDBA0;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
+              <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#BFDBA0;border-radius:4px 4px 0 0;"></div>
+              <div style="font-size:11px;font-weight:600;color:rgba(91,75,69,.82);margin-bottom:3px;line-height:1.25;">mari froes</div>
               <div class="pc-folder-meta">art direction · music · 2026</div>
             </div>
           </div>
 
           <div class="pc-folder" data-project="dorian">
             <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-poster" src="uploads/doriancvr.jpg" alt="" loading="lazy" decoding="async"><video class="pc-folder-img" muted loop playsinline preload="none" data-lazy-video="hover" data-src="uploads/video-capa-dorian.mp4"></video></div>
-            <div class="pc-folder-body" style="background:#DDEEF4;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
-              <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#DDEEF4;border-radius:4px 4px 0 0;"></div>
-              <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">dorian electra</div>
+            <div class="pc-folder-body" style="background:#FEDFDD;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
+              <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#FEDFDD;border-radius:4px 4px 0 0;"></div>
+              <div style="font-size:11px;font-weight:600;color:rgba(91,75,69,.82);margin-bottom:3px;line-height:1.25;">dorian electra</div>
               <div class="pc-folder-meta">art direction · concept packaging · 2026</div>
             </div>
           </div>
@@ -679,16 +682,16 @@
             <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-poster" src="uploads/sweatcvr.jpg" alt="" loading="lazy" decoding="async"><video class="pc-folder-img" muted loop playsinline preload="none" data-lazy-video="hover" data-src="uploads/video-capa-sweat.mp4"></video></div>
             <div class="pc-folder-body" style="background:#F2D8E4;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
               <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#F2D8E4;border-radius:4px 4px 0 0;"></div>
-              <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">sweat</div>
+              <div style="font-size:11px;font-weight:600;color:rgba(91,75,69,.82);margin-bottom:3px;line-height:1.25;">sweat</div>
               <div class="pc-folder-meta">art direction · concept packaging · 2025</div>
             </div>
           </div>
 
           <div class="pc-folder" data-project="grimes">
             <div class="pc-folder-peek" style="border-radius:2px 2px 0 0;"><img class="pc-folder-poster" src="uploads/grimes-01.jpg" alt="" loading="lazy" decoding="async"><video class="pc-folder-img" muted loop playsinline preload="none" data-lazy-video="hover" data-src="uploads/video-capa-grimes.mp4"></video></div>
-            <div class="pc-folder-body" style="background:#DDEEF4;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
-              <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#DDEEF4;border-radius:4px 4px 0 0;"></div>
-              <div style="font-size:11px;font-weight:600;color:rgba(38,1,11,.82);margin-bottom:3px;line-height:1.25;">grimes</div>
+            <div class="pc-folder-body" style="background:#FEDFDD;border-radius:0 3px 3px 3px;padding:8px 10px 9px;position:relative;">
+              <div style="position:absolute;top:-8px;left:0;width:38%;height:9px;background:#FEDFDD;border-radius:4px 4px 0 0;"></div>
+              <div style="font-size:11px;font-weight:600;color:rgba(91,75,69,.82);margin-bottom:3px;line-height:1.25;">grimes</div>
               <div class="pc-folder-meta">editorial · layout · 2026</div>
             </div>
           </div>
@@ -699,52 +702,52 @@
   </div>
 
   <!-- ══ WINDOW: about me ══ -->
-  <div id="pc-win-about" style="position:absolute;width:330px;border-radius:10px;box-shadow:0 1px 3px rgba(38,1,11,.06),0 12px 32px rgba(38,1,11,.10);overflow:hidden;">
-    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(38,1,11,.07);display:flex;align-items:center;padding:0 12px;position:relative;">
+  <div id="pc-win-about" style="position:absolute;width:330px;border-radius:10px;box-shadow:0 1px 3px rgba(91,75,69,.06),0 12px 32px rgba(91,75,69,.10);overflow:hidden;">
+    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(91,75,69,.07);display:flex;align-items:center;padding:0 12px;position:relative;">
       <div style="display:flex;gap:7px;">
-        <div class="tl-r" data-close="pc-win-about" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:#96CC9E;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
+        <div class="tl-r" data-close="pc-win-about" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
+        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
+        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:#BFDBA0;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
       </div>
-      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;">about me</span>
+      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(91,75,69,.3);font-weight:500;pointer-events:none;">about me</span>
     </div>
-    <div style="background:#FEFBFE;padding:18px 24px 24px;">
+    <div style="background:#FFF8F3;padding:18px 24px 24px;">
       <div style="display:flex;align-items:center;gap:12px;margin-bottom:13px;">
-        <div style="width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#F2C4DA 0%,#F2D8E4 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:700;color:rgba(38,1,11,.6);letter-spacing:-.01em;box-shadow:0 0 0 2px rgba(255,255,255,.8);overflow:hidden;position:relative;">pc<img src="uploads/pietra-profile.jpg" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';"></div>
+        <div style="width:58px;height:58px;border-radius:50%;background:linear-gradient(135deg,#FEDFDD 0%,#F2D8E4 100%);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:12px;font-weight:700;color:rgba(91,75,69,.6);letter-spacing:-.01em;box-shadow:0 0 0 2px rgba(255,255,255,.8);overflow:hidden;position:relative;">pc<img src="uploads/pietra-profile.jpg" loading="lazy" decoding="async" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;display:block;" onerror="this.style.display='none';"></div>
         <div style="min-width:0;flex:1;">
-          <div style="font-size:17px;font-weight:650;letter-spacing:-.02em;color:#26010B;line-height:1.1;margin-bottom:3px;">pietra costantin</div>
-          <div style="font-size:10px;color:rgba(38,1,11,.58);margin-bottom:8px;">graphic designer · são paulo</div>
-          <button data-open="mail" style="border:1px solid rgba(95,30,62,.12);background:#F8F3EF;padding:5px 10px;margin:0;font-family:inherit;font-size:10px;font-weight:650;color:#5F1E3E;cursor:pointer;transition:opacity 140ms;border-radius:999px;box-shadow:0 1px 3px rgba(38,1,11,.04);">contact me →</button>
+          <div style="font-size:17px;font-weight:650;letter-spacing:-.02em;color:#5B4B45;line-height:1.1;margin-bottom:3px;">pietra costantin</div>
+          <div style="font-size:10px;color:rgba(91,75,69,.58);margin-bottom:8px;">graphic designer · são paulo</div>
+          <button data-open="mail" style="border:1px solid rgba(91,75,69,.12);background:#FFF8F3;padding:5px 10px;margin:0;font-family:inherit;font-size:10px;font-weight:650;color:#5B4B45;cursor:pointer;transition:opacity 140ms;border-radius:999px;box-shadow:0 1px 3px rgba(91,75,69,.04);">contact me →</button>
         </div>
       </div>
-      <div style="height:1px;background:rgba(38,1,11,.07);margin-bottom:12px;"></div>
-      <p style="font-size:13px;line-height:1.8;color:rgba(38,1,11,.65);margin:0 0 12px;text-wrap:pretty;letter-spacing:.012em;">Hello! I'm Pietra, a graphic designer based in São Paulo, Brazil. I've been building visual systems since I was a teenager, starting with blog themes on Blogger and Tumblr, then small design work for family and friends. Today, my work is shaped by fashion, music, entertainment and internet culture, and by that same instinct I had as a kid: paying attention to what captures people, what&nbsp;shapes&nbsp;their&nbsp;taste, and why.</p>
-      <div style="font-size:11.5px;font-weight:500;color:rgba(38,1,11,.5);letter-spacing:.015em;margin-bottom:14px;">identity · art direction · music · web</div>
+      <div style="height:1px;background:rgba(91,75,69,.07);margin-bottom:12px;"></div>
+      <p style="font-size:13px;line-height:1.8;color:rgba(91,75,69,.65);margin:0 0 12px;text-wrap:pretty;letter-spacing:.012em;">Hello! I'm Pietra, a graphic designer based in São Paulo, Brazil. I've been building visual systems since I was a teenager, starting with blog themes on Blogger and Tumblr, then small design work for family and friends. Today, my work is shaped by fashion, music, entertainment and internet culture, and by that same instinct I had as a kid: paying attention to what captures people, what&nbsp;shapes&nbsp;their&nbsp;taste, and why.</p>
+      <div style="font-size:11.5px;font-weight:500;color:rgba(91,75,69,.5);letter-spacing:.015em;margin-bottom:14px;">identity · art direction · music · web</div>
     </div>
   </div>
 
   <!-- ══ WINDOW: project detail ══ -->
-  <div id="pc-win-detail" style="position:absolute;width:520px;border-radius:10px;box-shadow:0 1px 3px rgba(38,1,11,.06),0 12px 32px rgba(38,1,11,.10);overflow:hidden;">
-    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(38,1,11,.07);display:flex;align-items:center;padding:0 12px;position:relative;">
+  <div id="pc-win-detail" style="position:absolute;width:520px;border-radius:10px;box-shadow:0 1px 3px rgba(91,75,69,.06),0 12px 32px rgba(91,75,69,.10);overflow:hidden;">
+    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(91,75,69,.07);display:flex;align-items:center;padding:0 12px;position:relative;">
       <div style="display:flex;gap:7px;">
-        <div class="tl-r" data-close="pc-win-detail" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:#96CC9E;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
+        <div class="tl-r" data-close="pc-win-detail" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
+        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
+        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:#BFDBA0;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
       </div>
-      <span id="detail-title-bar" style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;">—</span>
+      <span id="detail-title-bar" style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(91,75,69,.3);font-weight:500;pointer-events:none;">—</span>
     </div>
-    <div id="detail-bg" style="aspect-ratio:5/2;background:#F2C4DA url('uploads/pixie-preview-01.jpg') center/cover no-repeat;"></div>
-    <div style="background:#FEFBFE;padding:16px 18px 18px;position:relative;">
+    <div id="detail-bg" style="aspect-ratio:5/2;background:#FEDFDD url('uploads/pixie-preview-01.jpg') center/cover no-repeat;"></div>
+    <div style="background:#FFF8F3;padding:16px 18px 18px;position:relative;">
       <div style="display:flex;align-items:center;gap:7px;margin-bottom:5px;">
-        <h2 id="detail-title" style="font-size:20px;font-weight:650;letter-spacing:-.02em;color:#26010B;margin:0;line-height:1.1;">—</h2>
+        <h2 id="detail-title" style="font-size:20px;font-weight:650;letter-spacing:-.02em;color:#5B4B45;margin:0;line-height:1.1;">—</h2>
         <div style="flex:1;"></div>
-        <div id="detail-clr" style="width:9px;height:9px;border-radius:3px;border:1px solid rgba(38,1,11,.14);flex-shrink:0;"></div>
-        <span id="detail-year" style="font-size:11px;font-weight:600;color:rgba(38,1,11,.38);letter-spacing:.05em;font-variant-numeric:tabular-nums;">—</span>
+        <div id="detail-clr" style="width:9px;height:9px;border-radius:3px;border:1px solid rgba(91,75,69,.14);flex-shrink:0;"></div>
+        <span id="detail-year" style="font-size:11px;font-weight:600;color:rgba(91,75,69,.38);letter-spacing:.05em;font-variant-numeric:tabular-nums;">—</span>
       </div>
-      <div id="detail-cat" style="font-size:11.5px;font-weight:500;color:rgba(38,1,11,.5);letter-spacing:.015em;margin-bottom:11px;"></div>
-      <p id="detail-desc" style="font-size:12px;line-height:1.7;color:rgba(38,1,11,.62);margin:0 0 16px;text-wrap:pretty;"></p>
-      <div id="detail-disclaimer-sep" style="display:none;height:1px;background:rgba(38,1,11,.08);margin-bottom:10px;"></div>
-      <p id="detail-disclaimer" style="display:none;font-size:8px;color:rgba(38,1,11,.48);margin:0 0 10px;line-height:1.6;"></p>
+      <div id="detail-cat" style="font-size:11.5px;font-weight:500;color:rgba(91,75,69,.5);letter-spacing:.015em;margin-bottom:11px;"></div>
+      <p id="detail-desc" style="font-size:12px;line-height:1.7;color:rgba(91,75,69,.62);margin:0 0 16px;text-wrap:pretty;"></p>
+      <div id="detail-disclaimer-sep" style="display:none;height:1px;background:rgba(91,75,69,.08);margin-bottom:10px;"></div>
+      <p id="detail-disclaimer" style="display:none;font-size:8px;color:rgba(91,75,69,.48);margin:0 0 10px;line-height:1.6;"></p>
       <div id="detail-spotify-wrap" class="pc-spotify-wrap" style="display:none;"></div>
       <div style="display:flex;align-items:center;gap:0;justify-content:flex-start;">
         <button id="detail-open-case" class="pc-btn pc-btn-primary">open case →</button>
@@ -753,29 +756,29 @@
   </div>
 
   <!-- ══ WINDOW: mail ══ -->
-  <div id="pc-win-mail" style="position:absolute;width:360px;border-radius:10px;box-shadow:0 1px 3px rgba(38,1,11,.06),0 12px 32px rgba(38,1,11,.10);overflow:hidden;">
-    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(38,1,11,.07);display:flex;align-items:center;padding:0 12px;position:relative;">
+  <div id="pc-win-mail" style="position:absolute;width:360px;border-radius:10px;box-shadow:0 1px 3px rgba(91,75,69,.06),0 12px 32px rgba(91,75,69,.10);overflow:hidden;">
+    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(91,75,69,.07);display:flex;align-items:center;padding:0 12px;position:relative;">
       <div style="display:flex;gap:7px;">
-        <div class="tl-r" data-close="pc-win-mail" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:var(--pc-green);border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
+        <div class="tl-r" data-close="pc-win-mail" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
+        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
+        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:var(--pc-green);border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
       </div>
-      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;">contact</span>
+      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(91,75,69,.3);font-weight:500;pointer-events:none;">contact</span>
     </div>
-    <div style="background:#FEFBFE;padding:12px 14px 16px;display:flex;flex-direction:column;gap:10px;">
-      <div style="display:flex;align-items:center;gap:9px;padding:10px 12px;background:#F8F3EF;border:1px solid rgba(38,1,11,.09);border-radius:11px;">
-        <div style="width:34px;height:34px;border-radius:50%;background:#F2C4DA;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 2px rgba(255,255,255,.8);"><img src="uploads/pietra-profile.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div>
-        <div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:600;letter-spacing:-.02em;color:#26010B;line-height:1.2;">Pietra Costantin</div><div style="font-size:10px;color:rgba(38,1,11,.44);margin-top:1px;">graphic designer · São Paulo</div></div>
-        <div style="display:flex;align-items:center;gap:3px;background:rgba(150,204,158,.14);border:1px solid rgba(150,204,158,.28);border-radius:100px;padding:3px 8px;flex-shrink:0;"><span style="width:5px;height:5px;border-radius:50%;background:var(--pc-green);display:block;"></span><span style="font-size:9px;color:rgba(38,1,11,.5);font-weight:500;">available</span></div>
+    <div style="background:#FFF8F3;padding:12px 14px 16px;display:flex;flex-direction:column;gap:10px;">
+      <div style="display:flex;align-items:center;gap:9px;padding:10px 12px;background:#FFF8F3;border:1px solid rgba(91,75,69,.09);border-radius:11px;">
+        <div style="width:34px;height:34px;border-radius:50%;background:#FEDFDD;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 2px rgba(255,255,255,.8);"><img src="uploads/pietra-profile.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div>
+        <div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:600;letter-spacing:-.02em;color:#5B4B45;line-height:1.2;">Pietra Costantin</div><div style="font-size:10px;color:rgba(91,75,69,.44);margin-top:1px;">graphic designer · São Paulo</div></div>
+        <div style="display:flex;align-items:center;gap:3px;background:rgba(191,219,160,.14);border:1px solid rgba(191,219,160,.28);border-radius:100px;padding:3px 8px;flex-shrink:0;"><span style="width:5px;height:5px;border-radius:50%;background:var(--pc-green);display:block;"></span><span style="font-size:9px;color:rgba(91,75,69,.5);font-weight:500;">available</span></div>
       </div>
-      <div style="font-size:10px;color:rgba(38,1,11,.52);line-height:1.5;padding:0 2px 2px;">Available for freelance projects. Based in São Paulo and open to remote work.</div>
-      <div style="background:#F8F3EF;border:1px solid rgba(38,1,11,.09);border-radius:11px;padding:11px 12px;">
-        <div style="font-size:9px;font-weight:600;color:rgba(38,1,11,.34);letter-spacing:.07em;margin-bottom:5px;">email</div>
-        <div style="font-size:12px;font-weight:500;color:#26010B;margin-bottom:8px;word-break:break-all;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="32425b5746405372425b4a5b57515e47501c515d5f1c5040">[email&#160;protected]</a></div>
+      <div style="font-size:10px;color:rgba(91,75,69,.52);line-height:1.5;padding:0 2px 2px;">Available for freelance projects. Based in São Paulo and open to remote work.</div>
+      <div style="background:#FFF8F3;border:1px solid rgba(91,75,69,.09);border-radius:11px;padding:11px 12px;">
+        <div style="font-size:9px;font-weight:600;color:rgba(91,75,69,.34);letter-spacing:.07em;margin-bottom:5px;">email</div>
+        <div style="font-size:12px;font-weight:500;color:#5B4B45;margin-bottom:8px;word-break:break-all;"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="32425b5746405372425b4a5b57515e47501c515d5f1c5040">[email&#160;protected]</a></div>
         <div style="display:flex;gap:6px;"><button id="mail-copy-btn" class="pc-btn">copy email</button><a href="/cdn-cgi/l/email-protection#33435a5647415273435a4b5a56505f46511d505c5e1d5141" class="pc-btn" style="text-decoration:none;">open mail</a></div>
       </div>
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <a href="https://www.behance.net/pietrabc" target="_blank" rel="noopener" class="pc-contact-card"><span style="font-size:14px;font-weight:700;color:#5F1E3E;line-height:1;">Bē</span><div><div class="pc-contact-card-title">behance</div><div class="pc-contact-card-sub">portfolio archive</div></div><span class="pc-contact-card-arrow">↗</span></a>
+        <a href="https://www.behance.net/pietrabc" target="_blank" rel="noopener" class="pc-contact-card"><span style="font-size:14px;font-weight:700;color:#5B4B45;line-height:1;">Bē</span><div><div class="pc-contact-card-title">behance</div><div class="pc-contact-card-sub">portfolio archive</div></div><span class="pc-contact-card-arrow">↗</span></a>
         <a href="https://www.linkedin.com/in/pietracostantin/" target="_blank" rel="noopener" class="pc-contact-card"><span style="font-size:14px;font-weight:700;color:#8E5B73;line-height:1;">in</span><div><div class="pc-contact-card-title">linkedin</div><div class="pc-contact-card-sub">professional profile</div></div><span class="pc-contact-card-arrow">↗</span></a>
       </div>
     </div>
@@ -785,22 +788,22 @@
 
   <!-- ══ WINDOW: case viewer ══ -->
   <div id="pc-viewer-backdrop"></div>
-  <div id="pc-win-case-viewer" style="position:absolute;width:760px;height:560px;border-radius:10px;box-shadow:0 1px 3px rgba(38,1,11,.06),0 12px 32px rgba(38,1,11,.10);overflow:hidden;">
-    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(38,1,11,.07);display:flex;align-items:center;padding:0 12px;position:relative;flex-shrink:0;">
+  <div id="pc-win-case-viewer" style="position:absolute;width:760px;height:560px;border-radius:10px;box-shadow:0 1px 3px rgba(91,75,69,.06),0 12px 32px rgba(91,75,69,.10);overflow:hidden;">
+    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(91,75,69,.07);display:flex;align-items:center;padding:0 12px;position:relative;flex-shrink:0;">
       <div style="display:flex;gap:7px;">
-        <div class="tl-r" data-close="pc-win-case-viewer" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:#96CC9E;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
+        <div class="tl-r" data-close="pc-win-case-viewer" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
+        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
+        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:#BFDBA0;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
       </div>
-      <span id="case-title-bar" style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;letter-spacing:.01em;">—</span>
+      <span id="case-title-bar" style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(91,75,69,.3);font-weight:500;pointer-events:none;letter-spacing:.01em;">—</span>
     </div>
-    <div class="pc-scroll" style="height:530px;overflow-y:auto;background:#FEFBFE;">
+    <div class="pc-scroll" style="height:530px;overflow-y:auto;background:#FFF8F3;">
       <div id="case-pixie-gallery-wrap"></div>
     </div>
   </div>
 
   <!-- ══ Widget: asfalto (polaroid) ══ -->
-  <div id="pc-widget-asfalto" class="pc-widget-click" style="position:absolute;right:28px;top:226px;z-index:8;width:86px;background:rgba(255,255,255,.78);border:1px solid rgba(38,1,11,.10);border-radius:12px;box-shadow:0 1px 2px rgba(38,1,11,.04),0 5px 14px rgba(38,1,11,.06);padding:8px 8px 9px;overflow:hidden;box-sizing:border-box;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);">
+  <div id="pc-widget-asfalto" class="pc-widget-click" style="position:absolute;right:28px;top:226px;z-index:8;width:86px;background:rgba(255,255,255,.78);border:1px solid rgba(91,75,69,.10);border-radius:12px;box-shadow:0 1px 2px rgba(91,75,69,.04),0 5px 14px rgba(91,75,69,.06);padding:8px 8px 9px;overflow:hidden;box-sizing:border-box;backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);">
     <div class="pc-asfalto-photo">
       <img src="uploads/asfalto.jpg" loading="lazy" decoding="async" alt="" onerror="this.style.display='none';">
     </div>
@@ -816,67 +819,67 @@
   </div>
 
   <!-- ══ Widget: calendar ══ -->
-  <div id="pc-widget-cal" style="position:absolute;right:148px;top:134px;width:80px;z-index:10;background:#FEFBFE;border:1px solid rgba(38,1,11,.09);border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(38,1,11,.05),0 4px 12px rgba(38,1,11,.06);">
+  <div id="pc-widget-cal" style="position:absolute;right:148px;top:134px;width:80px;z-index:10;background:#FFF8F3;border:1px solid rgba(91,75,69,.09);border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(91,75,69,.05),0 4px 12px rgba(91,75,69,.06);">
     <div style="background:#F2AABB;padding:5px 0 4px;text-align:center;">
       <span id="pc-cal-month" style="font-size:7.5px;font-weight:600;color:rgba(255,255,255,.92);text-transform:uppercase;letter-spacing:.1em;">jun</span>
     </div>
     <div style="padding:6px 8px 8px;text-align:center;">
-      <div id="pc-cal-day" style="font-size:34px;font-weight:700;color:#26010B;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;">28</div>
-      <div id="pc-cal-weekday" style="font-size:7.5px;color:rgba(38,1,11,.38);letter-spacing:.04em;margin-top:2px;text-transform:uppercase;">sat</div>
+      <div id="pc-cal-day" style="font-size:34px;font-weight:700;color:#5B4B45;line-height:1;letter-spacing:-.03em;font-variant-numeric:tabular-nums;">28</div>
+      <div id="pc-cal-weekday" style="font-size:7.5px;color:rgba(91,75,69,.38);letter-spacing:.04em;margin-top:2px;text-transform:uppercase;">sat</div>
     </div>
   </div>
 
   <!-- ══ Widget: on rotation (music) ══ -->
-  <div id="pc-widget-music" style="position:absolute;right:28px;top:355px;z-index:9;width:200px;background:rgba(248,243,239,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(38,1,11,.08);border-radius:14px;padding:8px 8px 7px;">
+  <div id="pc-widget-music" style="position:absolute;right:28px;top:355px;z-index:9;width:200px;background:rgba(255,248,243,.72);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(91,75,69,.08);border-radius:14px;padding:8px 8px 7px;">
     <div style="padding:0 3px 6px;">
-      <span style="font-size:9px;font-weight:700;color:rgba(38,1,11,.46);letter-spacing:.05em;">now listening</span>
+      <span style="font-size:9px;font-weight:700;color:rgba(91,75,69,.46);letter-spacing:.05em;">now listening</span>
     </div>
-    <iframe id="pc-music-embed" src="https://open.spotify.com/embed/album/1qSS0T6Ffrb3rFVpizzOuk?utm_source=generator" title="now listening" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" style="width:100%;height:80px;border:0;border-radius:10px;display:block;background:rgba(38,1,11,.04);"></iframe>
+    <iframe id="pc-music-embed" src="https://open.spotify.com/embed/album/1qSS0T6Ffrb3rFVpizzOuk?utm_source=generator" title="now listening" loading="lazy" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" style="width:100%;height:80px;border:0;border-radius:10px;display:block;background:rgba(91,75,69,.04);"></iframe>
   </div>
 
   <!-- ══ WINDOW: search / finder ══ -->
-  <div id="pc-win-search" style="position:absolute;width:440px;height:370px;border-radius:10px;box-shadow:0 1px 3px rgba(38,1,11,.06),0 12px 32px rgba(38,1,11,.10);overflow:hidden;display:flex;flex-direction:column;">
-    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(38,1,11,.07);display:flex;align-items:center;padding:0 12px;position:relative;flex-shrink:0;">
+  <div id="pc-win-search" style="position:absolute;width:440px;height:370px;border-radius:10px;box-shadow:0 1px 3px rgba(91,75,69,.06),0 12px 32px rgba(91,75,69,.10);overflow:hidden;display:flex;flex-direction:column;">
+    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(91,75,69,.07);display:flex;align-items:center;padding:0 12px;position:relative;flex-shrink:0;">
       <div style="display:flex;gap:7px;">
-        <div class="tl-r" data-close="pc-win-search" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:#96CC9E;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
+        <div class="tl-r" data-close="pc-win-search" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
+        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
+        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:#BFDBA0;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
       </div>
-      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;">search</span>
+      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(91,75,69,.3);font-weight:500;pointer-events:none;">search</span>
     </div>
-    <div style="background:#FEFBFE;padding:12px 14px 0;flex-shrink:0;">
+    <div style="background:#FFF8F3;padding:12px 14px 0;flex-shrink:0;">
       <!-- search input -->
-      <div style="display:flex;align-items:center;gap:9px;background:#F5F1EE;border:1px solid rgba(38,1,11,.09);border-radius:12px;padding:0 12px;height:42px;margin-bottom:10px;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:rgba(38,1,11,.28);flex-shrink:0;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input id="pc-search-input" type="text" placeholder="type to search..." style="border:none;background:none;outline:none;font-size:13px;color:#26010B;font-family:inherit;flex:1;min-width:0;letter-spacing:-.01em;" />
-        <button id="pc-search-clear" style="display:none;border:none;background:none;padding:0;cursor:pointer;color:rgba(38,1,11,.32);font-size:15px;line-height:1;font-family:inherit;">×</button>
-        <span style="font-size:9px;color:rgba(38,1,11,.2);background:rgba(38,1,11,.05);border:1px solid rgba(38,1,11,.08);border-radius:5px;padding:2px 5px;letter-spacing:.04em;white-space:nowrap;">esc</span>
+      <div style="display:flex;align-items:center;gap:9px;background:#F5F1EE;border:1px solid rgba(91,75,69,.09);border-radius:12px;padding:0 12px;height:42px;margin-bottom:10px;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" style="color:rgba(91,75,69,.28);flex-shrink:0;"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input id="pc-search-input" type="text" placeholder="type to search..." style="border:none;background:none;outline:none;font-size:13px;color:#5B4B45;font-family:inherit;flex:1;min-width:0;letter-spacing:-.01em;" />
+        <button id="pc-search-clear" style="display:none;border:none;background:none;padding:0;cursor:pointer;color:rgba(91,75,69,.32);font-size:15px;line-height:1;font-family:inherit;">×</button>
+        <span style="font-size:9px;color:rgba(91,75,69,.2);background:rgba(91,75,69,.05);border:1px solid rgba(91,75,69,.08);border-radius:5px;padding:2px 5px;letter-spacing:.04em;white-space:nowrap;">esc</span>
       </div>
       <!-- chips -->
-      <div id="pc-search-chips" style="display:flex;flex-wrap:wrap;gap:5px;padding-bottom:10px;border-bottom:1px solid rgba(38,1,11,.07);">
-        <button class="pc-chip pc-chip-active" data-chip="all" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(95,30,62,.2);background:rgba(242,196,218,.5);color:#5F1E3E;cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">all</button>
-        <button class="pc-chip" data-chip="projects" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">projects</button>
-        <button class="pc-chip" data-chip="identity" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">identity</button>
-        <button class="pc-chip" data-chip="art direction" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">art direction</button>
-        <button class="pc-chip" data-chip="music" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">music</button>
-        <button class="pc-chip" data-chip="web" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">web</button>
-        <button class="pc-chip" data-chip="visual studies" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">visual studies</button>
-        <button class="pc-chip" data-chip="layout" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(38,1,11,.08);background:none;color:rgba(38,1,11,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">layout</button>
+      <div id="pc-search-chips" style="display:flex;flex-wrap:wrap;gap:5px;padding-bottom:10px;border-bottom:1px solid rgba(91,75,69,.07);">
+        <button class="pc-chip pc-chip-active" data-chip="all" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(91,75,69,.2);background:rgba(254,223,221,.5);color:#5B4B45;cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">all</button>
+        <button class="pc-chip" data-chip="projects" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(91,75,69,.08);background:none;color:rgba(91,75,69,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">projects</button>
+        <button class="pc-chip" data-chip="identity" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(91,75,69,.08);background:none;color:rgba(91,75,69,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">identity</button>
+        <button class="pc-chip" data-chip="art direction" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(91,75,69,.08);background:none;color:rgba(91,75,69,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">art direction</button>
+        <button class="pc-chip" data-chip="music" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(91,75,69,.08);background:none;color:rgba(91,75,69,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">music</button>
+        <button class="pc-chip" data-chip="web" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(91,75,69,.08);background:none;color:rgba(91,75,69,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">web</button>
+        <button class="pc-chip" data-chip="visual studies" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(91,75,69,.08);background:none;color:rgba(91,75,69,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">visual studies</button>
+        <button class="pc-chip" data-chip="layout" style="font-size:9px;font-weight:500;padding:3px 9px;border-radius:12px;border:1px solid rgba(91,75,69,.08);background:none;color:rgba(91,75,69,.52);cursor:pointer;font-family:inherit;transition:background 120ms,color 120ms;">layout</button>
       </div>
     </div>
     <!-- results -->
-    <div id="pc-search-results" class="pc-scroll" style="flex:1;overflow-y:auto;padding:6px 14px 10px;background:#FEFBFE;"></div>
+    <div id="pc-search-results" class="pc-scroll" style="flex:1;overflow-y:auto;padding:6px 14px 10px;background:#FFF8F3;"></div>
   </div>
 
   <!-- ══ WINDOW: pixie club ══ -->
-  <div id="pc-win-pixie" style="position:absolute;width:360px;border-radius:10px;box-shadow:0 1px 3px rgba(38,1,11,.06),0 12px 32px rgba(38,1,11,.10);overflow:hidden;">
-    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(38,1,11,.07);display:flex;align-items:center;padding:0 12px;position:relative;flex-shrink:0;">
+  <div id="pc-win-pixie" style="position:absolute;width:360px;border-radius:10px;box-shadow:0 1px 3px rgba(91,75,69,.06),0 12px 32px rgba(91,75,69,.10);overflow:hidden;">
+    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(91,75,69,.07);display:flex;align-items:center;padding:0 12px;position:relative;flex-shrink:0;">
       <div style="display:flex;gap:7px;">
-        <div class="tl-r" data-close="pc-win-pixie" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
-        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:#96CC9E;border:.5px solid rgba(38,1,11,.07);transition:background 150ms;"></div>
+        <div class="tl-r" data-close="pc-win-pixie" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
+        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
+        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:#BFDBA0;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
       </div>
-      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(38,1,11,.3);font-weight:500;pointer-events:none;letter-spacing:.01em;">pixie club</span>
+      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(91,75,69,.3);font-weight:500;pointer-events:none;letter-spacing:.01em;">pixie club</span>
     </div>
     <!-- Preview placeholders -->
     <div class="pc-pixie-preview-area">
@@ -885,17 +888,17 @@
       </div>
     </div>
     <!-- Info -->
-    <div style="background:#FEFBFE;padding:12px 14px 14px;">
+    <div style="background:#FFF8F3;padding:12px 14px 14px;">
       <div style="display:flex;align-items:center;gap:9px;margin-bottom:9px;">
-        <div style="width:32px;height:32px;border-radius:7px;overflow:hidden;flex-shrink:0;border:.5px solid rgba(38,1,11,.08);">
+        <div style="width:32px;height:32px;border-radius:7px;overflow:hidden;flex-shrink:0;border:.5px solid rgba(91,75,69,.08);">
           <img src="uploads/icone-pixieclub.png" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;" />
         </div>
         <div style="flex:1;min-width:0;">
-          <div style="font-size:13px;font-weight:600;color:#26010B;letter-spacing:-.02em;line-height:1.15;">pixie club</div>
-          <div style="font-size:11px;color:rgba(38,1,11,.38);font-weight:400;margin-top:1px;">creative studio · São Paulo · 2026</div>
+          <div style="font-size:13px;font-weight:600;color:#5B4B45;letter-spacing:-.02em;line-height:1.15;">pixie club</div>
+          <div style="font-size:11px;color:rgba(91,75,69,.38);font-weight:400;margin-top:1px;">creative studio · São Paulo · 2026</div>
         </div>
       </div>
-      <p style="font-size:12px;line-height:1.6;color:rgba(38,1,11,.58);margin:0 0 10px;text-wrap:pretty;">Creative direction and graphic design studio for visual systems, music and cultural projects.</p>
+      <p style="font-size:12px;line-height:1.6;color:rgba(91,75,69,.58);margin:0 0 10px;text-wrap:pretty;">Creative direction and graphic design studio for visual systems, music and cultural projects.</p>
       <div style="display:flex;gap:6px;">
         <a href="https://pixieclub.com.br/" target="_blank" rel="noopener" class="pc-btn">open website ↗</a>
         <button id="pixie-view-case" class="pc-btn">view case →</button>
@@ -906,53 +909,53 @@
   <!-- ══ WINDOW: themes ══ -->
 
   <!-- ══ Dock ══ -->
-  <div id="pc-dock" style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(248,243,239,.72);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.55);border-radius:20px;box-shadow:0 4px 18px rgba(38,1,11,.08);padding:9px 16px;display:flex;gap:9px;align-items:flex-end;z-index:90;white-space:nowrap;">
+  <div id="pc-dock" style="position:absolute;bottom:12px;left:50%;transform:translateX(-50%);background:rgba(255,248,243,.72);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border:1px solid rgba(255,255,255,.55);border-radius:20px;box-shadow:0 4px 18px rgba(91,75,69,.08);padding:9px 16px;display:flex;gap:9px;align-items:flex-end;z-index:90;white-space:nowrap;">
 
     <button class="pc-dock-btn" data-open="search">
-      <div class="pc-dock-icon" style="width:50px;height:50px;border-radius:13px;background:rgba(252,248,246,.9);border:.5px solid rgba(38,1,11,.09);display:flex;align-items:center;justify-content:center;margin-bottom:4px;">
+      <div class="pc-dock-icon" style="width:50px;height:50px;border-radius:13px;background:rgba(252,248,246,.9);border:.5px solid rgba(91,75,69,.09);display:flex;align-items:center;justify-content:center;margin-bottom:4px;">
         <img src="uploads/icon-finder-imac.png" alt="" style="display:block;width:42px;height:42px;object-fit:contain;object-position:center;">
-        <span class="pc-dock-ticon" aria-hidden="true"><svg class="ticon-y2k" width="26" height="26" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="#E0108A" stroke-width="2"/><circle cx="10" cy="10" r="3.5" fill="#E0108A" fill-opacity=".22"/><circle cx="8.5" cy="8" r="1.5" fill="rgba(255,255,255,.68)"/><line x1="15.2" y1="15.2" x2="21" y2="21" stroke="#E0108A" stroke-width="2.5" stroke-linecap="round"/></svg><svg class="ticon-aero" width="26" height="26" viewBox="0 0 24 24"><circle cx="10" cy="10" r="7" stroke="rgba(10,100,190,.9)" stroke-width="1.8" fill="rgba(120,200,255,.25)"/><ellipse cx="8.5" cy="7.8" rx="2.5" ry="1.5" fill="rgba(255,255,255,.55)"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="rgba(10,100,190,.9)" stroke-width="2.2" stroke-linecap="round"/></svg></span>
+        <span class="pc-dock-ticon" aria-hidden="true"><svg class="ticon-y2k" width="26" height="26" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="#FFAED5" stroke-width="2"/><circle cx="10" cy="10" r="3.5" fill="#FFAED5" fill-opacity=".22"/><circle cx="8.5" cy="8" r="1.5" fill="rgba(255,255,255,.68)"/><line x1="15.2" y1="15.2" x2="21" y2="21" stroke="#FFAED5" stroke-width="2.5" stroke-linecap="round"/></svg><svg class="ticon-aero" width="26" height="26" viewBox="0 0 24 24"><circle cx="10" cy="10" r="7" stroke="rgba(10,100,190,.9)" stroke-width="1.8" fill="rgba(120,200,255,.25)"/><ellipse cx="8.5" cy="7.8" rx="2.5" ry="1.5" fill="rgba(255,255,255,.55)"/><line x1="15.5" y1="15.5" x2="21" y2="21" stroke="rgba(10,100,190,.9)" stroke-width="2.2" stroke-linecap="round"/></svg></span>
       </div>
       <div class="pc-dock-dot" data-dot-win="pc-win-search"></div>
-      <span style="font-size:9px;color:rgba(38,1,11,.42);">search</span>
+      <span style="font-size:9px;color:rgba(91,75,69,.42);">search</span>
     </button>
 
     <button class="pc-dock-btn" data-open="projects">
-      <div class="pc-dock-icon" style="width:50px;height:50px;border-radius:13px;background:rgba(252,248,246,.9);border:.5px solid rgba(38,1,11,.09);display:flex;align-items:center;justify-content:center;margin-bottom:4px;">
+      <div class="pc-dock-icon" style="width:50px;height:50px;border-radius:13px;background:rgba(252,248,246,.9);border:.5px solid rgba(91,75,69,.09);display:flex;align-items:center;justify-content:center;margin-bottom:4px;">
         <img src="uploads/icon-archive-folder.png" alt="" style="display:block;width:42px;height:42px;object-fit:contain;object-position:center;">
-        <span class="pc-dock-ticon" aria-hidden="true"><svg class="ticon-y2k" width="26" height="26" viewBox="0 0 24 24"><path d="M12 2l2.6 5.3 5.8.8-4.2 4.1 1 5.9-5.2-2.7-5.2 2.7 1-5.9-4.2-4.1 5.8-.8z" fill="#E0108A" stroke="rgba(255,255,255,.7)" stroke-width=".4"/></svg><svg class="ticon-aero" width="26" height="26" viewBox="0 0 24 24"><path d="M2 8h9l2 2h9v11H2z" fill="rgba(40,140,235,.9)" stroke="rgba(255,255,255,.5)" stroke-width=".5"/><rect x="2" y="5" width="10" height="3.5" rx=".8" fill="rgba(20,110,210,.9)"/><ellipse cx="12" cy="9.5" rx="5" ry="1.8" fill="rgba(255,255,255,.25)"/></svg></span>
+        <span class="pc-dock-ticon" aria-hidden="true"><svg class="ticon-y2k" width="26" height="26" viewBox="0 0 24 24"><path d="M12 2l2.6 5.3 5.8.8-4.2 4.1 1 5.9-5.2-2.7-5.2 2.7 1-5.9-4.2-4.1 5.8-.8z" fill="#FFAED5" stroke="rgba(255,255,255,.7)" stroke-width=".4"/></svg><svg class="ticon-aero" width="26" height="26" viewBox="0 0 24 24"><path d="M2 8h9l2 2h9v11H2z" fill="rgba(40,140,235,.9)" stroke="rgba(255,255,255,.5)" stroke-width=".5"/><rect x="2" y="5" width="10" height="3.5" rx=".8" fill="rgba(20,110,210,.9)"/><ellipse cx="12" cy="9.5" rx="5" ry="1.8" fill="rgba(255,255,255,.25)"/></svg></span>
       </div>
       <div class="pc-dock-dot" data-dot-win="pc-win-projects"></div>
-      <span style="font-size:9px;color:rgba(38,1,11,.42);">projects</span>
+      <span style="font-size:9px;color:rgba(91,75,69,.42);">projects</span>
     </button>
 
     <button class="pc-dock-btn" data-open="about">
-      <div class="pc-dock-icon" style="width:50px;height:50px;border-radius:13px;background:rgba(252,248,246,.9);border:.5px solid rgba(38,1,11,.09);display:flex;align-items:center;justify-content:center;margin-bottom:4px;">
+      <div class="pc-dock-icon" style="width:50px;height:50px;border-radius:13px;background:rgba(252,248,246,.9);border:.5px solid rgba(91,75,69,.09);display:flex;align-items:center;justify-content:center;margin-bottom:4px;">
         <img src="uploads/icon-about-locket.png" alt="" style="display:block;width:42px;height:42px;object-fit:contain;object-position:center;">
-        <span class="pc-dock-ticon" aria-hidden="true"><svg class="ticon-y2k" width="26" height="26" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="18" rx="1.5" fill="white" stroke="rgba(220,100,180,.4)" stroke-width=".5"/><rect x="6.5" y="3.5" width="11" height="9" rx="1" fill="#FFB8E0"/><circle cx="12" cy="9.5" r="2.2" fill="#E0108A" fill-opacity=".7"/></svg><svg class="ticon-aero" width="26" height="26" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="rgba(40,140,235,.9)" stroke="rgba(255,255,255,.45)" stroke-width=".5"/><circle cx="8.5" cy="12" r="3.2" fill="rgba(255,255,255,.85)"/><rect x="14" y="9.5" width="6.5" height="1.8" rx=".9" fill="rgba(255,255,255,.75)"/><rect x="14" y="13" width="4.5" height="1.5" rx=".75" fill="rgba(255,255,255,.5)"/><ellipse cx="8" cy="7" rx="4" ry="1.5" fill="rgba(255,255,255,.22)"/></svg></span>
+        <span class="pc-dock-ticon" aria-hidden="true"><svg class="ticon-y2k" width="26" height="26" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="18" rx="1.5" fill="white" stroke="rgba(220,100,180,.4)" stroke-width=".5"/><rect x="6.5" y="3.5" width="11" height="9" rx="1" fill="#FFB8E0"/><circle cx="12" cy="9.5" r="2.2" fill="#FFAED5" fill-opacity=".7"/></svg><svg class="ticon-aero" width="26" height="26" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2" fill="rgba(40,140,235,.9)" stroke="rgba(255,255,255,.45)" stroke-width=".5"/><circle cx="8.5" cy="12" r="3.2" fill="rgba(255,255,255,.85)"/><rect x="14" y="9.5" width="6.5" height="1.8" rx=".9" fill="rgba(255,255,255,.75)"/><rect x="14" y="13" width="4.5" height="1.5" rx=".75" fill="rgba(255,255,255,.5)"/><ellipse cx="8" cy="7" rx="4" ry="1.5" fill="rgba(255,255,255,.22)"/></svg></span>
       </div>
       <div class="pc-dock-dot" data-dot-win="pc-win-about"></div>
-      <span style="font-size:9px;color:rgba(38,1,11,.42);">about</span>
+      <span style="font-size:9px;color:rgba(91,75,69,.42);">about</span>
     </button>
 
     <button class="pc-dock-btn" data-open="mail">
-      <div class="pc-dock-icon" style="width:50px;height:50px;border-radius:13px;background:rgba(252,248,246,.9);border:.5px solid rgba(38,1,11,.09);display:flex;align-items:center;justify-content:center;margin-bottom:4px;">
+      <div class="pc-dock-icon" style="width:50px;height:50px;border-radius:13px;background:rgba(252,248,246,.9);border:.5px solid rgba(91,75,69,.09);display:flex;align-items:center;justify-content:center;margin-bottom:4px;">
         <img src="uploads/ICON-MAIL.png" alt="" style="display:block;width:42px;height:42px;object-fit:contain;object-position:center;">
-        <span class="pc-dock-ticon" aria-hidden="true"><svg class="ticon-y2k" width="26" height="26" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2" fill="#E0108A"/><path d="M2 6l10 8 10-8" stroke="rgba(255,255,255,.7)" stroke-width="1.3" fill="none"/><path d="M19 3C19 5 17 5.8 17 5.8S15 5 15 3c0-1.1.9-2 2-2s2 .9 2 2z" fill="#FF1744"/></svg><svg class="ticon-aero" width="26" height="26" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" fill="rgba(40,140,235,.9)" stroke="rgba(255,255,255,.45)" stroke-width=".5"/><path d="M2 5l10 8 10-8" stroke="rgba(255,255,255,.8)" stroke-width="1.3" fill="none"/><ellipse cx="12" cy="7" rx="5.5" ry="2" fill="rgba(255,255,255,.22)"/></svg></span>
+        <span class="pc-dock-ticon" aria-hidden="true"><svg class="ticon-y2k" width="26" height="26" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2" fill="#FFAED5"/><path d="M2 6l10 8 10-8" stroke="rgba(255,255,255,.7)" stroke-width="1.3" fill="none"/><path d="M19 3C19 5 17 5.8 17 5.8S15 5 15 3c0-1.1.9-2 2-2s2 .9 2 2z" fill="#FF1744"/></svg><svg class="ticon-aero" width="26" height="26" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" fill="rgba(40,140,235,.9)" stroke="rgba(255,255,255,.45)" stroke-width=".5"/><path d="M2 5l10 8 10-8" stroke="rgba(255,255,255,.8)" stroke-width="1.3" fill="none"/><ellipse cx="12" cy="7" rx="5.5" ry="2" fill="rgba(255,255,255,.22)"/></svg></span>
       </div>
       <div class="pc-dock-dot" data-dot-win="pc-win-mail"></div>
-      <span style="font-size:9px;color:rgba(38,1,11,.42);">contact</span>
+      <span style="font-size:9px;color:rgba(91,75,69,.42);">contact</span>
     </button>
 
-    <div style="width:1px;height:40px;background:rgba(38,1,11,.1);margin:0 2px;align-self:center;"></div>
+    <div style="width:1px;height:40px;background:rgba(91,75,69,.1);margin:0 2px;align-self:center;"></div>
 
     <button class="pc-dock-btn" data-open="pixie">
-      <div class="pc-dock-icon" style="width:50px;height:50px;border-radius:13px;overflow:hidden;border:.5px solid rgba(38,1,11,.08);margin-bottom:4px;">
+      <div class="pc-dock-icon" style="width:50px;height:50px;border-radius:13px;overflow:hidden;border:.5px solid rgba(91,75,69,.08);margin-bottom:4px;">
         <img src="uploads/uh.png" style="width:100%;height:100%;object-fit:contain;object-position:center;display:block;" />
-        <span class="pc-dock-ticon" aria-hidden="true"><svg class="ticon-y2k" width="26" height="26" viewBox="0 0 24 24"><polygon points="12,2 20,9 12,22 4,9" fill="#E0108A" stroke="rgba(255,255,255,.5)" stroke-width=".4"/><polygon points="12,2 20,9 12,14 4,9" fill="rgba(255,255,255,.3)"/><line x1="4" y1="9" x2="20" y2="9" stroke="rgba(255,255,255,.45)" stroke-width=".7"/><circle cx="12" cy="2" r="1.2" fill="#FFD700"/></svg><svg class="ticon-aero" width="26" height="26" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="rgba(30,130,225,.92)" stroke="rgba(255,255,255,.5)" stroke-width=".8"/><ellipse cx="12" cy="8.6" rx="5.6" ry="3.4" fill="rgba(255,255,255,.38)"/><path d="M12 8.6l1 2.1 2.3.4-1.7 1.6.4 2.3-2-1.1-2 1.1.4-2.3-1.7-1.6 2.3-.4z" fill="rgba(255,255,255,.9)"/></svg></span>
+        <span class="pc-dock-ticon" aria-hidden="true"><svg class="ticon-y2k" width="26" height="26" viewBox="0 0 24 24"><polygon points="12,2 20,9 12,22 4,9" fill="#FFAED5" stroke="rgba(255,255,255,.5)" stroke-width=".4"/><polygon points="12,2 20,9 12,14 4,9" fill="rgba(255,255,255,.3)"/><line x1="4" y1="9" x2="20" y2="9" stroke="rgba(255,255,255,.45)" stroke-width=".7"/><circle cx="12" cy="2" r="1.2" fill="#FFD700"/></svg><svg class="ticon-aero" width="26" height="26" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="rgba(30,130,225,.92)" stroke="rgba(255,255,255,.5)" stroke-width=".8"/><ellipse cx="12" cy="8.6" rx="5.6" ry="3.4" fill="rgba(255,255,255,.38)"/><path d="M12 8.6l1 2.1 2.3.4-1.7 1.6.4 2.3-2-1.1-2 1.1.4-2.3-1.7-1.6 2.3-.4z" fill="rgba(255,255,255,.9)"/></svg></span>
       </div>
       <div class="pc-dock-dot" data-dot-win="pc-win-pixie"></div>
-      <span style="font-size:9px;color:rgba(38,1,11,.5);font-weight:500;">pixie club</span>
+      <span style="font-size:9px;color:rgba(91,75,69,.5);font-weight:500;">pixie club</span>
     </button>
 
   </div>
@@ -973,11 +976,11 @@ class PietraDesktop {
   }
 
   _projects = [
-    { id: 'pixie',  name: 'pixie club',     year: '2026',    cat: 'identity system · art direction · web', img: 'uploads/pixie-preview-01.jpg',        clr: '#F2C4DA', desc: 'Pixie Club started as my final Graphic Design project at Belas Artes de São Paulo, based on research into visual eras in international pop music from 2020 to 2025. From that research, I developed a fictional studio specialized in visual systems for music and cultural projects, working through concept, naming, visual identity, website, printed materials, stickers, presentation system and exhibition setup. The monogram alone went through more than a hundred versions, tested on paper, lipstick and pastel chalk before landing on the final mark. The project also had a physical presence, with a stand at BA Creative Collectibles.',    role: 'identity system · art direction · web' },
-    { id: 'mari',   name: 'mari froes',     year: '2026',    cat: 'music identity · editorial system · concept study', img: 'uploads/img-abertura-mari.jpg',      clr: '#FFF7D1', desc: 'A conceptual music identity study for Mari Froes, developed within my graduation research on pop eras, graphic design and release systems. The project uses correspondence, memory and editorial materiality as a visual language for a music release. I worked on the concept, art direction, identity system, editorial applications, rollout structure and mockups. Artist images were used as source material for design presentation and are not my photography.',            role: 'music identity · editorial system · concept study', spotifyLabel: '', spotifySrc: 'https://open.spotify.com/embed/track/2BORRiSmyXBAMAZTsppmBw?utm_source=generator' },
-    { id: 'dorian', name: 'dorian electra', year: '2026',    cat: 'art direction · concept packaging',     img: 'uploads/img-abertura-dorian.jpg',    clr: '#DDEEF4', desc: 'Made after Dorian Electra\'s 2026 self-titled covers album, a record built on the idea of using the past as material to find yourself again. I was in the middle of my thesis and stuck creatively, and this project became my way out, a chance to be free and just have fun with design again, the same kind of block Dorian was working through when they made the album. Archive photographs, aged paper, star maps and cyanotype became the visual language, less a research topic than a place I went to breathe.', disclaimer: 'Speculative concept project, not commissioned by Dorian Electra.',                        role: 'visual study · music archive · unofficial concept', spotifyLabel: 'album reference', spotifySrc: 'https://open.spotify.com/embed/album/07MFwmTo5CPShbTK60jPUl?utm_source=generator' },
+    { id: 'pixie',  name: 'pixie club',     year: '2026',    cat: 'identity system · art direction · web', img: 'uploads/pixie-preview-01.jpg',        clr: '#FEDFDD', desc: 'Pixie Club started as my final Graphic Design project at Belas Artes de São Paulo, based on research into visual eras in international pop music from 2020 to 2025. From that research, I developed a fictional studio specialized in visual systems for music and cultural projects, working through concept, naming, visual identity, website, printed materials, stickers, presentation system and exhibition setup. The monogram alone went through more than a hundred versions, tested on paper, lipstick and pastel chalk before landing on the final mark. The project also had a physical presence, with a stand at BA Creative Collectibles.',    role: 'identity system · art direction · web' },
+    { id: 'mari',   name: 'mari froes',     year: '2026',    cat: 'music identity · editorial system · concept study', img: 'uploads/img-abertura-mari.jpg',      clr: '#BFDBA0', desc: 'A conceptual music identity study for Mari Froes, developed within my graduation research on pop eras, graphic design and release systems. The project uses correspondence, memory and editorial materiality as a visual language for a music release. I worked on the concept, art direction, identity system, editorial applications, rollout structure and mockups. Artist images were used as source material for design presentation and are not my photography.',            role: 'music identity · editorial system · concept study', spotifyLabel: '', spotifySrc: 'https://open.spotify.com/embed/track/2BORRiSmyXBAMAZTsppmBw?utm_source=generator' },
+    { id: 'dorian', name: 'dorian electra', year: '2026',    cat: 'art direction · concept packaging',     img: 'uploads/img-abertura-dorian.jpg',    clr: '#FEDFDD', desc: 'Made after Dorian Electra\'s 2026 self-titled covers album, a record built on the idea of using the past as material to find yourself again. I was in the middle of my thesis and stuck creatively, and this project became my way out, a chance to be free and just have fun with design again, the same kind of block Dorian was working through when they made the album. Archive photographs, aged paper, star maps and cyanotype became the visual language, less a research topic than a place I went to breathe.', disclaimer: 'Speculative concept project, not commissioned by Dorian Electra.',                        role: 'visual study · music archive · unofficial concept', spotifyLabel: 'album reference', spotifySrc: 'https://open.spotify.com/embed/album/07MFwmTo5CPShbTK60jPUl?utm_source=generator' },
     { id: 'sweat',  name: 'sweat',          year: '2025',    cat: 'art direction · concept packaging',   img: 'uploads/img-abertura-sweat.jpg',     clr: '#F2D8E4', desc: 'A music visual study focused on materiality, color, body, club culture and physical media. The project explores how a pop release can become a tactile visual system through covers, mockups, objects and image treatment. I worked on visual research, art direction, graphic applications and case presentation. Source imagery and artist-related references were used as visual material and are not my photography.', disclaimer: 'Speculative concept project, not commissioned by Charli XCX or Troye Sivan. Independent study, not an official campaign.',                   role: 'art direction · music visual system', spotifyLabel: 'sweat tour setlist', spotifySrc: 'https://open.spotify.com/embed/playlist/37i9dQZF1DX5x2iaJA7ZpI?utm_source=generator' },
-    { id: 'grimes', name: 'grimes',         year: '2026',    cat: 'editorial layout · magazine study',   img: 'uploads/img-abertura-grimes.jpg',   clr: '#DDEEF4', desc: 'A conceptual editorial study built around Grimes\'s feature for Interview Magazine, reimagined as an infinite scroll instead of a fixed layout. I worked with the existing photography and text from that piece, adding texture treatments inspired by surrealism and an experimental approach to how the text sits on the page. Source photography and text are from Interview Magazine, not my own.', disclaimer: 'Speculative concept project, not commissioned by Grimes or Interview Magazine.',                           role: 'editorial layout · magazine study', spotifyLabel: '', spotifySrc: 'https://open.spotify.com/embed/track/0cAFtuZPD4sKl0X1R3dFin?utm_source=generator' },
+    { id: 'grimes', name: 'grimes',         year: '2026',    cat: 'editorial layout · magazine study',   img: 'uploads/img-abertura-grimes.jpg',   clr: '#FEDFDD', desc: 'A conceptual editorial study built around Grimes\'s feature for Interview Magazine, reimagined as an infinite scroll instead of a fixed layout. I worked with the existing photography and text from that piece, adding texture treatments inspired by surrealism and an experimental approach to how the text sits on the page. Source photography and text are from Interview Magazine, not my own.', disclaimer: 'Speculative concept project, not commissioned by Grimes or Interview Magazine.',                           role: 'editorial layout · magazine study', spotifyLabel: '', spotifySrc: 'https://open.spotify.com/embed/track/0cAFtuZPD4sKl0X1R3dFin?utm_source=generator' },
   ];
   _currentProject = null;
   _zTop = 30;
@@ -1277,7 +1280,7 @@ class PietraDesktop {
     this._showMediaCaseViewer(media, project && project.id === 'grimes' ? 'grimes' : '');
     if (project && project.disclaimer && gallery) {
       const disc = document.createElement('p');
-      disc.style.cssText = 'font-size:8px;color:rgba(38,1,11,.48);margin:8px 14px 16px;line-height:1.6;text-align:center;';
+      disc.style.cssText = 'font-size:8px;color:rgba(91,75,69,.48);margin:8px 14px 16px;line-height:1.6;text-align:center;';
       disc.textContent = project.disclaimer;
       gallery.appendChild(disc);
     }
@@ -1324,7 +1327,7 @@ class PietraDesktop {
     if (!p) return;
     const $ = id => document.getElementById(id);
     $('detail-bg').style.backgroundImage = `url('${this._displayImageSrc(p.img)}')`;
-    $('detail-bg').style.backgroundColor = p.clr || '#F2C4DA';
+    $('detail-bg').style.backgroundColor = p.clr || '#FEDFDD';
     const detailClr = $('detail-clr');
     if (detailClr) detailClr.style.background = p.clr;
     this._setMoodLight(p.clr);
@@ -1399,25 +1402,25 @@ class PietraDesktop {
         return matchChip && matchQ;
       });
       if (!filtered.length) {
-        container.innerHTML = `<div style="text-align:center;padding:32px 0;font-size:11px;font-style:italic;color:rgba(38,1,11,.32);">no files found</div>`;
+        container.innerHTML = `<div style="text-align:center;padding:32px 0;font-size:11px;font-style:italic;color:rgba(91,75,69,.32);">no files found</div>`;
         return;
       }
       container.innerHTML = filtered.map(item => `
         <div class="pc-search-row" data-item-id="${item.id}" style="display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:7px;cursor:pointer;transition:background 100ms;">
-          <div style="width:24px;height:24px;border-radius:5px;background:#F8F3EF;border:1px solid rgba(38,1,11,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:rgba(38,1,11,.42);">${typeIcon(item.type)}</div>
+          <div style="width:24px;height:24px;border-radius:5px;background:#FFF8F3;border:1px solid rgba(91,75,69,.08);display:flex;align-items:center;justify-content:center;flex-shrink:0;color:rgba(91,75,69,.42);">${typeIcon(item.type)}</div>
           <div style="flex:1;min-width:0;">
-            <div style="font-size:11px;font-weight:600;color:#26010B;line-height:1.2;">${item.title}</div>
+            <div style="font-size:11px;font-weight:600;color:#5B4B45;line-height:1.2;">${item.title}</div>
             <div style="display:flex;align-items:center;gap:6px;margin-top:2px;flex-wrap:wrap;">
-              <span style="font-size:9px;color:rgba(38,1,11,.38);font-style:italic;">${item.type}</span>
-              <span style="font-size:9px;color:rgba(38,1,11,.25);">·</span>
-              <span style="font-size:9px;color:rgba(38,1,11,.32);">${item.desc || item.tags.join(', ')}</span>
+              <span style="font-size:9px;color:rgba(91,75,69,.38);font-style:italic;">${item.type}</span>
+              <span style="font-size:9px;color:rgba(91,75,69,.25);">·</span>
+              <span style="font-size:9px;color:rgba(91,75,69,.32);">${item.desc || item.tags.join(', ')}</span>
             </div>
           </div>
         </div>
       `).join('');
 
       container.querySelectorAll('.pc-search-row').forEach(row => {
-        row.addEventListener('mouseover', () => { row.style.background = 'rgba(38,1,11,.04)'; });
+        row.addEventListener('mouseover', () => { row.style.background = 'rgba(91,75,69,.04)'; });
         row.addEventListener('mouseout',  () => { row.style.background = ''; });
         row.addEventListener('click', () => {
           const item = items.find(x => x.id === row.dataset.itemId);
@@ -1448,9 +1451,9 @@ class PietraDesktop {
         activeChip = chip.dataset.chip;
         document.querySelectorAll('#pc-search-chips .pc-chip').forEach(c => {
           const active = c.dataset.chip === activeChip;
-          c.style.background = active ? 'rgba(242,196,218,.5)' : 'none';
-          c.style.color = active ? '#5F1E3E' : 'rgba(38,1,11,.52)';
-          c.style.borderColor = active ? 'rgba(95,30,62,.2)' : 'rgba(38,1,11,.08)';
+          c.style.background = active ? 'rgba(254,223,221,.5)' : 'none';
+          c.style.color = active ? '#5B4B45' : 'rgba(91,75,69,.52)';
+          c.style.borderColor = active ? 'rgba(91,75,69,.2)' : 'rgba(91,75,69,.08)';
           if (active) c.classList.add('pc-chip-active'); else c.classList.remove('pc-chip-active');
         });
         render();
@@ -1466,7 +1469,7 @@ class PietraDesktop {
     if (!avatar) return;
     if (reduced) {
       avatar.style.transition = 'box-shadow 150ms';
-      avatar.style.boxShadow = '0 0 0 3px rgba(95,30,62,.38), 0 0 0 1.5px rgba(255,255,255,.7)';
+      avatar.style.boxShadow = '0 0 0 3px rgba(91,75,69,.38), 0 0 0 1.5px rgba(255,255,255,.7)';
       setTimeout(() => { avatar.style.boxShadow = '0 0 0 1.5px rgba(255,255,255,.65)'; }, 350);
       return;
     }
@@ -1482,8 +1485,8 @@ class PietraDesktop {
 
     // two halos
     [
-      { color: 'rgba(242,196,218,.65)', delay: 0 },
-      { color: 'rgba(95,30,62,.3)',   delay: 110 },
+      { color: 'rgba(254,223,221,.65)', delay: 0 },
+      { color: 'rgba(91,75,69,.3)',   delay: 110 },
     ].forEach(({ color, delay }) => {
       const halo = document.createElement('div');
       Object.assign(halo.style, {
@@ -1499,9 +1502,9 @@ class PietraDesktop {
 
     // 3 sparkles ✦
     [
-      { angle: -40, dur: 680, delay: 0,   color: 'rgba(242,196,218,.9)' },
-      { angle:   5, dur: 740, delay: 70,  color: 'rgba(95,30,62,.8)'  },
-      { angle:  50, dur: 680, delay: 40,  color: 'rgba(242,196,218,.9)' },
+      { angle: -40, dur: 680, delay: 0,   color: 'rgba(254,223,221,.9)' },
+      { angle:   5, dur: 740, delay: 70,  color: 'rgba(91,75,69,.8)'  },
+      { angle:  50, dur: 680, delay: 40,  color: 'rgba(254,223,221,.9)' },
     ].forEach(({ angle, dur, delay, color }) => {
       const rad = angle * Math.PI / 180;
       const r = 24;
@@ -1590,12 +1593,12 @@ class PietraDesktop {
         setTimeout(() => { w.style.transition = ''; }, 230);
       }
       w.style.boxShadow = isActive
-        ? '0 4px 12px rgba(38,1,11,.10),0 24px 56px rgba(38,1,11,.20)'
-        : '0 1px 2px rgba(38,1,11,.04),0 6px 16px rgba(38,1,11,.07)';
+        ? '0 4px 12px rgba(91,75,69,.10),0 24px 56px rgba(91,75,69,.20)'
+        : '0 1px 2px rgba(91,75,69,.04),0 6px 16px rgba(91,75,69,.07)';
       w.style.opacity = '1';
       w.style.filter = '';
     });
-    el.style.boxShadow = '0 4px 12px rgba(38,1,11,.10),0 24px 56px rgba(38,1,11,.20)';
+    el.style.boxShadow = '0 4px 12px rgba(91,75,69,.10),0 24px 56px rgba(91,75,69,.20)';
     el.style.opacity = '1';
     el.style.filter = '';
     if (id === 'pc-win-case-viewer') this._syncViewerBackdropZ();
@@ -1648,9 +1651,16 @@ class PietraDesktop {
 
   _setMoodLight(clr) {
     const el = document.getElementById('pc-mood-light');
+    const veil = document.getElementById('pc-mood-veil');
     if (!el) return;
-    if (clr) { el.style.setProperty('--mood-color', clr); el.classList.add('is-active'); }
-    else { el.classList.remove('is-active'); }
+    if (clr) {
+      el.style.setProperty('--mood-color', clr);
+      el.classList.add('is-active');
+      if (veil) { veil.style.setProperty('--mood-color', clr); veil.classList.add('is-active'); }
+    } else {
+      el.classList.remove('is-active');
+      if (veil) veil.classList.remove('is-active');
+    }
   }
 
   _hideWindow(id) {
@@ -1725,7 +1735,7 @@ class PietraDesktop {
   _switchFinderTab(tab) {
     tab = 'projects';
     document.querySelectorAll('.pc-sb-item').forEach(i => {
-      i.style.background = 'rgba(38,1,11,.08)';
+      i.style.background = 'rgba(91,75,69,.08)';
       i.style.fontWeight = '500';
     });
     const show = document.getElementById('finder-projects');
@@ -2202,21 +2212,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <button class="y2k-lbtn" data-open="projects">
     <div class="y2k-licon">
-      <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 2l2.6 5.3 5.8.8-4.2 4.1 1 5.9-5.2-2.7-5.2 2.7 1-5.9-4.2-4.1 5.8-.8z" fill="#E0108A" stroke="rgba(255,255,255,.7)" stroke-width=".4"/></svg>
+      <svg width="22" height="22" viewBox="0 0 24 24"><path d="M12 2l2.6 5.3 5.8.8-4.2 4.1 1 5.9-5.2-2.7-5.2 2.7 1-5.9-4.2-4.1 5.8-.8z" fill="#FFAED5" stroke="rgba(255,255,255,.7)" stroke-width=".4"/></svg>
     </div>
     <span>Projects</span>
   </button>
 
   <button class="y2k-lbtn" data-open="about">
     <div class="y2k-licon">
-      <svg width="22" height="22" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="18" rx="1.5" fill="white" stroke="rgba(220,100,180,.4)" stroke-width=".5"/><rect x="6.5" y="3.5" width="11" height="9" rx="1" fill="#FFB8E0"/><circle cx="12" cy="9.5" r="2.2" fill="#E0108A" fill-opacity=".7"/><rect x="5" y="16.5" width="14" height="3.5" rx="0 0 1.5 1.5" fill="#FFF0F8"/></svg>
+      <svg width="22" height="22" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="18" rx="1.5" fill="white" stroke="rgba(220,100,180,.4)" stroke-width=".5"/><rect x="6.5" y="3.5" width="11" height="9" rx="1" fill="#FFB8E0"/><circle cx="12" cy="9.5" r="2.2" fill="#FFAED5" fill-opacity=".7"/><rect x="5" y="16.5" width="14" height="3.5" rx="0 0 1.5 1.5" fill="#FFF0F8"/></svg>
     </div>
     <span>About Me</span>
   </button>
 
   <button class="y2k-lbtn" data-open="mail" style="position:relative;">
     <div class="y2k-licon">
-      <svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2" fill="#E0108A"/><path d="M2 6l10 8 10-8" stroke="rgba(255,255,255,.7)" stroke-width="1.3" fill="none"/><path d="M19 3C19 5 17 5.8 17 5.8S15 5 15 3c0-1.1.9-2 2-2s2 .9 2 2z" fill="#FF1744"/></svg>
+      <svg width="22" height="22" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2" fill="#FFAED5"/><path d="M2 6l10 8 10-8" stroke="rgba(255,255,255,.7)" stroke-width="1.3" fill="none"/><path d="M19 3C19 5 17 5.8 17 5.8S15 5 15 3c0-1.1.9-2 2-2s2 .9 2 2z" fill="#FF1744"/></svg>
     </div>
     <span>Mail</span>
     <span class="y2k-notif">3</span>
@@ -2224,7 +2234,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <button class="y2k-lbtn" data-open="search">
     <div class="y2k-licon">
-      <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="#E0108A" stroke-width="2"/><circle cx="10" cy="10" r="3.5" fill="#E0108A" fill-opacity=".22"/><circle cx="8.5" cy="8" r="1.5" fill="rgba(255,255,255,.68)"/><line x1="15.2" y1="15.2" x2="21" y2="21" stroke="#E0108A" stroke-width="2.5" stroke-linecap="round"/></svg>
+      <svg width="22" height="22" viewBox="0 0 24 24"><circle cx="10" cy="10" r="6.5" fill="none" stroke="#FFAED5" stroke-width="2"/><circle cx="10" cy="10" r="3.5" fill="#FFAED5" fill-opacity=".22"/><circle cx="8.5" cy="8" r="1.5" fill="rgba(255,255,255,.68)"/><line x1="15.2" y1="15.2" x2="21" y2="21" stroke="#FFAED5" stroke-width="2.5" stroke-linecap="round"/></svg>
     </div>
     <span>Search</span>
   </button>
@@ -2234,7 +2244,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   <button class="y2k-lbtn" data-open="pixie">
     <div class="y2k-licon">
-      <svg width="22" height="22" viewBox="0 0 24 24"><polygon points="12,2 20,9 12,22 4,9" fill="#E0108A" stroke="rgba(255,255,255,.5)" stroke-width=".4"/><polygon points="12,2 20,9 12,14 4,9" fill="rgba(255,255,255,.3)"/><line x1="4" y1="9" x2="20" y2="9" stroke="rgba(255,255,255,.45)" stroke-width=".7"/><circle cx="12" cy="2" r="1.2" fill="#FFD700"/></svg>
+      <svg width="22" height="22" viewBox="0 0 24 24"><polygon points="12,2 20,9 12,22 4,9" fill="#FFAED5" stroke="rgba(255,255,255,.5)" stroke-width=".4"/><polygon points="12,2 20,9 12,14 4,9" fill="rgba(255,255,255,.3)"/><line x1="4" y1="9" x2="20" y2="9" stroke="rgba(255,255,255,.45)" stroke-width=".7"/><circle cx="12" cy="2" r="1.2" fill="#FFD700"/></svg>
     </div>
     <span>Pixie</span>
   </button>
@@ -2468,98 +2478,98 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <!-- ══ MOBILE ONE-PAGE ══ -->
 <div id="pc-mobile">
-  <div style="position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:2px;padding:10px 16px;background:rgba(254,251,254,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(38,1,11,.06);">
+  <div style="position:sticky;top:0;z-index:20;display:flex;align-items:center;gap:2px;padding:10px 16px;background:rgba(255,248,243,.92);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid rgba(91,75,69,.06);">
     <img src="uploads/pc-menu-icon.png" alt="p/c" width="32" height="32" style="display:block;object-fit:contain;">
     <div style="flex:1;"></div>
-    <a href="#pcm-work" style="font-size:14px;color:rgba(38,1,11,.62);text-decoration:none;padding:8px 9px;">work</a>
-    <a href="#pcm-about" style="font-size:14px;color:rgba(38,1,11,.62);text-decoration:none;padding:8px 9px;margin-right:6px;">about</a>
-    <a href="/cdn-cgi/l/email-protection#06766f6372746746766f7e6f63656a73642865696b286474" style="font-size:14px;font-weight:600;color:#5F1E3E;text-decoration:none;background:#F8E3EE;border:1px solid rgba(95,30,62,.12);border-radius:999px;padding:9px 18px;">contact</a>
+    <a href="#pcm-work" style="font-size:14px;color:rgba(91,75,69,.62);text-decoration:none;padding:8px 9px;">work</a>
+    <a href="#pcm-about" style="font-size:14px;color:rgba(91,75,69,.62);text-decoration:none;padding:8px 9px;margin-right:6px;">about</a>
+    <a href="/cdn-cgi/l/email-protection#06766f6372746746766f7e6f63656a73642865696b286474" style="font-size:14px;font-weight:600;color:#5B4B45;text-decoration:none;background:#F8E3EE;border:1px solid rgba(91,75,69,.12);border-radius:999px;padding:9px 18px;">contact</a>
   </div>
 
-  <div style="position:relative;padding:54px 24px 42px;text-align:center;background:radial-gradient(ellipse at 16% 16%,rgba(242,196,218,.55) 0%,transparent 36%),radial-gradient(ellipse at 84% 20%,rgba(255,247,209,.6) 0%,transparent 32%),radial-gradient(ellipse at 82% 86%,rgba(221,238,244,.75) 0%,transparent 42%),linear-gradient(152deg,#F8F3EF 0%,#FBF7F3 40%,#EEF6F8 100%);border-bottom:1px solid rgba(38,1,11,.05);">
-    <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(38,1,11,.05) 1px,transparent 1px);background-size:20px 20px;pointer-events:none;"></div>
+  <div style="position:relative;padding:54px 24px 42px;text-align:center;background:radial-gradient(ellipse at 16% 16%,rgba(254,223,221,.55) 0%,transparent 36%),radial-gradient(ellipse at 84% 20%,rgba(191,219,160,.6) 0%,transparent 32%),radial-gradient(ellipse at 82% 86%,rgba(254,223,221,.75) 0%,transparent 42%),linear-gradient(152deg,#FFF8F3 0%,#FBF7F3 40%,#EEF6F8 100%);border-bottom:1px solid rgba(91,75,69,.05);">
+    <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(91,75,69,.05) 1px,transparent 1px);background-size:20px 20px;pointer-events:none;"></div>
     <div style="position:relative;">
-      <div style="width:120px;height:120px;border-radius:50%;margin:0 auto 24px;overflow:hidden;box-shadow:0 0 0 4px rgba(255,255,255,.85),0 8px 24px rgba(38,1,11,.1);background:linear-gradient(135deg,#F2C4DA,#F2D8E4);"><img src="uploads/pietra-profile.jpg" alt="pietra costantin" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
-      <h1 style="font-size:34px;font-weight:700;letter-spacing:-.02em;margin:0 0 7px;line-height:1.05;color:#26010B;">pietra costantin</h1>
-      <div style="font-size:15px;color:rgba(38,1,11,.45);margin-bottom:22px;">graphic designer · São Paulo</div>
-      <p style="font-size:16px;line-height:1.55;color:rgba(38,1,11,.62);margin:0 auto 26px;max-width:330px;text-wrap:pretty;">visual identity, art direction &amp; web — for music, fashion and culture.</p>
+      <div style="width:120px;height:120px;border-radius:50%;margin:0 auto 24px;overflow:hidden;box-shadow:0 0 0 4px rgba(255,255,255,.85),0 8px 24px rgba(91,75,69,.1);background:linear-gradient(135deg,#FEDFDD,#F2D8E4);"><img src="uploads/pietra-profile.jpg" alt="pietra costantin" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
+      <h1 style="font-size:34px;font-weight:700;letter-spacing:-.02em;margin:0 0 7px;line-height:1.05;color:#5B4B45;">pietra costantin</h1>
+      <div style="font-size:15px;color:rgba(91,75,69,.45);margin-bottom:22px;">graphic designer · São Paulo</div>
+      <p style="font-size:16px;line-height:1.55;color:rgba(91,75,69,.62);margin:0 auto 26px;max-width:330px;text-wrap:pretty;">visual identity, art direction &amp; web — for music, fashion and culture.</p>
       <div style="display:flex;flex-wrap:wrap;gap:8px 9px;justify-content:center;">
-        <span style="font-size:13.5px;padding:7px 16px;background:#F2C4DA;color:#26010B;border-radius:999px;">identity</span>
-        <span style="font-size:13.5px;padding:7px 16px;background:#FFF7D1;color:#26010B;border-radius:999px;">art direction</span>
-        <span style="font-size:13.5px;padding:7px 16px;background:#FFF7D1;color:#26010B;border-radius:999px;">music</span>
-        <span style="font-size:13.5px;padding:7px 16px;background:#DDEEF4;color:#26010B;border-radius:999px;">fashion</span>
-        <span style="font-size:13.5px;padding:7px 16px;background:#F2C4DA;color:#26010B;border-radius:999px;">web</span>
+        <span style="font-size:13.5px;padding:7px 16px;background:#FEDFDD;color:#5B4B45;border-radius:999px;">identity</span>
+        <span style="font-size:13.5px;padding:7px 16px;background:#BFDBA0;color:#5B4B45;border-radius:999px;">art direction</span>
+        <span style="font-size:13.5px;padding:7px 16px;background:#BFDBA0;color:#5B4B45;border-radius:999px;">music</span>
+        <span style="font-size:13.5px;padding:7px 16px;background:#FEDFDD;color:#5B4B45;border-radius:999px;">fashion</span>
+        <span style="font-size:13.5px;padding:7px 16px;background:#FEDFDD;color:#5B4B45;border-radius:999px;">web</span>
       </div>
     </div>
   </div>
 
   <div id="pcm-work" style="padding:30px 16px 10px;">
-    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;color:rgba(38,1,11,.36);text-transform:uppercase;margin:0 6px 14px;">work</div>
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;color:rgba(91,75,69,.36);text-transform:uppercase;margin:0 6px 14px;">work</div>
     <div style="display:flex;flex-direction:column;gap:14px;">
-      <button class="pcm-case" data-project="pixie" style="display:flex;align-items:stretch;text-align:left;background:#fff;border:1px solid rgba(38,1,11,.08);border-radius:16px;overflow:hidden;padding:0;font-family:inherit;cursor:pointer;box-shadow:0 1px 3px rgba(38,1,11,.04);min-height:118px;">
+      <button class="pcm-case" data-project="pixie" style="display:flex;align-items:stretch;text-align:left;background:#fff;border:1px solid rgba(91,75,69,.08);border-radius:16px;overflow:hidden;padding:0;font-family:inherit;cursor:pointer;box-shadow:0 1px 3px rgba(91,75,69,.04);min-height:118px;">
         <div style="width:118px;flex-shrink:0;background:#F0EEF2;"><img src="uploads/pixie-preview-01.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div style="flex:1;padding:16px 14px;display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0;">
-          <div style="display:flex;align-items:center;gap:9px;"><span style="width:10px;height:10px;border-radius:50%;background:#F2C4DA;border:1px solid rgba(38,1,11,.1);flex-shrink:0;"></span><span style="font-size:17px;font-weight:700;letter-spacing:-.01em;color:#26010B;">pixie club</span></div>
-          <div style="font-size:12.5px;color:rgba(38,1,11,.45);line-height:1.5;">identity · web · 2026&nbsp; <span style="font-weight:700;color:#8E5B73;white-space:nowrap;">view case →</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><span style="width:10px;height:10px;border-radius:50%;background:#FEDFDD;border:1px solid rgba(91,75,69,.1);flex-shrink:0;"></span><span style="font-size:17px;font-weight:700;letter-spacing:-.01em;color:#5B4B45;">pixie club</span></div>
+          <div style="font-size:12.5px;color:rgba(91,75,69,.45);line-height:1.5;">identity · web · 2026&nbsp; <span style="font-weight:700;color:#8E5B73;white-space:nowrap;">view case →</span></div>
         </div>
       </button>
-      <button class="pcm-case" data-project="mari" style="display:flex;align-items:stretch;text-align:left;background:#fff;border:1px solid rgba(38,1,11,.08);border-radius:16px;overflow:hidden;padding:0;font-family:inherit;cursor:pointer;box-shadow:0 1px 3px rgba(38,1,11,.04);min-height:118px;">
+      <button class="pcm-case" data-project="mari" style="display:flex;align-items:stretch;text-align:left;background:#fff;border:1px solid rgba(91,75,69,.08);border-radius:16px;overflow:hidden;padding:0;font-family:inherit;cursor:pointer;box-shadow:0 1px 3px rgba(91,75,69,.04);min-height:118px;">
         <div style="width:118px;flex-shrink:0;background:#F0EEF2;"><img src="uploads/maricvr.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div style="flex:1;padding:16px 14px;display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0;">
-          <div style="display:flex;align-items:center;gap:9px;"><span style="width:10px;height:10px;border-radius:50%;background:#FFF7D1;border:1px solid rgba(38,1,11,.1);flex-shrink:0;"></span><span style="font-size:17px;font-weight:700;letter-spacing:-.01em;color:#26010B;">mari froes</span></div>
-          <div style="font-size:12.5px;color:rgba(38,1,11,.45);line-height:1.5;">art direction · music · 2026&nbsp; <span style="font-weight:700;color:#8E5B73;white-space:nowrap;">view case →</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><span style="width:10px;height:10px;border-radius:50%;background:#BFDBA0;border:1px solid rgba(91,75,69,.1);flex-shrink:0;"></span><span style="font-size:17px;font-weight:700;letter-spacing:-.01em;color:#5B4B45;">mari froes</span></div>
+          <div style="font-size:12.5px;color:rgba(91,75,69,.45);line-height:1.5;">art direction · music · 2026&nbsp; <span style="font-weight:700;color:#8E5B73;white-space:nowrap;">view case →</span></div>
         </div>
       </button>
-      <button class="pcm-case" data-project="dorian" style="display:flex;align-items:stretch;text-align:left;background:#fff;border:1px solid rgba(38,1,11,.08);border-radius:16px;overflow:hidden;padding:0;font-family:inherit;cursor:pointer;box-shadow:0 1px 3px rgba(38,1,11,.04);min-height:118px;">
+      <button class="pcm-case" data-project="dorian" style="display:flex;align-items:stretch;text-align:left;background:#fff;border:1px solid rgba(91,75,69,.08);border-radius:16px;overflow:hidden;padding:0;font-family:inherit;cursor:pointer;box-shadow:0 1px 3px rgba(91,75,69,.04);min-height:118px;">
         <div style="width:118px;flex-shrink:0;background:#F0EEF2;"><img src="uploads/doriancvr.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div style="flex:1;padding:16px 14px;display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0;">
-          <div style="display:flex;align-items:center;gap:9px;"><span style="width:10px;height:10px;border-radius:50%;background:#DDEEF4;border:1px solid rgba(38,1,11,.1);flex-shrink:0;"></span><span style="font-size:17px;font-weight:700;letter-spacing:-.01em;color:#26010B;">dorian electra</span></div>
-          <div style="font-size:12.5px;color:rgba(38,1,11,.45);line-height:1.5;">art direction · concept packaging · 2026&nbsp; <span style="font-weight:700;color:#8E5B73;white-space:nowrap;">view case →</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><span style="width:10px;height:10px;border-radius:50%;background:#FEDFDD;border:1px solid rgba(91,75,69,.1);flex-shrink:0;"></span><span style="font-size:17px;font-weight:700;letter-spacing:-.01em;color:#5B4B45;">dorian electra</span></div>
+          <div style="font-size:12.5px;color:rgba(91,75,69,.45);line-height:1.5;">art direction · concept packaging · 2026&nbsp; <span style="font-weight:700;color:#8E5B73;white-space:nowrap;">view case →</span></div>
         </div>
       </button>
-      <button class="pcm-case" data-project="sweat" style="display:flex;align-items:stretch;text-align:left;background:#fff;border:1px solid rgba(38,1,11,.08);border-radius:16px;overflow:hidden;padding:0;font-family:inherit;cursor:pointer;box-shadow:0 1px 3px rgba(38,1,11,.04);min-height:118px;">
+      <button class="pcm-case" data-project="sweat" style="display:flex;align-items:stretch;text-align:left;background:#fff;border:1px solid rgba(91,75,69,.08);border-radius:16px;overflow:hidden;padding:0;font-family:inherit;cursor:pointer;box-shadow:0 1px 3px rgba(91,75,69,.04);min-height:118px;">
         <div style="width:118px;flex-shrink:0;background:#F0EEF2;"><img src="uploads/sweatcvr.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div style="flex:1;padding:16px 14px;display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0;">
-          <div style="display:flex;align-items:center;gap:9px;"><span style="width:10px;height:10px;border-radius:50%;background:#F2D8E4;border:1px solid rgba(38,1,11,.1);flex-shrink:0;"></span><span style="font-size:17px;font-weight:700;letter-spacing:-.01em;color:#26010B;">sweat</span></div>
-          <div style="font-size:12.5px;color:rgba(38,1,11,.45);line-height:1.5;">art direction · concept packaging · 2025&nbsp; <span style="font-weight:700;color:#8E5B73;white-space:nowrap;">view case →</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><span style="width:10px;height:10px;border-radius:50%;background:#F2D8E4;border:1px solid rgba(91,75,69,.1);flex-shrink:0;"></span><span style="font-size:17px;font-weight:700;letter-spacing:-.01em;color:#5B4B45;">sweat</span></div>
+          <div style="font-size:12.5px;color:rgba(91,75,69,.45);line-height:1.5;">art direction · concept packaging · 2025&nbsp; <span style="font-weight:700;color:#8E5B73;white-space:nowrap;">view case →</span></div>
         </div>
       </button>
-      <button class="pcm-case" data-project="grimes" style="display:flex;align-items:stretch;text-align:left;background:#fff;border:1px solid rgba(38,1,11,.08);border-radius:16px;overflow:hidden;padding:0;font-family:inherit;cursor:pointer;box-shadow:0 1px 3px rgba(38,1,11,.04);min-height:118px;">
+      <button class="pcm-case" data-project="grimes" style="display:flex;align-items:stretch;text-align:left;background:#fff;border:1px solid rgba(91,75,69,.08);border-radius:16px;overflow:hidden;padding:0;font-family:inherit;cursor:pointer;box-shadow:0 1px 3px rgba(91,75,69,.04);min-height:118px;">
         <div style="width:118px;flex-shrink:0;background:#F0EEF2;"><img src="uploads/grimes-01.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;display:block;"></div>
         <div style="flex:1;padding:16px 14px;display:flex;flex-direction:column;justify-content:center;gap:6px;min-width:0;">
-          <div style="display:flex;align-items:center;gap:9px;"><span style="width:10px;height:10px;border-radius:50%;background:#DDEEF4;border:1px solid rgba(38,1,11,.1);flex-shrink:0;"></span><span style="font-size:17px;font-weight:700;letter-spacing:-.01em;color:#26010B;">grimes</span></div>
-          <div style="font-size:12.5px;color:rgba(38,1,11,.45);line-height:1.5;">editorial · layout · 2026&nbsp; <span style="font-weight:700;color:#8E5B73;white-space:nowrap;">view case →</span></div>
+          <div style="display:flex;align-items:center;gap:9px;"><span style="width:10px;height:10px;border-radius:50%;background:#FEDFDD;border:1px solid rgba(91,75,69,.1);flex-shrink:0;"></span><span style="font-size:17px;font-weight:700;letter-spacing:-.01em;color:#5B4B45;">grimes</span></div>
+          <div style="font-size:12.5px;color:rgba(91,75,69,.45);line-height:1.5;">editorial · layout · 2026&nbsp; <span style="font-weight:700;color:#8E5B73;white-space:nowrap;">view case →</span></div>
         </div>
       </button>
     </div>
   </div>
 
   <div id="pcm-about" style="padding:34px 20px 10px;">
-    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;color:rgba(38,1,11,.36);text-transform:uppercase;margin:0 2px 12px;">about</div>
-    <p style="font-size:15px;line-height:1.7;color:rgba(38,1,11,.65);margin:0 0 18px;text-wrap:pretty;">Hello! I'm Pietra, a graphic designer based in São Paulo, Brazil. I've been building visual systems since I was a teenager, starting with blog themes on Blogger and Tumblr, then small design work for family and friends. Today, my work is shaped by fashion, music, entertainment and internet culture, and by that same instinct I had as a kid: paying attention to what captures people, what&nbsp;shapes&nbsp;their&nbsp;taste, and why.</p>
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;color:rgba(91,75,69,.36);text-transform:uppercase;margin:0 2px 12px;">about</div>
+    <p style="font-size:15px;line-height:1.7;color:rgba(91,75,69,.65);margin:0 0 18px;text-wrap:pretty;">Hello! I'm Pietra, a graphic designer based in São Paulo, Brazil. I've been building visual systems since I was a teenager, starting with blog themes on Blogger and Tumblr, then small design work for family and friends. Today, my work is shaped by fashion, music, entertainment and internet culture, and by that same instinct I had as a kid: paying attention to what captures people, what&nbsp;shapes&nbsp;their&nbsp;taste, and why.</p>
     <div style="display:flex;gap:10px;">
-      <a href="https://www.behance.net/pietrabc" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:#5F1E3E;text-decoration:none;background:#F8F3EF;border:1px solid rgba(38,1,11,.1);border-radius:999px;padding:10px 18px;">Behance ↗</a>
-      <a href="https://www.linkedin.com/in/pietracostantin/" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:#5F1E3E;text-decoration:none;background:#F8F3EF;border:1px solid rgba(38,1,11,.1);border-radius:999px;padding:10px 18px;">LinkedIn ↗</a>
+      <a href="https://www.behance.net/pietrabc" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:#5B4B45;text-decoration:none;background:#FFF8F3;border:1px solid rgba(91,75,69,.1);border-radius:999px;padding:10px 18px;">Behance ↗</a>
+      <a href="https://www.linkedin.com/in/pietracostantin/" target="_blank" rel="noopener" style="font-size:14px;font-weight:600;color:#5B4B45;text-decoration:none;background:#FFF8F3;border:1px solid rgba(91,75,69,.1);border-radius:999px;padding:10px 18px;">LinkedIn ↗</a>
     </div>
   </div>
 
   <div style="padding:30px 16px 14px;">
-    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;color:rgba(38,1,11,.36);text-transform:uppercase;margin:0 6px 12px;">contact</div>
-    <a href="/cdn-cgi/l/email-protection#1d6d7478696f7c5d6d746574787e71687f337e7270337f6f" style="display:block;text-decoration:none;background:linear-gradient(135deg,#F8E3EE 0%,#F8F3EF 70%);border:1px solid rgba(95,30,62,.12);border-radius:18px;padding:20px 18px;">
-      <div style="font-size:16px;font-weight:700;color:#26010B;margin-bottom:4px;">get in touch</div>
-      <div style="font-size:13px;color:rgba(38,1,11,.52);margin-bottom:10px;line-height:1.5;">Available for freelance projects. Based in São Paulo and open to remote work.</div>
-      <div style="font-size:13.5px;color:rgba(38,1,11,.5);margin-bottom:12px;"><span class="__cf_email__" data-cfemail="7a0a131f0e081b3a0a1302131f19160f1854191517541808">[email&#160;protected]</span></div>
-      <div style="font-size:14px;font-weight:700;color:#5F1E3E;">send email →</div>
+    <div style="font-size:11px;font-weight:700;letter-spacing:.14em;color:rgba(91,75,69,.36);text-transform:uppercase;margin:0 6px 12px;">contact</div>
+    <a href="/cdn-cgi/l/email-protection#1d6d7478696f7c5d6d746574787e71687f337e7270337f6f" style="display:block;text-decoration:none;background:linear-gradient(135deg,#F8E3EE 0%,#FFF8F3 70%);border:1px solid rgba(91,75,69,.12);border-radius:18px;padding:20px 18px;">
+      <div style="font-size:16px;font-weight:700;color:#5B4B45;margin-bottom:4px;">get in touch</div>
+      <div style="font-size:13px;color:rgba(91,75,69,.52);margin-bottom:10px;line-height:1.5;">Available for freelance projects. Based in São Paulo and open to remote work.</div>
+      <div style="font-size:13.5px;color:rgba(91,75,69,.5);margin-bottom:12px;"><span class="__cf_email__" data-cfemail="7a0a131f0e081b3a0a1302131f19160f1854191517541808">[email&#160;protected]</span></div>
+      <div style="font-size:14px;font-weight:700;color:#5B4B45;">send email →</div>
     </a>
   </div>
 
-  <div style="padding:18px 16px 44px;text-align:center;font-size:11.5px;color:rgba(38,1,11,.35);">pietra's pc · pixieclub.com.br</div>
+  <div style="padding:18px 16px 44px;text-align:center;font-size:11.5px;color:rgba(91,75,69,.35);">pietra's pc · pixieclub.com.br</div>
 
   <!-- mobile case overlay -->
-  <div id="pcm-case-overlay" style="position:fixed;inset:0;z-index:60;background:#FEFBFE;display:none;flex-direction:column;">
-    <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid rgba(38,1,11,.07);background:rgba(254,251,254,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);flex-shrink:0;">
-      <button id="pcm-case-back" style="border:1px solid rgba(38,1,11,.1);background:#F8F3EF;border-radius:999px;padding:8px 15px;font-family:inherit;font-size:13px;font-weight:600;color:#5F1E3E;cursor:pointer;">← back</button>
-      <div id="pcm-case-title" style="font-size:15.5px;font-weight:700;color:#26010B;"></div>
+  <div id="pcm-case-overlay" style="position:fixed;inset:0;z-index:60;background:#FFF8F3;display:none;flex-direction:column;">
+    <div style="display:flex;align-items:center;gap:12px;padding:10px 14px;border-bottom:1px solid rgba(91,75,69,.07);background:rgba(255,248,243,.95);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);flex-shrink:0;">
+      <button id="pcm-case-back" style="border:1px solid rgba(91,75,69,.1);background:#FFF8F3;border-radius:999px;padding:8px 15px;font-family:inherit;font-size:13px;font-weight:600;color:#5B4B45;cursor:pointer;">← back</button>
+      <div id="pcm-case-title" style="font-size:15.5px;font-weight:700;color:#5B4B45;"></div>
     </div>
     <div id="pcm-case-body" style="flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;"></div>
   </div>
@@ -2578,8 +2588,8 @@ document.addEventListener('DOMContentLoaded', () => {
     var media=app._mediaForProject(p);
     title.textContent=p.name;
     var html='<div style="padding:18px 18px 4px;">'
-      +'<div style="font-size:12.5px;color:rgba(38,1,11,.45);margin-bottom:9px;">'+p.cat+' · '+p.year+'</div>'
-      +'<p style="font-size:14px;line-height:1.65;color:rgba(38,1,11,.62);margin:0;text-wrap:pretty;">'+p.desc+'</p></div>'
+      +'<div style="font-size:12.5px;color:rgba(91,75,69,.45);margin-bottom:9px;">'+p.cat+' · '+p.year+'</div>'
+      +'<p style="font-size:14px;line-height:1.65;color:rgba(91,75,69,.62);margin:0;text-wrap:pretty;">'+p.desc+'</p></div>'
       +'<div style="display:flex;flex-direction:column;gap:12px;padding:14px 14px 40px;">'
       +media.map(function(m){
         return '<div style="border-radius:12px;overflow:hidden;background:#F0EEF2;">'+(m.type==='video'
