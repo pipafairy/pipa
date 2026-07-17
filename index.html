@@ -755,29 +755,30 @@
   </div>
 
   <!-- ══ WINDOW: mail ══ -->
-  <div id="pc-win-mail" style="position:absolute;width:360px;border-radius:10px;box-shadow:0 1px 3px rgba(91,75,69,.06),0 12px 32px rgba(91,75,69,.10);overflow:hidden;">
-    <div class="pc-tbar pc-tl-g" style="height:30px;background:#F3ECEF;border-bottom:1px solid rgba(91,75,69,.07);display:flex;align-items:center;padding:0 12px;position:relative;">
-      <div style="display:flex;gap:7px;">
-        <div class="tl-r" data-close="pc-win-mail" style="width:12px;height:12px;border-radius:50%;background:#F2AABB;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
-        <div class="tl-y" style="width:12px;height:12px;border-radius:50%;background:#F0D088;border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
-        <div class="tl-g" style="width:12px;height:12px;border-radius:50%;background:var(--pc-green);border:.5px solid rgba(91,75,69,.07);transition:background 150ms;"></div>
+  <div id="pc-win-mail" style="position:absolute;width:280px;border-radius:3px;overflow:visible;">
+    <div style="position:relative;background:#FFFCF8;border:1px solid rgba(91,75,69,.14);border-radius:3px;box-shadow:0 10px 24px rgba(91,75,69,.14),0 2px 6px rgba(91,75,69,.08);padding:26px 22px 22px;overflow:hidden;">
+      <div style="position:absolute;z-index:0;top:-11px;left:36px;width:52px;height:20px;background:#FFAED5;opacity:.85;transform:rotate(-5deg);box-shadow:0 2px 4px rgba(91,75,69,.15);"></div>
+      <div style="position:absolute;inset:0;background-image:url('data:image/svg+xml;utf8,<svg xmlns=%22http://www.w3.org/2000/svg%22 width=%22200%22 height=%22200%22><filter id=%22n%22><feTurbulence type=%22fractalNoise%22 baseFrequency=%220.9%22 numOctaves=%222%22 stitchTiles=%22stitch%22/></filter><rect width=%22200%22 height=%22200%22 filter=%22url(%23n)%22/></svg>');background-size:160px;opacity:.045;mix-blend-mode:multiply;pointer-events:none;"></div>
+      <div style="position:relative;display:flex;align-items:baseline;gap:8px;margin-bottom:4px;">
+        <h1 style="margin:0;font-size:26px;font-weight:800;letter-spacing:-.02em;color:#5B4B45;line-height:1;">let's talk!</h1>
+        <span style="width:7px;height:7px;border-radius:50%;background:#BFDBA0;display:inline-block;"></span>
       </div>
-      <span style="position:absolute;left:50%;transform:translateX(-50%);font-size:11px;color:rgba(91,75,69,.3);font-weight:500;pointer-events:none;">contact</span>
-    </div>
-    <div style="background:#FFF8F3;padding:12px 14px 16px;display:flex;flex-direction:column;gap:10px;">
-      <div style="display:flex;align-items:center;gap:9px;padding:10px 12px;background:#FFF8F3;border:1px solid rgba(91,75,69,.09);border-radius:11px;">
-        <div style="width:34px;height:34px;border-radius:50%;background:#FEDFDD;overflow:hidden;flex-shrink:0;box-shadow:0 0 0 2px rgba(255,255,255,.8);"><img src="uploads/pietra-profile.jpg" alt="" loading="lazy" decoding="async" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;"></div>
-        <div style="flex:1;min-width:0;"><div style="font-size:13px;font-weight:600;letter-spacing:-.02em;color:#5B4B45;line-height:1.2;">Pietra Costantin</div><div style="font-size:11px;line-height:1.5;color:rgba(91,75,69,.6);margin-top:2px;">Based in São Paulo and open to remote work.</div></div>
+      <p style="margin:0 0 18px;font-size:12px;color:rgba(91,75,69,.55);letter-spacing:.01em;">open for new projects</p>
+      <div style="position:relative;height:1px;background:rgba(91,75,69,.12);margin-bottom:16px;"></div>
+      <div style="position:relative;display:flex;align-items:center;gap:8px;margin-bottom:12px;">
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(91,75,69,.4);margin-bottom:3px;">email</div>
+          <div style="font-size:13px;font-weight:600;color:#5B4B45;word-break:break-all;"><a href="mailto:pietra@pixieclub.com.br" style="color:inherit;text-decoration:none;">pietra@pixieclub.com.br</a></div>
+        </div>
+        <button id="pc-contact-copy" style="flex-shrink:0;width:30px;height:30px;border-radius:4px;border:1px solid rgba(91,75,69,.16);background:#FFF8F3;color:rgba(91,75,69,.6);display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:inherit;padding:0;" title="copy email">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="1.5"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+        </button>
       </div>
-      <div style="background:#FFF8F3;border:1px solid rgba(91,75,69,.09);border-radius:11px;padding:11px 12px;">
-        <div style="font-size:9px;font-weight:600;color:rgba(91,75,69,.34);letter-spacing:.07em;margin-bottom:5px;">email</div>
-        <div style="font-size:14px;font-weight:600;letter-spacing:-.015em;color:#5B4B45;margin-bottom:10px;word-break:break-all;"><a href="mailto:pietra@pixieclub.com.br" style="color:inherit;text-decoration:none;">pietra@pixieclub.com.br</a></div>
-        <div style="display:flex;gap:6px;"><button id="mail-copy-btn" class="pc-btn" style="background:transparent;box-shadow:none;border-color:rgba(91,75,69,.16);font-size:11px;color:rgba(91,75,69,.5);">copy email</button><a href="mailto:pietra@pixieclub.com.br" class="pc-btn" style="text-decoration:none;background:transparent;box-shadow:none;border-color:rgba(91,75,69,.16);font-size:11px;color:rgba(91,75,69,.5);">open mail</a></div>
-      </div>
-      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
-        <a href="https://www.behance.net/pietrabc" target="_blank" rel="noopener" class="pc-contact-card"><span style="font-size:14px;font-weight:700;color:#5B4B45;line-height:1;">Bē</span><div><div class="pc-contact-card-title">behance</div><div class="pc-contact-card-sub">portfolio archive</div></div><span class="pc-contact-card-arrow">↗</span></a>
-        <a href="https://www.linkedin.com/in/pietracostantin/" target="_blank" rel="noopener" class="pc-contact-card"><span style="font-size:14px;font-weight:700;color:#8E5B73;line-height:1;">in</span><div><div class="pc-contact-card-title">linkedin</div><div class="pc-contact-card-sub">professional profile</div></div><span class="pc-contact-card-arrow">↗</span></a>
-      </div>
+      <a href="https://www.linkedin.com/in/pietracostantin/" target="_blank" rel="noopener" style="position:relative;display:flex;align-items:center;gap:9px;text-decoration:none;border:1px solid rgba(91,75,69,.14);border-radius:4px;padding:9px 11px;">
+        <span style="font-size:13px;font-weight:800;color:#5B4B45;line-height:1;width:16px;text-align:center;">in</span>
+        <span style="font-size:12px;font-weight:600;color:#5B4B45;flex:1;">linkedin</span>
+        <span style="font-size:11px;color:rgba(91,75,69,.4);">↗</span>
+      </a>
     </div>
   </div>
 
@@ -2055,6 +2056,22 @@ class PietraDesktop {
           mailCopyBtn.classList.remove('is-copied');
           mailCopyBtn.style.animation = '';
           mailCopyBtn.textContent = 'copy email';
+        }, 2200);
+      });
+    }
+    // contact card: copy email icon button
+    const contactCopyBtn = document.getElementById('pc-contact-copy');
+    if (contactCopyBtn) {
+      const copyIcon = contactCopyBtn.innerHTML;
+      let contactCopyReset;
+      contactCopyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText('pietra@pixieclub.com.br').catch(() => {});
+        clearTimeout(contactCopyReset);
+        contactCopyBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+        contactCopyBtn.style.color = '#BFDBA0';
+        contactCopyReset = setTimeout(() => {
+          contactCopyBtn.innerHTML = copyIcon;
+          contactCopyBtn.style.color = '';
         }, 2200);
       });
     }
