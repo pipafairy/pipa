@@ -1789,7 +1789,7 @@ class PietraDesktop {
     this._place('pc-win-projects',    W < 820 ? 20 : 60,       44,                    20);
     this._place('pc-win-about',       W < 820 ? 20 : Math.max(20, W - 578),   W < 820 ? 96 : 130, 18);
     this._place('pc-win-detail',      W < 820 ? 20 : Math.round(W/2 - 260), Math.max(44, Math.round(H/2 - 220)), 24);
-    this._place('pc-win-mail',        W < 820 ? 20 : Math.round(W/2 - 160), Math.max(56, Math.round(H/2 - 135)), 22);
+    this._place('pc-win-mail',        W < 820 ? 20 : Math.min(Math.max(20, W - 870), Math.round(W/2 - 140)), Math.max(80, Math.round(H * 0.35)), 22);
 
     this._place('pc-win-case-viewer', W < 820 ? 20 : Math.round(W/2 - 380), Math.max(44, Math.round(H/2 - 290)), 26);
     this._place('pc-win-pixie',       Math.round(W/2 - 180),   Math.round(H/2 - 200), 25);
