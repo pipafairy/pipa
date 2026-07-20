@@ -277,6 +277,10 @@
     .pc-asfalto-bubble-text { font-size:10px; line-height:1.45; color:rgba(91,75,69,.60); margin:0; text-wrap:pretty; }
     .pc-asfalto-bubble-close { position:absolute; top:50%; right:10px; transform:translateY(-50%); border:0; background:rgba(91,75,69,.06); color:rgba(91,75,69,.38); width:18px; height:18px; border-radius:50%; line-height:1; padding:0; cursor:pointer; font-family:inherit; font-size:13px; }
     .pc-asfalto-bubble-close:hover { background:rgba(91,75,69,.10); color:rgba(91,75,69,.58); }
+    /* ── contact popover ── */
+    #pc-contact-popover { position:absolute;z-index:99;width:230px;box-sizing:border-box;opacity:1;transform:translateY(0) scale(1);pointer-events:auto;transition:opacity 200ms cubic-bezier(.2,.7,.2,1),transform 220ms cubic-bezier(.18,.9,.22,1),visibility 0s linear 0s; }
+    #pc-contact-popover.is-hidden { opacity:0;visibility:hidden;transform:translateY(6px) scale(.975);pointer-events:none;transition:opacity 160ms cubic-bezier(.4,0,1,1),transform 160ms cubic-bezier(.4,0,1,1),visibility 0s linear 160ms; }
+    #pc-contact-popover::after { content:"";position:absolute;bottom:-7px;left:var(--caret-left,50%);margin-left:-7px;width:13px;height:13px;background:#FFFCF8;border-right:1px solid rgba(91,75,69,.13);border-bottom:1px solid rgba(91,75,69,.13);transform:rotate(45deg);border-radius:1px; }
     .pc-tbar span { letter-spacing:.025em; }
     .pc-dock-btn > span { letter-spacing:.035em !important; }
     .pc-mb-item { letter-spacing:.012em !important; }
@@ -794,6 +798,28 @@
     <button class="pc-asfalto-bubble-close" type="button" aria-label="hide asfalto note">×</button>
   </div>
 
+  <!-- ══ Contact popover ══ -->
+  <div id="pc-contact-popover" class="is-hidden">
+    <div style="position:relative;background:#FFFCF8;border:1px solid rgba(91,75,69,.13);border-radius:8px;box-shadow:0 4px 20px rgba(91,75,69,.13),0 1px 4px rgba(91,75,69,.08);padding:14px 16px;">
+      <div style="font-size:15px;font-weight:800;letter-spacing:-.02em;color:#5B4B45;line-height:1;margin-bottom:10px;">let's talk!</div>
+      <div style="height:1px;background:rgba(91,75,69,.09);margin-bottom:10px;"></div>
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:10px;">
+        <div style="flex:1;min-width:0;">
+          <div style="font-size:9px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;color:rgba(91,75,69,.4);margin-bottom:3px;">email</div>
+          <div style="font-size:12px;font-weight:600;color:#5B4B45;user-select:text;">pietra@pixieclub.com.br</div>
+        </div>
+        <button id="pc-popover-copy" style="flex-shrink:0;width:26px;height:26px;border:1px solid rgba(91,75,69,.16);background:#FFF8F3;color:rgba(91,75,69,.6);display:flex;align-items:center;justify-content:center;cursor:pointer;font-family:inherit;padding:0;border-radius:0;" title="copy email">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="1.5"></rect><path d="M5 15V5a2 2 0 0 1 2-2h10"></path></svg>
+        </button>
+      </div>
+      <a href="https://www.linkedin.com/in/pietracostantin/" target="_blank" rel="noopener" style="display:flex;align-items:center;gap:9px;text-decoration:none;border:1px solid rgba(91,75,69,.14);padding:8px 10px;">
+        <span style="font-size:12px;font-weight:800;color:#5B4B45;line-height:1;width:16px;text-align:center;">in</span>
+        <span style="font-size:12px;font-weight:600;color:#5B4B45;flex:1;">linkedin</span>
+        <span style="font-size:11px;color:rgba(91,75,69,.4);">↗</span>
+      </a>
+    </div>
+  </div>
+
   <!-- ══ Widget: calendar ══ -->
   <div id="pc-widget-cal" style="position:absolute;right:148px;top:134px;width:80px;z-index:10;background:#FFF8F3;border:1px solid rgba(91,75,69,.09);border-radius:14px;overflow:hidden;box-shadow:0 1px 3px rgba(91,75,69,.05),0 4px 12px rgba(91,75,69,.06);">
     <div style="background:#F2AABB;padding:5px 0 4px;text-align:center;">
@@ -914,12 +940,12 @@
       <span style="font-size:9px;color:rgba(91,75,69,.42);">about</span>
     </button>
 
-    <button class="pc-dock-btn" data-open="about">
+    <button id="pc-dock-contact-btn" class="pc-dock-btn">
       <div class="pc-dock-icon" style="width:50px;height:50px;border-radius:13px;background:rgba(252,248,246,.9);border:.5px solid rgba(91,75,69,.09);display:flex;align-items:center;justify-content:center;margin-bottom:4px;">
         <img src="uploads/ICON-MAIL.png" alt="" style="display:block;width:42px;height:42px;object-fit:contain;object-position:center;">
         <span class="pc-dock-ticon" aria-hidden="true"><svg class="ticon-y2k" width="26" height="26" viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="14" rx="2" fill="#FFAED5"/><path d="M2 6l10 8 10-8" stroke="rgba(255,255,255,.7)" stroke-width="1.3" fill="none"/><path d="M19 3C19 5 17 5.8 17 5.8S15 5 15 3c0-1.1.9-2 2-2s2 .9 2 2z" fill="#FF1744"/></svg><svg class="ticon-aero" width="26" height="26" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2" fill="rgba(40,140,235,.9)" stroke="rgba(255,255,255,.45)" stroke-width=".5"/><path d="M2 5l10 8 10-8" stroke="rgba(255,255,255,.8)" stroke-width="1.3" fill="none"/><ellipse cx="12" cy="7" rx="5.5" ry="2" fill="rgba(255,255,255,.22)"/></svg></span>
       </div>
-      <div class="pc-dock-dot" data-dot-win="pc-win-about"></div>
+      <div class="pc-dock-dot"></div>
       <span style="font-size:9px;color:rgba(91,75,69,.42);">contact</span>
     </button>
 
@@ -2050,6 +2076,55 @@ class PietraDesktop {
           aboutCopyBtn.style.color = '';
         }, 2200);
       });
+    }
+
+    // contact dock button → popover
+    const contactDockBtn = document.getElementById('pc-dock-contact-btn');
+    const contactPopover = document.getElementById('pc-contact-popover');
+    if (contactDockBtn && contactPopover) {
+      const positionContactPopover = () => {
+        const root = document.getElementById('pc-desktop-root');
+        const br = contactDockBtn.getBoundingClientRect();
+        const rr = root ? root.getBoundingClientRect() : { left:0, top:0, width:window.innerWidth };
+        const pw = 230;
+        const ph = contactPopover.offsetHeight;
+        const left = Math.max(8, Math.min(Math.round(br.left - rr.left + br.width / 2 - pw / 2), rr.width - pw - 8));
+        const top  = Math.round(br.top - rr.top - ph - 10);
+        contactPopover.style.left = left + 'px';
+        contactPopover.style.top  = top + 'px';
+        // align caret to button center
+        const caretOffset = Math.round(br.left - rr.left + br.width / 2 - left - 7);
+        contactPopover.style.setProperty('--caret-left', Math.max(16, Math.min(caretOffset, pw - 24)) + 'px');
+      };
+      contactDockBtn.addEventListener('click', e => {
+        e.stopPropagation();
+        if (!contactPopover.classList.contains('is-hidden')) {
+          contactPopover.classList.add('is-hidden');
+        } else {
+          positionContactPopover();
+          contactPopover.classList.remove('is-hidden');
+        }
+      });
+      document.addEventListener('click', e => {
+        if (!contactPopover.classList.contains('is-hidden') &&
+            !contactPopover.contains(e.target) &&
+            !contactDockBtn.contains(e.target)) {
+          contactPopover.classList.add('is-hidden');
+        }
+      });
+      // copy email
+      const popoverCopyBtn = document.getElementById('pc-popover-copy');
+      if (popoverCopyBtn) {
+        const copyIcon = popoverCopyBtn.innerHTML;
+        let copyReset;
+        popoverCopyBtn.addEventListener('click', () => {
+          navigator.clipboard.writeText('pietra@pixieclub.com.br').catch(() => {});
+          clearTimeout(copyReset);
+          popoverCopyBtn.innerHTML = '<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+          popoverCopyBtn.style.color = '#BFDBA0';
+          copyReset = setTimeout(() => { popoverCopyBtn.innerHTML = copyIcon; popoverCopyBtn.style.color = ''; }, 2200);
+        });
+      }
     }
 
     // pixie view-case button
