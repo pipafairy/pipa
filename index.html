@@ -1352,6 +1352,12 @@ class PietraDesktop {
     this._currentProject = p;
     this._positionDetailWindow();
     this._openWindows.has('pc-win-detail') ? this._focusWindow('pc-win-detail') : this._showWindow('pc-win-detail');
+    if (this._openWindows.has('pc-win-case-viewer')) {
+      this._resetCaseViewer();
+      this._customizeProjectCaseViewer(p);
+      const caseTitleBar = document.getElementById('case-title-bar');
+      if (caseTitleBar) caseTitleBar.textContent = p.name;
+    }
   }
 
   _renderDetailSpotify(project) {
