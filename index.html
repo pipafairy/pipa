@@ -1278,6 +1278,7 @@ class PietraDesktop {
     if (scroller) scroller.style.overflowX = 'hidden';
     const media = this._mediaForProject(project);
     this._showMediaCaseViewer(media, project && project.id === 'grimes' ? 'grimes' : '');
+    const gallery = document.getElementById('case-pixie-gallery-wrap');
     if (project && project.disclaimer && gallery) {
       const disc = document.createElement('p');
       disc.style.cssText = 'font-size:9px;color:rgba(91,75,69,.48);margin:8px 14px 16px;line-height:1.6;text-align:center;';
